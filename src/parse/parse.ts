@@ -1,7 +1,14 @@
 import { readFileSync, stat } from "fs";
 import { join } from "path";
 
-const statsRaw = readFileSync(join(__dirname, "stats.txt"), "utf8").split("\n");
+const statsRaw = readFileSync(join(__dirname, "stats.tsv"), "utf8").split("\n");
+const secondaryTypesRaw = readFileSync(
+  join(__dirname, "secondary_types.tsv"),
+  "utf8"
+).split("\n");
+const fusionsRaw = readFileSync(join(__dirname, "fusions.txt"), "utf8").split(
+  "\n"
+);
 
 type CardType = "Equip" | "Field" | "Magic" | "Monster" | "Ritual" | "Trap";
 
@@ -41,9 +48,22 @@ for (let i = 1; i < statsRaw.length; i++) {
   stats[parseInt(row[0])] = stat;
 }
 
-console.log(stats);
+for (let i = 1; i < secondaryTypesRaw.length; i++) {
+  const row = secondaryTypesRaw[i].split(/\t+/).map((col) => col.trim());
+  const name = row[0];
+  const primary = row[1];
+  const secondary = row[2].split(", ");
 
-const lines = readFileSync(join(__dirname, "data.txt"), "utf8").split("\n");
+  const found = Object.values(stats).find(
+    (stat) => stat.name.toLowerCase() === name.toLowerCase()
+  );
+  if (found) {
+    found.type = primary;
+    found.secondary = secondary;
+  } else console.error("Could not find matching stats for", name);
+}
+
+console.log(stats);
 
 // Zera the Mant (2800/2300) 360
 // ------------------------------------------
@@ -55,9 +75,9 @@ const lines = readFileSync(join(__dirname, "data.txt"), "utf8").split("\n");
 const data = {};
 
 let name;
-for (let i = 0; i < lines.length; i++) {
-  const line = lines[i];
-  const next = lines[i + 1];
+for (let i = 0; i < fusionsRaw.length; i++) {
+  const line = fusionsRaw[i];
+  const next = fusionsRaw[i + 1];
 
   if (next && next.startsWith("---")) {
     name = line.split(" (")[0].trim();
