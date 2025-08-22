@@ -6686,7 +6686,7 @@ Ryu-Kishin (1000/500) 005
 ------------------------------------------
 Droll Bird (600/500) = Whiptail Crow (1650/1600)
 Job Change Mirror (800/1300) = Summoned Skull (2500/1200)
-Masked Sorceror (900/1400) = Ryu-Kishin Powered (1600/1200)
+Masked Sorcerer (900/1400) = Ryu-Kishin Powered (1600/1200)
 Mavelus (1300/900) = Whiptail Crow (1650/1600)
 Nemuriko (800/700) = Ryu-Kishin Powered (1600/1200)
 Sectarian of Secrets (700/500) = Ryu-Kishin Powered (1600/1200)
@@ -8391,7 +8391,7 @@ Wing Eagle (1800/1500) 464
 
 Wing Egg Elf (500/1300) 264
 ------------------------------------------
-Ancient Sorceror (1000/1300) = Dark Elf (2000/800)
+Ancient Sorcerer (1000/1300) = Dark Elf (2000/800)
 Dark Titan of Terror (1300/1100) = Dark Elf (2000/800)
 Eldeen (950/1000) = Dark Elf (2000/800)
 Enchanting Mermaid (1200/900) = Dark Witch (1800/1700)
