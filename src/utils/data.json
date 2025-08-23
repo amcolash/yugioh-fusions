@@ -24,7 +24,7 @@
       "password": 15025844,
       "starchips": 160,
       "image": "https://ms.yugipedia.com//a/a6/MysticalElf-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Elf",
         "Female"
       ]
@@ -40,7 +40,7 @@
       "password": 76184692,
       "starchips": 70,
       "image": "https://ms.yugipedia.com//4/49/HitotsumeGiant-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -79,7 +79,7 @@
       "password": 41392891,
       "starchips": 140,
       "image": "https://ms.yugipedia.com//c/c7/FeralImp-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -130,7 +130,7 @@
       "password": 87564352,
       "starchips": 80,
       "image": "https://ms.yugipedia.com//5/57/BlacklandFireDragon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -145,7 +145,7 @@
       "password": 13069066,
       "starchips": 1000,
       "image": "https://ms.yugipedia.com//c/cf/SwordArmofDragon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -196,7 +196,7 @@
       "password": 45231177,
       "starchips": 320,
       "image": "https://ms.yugipedia.com//f/f1/FlameSwordsman-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -224,7 +224,7 @@
       "password": 8124921,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//e/e5/RightLegoftheForbiddenOne-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -242,7 +242,7 @@
       "password": 44519536,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//5/5c/LeftLegoftheForbiddenOne-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -260,7 +260,7 @@
       "password": 70903634,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//a/aa/RightArmoftheForbiddenOne-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -278,7 +278,7 @@
       "password": 7902349,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//f/f2/LeftArmoftheForbiddenOne-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -295,7 +295,7 @@
       "password": 33396948,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//7/77/ExodiatheForbidden-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -348,7 +348,7 @@
       "password": 69669405,
       "starchips": 80,
       "image": "https://ms.yugipedia.com//3/3f/HornImp-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -459,7 +459,7 @@
       "password": 66602787,
       "starchips": 60,
       "image": "https://ms.yugipedia.com//a/a1/SaggitheDarkClown-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -476,7 +476,7 @@
       "password": 46986414,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//a/a0/DarkMagician-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -541,7 +541,7 @@
       "password": 55763552,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//d/d4/DragonPiper-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Jar"
       ]
     },
@@ -556,7 +556,7 @@
       "password": 91152256,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//2/2f/CelticGuardian-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Elf"
       ]
     },
@@ -619,7 +619,7 @@
       "password": 53829412,
       "starchips": 140,
       "image": "https://ms.yugipedia.com//1/17/Griffore-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -634,7 +634,7 @@
       "password": 80813021,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//1/17/Torike-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -649,7 +649,7 @@
       "password": 26202165,
       "starchips": 35,
       "image": "https://ms.yugipedia.com//3/3e/Sangan-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -772,7 +772,7 @@
       "password": 40640057,
       "starchips": 10,
       "image": "https://ms.yugipedia.com//6/6f/Kuriboh-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -787,7 +787,7 @@
       "password": 40374923,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//5/53/MammothGraveyard-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -814,7 +814,7 @@
       "password": 49417509,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//e/e4/Wolf-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -829,7 +829,7 @@
       "password": 76812113,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//3/32/HarpieLady-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female",
         "Special-D"
       ]
@@ -845,7 +845,7 @@
       "password": 12206212,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//4/4a/HarpieLadySisters-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -872,7 +872,7 @@
       "password": 90357090,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//c/cb/SilverFang-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -972,7 +972,7 @@
       "password": 76634149,
       "starchips": 290,
       "image": "https://ms.yugipedia.com//4/49/KairyuShin-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -1071,7 +1071,7 @@
       "password": 38289717,
       "starchips": 160,
       "image": "https://ms.yugipedia.com//f/f8/CrawlingDragon2-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -1099,7 +1099,7 @@
       "password": 62121,
       "starchips": 160,
       "image": "https://ms.yugipedia.com//6/6d/CastleofDarkIllusions-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -1163,7 +1163,7 @@
       "password": 68339286,
       "starchips": 290,
       "image": "https://ms.yugipedia.com//3/3b/MetalGuardian-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -1178,7 +1178,7 @@
       "password": 95727991,
       "starchips": 200,
       "image": "https://ms.yugipedia.com//3/36/CatapultTurtle-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Turtle"
       ]
     },
@@ -1193,7 +1193,7 @@
       "password": 31122090,
       "starchips": 500,
       "image": "https://ms.yugipedia.com//6/65/GyakutennoMegami-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -1280,7 +1280,7 @@
       "password": 66672569,
       "starchips": 200,
       "image": "https://ms.yugipedia.com//7/72/DragonZombie-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -1343,7 +1343,7 @@
       "password": 28933734,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//9/93/MaskofDarkness-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -1359,7 +1359,7 @@
       "password": 55337339,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//f/f8/JobChangeMirror-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -1374,7 +1374,7 @@
       "password": 22026707,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//6/62/CurtainoftheDarkOnes-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -1439,7 +1439,7 @@
       "password": 53493204,
       "starchips": 70,
       "image": "https://ms.yugipedia.com//5/53/GoddesswiththeThirdEye-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -1478,7 +1478,7 @@
       "password": 52367652,
       "starchips": 70,
       "image": "https://ms.yugipedia.com//7/75/ThatWhichFeedsonLife-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -1494,7 +1494,7 @@
       "password": 9159938,
       "starchips": 40,
       "image": "https://ms.yugipedia.com//0/0e/DarkGray-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -1521,7 +1521,7 @@
       "password": 41544074,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//d/d9/KamionWizard-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -1574,7 +1574,7 @@
       "password": 77827521,
       "starchips": 70,
       "image": "https://ms.yugipedia.com//6/6a/TrialofNightmares-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -1601,7 +1601,7 @@
       "password": 40200834,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//1/14/SleepingLion-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -1652,7 +1652,7 @@
       "password": 75582395,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//6/65/FaithBird-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-D"
       ]
     },
@@ -1680,7 +1680,7 @@
       "password": 48365709,
       "starchips": 180,
       "image": "https://ms.yugipedia.com//8/8d/Ansatsu-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -1695,7 +1695,7 @@
       "password": 75850803,
       "starchips": 180,
       "image": "https://ms.yugipedia.com//6/6b/LaMoon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -1710,7 +1710,7 @@
       "password": 90963488,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//c/c4/Nemuriko-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster",
@@ -1728,7 +1728,7 @@
       "password": 37243151,
       "starchips": 20,
       "image": "https://ms.yugipedia.com//1/19/WeatherControl-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-C"
       ]
     },
@@ -1768,7 +1768,7 @@
       "password": 37421579,
       "starchips": 50,
       "image": "https://ms.yugipedia.com//3/35/CharubintheFireKnight-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Warrior"
       ]
     },
@@ -1783,7 +1783,7 @@
       "password": 63515678,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//0/0f/MysticalCaptureChain-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-C"
       ]
     },
@@ -1810,7 +1810,7 @@
       "password": 36304921,
       "starchips": 140,
       "image": "https://ms.yugipedia.com//c/c0/WittyPhantom-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -1825,7 +1825,7 @@
       "password": 62793020,
       "starchips": 20,
       "image": "https://ms.yugipedia.com//f/f9/MysteryHand-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -1840,7 +1840,7 @@
       "password": 9197735,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//4/4c/DragonStatue-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -1892,7 +1892,7 @@
       "password": 34460851,
       "starchips": 50,
       "image": "https://ms.yugipedia.com//1/1c/FlameManipulator-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -1969,7 +1969,7 @@
       "password": 63125616,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//0/06/TheShadowWhoControlstheDark-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -1984,7 +1984,7 @@
       "password": 99510761,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//1/11/LordoftheLamp-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -2048,7 +2048,7 @@
       "password": 53581214,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//f/fd/FireReaper-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -2087,7 +2087,7 @@
       "password": 53293545,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//b/b1/Firegrass-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -2150,7 +2150,7 @@
       "password": 28725004,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//5/5d/TaintedWisdom-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -2177,7 +2177,7 @@
       "password": 81618817,
       "starchips": 80,
       "image": "https://ms.yugipedia.com//f/fe/LordofZemia-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -2217,7 +2217,7 @@
       "password": 81492226,
       "starchips": 15,
       "image": "https://ms.yugipedia.com//4/42/AncientJar-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Jar"
       ]
     },
@@ -2232,7 +2232,7 @@
       "password": 17881964,
       "starchips": 140,
       "image": "https://ms.yugipedia.com//8/87/DarkfireDragon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -2247,7 +2247,7 @@
       "password": 53375573,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//f/f6/DarkKingoftheAbyss-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -2286,7 +2286,7 @@
       "password": 53153481,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//0/08/Armaill-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -2301,7 +2301,7 @@
       "password": 89558090,
       "starchips": 35,
       "image": "https://ms.yugipedia.com//b/b1/DarkPrisoner-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -2328,7 +2328,7 @@
       "password": 42431843,
       "starchips": 40,
       "image": "https://ms.yugipedia.com//1/16/AncientBrain-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Special-A"
       ]
@@ -2356,7 +2356,7 @@
       "password": 15820147,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//f/f1/Monsturtle-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Turtle"
       ]
     },
@@ -2383,7 +2383,7 @@
       "password": 77603950,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//6/69/PhantomDewan-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -2400,7 +2400,7 @@
       "password": 14708569,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//3/39/Arlownay-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -2427,7 +2427,7 @@
       "password": 77581312,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//6/67/MaskedClown-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -2442,7 +2442,7 @@
       "password": 3985011,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//a/a6/LuckyTrinket-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-C"
       ]
     },
@@ -2493,7 +2493,7 @@
       "password": 49258578,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//3/33/GateDeeg-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -2508,7 +2508,7 @@
       "password": 75646173,
       "starchips": 40,
       "image": "https://ms.yugipedia.com//c/c3/Synchar-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -2523,7 +2523,7 @@
       "password": 1641882,
       "starchips": 35,
       "image": "https://ms.yugipedia.com//4/45/Fusionist-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal",
         "Special-A"
       ]
@@ -2539,7 +2539,7 @@
       "password": 38035986,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//e/e8/Akakieisu-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -2568,7 +2568,7 @@
       "password": 1929294,
       "starchips": 15,
       "image": "https://ms.yugipedia.com//6/6a/KeyMace-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female",
         "Special-C"
       ]
@@ -2584,7 +2584,7 @@
       "password": 37313348,
       "starchips": 100,
       "image": "https://ms.yugipedia.com//4/42/TurtleTiger-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Turtle"
       ]
     },
@@ -2599,7 +2599,7 @@
       "password": 63308047,
       "starchips": 100,
       "image": "https://ms.yugipedia.com//4/4d/TerratheTerrible-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -2650,7 +2650,7 @@
       "password": 99030164,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//3/3a/HappyLover-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-A"
       ]
     },
@@ -2689,7 +2689,7 @@
       "password": 98818516,
       "starchips": 70,
       "image": "https://ms.yugipedia.com//a/a6/FrenziedPanda-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -2704,7 +2704,7 @@
       "password": 75889523,
       "starchips": 20,
       "image": "https://ms.yugipedia.com//d/d8/AirMarmotofNefariousness-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal",
         "Special-B"
       ]
@@ -2781,7 +2781,7 @@
       "password": 38142739,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//c/cf/PetitAngel-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-A"
       ]
     },
@@ -2832,7 +2832,7 @@
       "password": 53832650,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//d/dc/Meotoko-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -2860,7 +2860,7 @@
       "password": 15401633,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//5/5b/KagemushaoftheBlueFlame-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -2875,7 +2875,7 @@
       "password": 58528964,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//2/28/FlameGhost-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -2890,7 +2890,7 @@
       "password": 84916669,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//7/7e/Dryad-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -2930,7 +2930,7 @@
       "password": 84794011,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//8/82/Solitude-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -2945,7 +2945,7 @@
       "password": 10189126,
       "starchips": 80,
       "image": "https://ms.yugipedia.com//f/fc/MaskedSorcerer-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -2974,7 +2974,7 @@
       "password": 83678433,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//a/a1/MidnightFiend-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -3061,7 +3061,7 @@
       "password": 8783685,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//0/03/HourglassofLife-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-C"
       ]
     },
@@ -3088,7 +3088,7 @@
       "password": 17511156,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//8/81/WoodClown-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -3103,7 +3103,7 @@
       "password": 43905751,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//c/ce/MadjinnGunn-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -3118,7 +3118,7 @@
       "password": 89494469,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//d/dc/DarkTitanofTerror-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -3134,7 +3134,7 @@
       "password": 16899564,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//b/b8/BeautifulHeadhuntress-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Female"
       ]
@@ -3162,7 +3162,7 @@
       "password": 89272878,
       "starchips": 70,
       "image": "https://ms.yugipedia.com//c/c5/GuardianoftheLabyrinth-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -3201,7 +3201,7 @@
       "password": 78556320,
       "starchips": 35,
       "image": "https://ms.yugipedia.com//a/a8/VishwarRandi-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Female"
       ]
@@ -3217,7 +3217,7 @@
       "password": 8944575,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//4/47/TheDrdek-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -3245,7 +3245,7 @@
       "password": 47695416,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//1/19/CandleofFate-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -3260,7 +3260,7 @@
       "password": 3732747,
       "starchips": 35,
       "image": "https://ms.yugipedia.com//8/85/WaterElement-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -3275,7 +3275,7 @@
       "password": 40826495,
       "starchips": 50,
       "image": "https://ms.yugipedia.com//5/52/Dissolverock-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -3290,7 +3290,7 @@
       "password": 76211194,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//0/0e/MedaBat-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -3329,7 +3329,7 @@
       "password": 75499502,
       "starchips": 70,
       "image": "https://ms.yugipedia.com//8/84/MasterExpert-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -3344,7 +3344,7 @@
       "password": 2483611,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//6/6a/WaterOmotics-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -3371,7 +3371,7 @@
       "password": 75376965,
       "starchips": 60,
       "image": "https://ms.yugipedia.com//4/41/EnchantingMermaid-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -3398,7 +3398,7 @@
       "password": 37160778,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//1/1c/Angelwitch-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster",
@@ -3417,7 +3417,7 @@
       "password": 64154377,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//a/ae/EmbryonicBeast-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -3432,7 +3432,7 @@
       "password": 549481,
       "starchips": 100,
       "image": "https://ms.yugipedia.com//b/b8/PreventRat-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -3484,7 +3484,7 @@
       "password": 36821538,
       "starchips": 80,
       "image": "https://ms.yugipedia.com//8/81/AncientSorcerer-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -3501,7 +3501,7 @@
       "password": 62210247,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//0/07/LunarQueenElzaim-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female",
         "Special-A",
         "Special-C"
@@ -3554,7 +3554,7 @@
       "password": 98582704,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//7/7b/WingEggElf-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Elf",
         "Special-A"
       ]
@@ -3582,7 +3582,7 @@
       "password": 51371017,
       "starchips": 35,
       "image": "https://ms.yugipedia.com//1/13/PrincessofTsurugi-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -3597,7 +3597,7 @@
       "password": 97360116,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//1/19/UnknownWarriorofFiend-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -3612,7 +3612,7 @@
       "password": 15507080,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//8/81/SectarianofSecrets-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -3629,7 +3629,7 @@
       "password": 50259460,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//9/99/VersagotheDestroyer-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -3656,7 +3656,7 @@
       "password": 23032273,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//c/ca/MegirusLight-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -3671,7 +3671,7 @@
       "password": 59036972,
       "starchips": 70,
       "image": "https://ms.yugipedia.com//4/42/Mavelus-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro",
         "Special-D"
       ]
@@ -3735,7 +3735,7 @@
       "password": 11793047,
       "starchips": 35,
       "image": "https://ms.yugipedia.com//6/69/GorgonEgg-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -3762,7 +3762,7 @@
       "password": 84686841,
       "starchips": 50,
       "image": "https://ms.yugipedia.com//9/97/KingFog-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -3777,7 +3777,7 @@
       "password": 10071456,
       "starchips": 80,
       "image": "https://ms.yugipedia.com//5/54/ProtectoroftheThrone-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -3804,7 +3804,7 @@
       "password": 83464209,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//e/eb/MysticalSheep2-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -4003,7 +4003,7 @@
       "password": 2957055,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//a/a9/WickedDragonwiththeErsatzHead-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -4018,7 +4018,7 @@
       "password": 38942059,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//2/2c/SonicMaid-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -4465,7 +4465,7 @@
       "password": 12829151,
       "starchips": 160,
       "image": "https://ms.yugipedia.com//e/ea/KanantheSwordmistress-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -4842,7 +4842,7 @@
       "password": 99261403,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//1/18/DarkRabbit-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -4881,7 +4881,7 @@
       "password": 98049915,
       "starchips": 15,
       "image": "https://ms.yugipedia.com//5/54/MysticLamp-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -4983,7 +4983,7 @@
       "password": 59983499,
       "starchips": 10,
       "image": "https://ms.yugipedia.com//b/b6/DancingElf-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Elf",
         "Female",
         "Special-A"
@@ -5000,7 +5000,7 @@
       "password": 86088138,
       "starchips": 260,
       "image": "https://ms.yugipedia.com//9/91/Ocubeam-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-A"
       ]
     },
@@ -5087,7 +5087,7 @@
       "password": 10538007,
       "starchips": 290,
       "image": "https://ms.yugipedia.com//6/6f/Leogun-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -5162,7 +5162,7 @@
       "password": 9293977,
       "starchips": 350,
       "image": "https://ms.yugipedia.com//0/0b/MetalDragon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon",
         "Pyro"
       ]
@@ -5263,7 +5263,7 @@
       "password": 70138455,
       "starchips": 40,
       "image": "https://ms.yugipedia.com//6/69/BlastJuggler-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -5363,7 +5363,7 @@
       "password": 31786629,
       "starchips": 230,
       "image": "https://ms.yugipedia.com//6/6e/ThunderDragon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -5378,7 +5378,7 @@
       "password": 68171737,
       "starchips": 900,
       "image": "https://ms.yugipedia.com//3/35/StoneD-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -5405,7 +5405,7 @@
       "password": 31560081,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//d/d1/MagicianofFaith-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female",
         "Special-C"
       ]
@@ -5421,7 +5421,7 @@
       "password": 67959180,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//d/d1/GoddessofWhim-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -5436,7 +5436,7 @@
       "password": 93343894,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//4/4c/WaterMagician-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -5451,7 +5451,7 @@
       "password": 20848593,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//d/db/IceWater-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -5466,7 +5466,7 @@
       "password": 66836598,
       "starchips": 45,
       "image": "https://ms.yugipedia.com//9/9e/WaterdragonFairy-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -5481,7 +5481,7 @@
       "password": 93221206,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//a/ac/AncientElf-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Elf",
         "Female"
       ]
@@ -5498,7 +5498,7 @@
       "password": 29616941,
       "starchips": 260,
       "image": "https://ms.yugipedia.com//6/69/BeautifulBeastTrainer-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -5513,7 +5513,7 @@
       "password": 55014050,
       "starchips": 70,
       "image": "https://ms.yugipedia.com//0/02/WaterGirl-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -5602,7 +5602,7 @@
       "password": 86164529,
       "starchips": 700,
       "image": "https://ms.yugipedia.com//d/d6/AquaDragon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -5617,7 +5617,7 @@
       "password": 23659124,
       "starchips": 1000,
       "image": "https://ms.yugipedia.com//0/02/SeaKingDragon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon",
         "Turtle"
       ]
@@ -5682,7 +5682,7 @@
       "password": 85326399,
       "starchips": 180,
       "image": "https://ms.yugipedia.com//6/62/SpikeSeadra-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -5697,7 +5697,7 @@
       "password": 11714098,
       "starchips": 290,
       "image": "https://ms.yugipedia.com//c/ca/30000YearWhiteTurtle-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Turtle"
       ]
     },
@@ -5892,7 +5892,7 @@
       "password": 74703140,
       "starchips": 550,
       "image": "https://ms.yugipedia.com//4/4c/PunishedEagle-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-D"
       ]
     },
@@ -5907,7 +5907,7 @@
       "password": 10202894,
       "starchips": 140,
       "image": "https://ms.yugipedia.com//8/8e/SkullRedBird-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-D"
       ]
     },
@@ -6092,7 +6092,7 @@
       "password": 6297941,
       "starchips": 35,
       "image": "https://ms.yugipedia.com//0/00/Burglar-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -6119,7 +6119,7 @@
       "password": 69780745,
       "starchips": 1000,
       "image": "https://ms.yugipedia.com//7/70/Garvas-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -6159,7 +6159,7 @@
       "password": 68963107,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//6/6e/BooKoo-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-C"
       ]
     },
@@ -6174,7 +6174,7 @@
       "password": 95952802,
       "starchips": 260,
       "image": "https://ms.yugipedia.com//d/df/FlowerWolf-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -6213,7 +6213,7 @@
       "password": 94230224,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//8/80/NeedleBall-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -6228,7 +6228,7 @@
       "password": 20624263,
       "starchips": 260,
       "image": "https://ms.yugipedia.com//7/7d/Peacock-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-D"
       ]
     },
@@ -6243,7 +6243,7 @@
       "password": 67629977,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//6/67/Hoshiningen-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-C"
       ]
     },
@@ -6380,7 +6380,7 @@
       "password": 17441953,
       "starchips": 35,
       "image": "https://ms.yugipedia.com//7/73/TurtleRaccoon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Turtle"
       ]
     },
@@ -6563,7 +6563,7 @@
       "password": 9540040,
       "starchips": 400,
       "image": "https://ms.yugipedia.com//b/b6/BoulderTortoise-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Turtle"
       ]
     },
@@ -6578,7 +6578,7 @@
       "password": 46534755,
       "starchips": 230,
       "image": "https://ms.yugipedia.com//e/ea/FireKraken-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Pyro"
       ]
     },
@@ -6593,7 +6593,7 @@
       "password": 72929454,
       "starchips": 400,
       "image": "https://ms.yugipedia.com//b/b8/TurtleBird-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Turtle"
       ]
     },
@@ -6622,7 +6622,7 @@
       "password": 35712107,
       "starchips": 550,
       "image": "https://ms.yugipedia.com//e/e0/MonstrousBird-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-D"
       ]
     },
@@ -6685,7 +6685,7 @@
       "password": 7489323,
       "starchips": 10,
       "image": "https://ms.yugipedia.com//6/6d/MilusRadiant-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -6725,7 +6725,7 @@
       "password": 6367785,
       "starchips": 50,
       "image": "https://ms.yugipedia.com//c/cf/Eldeen-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster",
@@ -6743,7 +6743,7 @@
       "password": 32751480,
       "starchips": 500,
       "image": "https://ms.yugipedia.com//5/5b/MysticalSand-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -6758,7 +6758,7 @@
       "password": 69140098,
       "starchips": 160,
       "image": "https://ms.yugipedia.com//6/68/GeminiElf-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Elf",
         "Female"
       ]
@@ -6859,7 +6859,7 @@
       "password": 60694662,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//b/b9/Skelengel-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-A"
       ]
     },
@@ -6923,7 +6923,7 @@
       "password": 32355828,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//f/f3/Skelgon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -6999,7 +6999,7 @@
       "password": 21417692,
       "starchips": 160,
       "image": "https://ms.yugipedia.com//d/d3/DarkElf-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster",
@@ -7090,7 +7090,7 @@
       "password": 55567161,
       "starchips": 20,
       "image": "https://ms.yugipedia.com//b/bf/PottheTrick-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Jar"
       ]
     },
@@ -7129,7 +7129,7 @@
       "password": 55444629,
       "starchips": 70,
       "image": "https://ms.yugipedia.com//6/67/LesserDragon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -7156,7 +7156,7 @@
       "password": 17238333,
       "starchips": 20,
       "image": "https://ms.yugipedia.com//0/03/WretchedGhostoftheAttic-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic"
       ]
     },
@@ -7268,7 +7268,7 @@
       "password": 15237615,
       "starchips": 500,
       "image": "https://ms.yugipedia.com//5/50/EmpressJudge-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -7295,7 +7295,7 @@
       "password": 78010363,
       "starchips": 80,
       "image": "https://ms.yugipedia.com//6/6c/WitchoftheBlackForest-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -7310,7 +7310,7 @@
       "password": 14015067,
       "starchips": 1000,
       "image": "https://ms.yugipedia.com//d/d0/AncientOneoftheDeepForest-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -7349,7 +7349,7 @@
       "password": 4392470,
       "starchips": 100,
       "image": "https://ms.yugipedia.com//2/22/LeoWizard-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dark Magic",
         "Dark",
         "Spellcaster"
@@ -7390,7 +7390,7 @@
       "password": 3170832,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//6/68/Takuhee-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-D"
       ]
     },
@@ -7405,7 +7405,7 @@
       "password": 35565537,
       "starchips": 350,
       "image": "https://ms.yugipedia.com//a/ae/DarkWitch-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female",
         "Special-A"
       ]
@@ -7517,7 +7517,7 @@
       "password": 33508719,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//0/05/MorphingJar-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Jar"
       ]
     },
@@ -7532,7 +7532,7 @@
       "password": 69992868,
       "starchips": 40,
       "image": "https://ms.yugipedia.com//d/db/MuseA-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -7548,7 +7548,7 @@
       "password": 96981563,
       "starchips": 260,
       "image": "https://ms.yugipedia.com//3/36/GiantTurtleWhoFeedsonFlames-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Turtle"
       ]
     },
@@ -7563,7 +7563,7 @@
       "password": 32485271,
       "starchips": 500,
       "image": "https://ms.yugipedia.com//0/08/RoseSpectreofDunn-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -7614,7 +7614,7 @@
       "password": 68658728,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//3/38/LittleChimera-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -7653,7 +7653,7 @@
       "password": 57935140,
       "starchips": 60,
       "image": "https://ms.yugipedia.com//f/f8/Tenderness-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-A",
         "Special-C"
       ]
@@ -7693,7 +7693,7 @@
       "password": 56713552,
       "starchips": 30,
       "image": "https://ms.yugipedia.com//a/a8/ObeseMarmotofNefariousness-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal",
         "Special-B"
       ]
@@ -7745,7 +7745,7 @@
       "password": 82085619,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//4/4f/ShiningFriendship-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-A"
       ]
     },
@@ -7784,7 +7784,7 @@
       "password": 81863068,
       "starchips": 25,
       "image": "https://ms.yugipedia.com//0/09/HirosShadowScout-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-B"
       ]
     },
@@ -7799,7 +7799,7 @@
       "password": 17358176,
       "starchips": 50,
       "image": "https://ms.yugipedia.com//3/32/LadyofFaith-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -7814,7 +7814,7 @@
       "password": 54752875,
       "starchips": 1900,
       "image": "https://ms.yugipedia.com//0/08/TwinheadedThunderDragon-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Dragon"
       ]
     },
@@ -7878,7 +7878,7 @@
       "password": 56413937,
       "starchips": 400,
       "image": "https://ms.yugipedia.com//d/d6/WarriorofTradition-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -7917,7 +7917,7 @@
       "password": 55291359,
       "starchips": 180,
       "image": "https://ms.yugipedia.com//8/8a/SuccubusKnight-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -7932,7 +7932,7 @@
       "password": 81686058,
       "starchips": 230,
       "image": "https://ms.yugipedia.com//f/f3/IllWitch-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -7984,7 +7984,7 @@
       "password": 17968114,
       "starchips": 140,
       "image": "https://ms.yugipedia.com//9/97/AmazonoftheSeas-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -7999,7 +7999,7 @@
       "password": 43352213,
       "starchips": 550,
       "image": "https://ms.yugipedia.com//e/e6/Nekogal2-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -8014,7 +8014,7 @@
       "password": 80741828,
       "starchips": 999999,
       "image": "https://ms.yugipedia.com//d/d0/WitchsApprentice-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -8029,7 +8029,7 @@
       "password": 16246527,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//3/34/ArmoredRat-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -8056,7 +8056,7 @@
       "password": 79629370,
       "starchips": 160,
       "image": "https://ms.yugipedia.com//1/15/MaidenoftheMoonlight-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -8107,7 +8107,7 @@
       "password": 5901497,
       "starchips": 15,
       "image": "https://ms.yugipedia.com//d/da/QueensDouble-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -8122,7 +8122,7 @@
       "password": 41396436,
       "starchips": 160,
       "image": "https://ms.yugipedia.com//e/e5/BluewingedCrown-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Special-D"
       ]
     },
@@ -8149,7 +8149,7 @@
       "password": 4179849,
       "starchips": 290,
       "image": "https://ms.yugipedia.com//e/e7/QueenofAutumnLeaves-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -8188,7 +8188,7 @@
       "password": 3056267,
       "starchips": 200,
       "image": "https://ms.yugipedia.com//0/03/InvaderoftheThrone-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -8203,7 +8203,7 @@
       "password": 30451366,
       "starchips": 55,
       "image": "https://ms.yugipedia.com//7/77/MysticalSheep1-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Animal"
       ]
     },
@@ -8290,7 +8290,7 @@
       "password": 64501875,
       "starchips": 120,
       "image": "https://ms.yugipedia.com//0/02/Hibikime-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -8792,7 +8792,7 @@
       "attack": 2900,
       "defense": 2450,
       "image": "https://ms.yugipedia.com//e/ed/CosmoQueen-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Female"
       ]
     },
@@ -8816,7 +8816,7 @@
       "attack": 2550,
       "defense": 2500,
       "image": "https://ms.yugipedia.com//5/50/CrabTurtle-FMR-NA-VG.png",
-      "secondary": [
+      "subtype": [
         "Turtle"
       ]
     },
@@ -33109,5 +33109,1224 @@
       ]
     ]
   },
-  "generalFusions": []
+  "generalFusions": [
+    {
+      "input": [
+        {
+          "subtype": "Animal"
+        },
+        {
+          "subtype": "Female"
+        }
+      ],
+      "output": [
+        627
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Animal"
+        },
+        {
+          "type": "Machine"
+        }
+      ],
+      "output": [
+        412,
+        423
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Animal"
+        },
+        {
+          "type": "Plant"
+        }
+      ],
+      "output": [
+        487
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Animal"
+        },
+        {
+          "type": "Pyro"
+        }
+      ],
+      "output": [
+        529
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Animal"
+        },
+        {
+          "type": "Warrior"
+        }
+      ],
+      "output": [
+        64
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Aqua"
+        },
+        {
+          "type": "Dragon"
+        }
+      ],
+      "output": [
+        448,
+        73,
+        443
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Aqua"
+        },
+        {
+          "id": 275
+        }
+      ],
+      "output": [
+        639
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Aqua"
+        },
+        {
+          "id": 450
+        }
+      ],
+      "output": [
+        647
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Aqua"
+        },
+        {
+          "id": 292
+        }
+      ],
+      "output": [
+        647
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Aqua"
+        },
+        {
+          "type": "Thunder"
+        }
+      ],
+      "output": [
+        460
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Beast"
+        },
+        {
+          "type": "Fish"
+        }
+      ],
+      "output": [
+        404,
+        230,
+        617
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Beast"
+        },
+        {
+          "id": 155
+        }
+      ],
+      "output": [
+        587
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Beast"
+        },
+        {
+          "subtype": "Special-A"
+        }
+      ],
+      "output": [
+        483
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Beast"
+        },
+        {
+          "type": "Thunder"
+        }
+      ],
+      "output": [
+        459
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Beast"
+        },
+        {
+          "subtype": "Turtle"
+        }
+      ],
+      "output": [
+        193
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Dark Magic"
+        },
+        {
+          "type": "Dragon"
+        }
+      ],
+      "output": [
+        10
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Dark Magic"
+        },
+        {
+          "subtype": "Elf"
+        }
+      ],
+      "output": [
+        551
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Dark Spellcaster"
+        },
+        {
+          "subtype": "Jar"
+        }
+      ],
+      "output": [
+        401
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Dark Spellcaster"
+        },
+        {
+          "type": "Machine"
+        }
+      ],
+      "output": [
+        643
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Dark Spellcaster"
+        },
+        {
+          "id": 5
+        }
+      ],
+      "output": [
+        377
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Dinosaur"
+        },
+        {
+          "type": "Machine"
+        }
+      ],
+      "output": [
+        508
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Dragon"
+        },
+        {
+          "subtype": "Dark Magic"
+        }
+      ],
+      "output": [
+        10
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Dragon"
+        },
+        {
+          "subtype": "Special-B"
+        }
+      ],
+      "output": [
+        31
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Dragon"
+        },
+        {
+          "type": "Machine"
+        }
+      ],
+      "output": [
+        409
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Dragon"
+        },
+        {
+          "type": "Plant"
+        }
+      ],
+      "output": [
+        571
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Dragon"
+        },
+        {
+          "type": "Rock"
+        }
+      ],
+      "output": [
+        426
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Dragon"
+        },
+        {
+          "type": "Thunder"
+        }
+      ],
+      "output": [
+        425,
+        613
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Dragon"
+        },
+        {
+          "id": 16
+        }
+      ],
+      "output": [
+        69
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Dragon"
+        },
+        {
+          "type": "Warrior"
+        }
+      ],
+      "output": [
+        138,
+        294,
+        502,
+        11
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Dragon"
+        },
+        {
+          "type": "Zombie"
+        }
+      ],
+      "output": [
+        97,
+        545,
+        39
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Elf"
+        },
+        {
+          "subtype": "Special-C"
+        }
+      ],
+      "output": [
+        2
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Elf"
+        },
+        {
+          "type": "Warrior"
+        }
+      ],
+      "output": [
+        41
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fairy"
+        },
+        {
+          "subtype": "Female"
+        }
+      ],
+      "output": [
+        582
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fairy"
+        },
+        {
+          "id": 649
+        }
+      ],
+      "output": [
+        495
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fairy"
+        },
+        {
+          "id": 299
+        }
+      ],
+      "output": [
+        495
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Female"
+        },
+        {
+          "type": "Fish"
+        }
+      ],
+      "output": [
+        431,
+        251,
+        626
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Female"
+        },
+        {
+          "type": "Plant"
+        }
+      ],
+      "output": [
+        638
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Female"
+        },
+        {
+          "type": "Rock"
+        }
+      ],
+      "output": [
+        531
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fiend"
+        },
+        {
+          "id": 180
+        }
+      ],
+      "output": [
+        594
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fiend"
+        },
+        {
+          "id": 504
+        }
+      ],
+      "output": [
+        567
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fiend"
+        },
+        {
+          "id": 103
+        }
+      ],
+      "output": [
+        22
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fiend"
+        },
+        {
+          "id": 292
+        }
+      ],
+      "output": [
+        450
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fish"
+        },
+        {
+          "id": 492
+        }
+      ],
+      "output": [
+        440
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fish"
+        },
+        {
+          "type": "Machine"
+        }
+      ],
+      "output": [
+        542,
+        438
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fish"
+        },
+        {
+          "id": 488
+        }
+      ],
+      "output": [
+        440
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fish"
+        },
+        {
+          "type": "Warrior"
+        }
+      ],
+      "output": [
+        546
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fish"
+        },
+        {
+          "type": "Zombie"
+        }
+      ],
+      "output": [
+        539
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Insect"
+        },
+        {
+          "id": 480
+        }
+      ],
+      "output": [
+        533
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Insect"
+        },
+        {
+          "type": "Warrior"
+        }
+      ],
+      "output": [
+        479
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Machine"
+        },
+        {
+          "type": "Warrior"
+        }
+      ],
+      "output": [
+        413
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Plant"
+        },
+        {
+          "type": "Pyro"
+        }
+      ],
+      "output": [
+        157
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Plant"
+        },
+        {
+          "type": "Reptile"
+        }
+      ],
+      "output": [
+        620
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Plant"
+        },
+        {
+          "type": "Warrior"
+        }
+      ],
+      "output": [
+        511
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Plant"
+        },
+        {
+          "type": "Zombie"
+        }
+      ],
+      "output": [
+        228,
+        99
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Pyro"
+        },
+        {
+          "id": 70
+        }
+      ],
+      "output": [
+        519
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Pyro"
+        },
+        {
+          "type": "Plant"
+        }
+      ],
+      "output": [
+        157
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Pyro"
+        },
+        {
+          "type": "Rock"
+        }
+      ],
+      "output": [
+        244
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Pyro"
+        },
+        {
+          "subtype": "Turtle"
+        }
+      ],
+      "output": [
+        593
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Pyro"
+        },
+        {
+          "type": "Warrior"
+        }
+      ],
+      "output": [
+        133,
+        15,
+        473
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Pyro"
+        },
+        {
+          "type": "WingedBeast"
+        }
+      ],
+      "output": [
+        272,
+        467
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Pyro"
+        },
+        {
+          "type": "Zombie"
+        }
+      ],
+      "output": [
+        154,
+        215
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Reptile"
+        },
+        {
+          "id": 98
+        }
+      ],
+      "output": [
+        471
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Reptile"
+        },
+        {
+          "id": 95
+        }
+      ],
+      "output": [
+        471
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Reptile"
+        },
+        {
+          "type": "Plant"
+        }
+      ],
+      "output": [
+        620
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Reptile"
+        },
+        {
+          "type": "Thunder"
+        }
+      ],
+      "output": [
+        610
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Rock"
+        },
+        {
+          "type": "Pyro"
+        }
+      ],
+      "output": [
+        244
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Rock"
+        },
+        {
+          "subtype": "Turtle"
+        }
+      ],
+      "output": [
+        518
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Rock"
+        },
+        {
+          "type": "Warrior"
+        }
+      ],
+      "output": [
+        456
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Rock"
+        },
+        {
+          "type": "Zombie"
+        }
+      ],
+      "output": [
+        457
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Spellcaster"
+        },
+        {
+          "id": 387
+        }
+      ],
+      "output": [
+        149
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Spellcaster"
+        },
+        {
+          "id": 448
+        }
+      ],
+      "output": [
+        458
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Spellcaster"
+        },
+        {
+          "type": "Thunder"
+        }
+      ],
+      "output": [
+        462,
+        458
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Spellcaster"
+        },
+        {
+          "subtype": "Turtle"
+        }
+      ],
+      "output": [
+        449
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Spellcaster"
+        },
+        {
+          "type": "Zombie"
+        }
+      ],
+      "output": [
+        470
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Thunder"
+        },
+        {
+          "type": "Reptile"
+        }
+      ],
+      "output": [
+        610
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Thunder"
+        },
+        {
+          "type": "Spellcaster"
+        }
+      ],
+      "output": [
+        462,
+        458
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Turtle"
+        },
+        {
+          "type": "Pyro"
+        }
+      ],
+      "output": [
+        593
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Turtle"
+        },
+        {
+          "type": "Rock"
+        }
+      ],
+      "output": [
+        518
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Turtle"
+        },
+        {
+          "type": "Spellcaster"
+        }
+      ],
+      "output": [
+        449
+      ]
+    },
+    {
+      "input": [
+        {
+          "subtype": "Turtle"
+        },
+        {
+          "type": "WingedBeast"
+        }
+      ],
+      "output": [
+        520
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Warrior"
+        },
+        {
+          "id": 165
+        }
+      ],
+      "output": [
+        33
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Warrior"
+        },
+        {
+          "type": "Zombie"
+        }
+      ],
+      "output": [
+        30,
+        96
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "WingedBeast"
+        },
+        {
+          "id": 486
+        }
+      ],
+      "output": [
+        117
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "WingedBeast"
+        },
+        {
+          "id": 186
+        }
+      ],
+      "output": [
+        595
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "WingedBeast"
+        },
+        {
+          "id": 103
+        }
+      ],
+      "output": [
+        595
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "WingedBeast"
+        },
+        {
+          "id": 5
+        }
+      ],
+      "output": [
+        650
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "WingedBeast"
+        },
+        {
+          "id": 165
+        }
+      ],
+      "output": [
+        465
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "WingedBeast"
+        },
+        {
+          "id": 261
+        }
+      ],
+      "output": [
+        595
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Zombie"
+        },
+        {
+          "id": 108
+        }
+      ],
+      "output": [
+        36
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Zombie"
+        },
+        {
+          "id": 59
+        }
+      ],
+      "output": [
+        564
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Fiend"
+        },
+        {
+          "id": 282
+        }
+      ],
+      "output": [
+        642
+      ]
+    },
+    {
+      "input": [
+        {
+          "type": "Zombie"
+        },
+        {
+          "id": 282
+        }
+      ],
+      "output": [
+        642
+      ]
+    }
+  ]
 }

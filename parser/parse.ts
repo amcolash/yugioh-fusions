@@ -91,7 +91,7 @@ for (let i = 1; i < statsRaw.length; i++) {
     name: newName,
     original_name: row[1] !== newName ? row[1] : undefined,
     cardType: row[2] as CardType,
-    type: row[3],
+    type: row[3] as Type,
     level: parseInt(row[4]),
     attack: parseInt(row[5]),
     defense: parseInt(row[6]),
@@ -112,13 +112,13 @@ for (let i = 1; i < statsRaw.length; i++) {
 for (let i = 1; i < secondaryTypesRaw.length; i++) {
   const row = secondaryTypesRaw[i].split(/\t/).map((col) => col.trim());
   const name = row[0];
-  const primary = row[1];
+  const primary = row[1] as Type;
   const secondary = row[2].split(', ');
 
   const found = statsByName(name);
   if (found) {
     found.type = primary;
-    found.secondary = secondary;
+    found.subtype = secondary;
   } else console.error('Could not find matching stats for', name);
 }
 
@@ -134,6 +134,17 @@ function statsByName(name: string): Stats | undefined {
 
 function statsById(id: number): Stats | undefined {
   return stats[id - 1];
+}
+
+function getTypeOrSubtype(name: string): { type?: string; subtype?: string } {
+  const found = statsByName(name);
+  if (found) {
+    return {
+      type: found.type,
+      subtype: found.subtype?.[0],
+    };
+  }
+  return {};
 }
 
 const customFusions: Record<number, Fusion[]> = {};
@@ -214,7 +225,70 @@ for (let i = 0; i < customFusionsRaw.length; i++) {
   // }
 }
 
+const types = [
+  'Aqua',
+  'Beast',
+  'Beast-Warrior',
+  'Dinosaur',
+  'Dragon',
+  'Fairy',
+  'Fiend',
+  'Fish',
+  'Insect',
+  'Machine',
+  'Plant',
+  'Pyro',
+  'Rock',
+  'Reptile',
+  'SeaSerpent',
+  'Spellcaster',
+  'Thunder',
+  'Warrior',
+  'WingedBeast',
+  'Zombie',
+];
+
 const generalFusions: GeneralFusion[] = [];
+
+for (const line of generalFusionsRaw) {
+  const [inputs, outputs] = line.split(' = ');
+  if (!inputs || !outputs) continue;
+
+  const [input1, input2] = inputs.split(' + ').map((s) => s.trim());
+  const out = outputs.split(', ').map((s) => s.split(' (')[0].trim());
+
+  const fusionInput1: GeneralFusionInput = {};
+  const fusionInput2: GeneralFusionInput = {};
+
+  if (types.includes(input1.slice(1, -1))) fusionInput1.type = input1.slice(1, -1) as Type;
+  else if (input1.includes('[')) fusionInput1.subtype = input1.slice(1, -1);
+  else {
+    const name = input1.split(' (')[0].trim();
+    const stats = statsByName(name);
+    if (stats) fusionInput1.id = stats.id;
+    else console.error('Unknown card:', name);
+  }
+
+  if (types.includes(input2.slice(1, -1))) fusionInput2.type = input2.slice(1, -1) as Type;
+  else if (input2.includes('[')) fusionInput2.subtype = input2.slice(1, -1);
+  else {
+    const name = input2.split(' (')[0].trim();
+    const stats = statsByName(name);
+    if (stats) fusionInput2.id = stats.id;
+    else console.error('Unknown card:', name);
+  }
+
+  const outIds = out.map((name) => {
+    const stats = statsByName(name);
+    if (!stats) console.error('Unknown output card:', name);
+    return stats?.id;
+  });
+
+  generalFusions.push({
+    input: [fusionInput1, fusionInput2],
+    output: outIds,
+  });
+}
 
 const data = {
   stats,
@@ -224,6 +298,7 @@ const data = {
 
 writeFileSync(join(__dirname, 'data.json'), JSON.stringify(data, null, 2));
 
+// console.log(generalFusions);
 // console.log(fusions);
 
 // List original names -> new names
