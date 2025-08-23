@@ -1,5 +1,5 @@
 import { Card } from "./Card";
-import { getAllFusions, statsById } from "./util";
+import { getAllFusions } from "../utils/util";
 
 export function Fusions({ hand }: { hand: number[] }) {
   const fusions = getAllFusions(hand);

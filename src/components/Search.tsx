@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { stats, statsByName } from "./util";
+import { fuzzySubstringMatch } from "../utils/fuzzy-search";
+import { stats, statsByName } from "../utils/util";
 import { Card } from "./Card";
-import { fuzzySubstringMatch } from "./fuzzy-search";
 
 export function Search({ addToHand }: { addToHand: (id: number) => void }) {
   const [search, setSearch] = useState("");

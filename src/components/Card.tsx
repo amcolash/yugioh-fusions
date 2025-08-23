@@ -1,4 +1,4 @@
-import { statsById } from "./util";
+import { statsById } from "../utils/util";
 
 export function Card({ id, onClick }: { id: number; onClick?: () => void }) {
   const stats = statsById(id);
