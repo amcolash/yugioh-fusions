@@ -7,9 +7,9 @@ export function Fusions({ hand }: { hand: number[] }) {
     fusions.length > 0 && (
       <>
         <h2>Fusions</h2>
-        <ul>
+        <ul className="grid gap-4">
           {fusions.map(({ id, cards }) => (
-            <li key={id}>
+            <li key={id + cards.join(",")}>
               <div className="flex gap-4 items-center">
                 <Card id={cards[0]} /> +
                 <Card id={cards[1]} />

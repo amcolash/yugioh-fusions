@@ -9,10 +9,10 @@ export function Hand({ hand, setHand }: { hand: number[]; setHand: React.Dispatc
       {hand.length > 0 && (
         <>
           <h2>Your Hand</h2>
-          <ul>
+          <ul className="flex gap-4 flex-wrap">
             {hand.map((id, index) => (
               <li key={index}>
-                <div className="flex items-start">
+                <div className="grid gap-2">
                   <Card id={id} />
                   <button className="danger" onClick={() => setHand((prev) => prev.filter((_, i) => i !== index))}>
                     X
@@ -20,6 +20,11 @@ export function Hand({ hand, setHand }: { hand: number[]; setHand: React.Dispatc
                 </div>
               </li>
             ))}
+
+            <div className="flex-1"></div>
+            <button className="self-center danger p-4" onClick={() => setHand([])}>
+              Clear Hand
+            </button>
           </ul>
         </>
       )}
