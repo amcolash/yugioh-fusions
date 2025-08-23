@@ -1,15 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "jsx": "react",
-    "moduleResolution": "Node",
-    "paths": {
-      "~*": ["./*"]
-    },
-    "strict": true,
-    "target": "ES2015"
+    "baseUrl": "./src",
+    "jsx": "react-jsx"
   },
   "include": ["src/**/*", "parser"]
 }
