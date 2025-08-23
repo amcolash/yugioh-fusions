@@ -105,7 +105,7 @@ M-Warrior #1 (1000/500) = Tiger Axe (1300/1100)
 M-Warrior #2 (500/1000) = Tiger Axe (1300/1100)
 Man-eating Plant (800/600) = Flower Wolf (1800/1400)
 Man Eater (800/600) = Flower Wolf (1800/1400)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Tiger Axe (1300/1100)
+Masaki the Legendary Swordsman (1100/1100) = Tiger Axe (1300/1100)
 Masked Clown (500/700) = Tiger Axe (1300/1100)
 Mechanical Spider (400/500) = Giga-Tech Wolf (1200/1400)
 Mega Thunderball (750/600) = Tripwire Beast (1200/1300)
@@ -238,8 +238,7 @@ Lesser Dragon (1200/1000) = Stone Dragon (2000/2300)
 Lunar Queen Elzaim (750/1100) = Mystical Sand (2100/1700)
 M-Warrior #1 (1000/500) = Minomushi Warrior (1300/1200)
 M-Warrior #2 (500/1000) = Minomushi Warrior (1300/1200)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Minomushi Warrior
-(1300/1200)
+Masaki the Legendary Swordsman (1100/1100) = Minomushi Warrior (1300/1200)
 Masked Clown (500/700) = Minomushi Warrior (1300/1200)
 Metal Dragon (1850/1700) = Stone Dragon (2000/2300)
 Mushroom Man #2 (1250/800) = Minomushi Warrior (1300/1200)
@@ -311,7 +310,7 @@ Air Marmot of Nefariousness (400/600) = Nekogal #2 (1900/2000)
 Ancient Jar (400/200) = Mystical Sand (2100/1700)
 Dancing Elf (300/200) = Dark Elf (2000/800)
 Electric Snake (800/900) = The Immortal of Thunder (1500/1300)
-Goddess with the Third Eye (1200/1000) = Queen of Autmn Leaves (1800/1500)
+Goddess with the Third Eye (1200/1000) = Queen of Autumn Leaves (1800/1500)
 Haniwa (500/500) = Mystical Sand (2100/1700)
 Jinzo #7 (500/400) = Disk Magician (1350/1000)
 Key Mace (400/300) = Dark Witch (1800/1700)
@@ -333,16 +332,16 @@ Wolf (1200/800) = Nekogal #2 (1900/2000)
 
 Ansastu (1700/1200) 127
 ------------------------------------------
-Blackland Fire Dragon (1500/800) = Sword Arm of the Dragon (1750/2030)
+Blackland Fire Dragon (1500/800) = Sword Arm of Dragon (1750/2030)
 Candle of Fate (600/600) = Flame Swordsman (1800/1600)
 Celtic Guardian (1400/1200) = Dark Elf (2000/800)
-Dragon Zombie (1600/0) = Sword Arm of the Dragon (1750/2030)
+Dragon Zombie (1600/0) = Sword Arm of Dragon (1750/2030)
 Fire Eye (200/600) = Flame Swordsman (1800/1600)
 Flame Viper (400/450) = Flame Swordsman (1800/1600)
 Hinotama Soul (600/500) = Flame Swordsman (1800/1600)
 LaMoon (1200/1700) = Cacoon of Evolution (0/2000)
-One-Eyed Shield Dragon (700/1300) = Sword Arm of the Dragon (1750/2030)
-Petit Dragon (600/700) = Sword Arm of the Dragon (1750/2030)
+One-Eyed Shield Dragon (700/1300) = Sword Arm of Dragon (1750/2030)
+Petit Dragon (600/700) = Sword Arm of Dragon (1750/2030)
 The Judgment Hand (1400/700) = Judge Man (2200/1500)
 
 Anthrosaurus (1000/850) 568
@@ -371,7 +370,7 @@ Arlownay (800/1000) 180
 Abyss Flower (750/400) = Queen of Autumn Leaves (1800/1500)
 Ancient Jar (400/200) = Mystical Sand (2100/1700)
 Armed Ninja (300/300) = Bean Soldier (1400/1300)
-Baby Dragon (1200/700) = Black Dragon Junglke King (2100/1800)
+Baby Dragon (1200/700) = Black Dragon Jungle King (2100/1800)
 Burglar (850/800) = Flower Wolf (1800/1400)
 Candle of Fate (600/600) = Rose Spectre of Dunn (2000/1800)
 Corroding Shark (1100/700) = Pumpking the King of Ghosts (1800/2000)
@@ -457,8 +456,7 @@ Kurama (800/800) = Mavelus (1300/900)
 Little Chimera (600/550) = Flame Cerebrus (2100/1800)
 M-Warrior #2 (500/1000) = Charubin Fire Knight (1100/800)
 Man Eater (800/600) = Bean Soldier (1400/1300)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Flame Swordsman
-(1800/1600)
+Masaki the Legendary Swordsman (1100/1100) = Flame Swordsman (1800/1600)
 Masked Clown (500/700) = Charubin Fire Knight (1100/800)
 Mavelus (1300/900) = Flame Swordsman (1800/1600)
 Mechanical Snail (800/1000) = Cyber Soldier (1500/1700)
@@ -584,7 +582,7 @@ Sword Arm of Dragon (1750/2030) = Curse of Dragon (2000/1500)
 Wicked Dragon with the Ersatz Head (900/900) = Dragon Zombie (1600/0)
 Yamatano Dragon Scroll (900/300) = Dragon Zombie (1600/0)
 
-Axe of Despair 304
+Axe of Despair (?) 304
 ------------------------------------------
 
 Axe Raider (1700/1150) 078
@@ -753,8 +751,7 @@ Bone Mouse (400/300) = Pumpking the King of Ghosts (1800/2000)
 Clown Zombie (1350/0) = Pumpking the King of Ghosts (1800/2000)
 Dancing Elf (300/200) = Queen of Autumn Leaves (1800/1500)
 Fiend's Hand (600/600) = Pumpking the King of Ghosts (1800/2000)
-Graveyard and the Hand of Invitation (700/900) = Pumpking the King of Ghosts
-(1800/2000)
+Graveyard and the Hand of Invitation (700/900) = Pumpking the King of Ghosts (1800/2000)
 Key Mace (400/300) = Queen of Autumn Leaves (1800/1500)
 Koumori Dragon (1500/1200) = Black Dragon Jungle King (2100/1800)
 Lady of Faith (1100/800) = Queen of Autumn Leaves (1800/1500)
@@ -1150,7 +1147,7 @@ Follow Wind (Equip) = Goblin Fan (Trap)
 Prisman (800/1000) = Violet Crystal (Equip)
 Umi (Magic) = Power of Kaishin
 
-Bright Castle 668
+Bright Castle (?) 668
 ------------------------------------------
 Note: This card works on all non-magic cards
 
@@ -1321,8 +1318,7 @@ Kurama (800/800) = Mavelus (1300/900)
 Little Chiimera (600/550) = Flame Cerebrus (2100/1800)
 M-Warrior #1 (1000/500) = Flame Swordsman (1800/1600)
 M-Warrior #2 (500/1000) = Flame Swordsman (1800/1600)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Flame Swordsman
-(1800/1600)
+Masaki the Legendary Swordsman (1100/1100) = Flame Swordsman (1800/1600)
 Masked Clown (500/700) = Flame Swordsman (1800/1600)
 Mavelus (1300/900) = Crimson Sunbird (2300/1800)
 Milus Radiant (300/250) = Flame Cerebrus (2100/1800)
@@ -1385,10 +1381,10 @@ Cocoon of Evolution (0/2000)
 ------------------------------------------
 Larvae Moth (500/400) = Great Moth (2500/2000)
 
-Commencement Dance (Ritual (Ritual) 676
+Commencement Dance (Ritual) 676
 ------------------------------------------
 
-Contruct of Mask 693
+Contruct of Mask (?) 693
 ------------------------------------------
 
 Corroding Shark (1100/700) 539
@@ -1517,7 +1513,7 @@ Princess of Tsurugi (900/700) = Sword Arm of Dragon (1750/2030)
 Queen's Double (350/300) = Sword Arm of Dragon (1750/2030)
 Rainbow Flower (400/500) = Black Dragon Jungle King (2100/1800)
 Skull Servant (300/200) = Skelgon (1700/1900)
-Succubus Knight (1650/1300) = Sword Arm of the Dragon (1750/2030)
+Succubus Knight (1650/1300) = Sword Arm of Dragon (1750/2030)
 The Immortal of Thunder (1500/1300) = Twin-Headed Thunder Dragon (2800/2100)
 Time Wizard (500/400) = Thousand Dragon (2400/2000)
 Yashinoki (800/600) = Black Dragon Jungle King (2100/1800)
@@ -1558,7 +1554,7 @@ The Immortal of Thunder (1500/1300) = Twin-Headed Thunder Dragon (2800/2100)
 Thunder Dragon (1600/1500) = Twin-Headed Thunder Dragon (2800/2100)
 Tripwire Beast (1200/1300) = Twin-Headed Thunder Dragon (2800/2100)
 
-Curse of the Millennium Shield 665
+Curse of the Millennium Shield (?) 665
 ------------------------------------------
 
 Curse of Tri-Horned Dragon (Ritual) 680
@@ -1667,7 +1663,7 @@ Dragon Treasure (Equip)
 Dragon Zombie (1600/0) = Sword Arm of Dragon (1750/2030)
 Flame Swordsman (1800/1600) = Vermillion Sparrow (1900/1500)
 Metal Dragon (1850/1700) = Vermillion Sparrow (1900/1500)
-Thunder Dragon (1600/1500) = Sword Arm of the Dragon (1750/2030)
+Thunder Dragon (1600/1500) = Sword Arm of Dragon (1750/2030)
 Wicked Dragon with the Ersatz Head (900/900) = Sword Arm of Dragon (1750/2030)
 
 Dancing Elf (300/200) 395
@@ -1726,8 +1722,7 @@ M-Warrior #1 (1000/500) = Celtic Guardian (1400/1200)
 M-Warrior #2 (500/1000) = Celtic Guardian (1400/1200)
 Man-eating Plant (800/600) = Queen of Autumn Leaves (1800/1500)
 Man Eater (800/600) = Queen of Autumn Leaves (1800/1500)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Celtic Guardian
-(1400/1200)
+Masaki the Legendary Swordsman (1100/1100) = Celtic Guardian (1400/1200)
 Mask of Darkness (900/400) = Dark Elf (2000/800)
 Masked Clown (500/700) = Dark Elf (2000/800)
 Megirus Light (900/600) = Dark Elf (2000/800)
@@ -2016,8 +2011,7 @@ The Little Swordsman of Aile (800/1300) = Bean Soldier (1400/1300)
 The Shadow that Controls the Dark (800/700) = Darkworld Thorns (1200/900)
 Water Magician (1400/1000) = Queen of Autumn Leaves (1800/1500)
 Waterdragon Fairy (1100/700) = Queen of Autumn Leaves (1800/1500)
-Wicked Dragon with the Ersatz Head (900/900) = Black Dragon Jungle King
-(2100/1800)
+Wicked Dragon with the Ersatz Head (900/900) = Black Dragon Jungle King (2100/1800)
 Wood Remains (1000/900) = Pumpking the King of Ghosts (1800/2000)
 Yamatano Dragon Scroll (900/300) = Black Dragon Jungle King (2100/1800)
 
@@ -2070,7 +2064,7 @@ Dimensional Warrior (1200/1000) 256
 ------------------------------------------
 Fire Eye (800/600) = Flame Swordsman (1800/1600)
 The Judgment Hand (1400/700) = Judge Man (2200/1500)
-Skelgon (1700/1900) = Sword Arm of the Dragon (1750/2030)
+Skelgon (1700/1900) = Sword Arm of Dragon (1750/2030)
 Wicked Dragon with the Ersatz Head (900/900) = D. Human (1300/1100)
 
 Disk Magician (1350/1000) 643
@@ -2119,7 +2113,7 @@ Dokuroize the Grim Reaper (900/1200) 153
 
 Dokurorider (1900/1850) 719
 ------------------------------------------
-Sword Arm of the Dragon (1750/2030) = Curse of Dragon (2000/1500)
+Sword Arm of Dragon (1750/2030) = Curse of Dragon (2000/1500)
 
 Doma the Angel of Silence (1600/1400) 111
 ------------------------------------------
@@ -2222,7 +2216,7 @@ Waterdragon Fairy (1100/700) = Spike Seadra (1600/1300)
 Wolf (1200/800) = Tiger Axe (1300/1100)
 Wood Remains (1000/900) = Dragon Zombie (1600/0)
 Yamatano Dragon Scroll (900/300) = Dragoness the Wicked Knight (1200/900)
-Zanki (1500/1700) = Sword Arm of the Dragon (1750/2030)
+Zanki (1500/1700) = Sword Arm of Dragon (1750/2030)
 
 Dragon Treasure (Equip) 315
 ------------------------------------------
@@ -2274,7 +2268,7 @@ Flame Ghost (1000/800) = Skelgon (1700/1900)
 Graveyard and the Hand of Invitation (700/900) = Skelgon (1700/1900)
 Hero of the East (1100/1000) = Skelgon (1700/1900)
 Jellyfish (1200/1500) = Kairyu-shin (1800/1500)
-Kagemushi of the Blue Flame (800/400) = Sword Arm of the Dragon (1750/2030)
+Kagemushi of the Blue Flame (800/400) = Sword Arm of Dragon (1750/2030)
 Kaminari Attack (1900/1400) = Twin-Headed Thunder Dragon (2800/2100)
 Kaminarikozou (700/600) = Twin-Headed Thunder Dragon (2800/2100)
 Kanikabuto (650/900) = Kairyu-shin (1800/1500)
@@ -2666,7 +2660,7 @@ Lesser Dragon (1200/1000) = Dragon Zombie (1600/0)
 Living Vase (900/1100) = Wood Remains (1000/900)
 Mammoth Graveyard (1200/800) = The Great Mammoth of Goldfine (2200/1800)
 Man Eater (800/600) = Wood Remains (1000/900)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Zombie Warrior (1200/900)
+Masaki the Legendary Swordsman (1100/1100) = Zombie Warrior (1200/900)
 Mushroom Man #2 (1250/800) = Armored Zombie (1500/0)
 Mushroom Man (800/600) = Wood Remains (1000/900)
 One-eyed Shield Dragon (700/1300) = Dragon Zombie (1600/0)
@@ -2719,8 +2713,7 @@ Hyo (800/1200) = Charubin Fire Knight (1100/800)
 Kurama (800/800) = Mavelus (1300/900)
 Little Chimera (600/550) = Flame Cerebrus (2100/1800)
 M-Warrior #2 (500/1000) = Charubin Fire Knight (1100/800)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Flame Swordsman
-(1800/1600)
+Masaki the Legendary Swordsman (1100/1100) = Flame Swordsman (1800/1600)
 Masked Clown (500/700) = Charubin Fire Knight (1100/800)
 Mavelus (1300/900) = Crimson Sunbird (2300/1800)
 Mech Mole Zombie (500/400) = Flame Ghost (1000/800)
@@ -2793,7 +2786,7 @@ M-Warrior #1 (1000/500) = Zombie Warrior (1200/900)
 M-Warrior #2 (500/1000) = Zombie Warrior (1200/900)
 Mammoth Graveyard (1200/800) = Great Mammoth of Goldfine (2200/1800)
 Man Eater (800/600) = Wood Remains (1000/900)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Zombie Warrior (1200/900)
+Masaki the Legendary Swordsman (1100/1100) = Zombie Warrior (1200/900)
 Masked Clown (500/700) = Zombie Warrior (1200/900)
 Mavelus (1300/900) = Crimson Sunbird (2300/1800)
 Mech Mole Zombie (500/400) = Flame Ghost (1000/800)
@@ -2886,8 +2879,7 @@ Swordsman From A Foreign Land (250/250) = Charubin Fire Knight (1100/800)
 The Wandering Doomed (800/600) = Wood Remains (1000/900)
 Thunder Dragon (1600/1500) = Black Dragon Jungle King (2100/1800)
 Waterdragon Fairy (1100/700) = Queen of Autumn Leaves (1800/1500)
-Wicked Dragon with the Ersatz Head (900/900) = Black Dragon Jungle King
-(2100/1800)
+Wicked Dragon with the Ersatz Head (900/900) = Black Dragon Jungle King (2100/1800)
 Winged Dragon #2 (1200/1000) = Mavelus (1300/900)
 
 Firewing Pegasus (2250/1800) 714
@@ -3138,7 +3130,7 @@ Ice Water (1150/900) = Nekogal #2 (1900/2000)
 LaMoon (1200/1700) = Nekogal #2 (1900/2000)
 Lunar Queen Elzaim (750/1100) = Nekogal #2 (1900/2000)
 M-Warrior #1 (1000/500) = Tiger Axe (1300/1100)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Tiger Axe (1300/1100)
+Masaki the Legendary Swordsman (1100/1100) = Tiger Axe (1300/1100)
 Mavelus (1300/900) = Flame Cerebrus (2100/1800)
 Skelengel (900/400) = Garvas (2000/1700)
 The Little Swordsman of Aile (800/1300) = Tiger Axe (1300/1100)
@@ -3183,7 +3175,7 @@ Queen's Double (350/300) = Cockroach Knight (800/900)
 Garma Sword (2550/2150) 716
 ------------------------------------------
 
-Garma Sword Oath 697
+Garma Sword Oath (?) 697
 ------------------------------------------
 
 Garoozis (1800/1500) 068
@@ -3442,8 +3434,7 @@ Water Element (900/700) = Queen of Autumn Leaves (1800/1500)
 Water Girl (1250/1000) = Queen of Autumn Leaves (1800/1500)
 Water Magician (1400/1000) = Queen of Autumn Leaves (1800/1500)
 Waterdragon Fairy (1100/700) = Queen of Autumn Leaves (1800/1500)
-Wicked Dragon with the Ersatz Head (900/900) = Black Dragon Jungle King
-(2100/1800)
+Wicked Dragon with the Ersatz Head (900/900) = Black Dragon Jungle King (2100/1800)
 Wood Remains (1000/900) = Pumpking the King of Ghosts (1800/2000)
 
 Ground Attacker Bugroth (1500/1000) 275
@@ -3565,7 +3556,7 @@ Yamatano Dragon Scroll (900/300) = Harpie's Pet Dragon (2000/2500)
 Harpie Lady Sisters (1950/2100) 063
 ------------------------------------------
 
-Harlie's Feather Duster 672
+Harpie's Feather Duster (?) 672
 ------------------------------------------
 
 Harpie's Pet Dragon (2000/2500) 386
@@ -3700,7 +3691,7 @@ Hoshiningen (500/700) 492
 Dancing Elf (300/200) = Mystical Elf (800/2000)
 Key Mace (400/300) = Dark Witch (1800/1700)
 Lady of Faith (1100/800) = Dark Witch (1800/1700)
-Queen's Double (350/300) =Dark Witch (1800/1700)
+Queen's Double (350/300) = Dark Witch (1800/1700)
 Root Water (900/800) = 7 Color Fish (1800/800)
 Silver Fang (1200/800) = Nekogal #2 (1900/2000)
 Waterdragon Fairy (1100/700) = Dark Witch (1800/1700)
@@ -3804,7 +3795,7 @@ The Immortal of Thunder (1500/1300) = Kaminari Attack (1900/1400)
 Illusionist Faceless Mage (1200/2200) 042
 ------------------------------------------
 
-Insect Armor with a Laser Cannon 306
+Insect Armor with a Laser Cannon (?) 306
 ------------------------------------------
 
 Insect Soldiers of the Sky (1000/800) 478
@@ -3813,10 +3804,10 @@ Insect Soldiers of the Sky (1000/800) 478
 Invader of the Throne (1350/1700) 641
 ------------------------------------------
 
-Invigoration 324
+Invigoration (?) 324
 ------------------------------------------
 
-Invisible Trap Wire 684
+Invisible Trap Wire (?) 684
 ------------------------------------------
 
 Javelin Beetle (2450/2550) 717
@@ -3912,7 +3903,7 @@ Dark Prisoner (600/1000) = Minomushi Warrior (1300/1200)
 Darkworld Thorns (1200/900) = Bean Soldie (1400/1500)
 Dharma Cannon (900/500) = Cyber Soldier (1500/1700)
 Dragon Statue (1100/900) = Flame Swordsman (1800/1600)
-Dragon Zombie (1600/0) = Sword Arm of the Dragon (1750/2030)
+Dragon Zombie (1600/0) = Sword Arm of Dragon (1750/2030)
 Fiend's Hand (600/600) = Zombie Warrior (1200/900)
 Fiend Refrection #1 (1300/1400) = Crimson Sunbird (2300/1800)
 Fiend Sword (1400/800) = Flame Swordsman (1800/1600)
@@ -3928,8 +3919,7 @@ Laughing Flower (900/500) = Bean Soldier (1400/1300)
 Lesser Dragon (1200/1100) = D.Human (1300/1100)
 Little Chimera (600/550) = Flame Cerebrus (2100/1800)
 Man-eating Plant (800/600) = Bean Soldier (1400/1300)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Flame Swordsman
-(1800/1600)
+Masaki the Legendary Swordsman (1100/1100) = Flame Swordsman (1800/1600)
 Mech Mole Zombie (500/400) = Zombie Warrior (1200/900)
 Mechanical Spider (400/500) = Cyber Soldier (1500/1700)
 Milus Radiant (300/250) = Flame Cerebrus (2100/1800)
@@ -4036,8 +4026,7 @@ Red-Eyes Black Dragon (2400/2000) = Twin-Headed Thunder Dragon (2800/2100)
 Sea King Dragon (2000/1700) = Twin-Headed Thunder Dragon (2800/2100)
 Seiyaryu (2500/2300) = Twin-Headed Thunder Dragon (2800/2100)
 Stone Dragon (2000/2300) = Twin-Headed Thunder Dragon (2800/2100)
-Wicked Dragon with the Ersatz Head (900/900) = Twin-Headed Thunder Dragon
-(2800/2100)
+Wicked Dragon with the Ersatz Head (900/900) = Twin-Headed Thunder Dragon (2800/2100)
 Yamatano Dragon Scroll (900/300) = Twin-Headed Thunder Dragon (2800/2100)
 
 Kaminarikozou (700/600) 211
@@ -4474,7 +4463,7 @@ Holograh (1100/700) = Metal Dragon (1850/1700)
 Jinzo #7 (500/400) = Metal Dragon (1850/1700)
 Kagemushi of the Blue Flame (800/400) = D.Human (1300/1100)
 Kaminarikozou (700/600) = Thunder Dragon (1600/1500)
-Karbonala Warrior (1500/1200) = Sword Arm of the Dragon (1750/2030)
+Karbonala Warrior (1500/1200) = Sword Arm of Dragon (1750/2030)
 LaLa Li-oon (600/600) = Thunder Dragon (1600/1500)
 Masked Clown (500/700) = D. Human (1300/1100)
 Mega Thunderball (750/600) = Thunder Dragon (1600/1500)
@@ -4914,7 +4903,7 @@ Zombie Warrior (1200/900) = Pumpking the King of Ghosts (1800/2000)
 Marine Beast (1700/1600) 617
 ------------------------------------------
 
-Masaki the Legendary Sword (Equip)sman (1100/1100) 293
+Masaki the Legendary Swordsman (1100/1100) 293
 ------------------------------------------
 Air Marmot of Nefariousness (400/600) = Tiger Axe (1300/1100)
 Ancient Jar (400/200) = Minomushi Warrior (1300/1200)
@@ -5015,7 +5004,6 @@ M-Warrior #1 (1000/500) = Flame Swordsman (1800/1600)
 M-Warrior #2 (500/1000) = Flame Swordsman (1800/1600)
 Milus Radiant (300/250) = Flame Cerebrus (2100/1800)
 Prevent Rat (500/2000) = Flame Cerberus (2100/1800)
-Raven (?) = Crimson Sunbird (2300/1800)
 Ryu-Kishin (1000/500) = Whiptail Crow (1650/1600)
 Silver Fang (1200/800) = Flame Cerebrus (2100/1800)
 Skull Red Bird (1550/1200) = Crimson Sunbird (2300/1800)
@@ -5402,8 +5390,7 @@ Boo Koo (650/500) = 30,000-year White Turtle (1250/2100)
 Final Flame (Magic) = Steel Shell (Equip)
 Fire Reaper (700/500) = Giant Turtle Who Feeds on Flame (1400/1800)
 Hurricail (900/200) = 30,000-year White Turtle (1250/2100)
-Kagemusha of the Blue Flame (800/400) = Giant Turtle Who Feeds on Flame
-(1400/1800)
+Kagemusha of the Blue Flame (800/400) = Giant Turtle Who Feeds on Flame (1400/1800)
 Kairyu-Shin (1800/1500) = Sea King Dragon (2000/1700)
 Koumori Dragon (1500/1200) = Spike Seadra (1600/1300)
 Mega Thunderball (750/600) = Bolt Escargot (1400/1500)
@@ -5456,8 +5443,7 @@ LaMoon (1200/1700) = Mystical Sand (2100/1700)
 M-Warrior #1 (1000/500) = Minomushi Warrior (1300/1200)
 M-Warrior #2 (500/1000) = Minomushi Warrior (1300/1200)
 Magician of Faith (300/600) = Mystical Sand (2100/1700)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Minomushi Warrior
-(1300/1200)
+Masaki the Legendary Swordsman (1100/1100) = Minomushi Warrior (1300/1200)
 Mech Mole Zombie (500/400) = Stone Ghost (1200/1000)
 Monsturtle (800/1000) = Boulder Tortoise (1450/2200)
 Mushroom Man #2 (1250/800) = Minomushi Warrior (1300/1200)
@@ -5477,7 +5463,7 @@ Wicked Dragon with the Ersatz Head (900/900) = Stone Dragon (2000/2300)
 Witch of the Black Forest (Magic) (1100/1200) = Mystical Sand (2100/1700)
 Yamatano Dragon Scroll (900/300) = Stone Dragon (2000/2300)
 
-Mountain 332
+Mountain (?) 332
 ------------------------------------------
 
 Mountain Warrior (600/1000) 029
@@ -5558,7 +5544,7 @@ Lesser Dragon (1200/1000) = Black Dragon Jungle King (2100/1800)
 Lunar Queen Elzaim (750/1100) = Queen of Autumn Leaves (1800/1500)
 M-Warrior #1 (1000/500) = Bean Soldier (1400/1300)
 M-Warrior #2 (500/1000) = Bean Soldier (1400/1300)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Bean Soldier (1400/1300)
+Masaki the Legendary Swordsman (1100/1100) = Bean Soldier (1400/1300)
 Masked Clown (500/700) = Bean Soldier (1400/1300)
 Milus Radiant (300/250) = Flower Wolf (1800/1400)
 Mystical Sheep #1 (1150/900) = Flower Wolf (1800/1400)
@@ -5844,7 +5830,7 @@ Niwatori (900/800) 538
 ------------------------------------------
 Dissolverock (900/1000) = Mavelus (1300/900)
 
-Novox's Prayer 679
+Novox's Prayer (?) 679
 ------------------------------------------
 
 Obese Marmot of Nefariousness (750/800) 604
@@ -5901,7 +5887,7 @@ Air Marmot of Nefariousness (400/600) = Koumori Dragon (1500/1200)
 Akakieisu (1000/800) = Blackland Fire Dragon (1500/800)
 Amoeba (300/350) = Spike Seadra (1600/1300)
 Ancient Jar (400/200) = Stone Dragon (2000/2300)
-Ansastu (1700/1200) = Sword Arm of the Dragon (1750/2030)
+Ansastu (1700/1200) = Sword Arm of Dragon (1750/2030)
 Arlownay (800/1000) = Black Dragon Jungle King (2100/1800)
 Armed Ninja (300/300) = Dragon Statue (1100/900)
 Armored Zombie (1500/0) = Dragon Zombie (1600/0)
@@ -6250,10 +6236,6 @@ Vishwar Randi (900/700) = Zombie Warrior (1200/900)
 Wicked Dragon with the Ersatz Head (900/900) = Dragon Zombie (1600/0)
 Wings of Wicked Flame (700/600) = Flame Ghost (1000/800)
 
-Phantom Warrior (?) - Questionable
-------------------------------------------
-Queen's Double (350/300) = Zombie Warrior (1200/900) - Questionable
-
 Pot the Trick (400/400) 558
 ------------------------------------------
 Ancient Elf (1450/1200) = Mystical Sand (2100/1700)
@@ -6493,7 +6475,6 @@ One-eyed Shield Dragon (700/1300) = Dragon Statue (1100/900)
 Petit Angel (600/900) = Dark Witch (1800/1700)
 Petit Dragon (600/700) = Dragon Statue (1100/900)
 Phantom Ghost (600/800) = Zombie Warrior (1200/900)
-Phantom Warrior (?) = Zombie Warrior (1200/900) - Questionable
 Pot the Trick (400/400) = Mystical Sand (2100/1700)
 Prisman (800/1000) = Mystical Sand (2100/1700)
 Rainbow Flower (400/500) = Queen of Autumn Leaves (1800/1500)
@@ -6576,10 +6557,6 @@ Frenzied Panda (1200/1000) = Marine Beast (1700/1600)
 Mystic Horseman (1300/1550) = Marine Beast (1700/1600)
 Steel Scorpion (250/300) = Metal Fish (1600/1900)
 
-Raven (?)
-------------------------------------------
-Mavelus (1300/900) = Crimson Subird (2300/1800)
-
 Ray & Temperature (1000/1000) 276
 ------------------------------------------
 Angelwitch (800/1000) = Dark Witch (1800/1700)
@@ -6623,10 +6600,10 @@ Millennium Shield (0/3000) = Stop Defense (Magic)
 Raise Body Heat (Equip) = Horn of the Unicorn (Equip)
 Widespread Ruin (Trap) = Fake Trap (Trap)
 
-Revival O Senmen Genjin 678
+Revival O Senmen Genjin (?) 678
 ------------------------------------------
 
-Revival of Serpent Night Dragon 691
+Revival of Serpent Night Dragon (?) 691
 ------------------------------------------
 
 Revival of Skeleton Rider (Ritual) 699
@@ -6702,7 +6679,7 @@ Saggi the Dark Clown (600/1500) 034
 ------------------------------------------
 Mechanical Spider (400/500) = Disk Magician (1350/1000)
 
-Salamandra 654
+Salamandra (?) 654
 ------------------------------------------
 
 Sand Stone (1300/1800) 517
@@ -6998,7 +6975,7 @@ Blue-eyed Silver Zombie (900/700) = Curse of Dragon (2000/1500)
 Clown Zombie (1350/0) = Curse of Dragon (2000/1500)
 Dark Energy (Equip)
 Dark Plant (300/400) = Pumpking the King of Ghosts (1800/2000)
-Dimensional Warrior (1200/1000)= Sword Arm of the Dragon (1750/2030)
+Dimensional Warrior (1200/1000) = Sword Arm of Dragon (1750/2030)
 Dragon Zombie (1600/0) = Curse of Dragon (2000/1500)
 Electric Lizard (850/800) = Twin-Headed Thunder Dragon (2800/2100)
 Fiend's Hand (600/600) = Curse of Dragon (2000/1500)
@@ -7311,7 +7288,7 @@ Wood Clown (800/1200) = Minomushi Warrior (1300/1200)
 Stone Ogre Grotto (1600/1500) 632
 ------------------------------------------
 
-Stop Denfense 320
+Stop Denfense (?) 320
 ------------------------------------------
 
 Stuffed Animal () 354
@@ -7320,7 +7297,7 @@ Flame Swordsman (1800/1600) = Vermillion Sparrow (1900/1500)
 
 Succubus Knight (1650/1300) 621
 ------------------------------------------
-Crawling Dragon #2 (1600/1200) = Sword Arm of the Dragon (1750/2030)
+Crawling Dragon #2 (1600/1200) = Sword Arm of Dragon (1750/2030)
 Firegrass (700/600) = Queen of Autumn Leaves (1800/1500)
 Flame Swordsman (1800/1600) = Vermillion Sparrow (1900/1500)
 Griffore (1200/1500) = Nekogal #2 (1900/2000)
@@ -7450,7 +7427,7 @@ Rock Ogre Grotto #2 (700/1400) = Minomushi Warrior (1300/1200)
 Shadow Specter (500/200) = Zombie Warrior (1200/900)
 Silver Fang (1200/800) = Tiger Axe (1300/1100)
 Skull Servant (300/200) = Zombie Warrior (1200/900)
-Spike Seadra (1600/1300) = Sword Arm of the Dragon (1750/2030)
+Spike Seadra (1600/1300) = Sword Arm of Dragon (1750/2030)
 Synchar (800/900) = Tiger Axe (1300/1100)
 The Wandering Doomed (800/600) = Zombie Warrior (1200/900)
 White Dolphin (500/400) = Wow Warrior (1250/900)
@@ -7748,7 +7725,7 @@ Bolt Escargot (1400/1500) = Twin-Headed Thunder Dragon (2800/2100)
 Bolt Penguin (1100/800) = Twin-Headed Thunder Dragon (2800/2100)
 Crawling Dragon (1600/1400) = Twin-Headed Thunder Dragon (2800/2100)
 Curse of Dragon (2000/1500) = Twin-Headed Thunder Dragon (2800/2100)
-D.Human (1300/1100) = Sword Arm of the Dragon (1750/2030)
+D.Human (1300/1100) = Sword Arm of Dragon (1750/2030)
 Darkfire Dragon (1500/1250) = Twin-Headed Thunder Dragon (2800/2100)
 Dragon Treasure (Equip)
 Dragon Zombie (1600/0) = Skelgon (1700/1900)
@@ -7777,8 +7754,7 @@ Skull Servant (300/200) = Skelgon (1700/1900)
 Stone Dragon (2000/2300) = Twin-Headed Thunder Dragon (2800/2100)
 The Immortal of Thunder (1500/1300) = Twin-Headed Thunder Dragon (2800/2100)
 Tripwire Beast (1200/1300) = Twin-Headed Thunder Dragon (2800/2100)
-Wicked Dragon with the Ersatz Head (900/900) = Twin-Headed Thunder Dragon
-(2800/2100)
+Wicked Dragon with the Ersatz Head (900/900) = Twin-Headed Thunder Dragon (2800/2100)
 Winged Dragon #1 (1400/1200) = Twin-Headed Thunder Dragon (2800/2100)
 Yamatano Dragon Scroll (900/300) = Twin-Headed Thunder Dragon (2800/2100)
 
@@ -7885,7 +7861,7 @@ Pot the Trick (400/400) = Minomushi Warrior (1300/1200)
 Skull Servant (300/200) = Zombie Warrior (1200/900)
 Tentacle Plant (500/600) = Bean Soldier (1400/1300)
 
-Tremendose Fire 347
+Tremendose Fire (?) 347
 ------------------------------------------
 Dragon Capture Jar (Magic) = Widespread Ruin (Trap)
 Note: Refer to individual Cards for use
@@ -8009,7 +7985,7 @@ Blackland Fire Dragon (1500/800) = Red-Eyes Black Dragon (2400/2000)
 Ryu-Kishin (1000/500) = Whiptail Crow (1650/1600)
 Tripwire Beast (1200/1300) = Twin-Headed Thunder Dragon (2800/2100)
 
-Ultimate Dragon 675
+Ultimate Dragon (?) 675
 ------------------------------------------
 
 Umi (Magic) 334
@@ -8656,8 +8632,7 @@ M-Warrior #2 (500/1000) = Dragon Statue (1100/900)
 Mammoth Graveyard (1200/800) = Koumori Dragon (1500/1200)
 Man-eating Plant (800/600) = Black Dragon Jungle King (2100/1800)
 Man Eater (800/600) = Black Dragon Jungle King (2100/1800)
-Masaki the Legendary Sword (Equip)sman (1100/1100) = Dragoness the Wicked
-Knight (1200/900)
+Masaki the Legendary Swordsman (1100/1100) = Dragoness the Wicked Knight (1200/900)
 Masked Clown (500/700) = Dragon Statue (1100/900)
 Mech Mole Zombie (500/400) = Dragon Zombie (1600/0)
 Mechanical Snail (800/1000) = Metal Dragon (1850/1700)
@@ -8703,7 +8678,7 @@ Yami (Magic) 335
 Black Pendant (Equip) = Invisible Wire (Trap)
 Yami (Magic) = Dark Energy (Equip)
 
-Yaranzo 351
+Yaranzo (?) 351
 ------------------------------------------
 
 Yashinoki (800/600) 238
@@ -8731,7 +8706,7 @@ Yormungarde (1200/900) 566
 
 Zanki (1500/1700) 093
 ------------------------------------------
-Dragon Statue (1100/900) = Sword Arm of the Dragon (1750/2030)
+Dragon Statue (1100/900) = Sword Arm of Dragon (1750/2030)
 Warrior Elimination (Magic) = Armored Zombie (1500/0)
 
 Zarigun (600/700) 452
