@@ -1,4 +1,3 @@
-import { FusionRecord, Stats } from '../types';
 import data from './data.json';
 
 export const stats = data.stats;

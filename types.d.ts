@@ -1,7 +1,8 @@
-export type CardType = 'Equip' | 'Field' | 'Magic' | 'Monster' | 'Ritual' | 'Trap';
-export type Fusion = number[];
+type CardType = 'Equip' | 'Field' | 'Magic' | 'Monster' | 'Ritual' | 'Trap';
+type Fusion = number[];
+type FusionRecord = { id: number; cards: Fusion };
 
-export type Stats = {
+type Stats = {
   id: number;
   name: string;
   original_name?: string;

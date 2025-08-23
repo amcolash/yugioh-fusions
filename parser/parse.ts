@@ -2,8 +2,6 @@ import { readFileSync, writeFileSync } from 'fs';
 import levenshtein from 'js-levenshtein';
 import { join } from 'path';
 
-import { CardType, Fusion, Stats } from './types';
-
 const statsRaw = readFileSync(join(__dirname, 'stats.tsv'), 'utf8').split('\n');
 const secondaryTypesRaw = readFileSync(join(__dirname, 'secondary_types.tsv'), 'utf8').split('\n');
 const customFusionsRaw = readFileSync(join(__dirname, 'custom_fusions.txt'), 'utf8').split('\n');
