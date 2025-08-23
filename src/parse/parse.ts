@@ -78,6 +78,7 @@ const misspellings: Record<string, string> = {
   Skullbird: "Skull Bird",
   "Soul Hunter": "Soul Hunters",
   "Sky Dragon": "Stone Dragon",
+  "Spiked Snail": "Spiked Seadra",
   "Stop Defense": "Stop Denfense",
   "The Judgement Hand": "The Judgment Hand",
   "The Shadow Who Controls the Dark": "The Shadow that Controls the Dark",
@@ -151,6 +152,8 @@ function statsById(id: number): Stats | undefined {
 const fusions: Record<number, Fusion[]> = {};
 
 let name: string;
+let errors = 0;
+
 for (let i = 0; i < customFusionsRaw.length; i++) {
   const line = customFusionsRaw[i];
   const prev = customFusionsRaw[i - 1];
@@ -179,13 +182,20 @@ for (let i = 0; i < customFusionsRaw.length; i++) {
       // console.log("Did you mean:", guess.name);
       // misspellings[guess.name] = name;
     }
-  } else if (line.trim().length > 0 && !line.startsWith("---") && !line.startsWith("Note:") && !line.includes("(Equip)")) {
+  } else if (
+    line.trim().length > 0 &&
+    !line.startsWith("---") &&
+    !line.startsWith("Note:") &&
+    !line.includes("(Equip)") &&
+    !line.includes("Ritual")
+  ) {
     const cards = line.split(" = ").map((s) => s.split(" (")[0].trim());
 
     const stats = statsByName(cards[1]);
     if (!stats) {
-      console.error("--------- Missing stats ---------");
-      console.log(line, "|", cards[1]);
+      // console.error("--------- Missing stats ---------");
+      // console.log(i, line, "|", cards[1]);
+      // errors++;
     } else {
       const id = stats.id;
 
