@@ -12,9 +12,17 @@ export function getAllFusions(hand: number[]): FusionRecord[] {
     const [id, combinations] = f[i];
     for (let j = 0; j < combinations.length; j++) {
       const [card1, card2] = combinations[j];
-      if (hand.includes(card1) && hand.includes(card2)) {
-        results.push({ id: parseInt(id), cards: [card1, card2] });
-      }
+
+      const duplicateCards = card1 === card2;
+      const hasDuplicates = hand.filter((card) => card === card1).length > 1;
+
+      const hasCard1 = hand.includes(card1);
+      const hasCard2 = hand.includes(card2);
+
+      const result = { id: parseInt(id), cards: [card1, card2] };
+
+      if (duplicateCards && hasDuplicates) results.push(result);
+      if (!duplicateCards && hasCard1 && hasCard2) results.push(result);
     }
   }
 

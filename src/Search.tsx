@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { stats } from "./util";
+import { stats, statsByName } from "./util";
 import { Card } from "./Card";
+import { fuzzySubstringMatch } from "./fuzzy-search";
 
 export function Search({ addToHand }: { addToHand: (id: number) => void }) {
   const [search, setSearch] = useState("");
 
-  const results = Object.values(stats).filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
+  const results = fuzzySubstringMatch(
+    search,
+    Object.values(stats).map((s) => s.name)
+  ).map((name) => statsByName(name));
 
   return (
     <>
@@ -14,7 +18,7 @@ export function Search({ addToHand }: { addToHand: (id: number) => void }) {
       {search.length > 2 && results.length > 1 && (
         <ul className="grid gap-1">
           {results.map((item) => (
-            <li>
+            <li key={item.id}>
               <Card
                 id={item.id}
                 onClick={() => {

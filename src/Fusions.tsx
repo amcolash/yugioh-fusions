@@ -10,10 +10,9 @@ export function Fusions({ hand }: { hand: number[] }) {
         <ul>
           {fusions.map(({ id, cards }) => (
             <li key={id}>
-              <div className="flex gap-4">
-                {cards.map((card) => (
-                  <Card id={card} />
-                ))}
+              <div className="flex gap-4 items-center">
+                <Card id={cards[0]} /> +
+                <Card id={cards[1]} />
                 = <Card id={id} />
               </div>
             </li>
