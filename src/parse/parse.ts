@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import levenshtein from "js-levenshtein";
 
@@ -62,6 +62,7 @@ const misspellings: Record<string, string> = {
   "Invisible Wire": "Invisible Trap Wire",
   "Job-change Mirror": "Job Change Mirror",
   "Job-Change Mirror": "Job Change Mirror",
+  "Kagemusha of the Blue Flame": "Kagemushi of the Blue Flame",
   Kamakiriman: "Kamaliriman",
   "King of Yamimakai": "King of Yami",
   "Kuwagata α": "Kuwagata *Alpha Sign*",
@@ -151,7 +152,7 @@ function statsById(id: number): Stats | undefined {
 
 const fusions: Record<number, Fusion[]> = {};
 
-let name: string;
+let name: string = "";
 let errors = 0;
 
 for (let i = 0; i < customFusionsRaw.length; i++) {
@@ -161,9 +162,9 @@ for (let i = 0; i < customFusionsRaw.length; i++) {
 
   if (next && next.startsWith("---")) {
     name = line.split(" (")[0].trim();
+    const idCard1 = statsByName(name)?.id;
 
-    const id = statsByName(name)?.id;
-    if (!id) {
+    if (!idCard1) {
       console.error("Cannot find id for", name);
 
       // const guess = Object.values(stats)
@@ -187,20 +188,32 @@ for (let i = 0; i < customFusionsRaw.length; i++) {
     !line.startsWith("---") &&
     !line.startsWith("Note:") &&
     !line.includes("(Equip)") &&
-    !line.includes("Ritual")
+    !line.includes("Ritual") &&
+    !line.includes("Magic")
   ) {
     const cards = line.split(" = ").map((s) => s.split(" (")[0].trim());
 
-    const stats = statsByName(cards[1]);
-    if (!stats) {
-      // console.error("--------- Missing stats ---------");
-      // console.log(i, line, "|", cards[1]);
-      // errors++;
-    } else {
-      const id = stats.id;
+    const statsCard1 = statsByName(name);
+    const statsCard2 = statsByName(cards[0]);
 
-      fusions[id] = fusions[id] || [];
-      fusions[id].push(cards.map(parseInt));
+    const statsFinal = statsByName(cards[1]);
+    if (!statsCard1 || !statsCard2 || !statsFinal) {
+      console.error("--------- Missing stats ---------");
+      console.log(
+        i,
+        line,
+        "|",
+        !statsCard1 ? "missing card1" : "",
+        !statsCard2 ? "missing card2: " + cards[0] : "",
+        !statsFinal ? "missing final" : ""
+      );
+      errors++;
+    } else {
+      const idFinal = statsFinal.id;
+
+      fusions[idFinal] = fusions[idFinal] || [];
+
+      fusions[idFinal].push([statsCard1.id, statsCard2.id]);
 
       // if (!cards[0] || !cards[1]) {
       //   console.error("--------- Missing card fusion ---------");
@@ -215,14 +228,14 @@ for (let i = 0; i < customFusionsRaw.length; i++) {
   // }
 }
 
-// Zera the Mant (2800/2300) 360
-// ------------------------------------------
+const data = {
+  stats,
+  fusions,
+};
 
-// Zoa (2600/1900) 391
-// ------------------------------------------
-// MetalMorph (Equip) = Metalzoa (3000/2300)
+writeFileSync(join(__dirname, "data.json"), JSON.stringify(data, null, 2));
 
-// console.log(fusions);
+console.log(fusions);
 
 // List original names -> new names
 // console.log(
