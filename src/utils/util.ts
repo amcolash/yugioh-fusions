@@ -1,12 +1,11 @@
 import data from './data.json';
 
-export const stats = data.stats;
-export const fusions = data.fusions;
+export const { stats, customFusions, generalFusions } = data;
 
 export function getAllFusions(hand: number[]): FusionRecord[] {
   const results: FusionRecord[] = [];
 
-  const f = Object.entries(fusions);
+  const f = Object.entries(customFusions);
   for (let i = 0; i < f.length; i++) {
     const [id, combinations] = f[i];
     for (let j = 0; j < combinations.length; j++) {

@@ -2,9 +2,12 @@ import { readFileSync, writeFileSync } from 'fs';
 import levenshtein from 'js-levenshtein';
 import { join } from 'path';
 
+const __dirname = import.meta.dirname;
+
 const statsRaw = readFileSync(join(__dirname, 'stats.tsv'), 'utf8').split('\n');
 const secondaryTypesRaw = readFileSync(join(__dirname, 'secondary_types.tsv'), 'utf8').split('\n');
 const customFusionsRaw = readFileSync(join(__dirname, 'custom_fusions.txt'), 'utf8').split('\n');
+const generalFusionsRaw = readFileSync(join(__dirname, 'general_fusions.txt'), 'utf8').split('\n');
 
 const misspellings: Record<string, string> = {
   '7 Colored Fish': '7 Color Fish',
@@ -133,7 +136,7 @@ function statsById(id: number): Stats | undefined {
   return stats[id - 1];
 }
 
-const fusions: Record<number, Fusion[]> = {};
+const customFusions: Record<number, Fusion[]> = {};
 
 let name: string = '';
 let errors = 0;
@@ -194,9 +197,9 @@ for (let i = 0; i < customFusionsRaw.length; i++) {
     } else {
       const idFinal = statsFinal.id;
 
-      fusions[idFinal] = fusions[idFinal] || [];
+      customFusions[idFinal] = customFusions[idFinal] || [];
 
-      fusions[idFinal].push([statsCard1.id, statsCard2.id]);
+      customFusions[idFinal].push([statsCard1.id, statsCard2.id]);
 
       // if (!cards[0] || !cards[1]) {
       //   console.error("--------- Missing card fusion ---------");
@@ -211,14 +214,17 @@ for (let i = 0; i < customFusionsRaw.length; i++) {
   // }
 }
 
+const generalFusions: GeneralFusion[] = [];
+
 const data = {
   stats,
-  fusions,
+  customFusions,
+  generalFusions,
 };
 
 writeFileSync(join(__dirname, 'data.json'), JSON.stringify(data, null, 2));
 
-console.log(fusions);
+// console.log(fusions);
 
 // List original names -> new names
 // console.log(

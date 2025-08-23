@@ -3,7 +3,9 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "baseUrl": "./src",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "module": "es2022",
+    "moduleResolution": "bundler"
   },
   "include": ["src/**/*", "parser/**/*", "types.d.ts"]
 }
