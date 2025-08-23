@@ -1,8 +1,21 @@
+import { Hand } from "./Hand";
+import { useState } from "react";
+import { Search } from "./Search";
+import { Fusions } from "./Fusions";
+
 export function App() {
+  const [hand, setHand] = useState<number[]>([]);
+
+  const addToHand = (id: number) => {
+    setHand((prev) => [...prev, id]);
+  };
+
   return (
-    <>
-      <h1>Welcome to React Vite Micro App!</h1>
-      <p>Hard to get more minimal than this React app.</p>
-    </>
+    <div className="grid gap-4">
+      <h1>Yugi-Oh Fusion Combinations</h1>
+      <Search addToHand={addToHand} />
+      <Hand hand={hand} setHand={setHand} />
+      <Fusions hand={hand} />
+    </div>
   );
 }

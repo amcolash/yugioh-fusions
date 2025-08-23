@@ -3,3 +3,15 @@
 #root {
   @apply m-2;
 }
+
+input {
+  @apply border border-gray-300 rounded p-1;
+}
+
+button {
+  @apply bg-blue-800 text-white rounded px-2 mx-2 hover:bg-blue-900;
+}
+
+button.danger {
+  @apply bg-red-500 hover:bg-red-600;
+}

@@ -1,5 +1,6 @@
 export type CardType = "Equip" | "Field" | "Magic" | "Monster" | "Ritual" | "Trap";
 export type Fusion = number[];
+export type FusionRecord = { id: number; cards: Fusion };
 
 export type Stats = {
   id: number;
