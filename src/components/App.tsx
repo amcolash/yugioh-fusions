@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Hand } from "./Hand";
-import { Search } from "./Search";
-import { Fusions } from "./Fusions";
+import { useState } from 'react';
+
+import { Fusions } from './Fusions';
+import { Hand } from './Hand';
+import { Search } from './Search';
 
 export function App() {
   const [hand, setHand] = useState<number[]>([]);

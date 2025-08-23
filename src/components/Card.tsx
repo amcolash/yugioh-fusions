@@ -1,8 +1,6 @@
-import { statsById } from "../utils/util";
+import { statsById } from '../utils/util';
 
 export function Card({ id, onClick }: { id: number; onClick?: () => void }) {
-  const stats = statsById(id);
-
   const inner = <img src={`/cropped/${id}.png`} alt="" />;
 
   if (onClick) return <button onClick={onClick}>{inner}</button>;

@@ -39,7 +39,7 @@ vite --port 1234
 You can use CSS files with simple ES2015 `import` statements anywhere in your Javascript:
 
 ```js
-import "./index.css";
+import './index.css';
 ```
 
 ## Babel transforms

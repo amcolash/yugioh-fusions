@@ -1,5 +1,4 @@
-import { dirname, join } from "path";
-import sharp from "sharp";
+import sharp from 'sharp';
 
 const num = 722;
 

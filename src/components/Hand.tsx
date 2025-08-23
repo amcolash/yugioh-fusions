@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
-import { Card } from "./Card";
+import { Dispatch, SetStateAction } from 'react';
+
+import { Card } from './Card';
 
 export function Hand({ hand, setHand }: { hand: number[]; setHand: Dispatch<SetStateAction<number[]>> }) {
   return (

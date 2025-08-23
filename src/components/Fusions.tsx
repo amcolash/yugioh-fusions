@@ -1,5 +1,5 @@
-import { Card } from "./Card";
-import { getAllFusions } from "../utils/util";
+import { getAllFusions } from '../utils/util';
+import { Card } from './Card';
 
 export function Fusions({ hand }: { hand: number[] }) {
   const fusions = getAllFusions(hand);
@@ -9,7 +9,7 @@ export function Fusions({ hand }: { hand: number[] }) {
         <h2>Fusions</h2>
         <ul className="grid gap-4">
           {fusions.map(({ id, cards }) => (
-            <li key={id + cards.join(",")}>
+            <li key={id + cards.join(',')}>
               <div className="flex gap-4 items-center">
                 <Card id={cards[0]} /> +
                 <Card id={cards[1]} />

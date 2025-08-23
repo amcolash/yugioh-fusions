@@ -1,6 +1,7 @@
-import { join } from "path";
-import data from "./data.json";
-import { existsSync, writeFileSync } from "fs";
+import { existsSync, writeFileSync } from 'fs';
+import { join } from 'path';
+
+import data from './data.json';
 
 async function downloadImages() {
   const stats = Object.values(data.stats);

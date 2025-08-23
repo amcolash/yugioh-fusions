@@ -1,4 +1,4 @@
-export type CardType = "Equip" | "Field" | "Magic" | "Monster" | "Ritual" | "Trap";
+export type CardType = 'Equip' | 'Field' | 'Magic' | 'Monster' | 'Ritual' | 'Trap';
 export type Fusion = number[];
 
 export type Stats = {
