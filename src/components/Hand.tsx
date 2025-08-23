@@ -1,11 +1,11 @@
+import { Dispatch, SetStateAction } from "react";
 import { Card } from "./Card";
 
-export function Hand({ hand, setHand }: { hand: number[]; setHand: React.Dispatch<React.SetStateAction<number[]>> }) {
-  console.log(hand);
-
+export function Hand({ hand, setHand }: { hand: number[]; setHand: Dispatch<SetStateAction<number[]>> }) {
   return (
     <>
       {hand.length === 0 && <p>Your hand is empty. Use the search box to add cards to your hand.</p>}
+
       {hand.length > 0 && (
         <>
           <h2>Your Hand</h2>
