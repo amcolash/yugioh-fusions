@@ -1,3 +1,4 @@
+import { Card } from "./Card";
 import { getAllFusions, statsById } from "./util";
 
 export function Fusions({ hand }: { hand: number[] }) {
@@ -9,7 +10,12 @@ export function Fusions({ hand }: { hand: number[] }) {
         <ul>
           {fusions.map(({ id, cards }) => (
             <li key={id}>
-              {cards.map((card) => statsById(card)?.name).join(" + ")} = {statsById(id)?.name}
+              <div className="flex gap-4">
+                {cards.map((card) => (
+                  <Card id={card} />
+                ))}
+                = <Card id={id} />
+              </div>
             </li>
           ))}
         </ul>

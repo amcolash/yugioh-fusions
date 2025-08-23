@@ -1,4 +1,4 @@
-import { statsById } from "./util";
+import { Card } from "./Card";
 
 export function Hand({ hand, setHand }: { hand: number[]; setHand: React.Dispatch<React.SetStateAction<number[]>> }) {
   return (
@@ -10,8 +10,8 @@ export function Hand({ hand, setHand }: { hand: number[]; setHand: React.Dispatc
           <ul>
             {hand.map((id) => (
               <li key={id}>
-                #{id}: <span>{statsById(id)?.name}</span>
-                <button className="cursor-pointer danger" onClick={() => setHand((prev) => prev.filter((cardId) => cardId !== id))}>
+                <Card id={id} />
+                <button className="danger" onClick={() => setHand((prev) => prev.filter((cardId) => cardId !== id))}>
                   X
                 </button>
               </li>

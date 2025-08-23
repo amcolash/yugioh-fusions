@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { stats } from "./util";
+import { Card } from "./Card";
 
 export function Search({ addToHand }: { addToHand: (id: number) => void }) {
   const [search, setSearch] = useState("");
@@ -14,16 +15,13 @@ export function Search({ addToHand }: { addToHand: (id: number) => void }) {
         <ul className="grid gap-1">
           {results.map((item) => (
             <li>
-              <button
-                className="cursor-pointer"
-                key={item.id}
+              <Card
+                id={item.id}
                 onClick={() => {
                   addToHand(item.id);
                   setSearch("");
                 }}
-              >
-                {item.name}
-              </button>
+              />
             </li>
           ))}
         </ul>
