@@ -33,6 +33,12 @@ export function generateSecondaryFusions(hand: number[]) {
   const filtered = filterDuplicateFusions(newFusions);
   const combined = [...baseFusions, ...filtered];
 
+  combined.sort((a, b) => {
+    const aAtk = stats[a.secondary?.id]?.attack || stats[a.id]?.attack || 0;
+    const bAtk = stats[b.secondary?.id]?.attack || stats[b.id]?.attack || 0;
+    return bAtk - aAtk;
+  });
+
   // console.log('All fusions:', combined);
 
   return combined;
