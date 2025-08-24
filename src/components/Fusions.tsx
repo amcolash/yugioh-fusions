@@ -10,23 +10,19 @@ export function Fusions({ hand, setHand }: { hand: number[]; setHand: Dispatch<S
   return (
     fusions.length > 0 && (
       <>
-        <h2>Fusions</h2>
-        <ul className="grid gap-4">
+        <h2 className="text-center">Fusions</h2>
+        <ul className="grid gap-10 justify-center">
           {fusions.map(({ id, cards, secondary }) => (
             <li
-              className="overflow-auto max-w-screen"
+              className="overflow-auto max-w-screen grid gap-2"
               key={id + cards.join(',') + (secondary ? ` + ${secondary.id}` : '')}
             >
-              <div className="flex gap-4">
+              <div className="flex gap-4 justify-center">
                 <Card id={cards[0]} small />
                 <span className="text-3xl mt-20"> + </span>
                 <Card id={cards[1]} small />
                 <span className="text-3xl mt-20"> = </span>
-                <Card
-                  id={id}
-                  small
-                  onClick={() => setHand((prev) => [...prev.filter((c) => c !== cards[0] && c !== cards[1]), id])}
-                />
+                <Card id={id} small />
                 {secondary && (
                   <>
                     <span className="text-3xl mt-20"> + </span>
@@ -36,6 +32,22 @@ export function Fusions({ hand, setHand }: { hand: number[]; setHand: Dispatch<S
                   </>
                 )}
               </div>
+              <button
+                className="p-1"
+                onClick={() => {
+                  if (!secondary) setHand((prev) => [...prev.filter((c) => c !== cards[0] && c !== cards[1]), id]);
+                  else {
+                    setHand((prev) => [
+                      ...prev.filter(
+                        (c) => c !== cards[0] && c !== cards[1] && c !== secondary.cards[0] && c !== secondary.cards[1]
+                      ),
+                      secondary.id,
+                    ]);
+                  }
+                }}
+              >
+                Fuse
+              </button>
             </li>
           ))}
         </ul>

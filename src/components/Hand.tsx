@@ -13,11 +13,11 @@ export function Hand({ hand, setHand }: { hand: number[]; setHand: Dispatch<SetS
 
       {hand.length > 0 && (
         <>
-          <h2>Your Hand</h2>
+          <h2 className="text-center">Your Hand</h2>
           <button className="self-center danger p-3" onClick={() => setHand([])}>
             Clear Hand
           </button>
-          <ul className="flex gap-4 flex-wrap max-w-screen justify-center">
+          <ul className="flex gap-6 flex-wrap max-w-screen justify-center">
             {hand.map((id, index) => (
               <li key={index}>
                 <div className="grid gap-2 h-full content-between">

@@ -15,7 +15,7 @@ input {
 }
 
 button {
-  @apply bg-blue-800 rounded px-2 hover:bg-blue-900;
+  @apply bg-sky-600 rounded px-2 hover:bg-sky-900;
 }
 
 button.transparent {
