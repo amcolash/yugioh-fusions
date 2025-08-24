@@ -4,6 +4,24 @@ export const stats: Record<string, Stats> = data.stats as unknown as Record<stri
 export const customFusions: Record<string, number[][]> = data.customFusions as Record<string, number[][]>;
 export const generalFusions: GeneralFusion[] = data.generalFusions as GeneralFusion[];
 
+export function generateSecondaryFusions(hand: number[]): FusionRecord[] {
+  const baseFusions = getFusions(hand);
+
+  for (const option of baseFusions) {
+    const newHand = hand.filter((card) => !option.cards.includes(card));
+    const secondaryFusions = getFusions(newHand);
+
+    const uniqueFromBase = secondaryFusions.filter((fusion) => baseFusions.every((base) => base.id !== fusion.id));
+
+    for (const fusion of uniqueFromBase) {
+      console.log(`Found secondary fusion: ${stats[option.id]?.name} -> ${stats[fusion.id]?.name}`);
+      baseFusions.push({ ...option, secondary: fusion });
+    }
+  }
+
+  return baseFusions;
+}
+
 export function getFusions(hand: number[]): FusionRecord[] {
   const custom = getCustomFusions(hand);
   const general = getGeneralFusions(hand);

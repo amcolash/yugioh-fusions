@@ -1,10 +1,11 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { getFusions } from '../utils/util';
+import { generateSecondaryFusions, getFusions } from '../utils/util';
 import { Card } from './Card';
 
 export function Fusions({ hand, setHand }: { hand: number[]; setHand: Dispatch<SetStateAction<number[]>> }) {
   const fusions = getFusions(hand);
+  generateSecondaryFusions(hand);
 
   return (
     fusions.length > 0 && (
