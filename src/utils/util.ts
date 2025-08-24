@@ -2,7 +2,39 @@ import data from './data.json';
 
 export const { stats, customFusions, generalFusions } = data;
 
-export function getAllFusions(hand: number[]): FusionRecord[] {
+export function satisfiesInput(card: number, input: GeneralFusionInput): boolean {
+  if (input.id) {
+    return card === input.id;
+  } else if (input.type) {
+    return stats[card]?.type === input.type;
+  } else if (input.subtype) {
+    return stats[card]?.subtype === input.subtype;
+  }
+  return false;
+}
+
+export function getGeneralFusions(hand: number[]): FusionRecord[] {
+  const results: FusionRecord[] = [];
+
+  for (const fusion of generalFusions) {
+    const input: GeneralFusionInput[] = fusion.input as GeneralFusionInput[];
+    const output: number[] = fusion.output;
+
+    for (let i = 0; i < hand.length; i++) {
+      for (let j = i; j < hand.length; j++) {
+        if (i === j) continue;
+        if (satisfiesInput(hand[i], input[0]) && satisfiesInput(hand[j], input[1])) {
+          console.log(`Found fusion: ${hand[i]} + ${hand[j]} = ${output.join(', ')}`);
+          console.log(input);
+        }
+      }
+    }
+  }
+
+  return results;
+}
+
+export function getCustomFusions(hand: number[]): FusionRecord[] {
   const results: FusionRecord[] = [];
 
   const f = Object.entries(customFusions);

@@ -1,8 +1,8 @@
-import { getAllFusions } from '../utils/util';
+import { getCustomFusions } from '../utils/util';
 import { Card } from './Card';
 
 export function Fusions({ hand }: { hand: number[] }) {
-  const fusions = getAllFusions(hand);
+  const fusions = getCustomFusions(hand);
   return (
     fusions.length > 0 && (
       <>

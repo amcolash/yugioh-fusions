@@ -2,6 +2,7 @@
 import levenshtein from 'js-levenshtein';
 
 /**
+ * (This is the same helper function you provided)
  * Finds the minimum Levenshtein distance between a search term and any substring
  * of the target string.
  */
@@ -9,6 +10,8 @@ function getMinSubstringDistance(searchTerm: string, target: string): number {
   const searchTermLen = searchTerm.length;
   const targetLen = target.length;
 
+  // If the target is shorter than the search term, the best we can do is
+  // a regular Levenshtein comparison.
   if (targetLen < searchTermLen) {
     return levenshtein(searchTerm, target);
   }
@@ -34,40 +37,75 @@ function getMinSubstringDistance(searchTerm: string, target: string): number {
 }
 
 /**
- * Filters a list of strings to find items that have a substring
- * that fuzzy-matches the search term.
+ * A type to hold match details for sorting.
+ */
+interface MatchDetail {
+  item: string;
+  minDistance: number;
+  startsWithDistance: number;
+}
+
+/**
+ * Filters and sorts a list of strings to find items that have a substring
+ * that fuzzy-matches the search term, returning them in the most likely
+ * intended order.
  *
  * @param searchTerm The string to search for.
  * @param list The array of strings to search within.
  * @param maxDistanceRatio The maximum allowed distance ratio. A lower number is stricter.
- * The actual max distance is calculated as: `Math.floor(searchTerm.length * maxDistanceRatio)`
- * @returns A new array containing the matching items.
+ * @returns A new array containing the sorted, matching items.
  */
-export function fuzzySubstringMatch(searchTerm: string, list: string[], maxDistanceRatio: number = 0.4): string[] {
+export function fuzzySubstringSearch(searchTerm: string, list: string[], maxDistanceRatio: number = 0.4): string[] {
   if (!searchTerm) {
     return []; // Return empty if there's no search term
   }
 
   const normalizedSearchTerm = searchTerm.toLowerCase();
   const searchTermLen = normalizedSearchTerm.length;
-
-  // Determine the maximum allowed distance. For a 5-letter word and a ratio
-  // of 0.4, the max distance is 2 (5 * 0.4).
   const maxDistance = Math.floor(searchTermLen * maxDistanceRatio);
 
-  const matches: string[] = [];
+  const matches: MatchDetail[] = [];
 
   for (const item of list) {
     const normalizedItem = item.toLowerCase();
 
-    // Find the best possible substring match and get its distance
-    const distance = getMinSubstringDistance(normalizedSearchTerm, normalizedItem);
+    // Find the best possible substring match anywhere in the string
+    const minDistance = getMinSubstringDistance(normalizedSearchTerm, normalizedItem);
 
-    if (distance <= maxDistance) {
-      // Add the original, non-normalized item to the results
-      matches.push(item);
+    // Only consider items that are within the distance threshold
+    if (minDistance <= maxDistance) {
+      // Also calculate the distance for a "starts with" match to prioritize it
+      const startsWithDistance = levenshtein(normalizedSearchTerm, normalizedItem.substring(0, searchTermLen));
+
+      matches.push({
+        item: item, // Store the original item
+        minDistance: minDistance,
+        startsWithDistance: startsWithDistance,
+      });
     }
   }
 
-  return matches;
+  // Sort the results based on our ranking criteria
+  matches.sort((a, b) => {
+    // 1. Prioritize the best overall match (lowest minDistance)
+    if (a.minDistance !== b.minDistance) {
+      return a.minDistance - b.minDistance;
+    }
+
+    // 2. Prioritize "starts with" matches
+    if (a.startsWithDistance !== b.startsWithDistance) {
+      return a.startsWithDistance - b.startsWithDistance;
+    }
+
+    // 3. Prioritize shorter results as a tie-breaker
+    if (a.item.length !== b.item.length) {
+      return a.item.length - b.item.length;
+    }
+
+    // 4. Finally, sort alphabetically for stability
+    return a.item.localeCompare(b.item);
+  });
+
+  // Return only the string items from the sorted list
+  return matches.map((match) => match.item);
 }

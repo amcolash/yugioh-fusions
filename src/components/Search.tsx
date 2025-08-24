@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import { fuzzySubstringMatch } from '../utils/fuzzy-search';
+import { fuzzySubstringSearch } from '../utils/fuzzy-search';
 import { stats, statsByName } from '../utils/util';
 import { Card } from './Card';
 
 export function Search({ addToHand }: { addToHand: (id: number) => void }) {
   const [search, setSearch] = useState('');
 
-  const results = fuzzySubstringMatch(
+  const results = fuzzySubstringSearch(
     search,
     Object.values(stats).map((s) => s.name)
   ).map((name) => statsByName(name));

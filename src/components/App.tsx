@@ -5,7 +5,7 @@ import { Hand } from './Hand';
 import { Search } from './Search';
 
 export function App() {
-  const [hand, setHand] = useState<number[]>([]);
+  const [hand, setHand] = useState<number[]>([629, 708]);
 
   const addToHand = (id: number) => {
     setHand((prev) => [...prev, id]);

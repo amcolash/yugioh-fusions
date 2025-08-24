@@ -9,7 +9,11 @@ input {
 }
 
 button {
-  @apply bg-blue-800 text-white rounded px-2 mx-2 hover:bg-blue-900;
+  @apply bg-blue-800 text-white rounded px-2 hover:bg-blue-900;
+}
+
+button.transparent {
+  @apply bg-transparent hover:bg-transparent;
 }
 
 button.danger {
