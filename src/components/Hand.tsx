@@ -5,7 +5,11 @@ import { Card } from './Card';
 export function Hand({ hand, setHand }: { hand: number[]; setHand: Dispatch<SetStateAction<number[]>> }) {
   return (
     <>
-      {hand.length === 0 && <p>Your hand is empty. Use the search box to add cards to your hand.</p>}
+      {hand.length === 0 && (
+        <p className="text-center text-gray-400 pt-6">
+          Your hand is empty. Use the search box to add cards to your hand.
+        </p>
+      )}
 
       {hand.length > 0 && (
         <>

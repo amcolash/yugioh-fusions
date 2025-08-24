@@ -1,15 +1,16 @@
-import createFuzzySearch from '@nozbe/microfuzz';
+// import createFuzzySearch from '@nozbe/microfuzz';
+import { search as fuzzy } from 'fast-fuzzy';
 import { useState } from 'react';
 
 import { stats, statsByName } from '../utils/util';
 import { Card } from './Card';
 
-const fuzzySearch = createFuzzySearch(Object.values(stats).map((s) => s.name));
+const searchList = Object.values(stats).map((s) => s.name);
 
 export function Search({ addToHand }: { addToHand: (id: number) => void }) {
   const [search, setSearch] = useState('');
 
-  const results = fuzzySearch(search).map((result) => statsByName(result.item));
+  const results = fuzzy(search, searchList).map((name) => statsByName(name));
 
   return (
     <>

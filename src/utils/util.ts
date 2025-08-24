@@ -34,10 +34,10 @@ export function getGeneralFusions(hand: number[]): FusionRecord[] {
         const card2 = hand[j];
 
         if (satisfiesInput(card1, input[0]) && satisfiesInput(card2, input[1])) {
-          console.log(
-            `Found general fusion: ${stats[card1]?.name} + ${stats[card2]?.name} = ${output.map((id) => stats[id]?.name).join(', ')}`
-          );
-          console.log(input);
+          // console.log(
+          //   `Found general fusion: ${stats[card1]?.name} + ${stats[card2]?.name} = ${output.map((id) => stats[id]?.name).join(', ')}`,
+          //   input
+          // );
 
           const maxAttack = Math.max(stats[card1].attack, stats[card2].attack);
 
