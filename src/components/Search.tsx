@@ -41,7 +41,7 @@ export function Search({ addToHand }: { addToHand: (id: number) => void }) {
         </ul>
       )}
 
-      {search.length > 2 && results.length === 0 && <p>No results found.</p>}
+      {search.length > 2 && results.length === 0 && <p className="text-center text-gray-400 pt-6">No results found.</p>}
     </>
   );
 }
