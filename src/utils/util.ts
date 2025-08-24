@@ -3,12 +3,18 @@ import data from './data.json';
 export const { stats, customFusions, generalFusions } = data;
 
 export function satisfiesInput(card: number, input: GeneralFusionInput): boolean {
+  const cardStats = stats[card];
+  if (!cardStats) {
+    console.error(`Card not found: ${card}`);
+    return false;
+  }
+
   if (input.id) {
     return card === input.id;
   } else if (input.type) {
-    return stats[card]?.type === input.type;
+    return cardStats.type === input.type || cardStats.subtype?.includes(input.type);
   } else if (input.subtype) {
-    return stats[card]?.subtype === input.subtype;
+    return cardStats.subtype?.includes(input.subtype);
   }
   return false;
 }
@@ -21,11 +27,29 @@ export function getGeneralFusions(hand: number[]): FusionRecord[] {
     const output: number[] = fusion.output;
 
     for (let i = 0; i < hand.length; i++) {
-      for (let j = i; j < hand.length; j++) {
+      for (let j = 0; j < hand.length; j++) {
         if (i === j) continue;
-        if (satisfiesInput(hand[i], input[0]) && satisfiesInput(hand[j], input[1])) {
-          console.log(`Found fusion: ${hand[i]} + ${hand[j]} = ${output.join(', ')}`);
+
+        const card1 = hand[i];
+        const card2 = hand[j];
+
+        if (satisfiesInput(card1, input[0]) && satisfiesInput(card2, input[1])) {
+          console.log(
+            `Found general fusion: ${stats[card1]?.name} + ${stats[card2]?.name} = ${output.map((id) => stats[id]?.name).join(', ')}`
+          );
           console.log(input);
+
+          const maxAttack = Math.max(stats[card1].attack, stats[card2].attack);
+
+          let outputIndex = 0;
+          for (let k = 0; k < output.length; k++) {
+            const outAttack = stats[output[k]]?.attack;
+            if (maxAttack >= outAttack) outputIndex = k + 1;
+          }
+
+          if (outputIndex < output.length) {
+            results.push({ id: output[outputIndex], cards: [card1, card2] });
+          }
         }
       }
     }

@@ -3,7 +3,12 @@ import { stats } from 'utils/util';
 export function Card({ id, onClick }: { id: number; onClick?: () => void }) {
   const inner = (
     <div className="grid justify-items-center gap-2 max-w-32">
-      <img src={`/cropped/${id}.png`} alt="" />
+      <div className="relative">
+        <img className="rounded border-2 border-amber-950" src={`/cropped/${id}.png`} alt="" />
+        <span className="absolute bottom-0 left-0 rounded-tr-sm rounded-bl-sm bg-gray-900 opacity-60 text-white px-1">
+          #{id}
+        </span>
+      </div>
       <span className="text-center text-black">{stats[id].name}</span>
     </div>
   );

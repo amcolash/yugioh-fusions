@@ -1,16 +1,15 @@
+import createFuzzySearch from '@nozbe/microfuzz';
 import { useState } from 'react';
 
-import { fuzzySubstringSearch } from '../utils/fuzzy-search';
 import { stats, statsByName } from '../utils/util';
 import { Card } from './Card';
+
+const fuzzySearch = createFuzzySearch(Object.values(stats).map((s) => s.name));
 
 export function Search({ addToHand }: { addToHand: (id: number) => void }) {
   const [search, setSearch] = useState('');
 
-  const results = fuzzySubstringSearch(
-    search,
-    Object.values(stats).map((s) => s.name)
-  ).map((name) => statsByName(name));
+  const results = fuzzySearch(search).map((result) => statsByName(result.item));
 
   return (
     <>
