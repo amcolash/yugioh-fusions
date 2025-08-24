@@ -4,22 +4,38 @@ export const stats: Record<string, Stats> = data.stats as unknown as Record<stri
 export const customFusions: Record<string, number[][]> = data.customFusions as Record<string, number[][]>;
 export const generalFusions: GeneralFusion[] = data.generalFusions as GeneralFusion[];
 
-export function generateSecondaryFusions(hand: number[]): FusionRecord[] {
+export function generateSecondaryFusions(hand: number[]) {
   const baseFusions = getFusions(hand);
+  const newFusions: FusionRecord[] = [];
 
   for (const option of baseFusions) {
-    const newHand = hand.filter((card) => !option.cards.includes(card));
+    let newHand = [...hand];
+    for (const card of option.cards) {
+      const index = newHand.indexOf(card);
+      if (index > -1) {
+        newHand.splice(index, 1);
+      }
+    }
+
+    newHand = [...newHand, option.id];
+
     const secondaryFusions = getFusions(newHand);
+    // console.log(hand, newHand, secondaryFusions);
 
     const uniqueFromBase = secondaryFusions.filter((fusion) => baseFusions.every((base) => base.id !== fusion.id));
 
     for (const fusion of uniqueFromBase) {
-      console.log(`Found secondary fusion: ${stats[option.id]?.name} -> ${stats[fusion.id]?.name}`);
-      baseFusions.push({ ...option, secondary: fusion });
+      // console.log(`Found secondary fusion: ${stats[option.id]?.name} -> ${stats[fusion.id]?.name}`);
+      newFusions.push({ ...option, secondary: fusion });
     }
   }
 
-  return baseFusions;
+  const filtered = filterDuplicateFusions(newFusions);
+  const combined = [...baseFusions, ...filtered];
+
+  // console.log('All fusions:', combined);
+
+  return combined;
 }
 
 export function getFusions(hand: number[]): FusionRecord[] {
