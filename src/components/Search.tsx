@@ -19,10 +19,11 @@ export function Search({ addToHand }: { addToHand: (id: number) => void }) {
   return (
     <>
       <input
+        className="mx-4"
         type="search"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search monsters by name or id..."
+        placeholder="Search by name or id"
       />
 
       {(results.length === 1 || (search.length > 2 && results.length > 1)) && (
