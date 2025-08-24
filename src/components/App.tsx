@@ -16,7 +16,7 @@ export function App() {
       <h1>Yugi-Oh Fusion Combinations</h1>
       <Search addToHand={addToHand} />
       <Hand hand={hand} setHand={setHand} />
-      <Fusions hand={hand} />
+      <Fusions hand={hand} setHand={setHand} />
     </div>
   );
 }

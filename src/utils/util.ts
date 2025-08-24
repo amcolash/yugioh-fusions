@@ -1,6 +1,34 @@
 import data from './data.json';
 
-export const { stats, customFusions, generalFusions } = data;
+export const stats: Record<string, Stats> = data.stats as unknown as Record<string, Stats>;
+export const customFusions: Record<string, number[][]> = data.customFusions as Record<string, number[][]>;
+export const generalFusions: GeneralFusion[] = data.generalFusions as GeneralFusion[];
+
+export function getFusions(hand: number[]): FusionRecord[] {
+  const custom = getCustomFusions(hand);
+  const general = getGeneralFusions(hand);
+
+  const all = [...custom, ...general];
+  return filterDuplicateFusions(all);
+}
+
+// function from gemini
+export function filterDuplicateFusions(fusions: FusionRecord[]): FusionRecord[] {
+  const seenFusions = new Set<string>();
+  const uniqueFusions: FusionRecord[] = [];
+
+  for (const record of fusions) {
+    const sortedCards = [...record.cards].sort((a, b) => a - b);
+    const key = sortedCards.join(',');
+
+    if (!seenFusions.has(key)) {
+      seenFusions.add(key);
+      uniqueFusions.push(record);
+    }
+  }
+
+  return uniqueFusions;
+}
 
 export function satisfiesInput(card: number, input: GeneralFusionInput): boolean {
   const cardStats = stats[card];
@@ -83,6 +111,10 @@ export function getCustomFusions(hand: number[]): FusionRecord[] {
   return results;
 }
 
+export function friendlyName(id: number): string {
+  return stats[id].original_name || stats[id].name;
+}
+
 export function getName(name: string): string {
   return misspellings[name] || name;
 }
@@ -91,10 +123,6 @@ export function statsByName(name: string): Stats | undefined {
   return Object.values(stats).find(
     (stat) => stat.name.toLowerCase() === name.toLowerCase() || stat.name.toLowerCase() === getName(name).toLowerCase()
   ) as Stats;
-}
-
-export function statsById(id: number): Stats | undefined {
-  return stats[id];
 }
 
 const misspellings: Record<string, string> = {

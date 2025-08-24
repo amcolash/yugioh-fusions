@@ -1,6 +1,8 @@
-import { stats } from 'utils/util';
+import { friendlyName, stats } from 'utils/util';
 
 export function Card({ id, onClick }: { id: number; onClick?: () => void }) {
+  const cardStats: Stats = stats[id];
+
   const inner = (
     <div className="grid justify-items-center gap-2 max-w-32">
       <div className="relative">
@@ -9,7 +11,14 @@ export function Card({ id, onClick }: { id: number; onClick?: () => void }) {
           #{id}
         </span>
       </div>
-      <span className="text-center text-black">{stats[id].name}</span>
+      <div className="grid">
+        <span className="text-center text-black">{friendlyName(id)}</span>
+        {cardStats.cardType === 'Monster' && (
+          <span className="text-center text-black">
+            {cardStats.attack} / {cardStats.defense}
+          </span>
+        )}
+      </div>
     </div>
   );
 

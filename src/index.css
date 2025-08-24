@@ -17,5 +17,5 @@ button.transparent {
 }
 
 button.danger {
-  @apply bg-red-500 hover:bg-red-600;
+  @apply bg-rose-500 hover:bg-rose-600;
 }

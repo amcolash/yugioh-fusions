@@ -2,21 +2,28 @@
 import { search as fuzzy } from 'fast-fuzzy';
 import { useState } from 'react';
 
-import { stats, statsByName } from '../utils/util';
+import { friendlyName, stats, statsByName } from '../utils/util';
 import { Card } from './Card';
 
-const searchList = Object.values(stats).map((s) => s.name);
+const searchList = Object.values(stats).map((s) => friendlyName(s.id));
 
 export function Search({ addToHand }: { addToHand: (id: number) => void }) {
   const [search, setSearch] = useState('');
 
-  const results = fuzzy(search, searchList).map((name) => statsByName(name));
+  let results: Stats[] = fuzzy(search, searchList).map((name) => statsByName(name));
+
+  if (search.match(/^\d+$/g)) results = [stats[search.trim()]];
 
   return (
     <>
-      <input type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search..." />
+      <input
+        type="search"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search by name or id..."
+      />
 
-      {search.length > 2 && results.length > 1 && (
+      {(results.length === 1 || (search.length > 2 && results.length > 1)) && (
         <ul className="flex flex-wrap justify-center gap-4">
           {results.map((item) => (
             <li key={item.id}>
