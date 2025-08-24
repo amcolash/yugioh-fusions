@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { friendlyName } from 'utils/util';
+import { friendlyName, stats } from 'utils/util';
 
 import { StatsOverlay } from './StatsOverlay';
 
 export function Card({ id, onClick }: { id: number; onClick?: () => void }) {
   const [showStats, setShowStats] = useState(false);
+  const cardStats = stats[id];
 
   const inner = (
     <div
@@ -18,13 +19,11 @@ export function Card({ id, onClick }: { id: number; onClick?: () => void }) {
           src={`${import.meta.env.BASE_URL}/cropped/${id}.png`}
           alt=""
         />
-        <span className="absolute bottom-0 left-0 rounded-tr-sm rounded-bl-sm bg-gray-900 opacity-60 text-white px-1">
-          #{id}
-        </span>
+        <span className="absolute bottom-0 left-0 rounded-tr-sm rounded-bl-sm bg-gray-900 opacity-60 px-1">#{id}</span>
       </div>
-      <span className="text-center text-black">{friendlyName(id)}</span>
+      <span className="text-center">{friendlyName(id)}</span>
 
-      {showStats && <StatsOverlay card={id} />}
+      {showStats && cardStats.cardType === 'Monster' && <StatsOverlay card={id} />}
     </div>
   );
 

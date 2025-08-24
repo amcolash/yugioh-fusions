@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { Background } from './Background';
 import { Fusions } from './Fusions';
 import { Hand } from './Hand';
 import { Search } from './Search';
@@ -13,6 +14,7 @@ export function App() {
 
   return (
     <div className="grid gap-4">
+      <Background />
       <h1>Yugi-Oh Fusion Combinations</h1>
       <Search addToHand={addToHand} />
       <Hand hand={hand} setHand={setHand} />

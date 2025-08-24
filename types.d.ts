@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 type CardType = 'Equip' | 'Field' | 'Magic' | 'Monster' | 'Ritual' | 'Trap';
 type Fusion = number[];
 type FusionRecord = { id: number; cards: Fusion; secondary?: FusionRecord };

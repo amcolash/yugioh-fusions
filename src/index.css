@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+html {
+  @apply text-white;
+}
+
 #root {
   @apply m-2;
 }
@@ -9,7 +13,7 @@ input {
 }
 
 button {
-  @apply bg-blue-800 text-white rounded px-2 hover:bg-blue-900;
+  @apply bg-blue-800 rounded px-2 hover:bg-blue-900;
 }
 
 button.transparent {
