@@ -19,7 +19,15 @@ export function Card({ id, onClick, small = false }: { id: number; onClick?: () 
           src={`${import.meta.env.BASE_URL}/cropped/${id}.png`}
           alt=""
         />
-        <span className="absolute bottom-0 left-0 rounded-tr-sm rounded-bl-sm bg-gray-900 opacity-60 px-1">#{id}</span>
+        <span className="absolute bottom-0 left-0 rounded-tr-sm text-sm rounded-bl-sm bg-gray-900 opacity-60 px-1">
+          #{id}
+        </span>
+
+        <span className="absolute bottom-0 right-0 rounded-tl-sm text-sm text-right rounded-br-sm bg-gray-900 opacity-60 px-1">
+          {cardStats.attack}
+          <br />
+          {cardStats.defense}
+        </span>
       </div>
       <span className="text-center wrap-anywhere">{friendlyName(id)}</span>
 
