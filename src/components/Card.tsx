@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { friendlyName, stats } from 'utils/util';
+import { friendlyName } from 'utils/util';
 
 import { StatsOverlay } from './StatsOverlay';
 
@@ -13,7 +13,11 @@ export function Card({ id, onClick }: { id: number; onClick?: () => void }) {
       onMouseLeave={() => setShowStats(false)}
     >
       <div className="relative h-fit">
-        <img className="rounded border-2 border-amber-950" src={`/cropped/${id}.png`} alt="" />
+        <img
+          className="rounded border-2 border-amber-950"
+          src={`${import.meta.env.BASE_URL}/cropped/${id}.png`}
+          alt=""
+        />
         <span className="absolute bottom-0 left-0 rounded-tr-sm rounded-bl-sm bg-gray-900 opacity-60 text-white px-1">
           #{id}
         </span>
