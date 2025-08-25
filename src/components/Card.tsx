@@ -17,7 +17,7 @@ export function Card({
 
   let width = 'min-w-32';
   if (size === 'small') width = 'min-w-28';
-  if (size === 'x-small') width = 'w-20';
+  if (size === 'x-small') width = 'w-20 sm:w-24';
 
   const inner = (
     <div
