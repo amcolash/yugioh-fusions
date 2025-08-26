@@ -19,7 +19,6 @@ export function Search({ addToHand }: { addToHand: (id: number) => void }) {
   return (
     <>
       <input
-        className="mx-4"
         type="search"
         value={search}
         onChange={(e) => setSearch(e.target.value)}

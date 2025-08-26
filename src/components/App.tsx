@@ -28,14 +28,12 @@ export function App() {
   return (
     <div className="grid gap-8 max-w-screen">
       <Background type="fixed" />
-      <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>
+      {hand.length === 0 && <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>}
 
       <Search addToHand={addToHand} />
 
       <RecentModal open={dialogOpen} setOpen={setDialogOpen} addToHand={addToHand} recentCards={recentCards} />
-      <button onClick={() => setDialogOpen(true)} className="mx-4">
-        Recent Cards
-      </button>
+      <button onClick={() => setDialogOpen(true)}>Recent Cards</button>
 
       <Hand hand={hand} setHand={setHand} />
       <Fusions hand={hand} setHand={setHand} />

@@ -13,7 +13,13 @@ export function RecentModal({
   recentCards: Record<string, number>;
 }) {
   return (
-    <dialog open={open} className="text-white z-1 p-4 inset-0 m-auto fixed w-full h-full overflow-hidden">
+    <dialog
+      open={open}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') setOpen(false);
+      }}
+      className="text-white z-1 p-4 inset-0 m-auto fixed w-full h-full overflow-hidden"
+    >
       <Background type="fixed" />
 
       <div className="grid gap-6 content-start h-full">
