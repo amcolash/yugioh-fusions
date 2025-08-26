@@ -11,7 +11,12 @@ export function Hand({ hand, setHand }: { hand: number[]; setHand: Dispatch<SetS
 
       {hand.length > 0 && (
         <>
-          <button className="self-center danger" onClick={() => setHand([])}>
+          <button
+            className="self-center danger"
+            onClick={() => {
+              if (confirm('Are you sure you want to clear your hand?')) setHand([]);
+            }}
+          >
             Clear Hand
           </button>
           <ul className="flex gap-4 flex-wrap max-w-screen justify-center">
