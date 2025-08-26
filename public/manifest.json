@@ -1,0 +1,18 @@
+{
+  "name": "Yugi-Oh! Fusions",
+  "short_name": "Fusions",
+  "start_url": "/yugioh-fusions/",
+  "theme_color": "#8936FF",
+  "background_color": "#2EC6FE",
+  "icons": [
+    {
+      "purpose": "any",
+      "sizes": "256x256",
+      "src": "icon.png",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "lang": "en-US"
+}

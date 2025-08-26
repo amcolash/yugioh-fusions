@@ -14,7 +14,7 @@ export function Hand({ hand, setHand }: { hand: number[]; setHand: Dispatch<SetS
       {hand.length > 0 && (
         <>
           <h2 className="text-center">Your Hand</h2>
-          <button className="self-center danger p-3" onClick={() => setHand([])}>
+          <button className="self-center danger mx-4" onClick={() => setHand([])}>
             Clear Hand
           </button>
           <ul className="flex gap-6 flex-wrap max-w-screen justify-center">
