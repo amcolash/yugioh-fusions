@@ -22,7 +22,7 @@ export function Fusions({ hand, setHand }: { hand: number[]; setHand: Dispatch<S
                   {secondary && <Card id={secondary.cards.find((v) => v !== id)} size="x-small" fuse={3} />}
 
                   <span className="text-3xl mt-10">→</span>
-                  <Card id={secondary?.id || id} size="x-small" fuse={-1} />
+                  <Card id={secondary?.id || id} size="x-small" />
                 </div>
               </li>
               <button

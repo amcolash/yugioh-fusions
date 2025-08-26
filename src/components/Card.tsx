@@ -36,31 +36,27 @@ export function Card({
           src={`${import.meta.env.BASE_URL}/cropped/${id}.png`}
           alt=""
         />
-        {showText && (
-          <>
-            <span className="absolute bottom-0 left-0 rounded-tr-sm text-sm rounded-bl-sm bg-gray-900 opacity-60 px-1">
-              #{id}
-            </span>
 
-            <span className="absolute bottom-0 right-0 rounded-tl-sm text-sm text-right rounded-br-sm bg-gray-900 opacity-60 px-1">
-              {cardStats.attack}
+        {showText && (
+          <span className="absolute bottom-0 left-0 rounded-tr-sm text-sm rounded-bl-sm bg-gray-900 opacity-60 px-1">
+            #{id}
+          </span>
+        )}
+
+        <span className="absolute bottom-0 right-0 rounded-tl-sm text-sm text-right rounded-br-sm bg-gray-900 opacity-60 px-1">
+          {cardStats.attack}
+          {showText && (
+            <>
               <br />
               {cardStats.defense}
-            </span>
-          </>
-        )}
-        {fuse !== undefined && (
-          <>
-            {fuse > 0 && (
-              <span className="absolute top-0 right-0 rounded-tr-sm text-sm rounded-bl-sm bg-sky-950 text-blue-400 border-2 border-gray-300 opacity-90 px-1.5">
-                {fuse}
-              </span>
-            )}
+            </>
+          )}
+        </span>
 
-            <span className="absolute bottom-0 right-0 rounded-tl-sm text-sm text-right rounded-br-sm bg-gray-900 opacity-60 px-1">
-              {cardStats.attack}
-            </span>
-          </>
+        {fuse > 0 && (
+          <span className="absolute top-0 right-0 rounded-tr-sm text-sm rounded-bl-sm bg-sky-950 text-blue-400 border-2 border-gray-300 opacity-90 px-1.5">
+            {fuse}
+          </span>
         )}
       </div>
       {showText && <span className="text-center wrap-anywhere">{friendlyName(id)}</span>}
