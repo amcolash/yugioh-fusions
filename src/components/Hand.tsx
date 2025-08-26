@@ -2,7 +2,13 @@ import { Dispatch, SetStateAction } from 'react';
 
 import { Card } from './Card';
 
-export function Hand({ hand, setHand }: { hand: number[]; setHand: Dispatch<SetStateAction<number[]>> }) {
+type CardWithIndex = SimpleCard & { index: number };
+
+export function Hand({ hand, setHand }: { hand: SimpleCard[]; setHand: Dispatch<SetStateAction<SimpleCard[]>> }) {
+  const cardsWithIndexes: CardWithIndex[] = hand.map((c, i) => ({ ...c, index: i }));
+  const cardsInHand: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'hand');
+  const cardsInField: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'field');
+
   return (
     <>
       {hand.length === 0 && (
@@ -14,28 +20,40 @@ export function Hand({ hand, setHand }: { hand: number[]; setHand: Dispatch<SetS
           <button
             className="self-center danger"
             onClick={() => {
-              if (confirm('Are you sure you want to clear your hand?')) setHand([]);
+              if (confirm('Are you sure you want to clear your cards?')) setHand([]);
             }}
           >
-            Clear Hand
+            Clear Cards
           </button>
-          <ul className="flex gap-4 flex-wrap max-w-screen justify-center">
-            {hand.map((id, index) => (
-              <li key={index}>
-                <div className="grid gap-2 h-full content-between justify-items-center">
-                  <Card id={id} size="2x-small" />
-                  <button
-                    className="danger !py-0 w-1/2"
-                    onClick={() => setHand((prev) => prev.filter((_, i) => i !== index))}
-                  >
-                    X
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
+
+          <CardSet
+            cards={cardsInField}
+            onRemove={(card) => [...cardsInField.filter((c) => c.index !== card.index), ...cardsInHand]}
+          />
+
+          <CardSet
+            cards={cardsInHand}
+            onRemove={(card) => [...cardsInHand.filter((c) => c.index !== card.index), ...cardsInField]}
+          />
         </>
       )}
     </>
+  );
+}
+
+function CardSet({ cards, onRemove }: { cards: CardWithIndex[]; onRemove: (card: CardWithIndex) => void }) {
+  return (
+    <ul className="flex gap-2 flex-wrap max-w-screen justify-center">
+      {cards.map((card, index) => (
+        <li key={index}>
+          <div className="grid gap-2 h-full content-between justify-items-center">
+            <Card id={card.id} size="2x-small" />
+            <button className="danger !py-0 w-1/2" onClick={() => onRemove(card)}>
+              X
+            </button>
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 }

@@ -45,12 +45,8 @@ export function Card({
 
         <span className="absolute bottom-0 right-0 rounded-tl-sm text-sm text-right rounded-br-sm bg-gray-900 opacity-60 px-1">
           {cardStats.attack}
-          {showText && (
-            <>
-              <br />
-              {cardStats.defense}
-            </>
-          )}
+          <br />
+          {cardStats.defense}
         </span>
 
         {fuse > 0 && (
@@ -61,7 +57,8 @@ export function Card({
       </div>
       {showText && <span className="text-center wrap-anywhere">{friendlyName(id)}</span>}
 
-      {showStats && cardStats.cardType === 'Monster' && <StatsOverlay card={id} />}
+      {/* TODO: Improve the stats tooltip layout */}
+      {showStats && window.innerWidth > 875 && cardStats.cardType === 'Monster' && <StatsOverlay card={id} />}
     </div>
   );
 

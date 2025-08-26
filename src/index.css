@@ -10,11 +10,16 @@ html {
   @apply my-2 mx-6 mb-8;
 }
 
+button,
+input {
+  @apply max-w-md;
+}
+
 input {
   @apply border border-gray-300 rounded py-1 px-3;
 
   &::placeholder {
-    @apply max-sm:text-center;
+    @apply text-center;
   }
 }
 

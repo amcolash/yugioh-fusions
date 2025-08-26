@@ -9,8 +9,14 @@ export function StatsOverlay({ card }: { card: number }) {
       <Background type="absolute" />
 
       {Object.entries(cardStats)
-        .sort((a, b) => a[0].localeCompare(b[0]))
-        .filter((s) => s[0] === 'subtype' || s[0] === 'type' || s[0] === 'attack' || s[0] === 'defense')
+        .sort((a, b) => {
+          if (a[0] === 'id') return -1;
+          if (b[0] === 'id') return 1;
+          return a[0].localeCompare(b[0]);
+        })
+        .filter(
+          (s) => s[0] === 'subtype' || s[0] === 'type' || s[0] === 'attack' || s[0] === 'defense' || s[0] === 'id'
+        )
         .map(([key, value]) => (
           <div key={key} className="text-nowrap">
             <strong className="capitalize">{key}:</strong> {Array.isArray(value) ? value.join(', ') : value}
