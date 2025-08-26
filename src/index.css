@@ -7,12 +7,7 @@ html {
 }
 
 #root {
-  @apply my-2 mx-6 mb-8;
-}
-
-button,
-input {
-  @apply max-w-md;
+  @apply my-2 mx-6 mb-8 flex justify-center;
 }
 
 input {

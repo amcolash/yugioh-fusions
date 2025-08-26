@@ -28,12 +28,12 @@ export function Hand({ hand, setHand }: { hand: SimpleCard[]; setHand: Dispatch<
 
           <CardSet
             cards={cardsInField}
-            onRemove={(card) => [...cardsInField.filter((c) => c.index !== card.index), ...cardsInHand]}
+            onRemove={(card) => setHand([...cardsInField.filter((c) => c.index !== card.index), ...cardsInHand])}
           />
 
           <CardSet
             cards={cardsInHand}
-            onRemove={(card) => [...cardsInHand.filter((c) => c.index !== card.index), ...cardsInField]}
+            onRemove={(card) => setHand([...cardsInHand.filter((c) => c.index !== card.index), ...cardsInField])}
           />
         </>
       )}

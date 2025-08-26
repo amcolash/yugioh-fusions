@@ -29,7 +29,7 @@ export function App() {
   };
 
   return (
-    <div className="grid gap-8 max-w-screen justify-center">
+    <div className="grid gap-8 w-screen max-w-md">
       <Background type="fixed" />
       {hand.length === 0 && <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>}
 
