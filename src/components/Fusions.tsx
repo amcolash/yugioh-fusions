@@ -7,11 +7,12 @@ export function Fusions({ hand, setHand }: { hand: number[]; setHand: Dispatch<S
   const fusions = generateSecondaryFusions(hand);
 
   if (hand.length < 2) return null;
+  if (fusions.length === 0) return <p className="text-center text-gray-400">No fusions found.</p>;
 
-  return fusions.length > 0 ? (
+  return (
     <>
       <hr />
-      <ul className="grid gap-6 justify-center">
+      <ul className="grid gap-6">
         {fusions.map(({ id, cards, secondary }) => (
           <Fragment key={id + cards.join(',') + (secondary ? ` + ${secondary.id}` : '')}>
             <div className="grid gap-4">
@@ -45,7 +46,5 @@ export function Fusions({ hand, setHand }: { hand: number[]; setHand: Dispatch<S
         ))}
       </ul>
     </>
-  ) : (
-    <p className="text-center text-gray-400">No fusions found.</p>
   );
 }

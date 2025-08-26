@@ -29,3 +29,7 @@ button.transparent {
 button.danger {
   @apply bg-rose-500 hover:bg-rose-600;
 }
+
+hr {
+  @apply border-sky-800;
+}
