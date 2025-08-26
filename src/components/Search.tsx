@@ -23,6 +23,13 @@ export function Search({ addToHand }: { addToHand: (id: number) => void }) {
         type="search"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        onKeyDown={(e) => {
+          // On enter, add first result to hand
+          if (e.key === 'Enter' && results.length > 0) {
+            addToHand(results[0].id);
+            setSearch('');
+          }
+        }}
         placeholder="Search by name or id"
       />
 
