@@ -31,7 +31,14 @@ export function App() {
     setHand((prev) => [...prev, card]);
 
     setRecentCards((prev) => {
-      const newCards = { ...prev, [card.id]: (prev[card.id] || 0) + 1 };
+      const newCards: Record<string, number> = { ...prev, [card.id]: (prev[card.id] || 0) + 1 };
+      const entries = Object.entries(newCards).sort((a, b) => a[1] - b[1]);
+
+      // Keep the most used 50 cards (slightly more than a deck)
+      while (entries.length > 50) {
+        delete newCards[entries.shift()![0]];
+      }
+
       localStorage.setItem(recentCardsKey, JSON.stringify(newCards));
       return newCards;
     });
