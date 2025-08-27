@@ -29,6 +29,7 @@ export function Card({
         className="relative h-fit"
         data-tooltip-id="stats-tooltip"
         data-tooltip-html={renderToStaticMarkup(<StatsOverlay card={id} />)}
+        data-tooltip-delay-show={1000}
       >
         <img
           className={`${width} rounded border-2 border-amber-950`}

@@ -11,7 +11,7 @@ html {
 }
 
 input {
-  @apply border border-gray-300 rounded py-1 px-3;
+  @apply border border-gray-300 rounded py-1 px-3 text-center;
 
   &::placeholder {
     @apply text-center;

@@ -14,8 +14,6 @@ export function RecentCards({
 }) {
   return (
     <>
-      <Background type="fixed" />
-
       <div className="grid gap-6 content-start h-full max-w-3xl">
         <h2 className="text-center">Recent Cards</h2>
         {close}
@@ -51,6 +49,7 @@ export function RecentModal({
       }}
       className="text-white z-1 p-4 inset-0 m-auto fixed w-full h-full overflow-hidden"
     >
+      <Background type="fixed" />
       <RecentCards
         addToHand={(id) => {
           addToHand(id);
