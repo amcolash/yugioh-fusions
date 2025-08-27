@@ -7,7 +7,7 @@ html {
 }
 
 #root {
-  @apply my-2 mx-6 mb-8 flex justify-center;
+  @apply px-6 py-8 flex justify-center;
 }
 
 input {
