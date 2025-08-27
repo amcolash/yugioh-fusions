@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { friendlyName, stats } from 'utils/util';
 
 import { StatsOverlay } from './StatsOverlay';
@@ -14,7 +14,6 @@ export function Card({
   size?: '2x-small' | 'x-small' | 'small' | 'normal';
   fuse?: number;
 }) {
-  const [showStats, setShowStats] = useState(false);
   const cardStats = stats[id];
 
   let width = 'min-w-32';
@@ -25,12 +24,12 @@ export function Card({
   const showText = size === 'small' || size === 'normal';
 
   const inner = (
-    <div
-      className={`grid content-baseline justify-items-center gap-2 relative ${showText ? 'w-36' : ''}`}
-      onMouseEnter={() => setShowStats(true)}
-      onMouseLeave={() => setShowStats(false)}
-    >
-      <div className="relative h-fit">
+    <div className={`grid content-baseline justify-items-center gap-2 relative ${showText ? 'w-36' : ''}`}>
+      <div
+        className="relative h-fit"
+        data-tooltip-id="stats-tooltip"
+        data-tooltip-html={renderToStaticMarkup(<StatsOverlay card={id} />)}
+      >
         <img
           className={`${width} rounded border-2 border-amber-950`}
           src={`${import.meta.env.BASE_URL}/cropped/${id}.png`}
@@ -58,7 +57,7 @@ export function Card({
       {showText && <span className="text-center wrap-anywhere">{friendlyName(id)}</span>}
 
       {/* TODO: Improve the stats tooltip layout */}
-      {showStats && window.innerWidth > 875 && cardStats.cardType === 'Monster' && <StatsOverlay card={id} />}
+      {/* {showStats && window.innerWidth > 875 && cardStats.cardType === 'Monster' && <StatsOverlay card={id} />} */}
     </div>
   );
 

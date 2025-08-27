@@ -33,3 +33,7 @@ button.danger {
 hr {
   @apply border-sky-800;
 }
+
+#stats-tooltip {
+  @apply text-gray-300 p-3 z-10 rounded-md max-w-sm bg-[#161625];
+}

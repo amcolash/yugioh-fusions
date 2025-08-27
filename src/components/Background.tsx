@@ -1,7 +1,7 @@
 export function Background({ type }: { type: 'fixed' | 'absolute' }) {
   return (
     <>
-      <svg width="0" height="0">
+      <svg width="0" height="0" className={type}>
         <filter id="noiseFilter">
           <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="3" stitchTiles="stitch" />
         </filter>

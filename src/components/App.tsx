@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Tooltip } from 'react-tooltip';
 import { useIsMobile } from 'utils/useIsMobile';
 
 import { Background } from './Background';
@@ -6,6 +7,7 @@ import { Fusions } from './Fusions';
 import { Hand } from './Hand';
 import { RecentCards, RecentModal } from './RecentModal';
 import { Search } from './Search';
+import { StatsOverlay } from './StatsOverlay';
 
 const recentCardsKey = 'recentCards';
 
@@ -40,7 +42,7 @@ export function App() {
       <Background type="fixed" />
 
       <div className="flex gap-12 w-full justify-center">
-        <div className="grid gap-8 w-screen max-w-md">
+        <div className="grid gap-8 content-start w-screen max-w-md">
           {(hand.length === 0 || !mobile) && <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>}
 
           <Search addToHand={(id) => addToHand({ id, location: 'hand' })} />
@@ -61,7 +63,13 @@ export function App() {
           <Fusions hand={hand} setHand={setHand} />
         </div>
 
-        {!mobile && <RecentCards addToHand={(id) => addToHand({ id, location: 'hand' })} recentCards={recentCards} />}
+        {!mobile && (
+          <>
+            <div className={hand.length > 0 ? 'border-l border-sky-800' : ''} />
+            <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.95} />
+            <RecentCards addToHand={(id) => addToHand({ id, location: 'hand' })} recentCards={recentCards} />
+          </>
+        )}
       </div>
     </>
   );
