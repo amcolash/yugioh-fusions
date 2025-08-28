@@ -1,11 +1,16 @@
 import { Dispatch, Fragment, SetStateAction } from 'react';
 
-import { generateSecondaryFusions, stats } from '../utils/util';
 import { Card } from './Card';
 
-export function Fusions({ hand, setHand }: { hand: SimpleCard[]; setHand: Dispatch<SetStateAction<SimpleCard[]>> }) {
-  const fusions = generateSecondaryFusions(hand);
-
+export function Fusions({
+  hand,
+  setHand,
+  fusions,
+}: {
+  hand: SimpleCard[];
+  setHand: Dispatch<SetStateAction<SimpleCard[]>>;
+  fusions: FusionRecord[];
+}) {
   if (hand.length < 2) return null;
   if (fusions.length === 0) return <p className="text-center text-gray-400">No fusions found.</p>;
 

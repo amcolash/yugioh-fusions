@@ -8,10 +8,12 @@ export function Hand({
   hand,
   setHand,
   recentCards,
+  setShowStats,
 }: {
   hand: SimpleCard[];
   setHand: Dispatch<SetStateAction<SimpleCard[]>>;
   recentCards: Record<string, number>;
+  setShowStats: Dispatch<SetStateAction<boolean>>;
 }) {
   const cardsWithIndexes: CardWithIndex[] = hand.map((c, i) => ({ ...c, index: i }));
   const cardsInHand: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'hand');
@@ -23,9 +25,12 @@ export function Hand({
         <>
           <p className="text-center text-gray-400">Your hand is empty. Add some cards to see their fusions.</p>
           <button
-            onClick={() => setHand(Object.keys(recentCards).map((id) => ({ id: parseInt(id), location: 'hand' })))}
+            onClick={() => {
+              setHand(Object.keys(recentCards).map((id) => ({ id: parseInt(id), location: 'hand' })));
+              setShowStats(true);
+            }}
           >
-            Best combinations
+            Best Combinations
           </button>
         </>
       )}
@@ -35,7 +40,10 @@ export function Hand({
           <button
             className="self-center danger"
             onClick={() => {
-              if (confirm('Are you sure you want to clear your cards?')) setHand([]);
+              if (confirm('Are you sure you want to clear your cards?')) {
+                setHand([]);
+                setShowStats(false);
+              }
             }}
           >
             Clear Cards

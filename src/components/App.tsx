@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 import { useIsMobile } from 'utils/useIsMobile';
+import { generateSecondaryFusions, getStats } from 'utils/util';
 
 import { usePantry } from '../utils/pantry';
 import { Background } from './Background';
@@ -13,8 +14,7 @@ import { Search } from './Search';
 export const recentCardsKey = 'recentCards';
 
 const defaultHand: SimpleCard[] = [];
-// const defaultHand: SimpleCard[] = [44, 461, 97].map((id) => ({ id, location: 'hand' }));
-// defaultHand[1].location = 'field';
+// const defaultHand: SimpleCard[] = [9, 399, 44, 461, 97].map((id) => ({ id, location: 'hand' }));
 
 export function App() {
   const mobile = useIsMobile();
@@ -22,6 +22,7 @@ export function App() {
 
   const [hand, setHand] = useState<SimpleCard[]>(defaultHand);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [showStats, setShowStats] = useState(false);
 
   useEffect(() => {
     setDialogOpen(false);
@@ -43,6 +44,9 @@ export function App() {
     setRecentCards(newCards);
   };
 
+  const fusions = generateSecondaryFusions(hand);
+  const stats: Record<string, FusionStats> = showStats ? getStats(fusions) : {};
+
   return (
     <>
       <Background type="fixed" />
@@ -63,19 +67,24 @@ export function App() {
                 setOpen={setDialogOpen}
                 addToHand={(id) => addToHand({ id, location: 'hand' })}
                 recentCards={recentCards}
+                stats={stats}
               />
               <button onClick={() => setDialogOpen(true)}>Recent Cards</button>
             </>
           )}
 
-          <Hand hand={hand} setHand={setHand} recentCards={recentCards} />
-          <Fusions hand={hand} setHand={setHand} />
+          <Hand hand={hand} setHand={setHand} recentCards={recentCards} setShowStats={setShowStats} />
+          <Fusions hand={hand} setHand={setHand} fusions={fusions} />
         </div>
 
         {!mobile && (
           <>
             <div className={hand.length > 0 && Object.keys(recentCards).length > 0 ? 'border-l border-sky-800' : ''} />
-            <RecentCards addToHand={(id) => addToHand({ id, location: 'hand' })} recentCards={recentCards} />
+            <RecentCards
+              addToHand={(id) => addToHand({ id, location: 'hand' })}
+              recentCards={recentCards}
+              stats={stats}
+            />
             <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.95} />
           </>
         )}

@@ -12,7 +12,7 @@ export function Card({
   id: number;
   onClick?: () => void;
   size?: '2x-small' | 'x-small' | 'small' | 'normal';
-  fuse?: number;
+  fuse?: number | string;
 }) {
   const cardStats = stats[id];
 
@@ -49,8 +49,8 @@ export function Card({
           {cardStats.defense}
         </span>
 
-        {fuse > 0 && (
-          <span className="absolute top-0 right-0 rounded-tr-sm text-sm rounded-bl-sm bg-sky-950 text-blue-400 border-2 border-gray-300 opacity-90 px-1.5">
+        {fuse && (
+          <span className="absolute top-0 right-0 rounded-tr-sm text-sm text-right rounded-bl-sm bg-sky-950 text-blue-400 border-2 border-gray-300 opacity-90 px-1.5">
             {fuse}
           </span>
         )}

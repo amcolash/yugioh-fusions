@@ -51,3 +51,9 @@ type Stats = {
   starchips: number;
   image: string;
 };
+
+type FusionStats = {
+  count: number;
+  totalAttack: number;
+  totalDefense: number;
+};
