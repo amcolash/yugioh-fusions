@@ -4,7 +4,7 @@ import { generateSecondaryFusions, stats } from '../utils/util';
 import { Card } from './Card';
 
 export function Fusions({ hand, setHand }: { hand: SimpleCard[]; setHand: Dispatch<SetStateAction<SimpleCard[]>> }) {
-  const fusions = generateSecondaryFusions(hand.map((c) => c.id));
+  const fusions = generateSecondaryFusions(hand);
 
   if (hand.length < 2) return null;
   if (fusions.length === 0) return <p className="text-center text-gray-400">No fusions found.</p>;
