@@ -13,7 +13,8 @@ import { Search } from './Search';
 export const recentCardsKey = 'recentCards';
 
 const defaultHand: SimpleCard[] = [];
-// const defaultHand: SimpleCard[] = [24, 486, 147].map((id) => ({ id, location: 'hand' }));
+// const defaultHand: SimpleCard[] = [44, 461, 97].map((id) => ({ id, location: 'hand' }));
+// defaultHand[1].location = 'field';
 
 export function App() {
   const mobile = useIsMobile();

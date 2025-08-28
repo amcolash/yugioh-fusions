@@ -5,13 +5,17 @@ const pantryID = 'd3fde413-0898-4607-8b43-404392c50d61';
 const url = `https://getpantry.cloud/apiv1/pantry/${pantryID}/basket/recentCards`;
 
 export function updateRecentCards(cards: Record<string, number>): Promise<string | void> {
-  const body = JSON.stringify({ cards });
-  console.log(body);
-
-  return fetch(url, { method: 'PUT', redirect: 'follow', headers: { 'Content-Type': 'application/json' }, body })
-    .then((response) => response.text())
-    .then((res) => console.log(res))
-    .catch((error) => console.error('error updating recent cards', error));
+  return (
+    fetch(url, {
+      method: 'PUT',
+      redirect: 'follow',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cards }),
+    })
+      .then((response) => response.text())
+      // .then((res) => console.log(res))
+      .catch((error) => console.error('error updating recent cards', error))
+  );
 }
 
 export function getRecentCards(): Promise<Record<string, number>> {
@@ -26,10 +30,11 @@ export function usePantry() {
   const [data, setData] = useState<Record<string, number>>({});
 
   useEffect(() => {
+    const start = Date.now();
     getRecentCards()
       .then((data) => {
         setData(data);
-        setTimeout(() => setLoading(false), 1000);
+        setTimeout(() => setLoading(false), Math.max(0, 250 - (Date.now() - start)));
       })
       .catch(() => {
         window.location.reload();

@@ -4,7 +4,9 @@ export const stats: Record<string, Stats> = data.stats as unknown as Record<stri
 export const customFusions: Record<string, number[][]> = data.customFusions as Record<string, number[][]>;
 export const generalFusions: GeneralFusion[] = data.generalFusions as GeneralFusion[];
 
-export function generateSecondaryFusions(hand: number[]) {
+export function generateSecondaryFusions(baseHand: SimpleCard[]) {
+  const hand = baseHand.map((c) => c.id);
+
   const baseFusions = getFusions(hand);
   const newFusions: FusionRecord[] = [];
 
@@ -30,8 +32,9 @@ export function generateSecondaryFusions(hand: number[]) {
     }
   }
 
-  const filtered = filterDuplicateFusions(newFusions);
-  const combined = [...baseFusions, ...filtered];
+  const filtered1 = filterDuplicateFusions(newFusions);
+  const filtered2 = filterSecondaryImpossibilities(filtered1, baseHand);
+  const combined = [...baseFusions, ...filtered2];
 
   combined.sort((a, b) => {
     const aAtk = stats[a.secondary?.id]?.attack || stats[a.id]?.attack || 0;
@@ -68,6 +71,21 @@ export function filterDuplicateFusions(fusions: FusionRecord[]): FusionRecord[] 
   }
 
   return uniqueFusions;
+}
+
+// We can only fuse a secondary if both base cards are in hand. The third card can be either in hand or field
+export function filterSecondaryImpossibilities(fusions: FusionRecord[], cards: SimpleCard[]): FusionRecord[] {
+  return fusions.filter((fusion) => {
+    if (!fusion.secondary) return true;
+
+    const card1 = fusion.cards[0];
+    const card2 = fusion.cards[1];
+
+    const hand = cards.filter((c) => c.location === 'hand').map((c) => c.id);
+    if (hand.includes(card1) && hand.includes(card2)) return true;
+
+    return false;
+  });
 }
 
 export function satisfiesInput(card: number, input: GeneralFusionInput): boolean {
