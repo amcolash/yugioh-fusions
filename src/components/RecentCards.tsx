@@ -3,8 +3,6 @@ import { Dispatch, type ReactNode, SetStateAction, useState } from 'react';
 import { Background } from './Background';
 import { AnimatedCard, Card } from './Card';
 
-// {"2":1,"9":41,"23":11,"24":7,"32":17,"40":2,"44":18,"46":11,"97":16,"107":14,"118":9,"133":1,"157":8,"174":17,"187":11,"188":14,"233":1,"240":15,"247":11,"265":11,"267":16,"268":17,"387":18,"394":11,"395":17,"399":35,"410":10,"420":17,"421":9,"458":2,"460":1,"461":21,"486":21,"488":13,"504":12,"538":10,"544":15,"558":11,"573":20,"598":9,"611":11,"644":8}
-
 export function RecentCards({
   addToHand,
   recentCards,
@@ -114,7 +112,7 @@ export function RecentModal({
               addToHand(id);
 
               if (Object.values(hand).filter((c) => c.location === 'hand').length >= 4) {
-                setOpen(false);
+                setTimeout(() => setOpen(false), 700);
               }
             }}
             recentCards={recentCards}

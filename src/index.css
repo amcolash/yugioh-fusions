@@ -49,7 +49,7 @@ hr {
       transform: translateY(-40px) scale(1.25);
     }
     100% {
-      transform: translateY(130vh) scale(0.7);
+      transform: translateY(130vh) scale(0.25);
       opacity: 0;
     }
   }
