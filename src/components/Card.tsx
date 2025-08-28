@@ -6,11 +6,13 @@ import { StatsOverlay } from './StatsOverlay';
 export function Card({
   id,
   onClick,
+  onRightClick,
   size = 'normal',
   fuse,
 }: {
   id: number;
   onClick?: () => void;
+  onRightClick?: () => void;
   size?: '2x-small' | 'x-small' | 'small' | 'normal';
   fuse?: number | string;
 }) {
@@ -64,7 +66,14 @@ export function Card({
 
   if (onClick)
     return (
-      <button onClick={onClick} className={`${width} transparent flex !p-0`}>
+      <button
+        onClick={onClick}
+        onContextMenu={(e) => {
+          onRightClick();
+          e.preventDefault();
+        }}
+        className={`${width} transparent flex !p-0`}
+      >
         {inner}
       </button>
     );

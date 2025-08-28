@@ -11,8 +11,6 @@ import { Loader } from './Loader';
 import { RecentCards, RecentModal } from './RecentCards';
 import { Search } from './Search';
 
-export const recentCardsKey = 'recentCards';
-
 const defaultHand: SimpleCard[] = [];
 // const defaultHand: SimpleCard[] = [9, 399, 44, 461, 97].map((id) => ({ id, location: 'hand' }));
 
@@ -40,7 +38,6 @@ export function App() {
       delete newCards[entries.shift()![0]];
     }
 
-    localStorage.setItem(recentCardsKey, JSON.stringify(newCards));
     setRecentCards(newCards);
   };
 
@@ -67,6 +64,7 @@ export function App() {
                 setOpen={setDialogOpen}
                 addToHand={(id) => addToHand({ id, location: 'hand' })}
                 recentCards={recentCards}
+                setRecentCards={setRecentCards}
                 stats={stats}
               />
               <button onClick={() => setDialogOpen(true)}>Recent Cards</button>
@@ -83,6 +81,7 @@ export function App() {
             <RecentCards
               addToHand={(id) => addToHand({ id, location: 'hand' })}
               recentCards={recentCards}
+              setRecentCards={setRecentCards}
               stats={stats}
             />
             <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.95} />

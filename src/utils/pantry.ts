@@ -25,6 +25,14 @@ export function getRecentCards(): Promise<Record<string, number>> {
     .catch((error) => console.error('error getting recent cards', error));
 }
 
+function filterCards(data: Record<string, number>): Record<string, number> {
+  const filtered: Record<string, number> = {};
+  for (const [key, value] of Object.entries(data)) {
+    if (value !== -1) filtered[key] = value;
+  }
+  return filtered;
+}
+
 export function usePantry() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Record<string, number>>({});
@@ -33,11 +41,12 @@ export function usePantry() {
     const start = Date.now();
     getRecentCards()
       .then((data) => {
-        setData(data);
+        const filtered = filterCards(data);
+        setData(filtered);
         setTimeout(() => setLoading(false), Math.max(0, 250 - (Date.now() - start)));
       })
       .catch(() => {
-        window.location.reload();
+        setTimeout(() => window.location.reload(), 2000);
       });
   }, []);
 
@@ -45,8 +54,10 @@ export function usePantry() {
     loading,
     recentCards: data || {},
     setRecentCards: (data: Record<string, number>) => {
-      setData(data);
       updateRecentCards(data);
+
+      const filtered = filterCards(data);
+      setData(filtered);
     },
   };
 }
