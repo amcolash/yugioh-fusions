@@ -65,7 +65,7 @@ export function App() {
                 addToHand={(id) => addToHand({ id, location: 'hand' })}
                 recentCards={recentCards}
                 setRecentCards={setRecentCards}
-                stats={stats}
+                stats={showStats ? stats : undefined}
               />
               <button onClick={() => setDialogOpen(true)}>Recent Cards</button>
             </>
@@ -82,7 +82,7 @@ export function App() {
               addToHand={(id) => addToHand({ id, location: 'hand' })}
               recentCards={recentCards}
               setRecentCards={setRecentCards}
-              stats={stats}
+              stats={showStats ? stats : undefined}
             />
             <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.95} />
           </>

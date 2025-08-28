@@ -30,11 +30,18 @@ export function RecentCards({
               const statsA = stats?.[a[0]];
               const statsB = stats?.[b[0]];
 
-              if (statsA && statsB) return statsB.totalAttack / statsB.count - statsA.totalAttack / statsA.count;
+              if (stats) {
+                if (!statsA) return 1;
+                if (!statsB) return -1;
+
+                return statsB.totalAttack / statsB.count - statsA.totalAttack / statsA.count;
+              }
               return b[1] - a[1];
             })
             .map(([id]) => {
-              const { count, totalAttack, totalDefense } = stats[id] || {};
+              const { count, totalAttack, totalDefense } = stats?.[id] || { totalAttack: 0, count: 0 };
+              const avgAttack = count > 0 ? Math.floor(totalAttack / count) : 0;
+              const avgDefense = count > 0 ? Math.floor(totalDefense / count) : 0;
 
               return (
                 <Card
@@ -47,11 +54,7 @@ export function RecentCards({
                     newCards[id] = -1;
                     setRecentCards(newCards);
                   }}
-                  fuse={
-                    count
-                      ? `${count}\n${Math.floor(totalAttack / count)}\n${Math.floor(totalDefense / count)}`
-                      : undefined
-                  }
+                  fuse={stats ? `${count}\n${avgAttack}\n${avgDefense}` : undefined}
                 />
               );
             })}
