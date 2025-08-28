@@ -1,5 +1,13 @@
-import { Dispatch, type ReactNode, SetStateAction, useEffect, useState } from 'react';
-import { useAddToHand, useDialogOpen, useFusions, useHand, useRecentCards, useShowStats } from 'utils/state';
+import { type ReactNode, useEffect, useState } from 'react';
+import {
+  useAddToHand,
+  useDialogOpen,
+  useFusions,
+  useHand,
+  useRecentCards,
+  useSelectedCard,
+  useShowStats,
+} from 'utils/state';
 import { useIsMobile } from 'utils/useIsMobile';
 import { getStats } from 'utils/util';
 
@@ -11,6 +19,7 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
   const [showStats] = useShowStats();
   const fusions = useFusions();
   const addToHand = useAddToHand();
+  const [selectedCard, setSelectedCard] = useSelectedCard();
 
   const [bouncingCards, setBouncingCards] = useState<{ id: number; uuid: number; start: DOMRect }[]>([]);
 
@@ -42,24 +51,36 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
               const avgDefense = count > 0 ? Math.floor(totalDefense / count) : 0;
 
               return (
-                <Card
-                  key={id}
-                  id={parseInt(id)}
-                  size="x-small"
-                  onClick={(e) => {
-                    addToHand({ id: parseInt(id), location: 'hand' });
-                    onAddToHand?.();
+                <div
+                  className={showStats && selectedCard === parseInt(id) ? 'ring-4 ring-blue-400 rounded' : undefined}
+                >
+                  <Card
+                    key={id}
+                    id={parseInt(id)}
+                    size="x-small"
+                    onClick={(e) => {
+                      addToHand({ id: parseInt(id), location: 'hand' });
+                      onAddToHand?.();
 
-                    const rect = (e.target as HTMLElement).getBoundingClientRect();
-                    setBouncingCards((prev) => [...prev, { id: parseInt(id), uuid: Date.now(), start: rect }]);
-                  }}
-                  onRightClick={() => {
-                    const newCards = { ...recentCards };
-                    newCards[id] = -1;
-                    setRecentCards(newCards);
-                  }}
-                  fuse={stats ? `${count}\n${avgAttack}\n${avgDefense}` : undefined}
-                />
+                      const rect = (e.target as HTMLElement).getBoundingClientRect();
+                      setBouncingCards((prev) => [...prev, { id: parseInt(id), uuid: Date.now(), start: rect }]);
+                    }}
+                    onRightClick={() => {
+                      if (showStats) {
+                        if (selectedCard === parseInt(id)) {
+                          setSelectedCard(undefined);
+                        } else {
+                          setSelectedCard(parseInt(id));
+                        }
+                      } else {
+                        const newCards = { ...recentCards };
+                        newCards[id] = -1;
+                        setRecentCards(newCards);
+                      }
+                    }}
+                    fuse={stats ? `${count}\n${avgAttack}\n${avgDefense}` : undefined}
+                  />
+                </div>
               );
             })}
 

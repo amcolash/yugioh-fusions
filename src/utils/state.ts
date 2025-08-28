@@ -9,6 +9,7 @@ const hand = atom<SimpleCard[]>(defaultHand);
 const dialogOpen = atom<boolean>(false);
 const showStats = atom<boolean>(false);
 const fusions = atom<FusionRecord[]>((get) => generateSecondaryFusions(get(hand)));
+const selectedCard = atom<number | undefined>();
 
 const recentCards = atom<Record<string, number>>({});
 const recentCardsFiltered = atom(
@@ -25,6 +26,7 @@ export const useHand = () => useAtom(hand);
 export const useDialogOpen = () => useAtom(dialogOpen);
 export const useShowStats = () => useAtom(showStats);
 export const useFusions = () => useAtomValue(fusions);
+export const useSelectedCard = () => useAtom(selectedCard);
 
 export const useRecentCardsRaw = () => useAtom(recentCards);
 export const useRecentCards = () => useAtom(recentCardsFiltered);

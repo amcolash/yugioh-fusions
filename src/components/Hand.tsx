@@ -8,11 +8,13 @@ type CardWithIndex = SimpleCard & { index: number };
 export function Hand() {
   const [hand, setHand] = useHand();
   const [recentCards] = useRecentCards();
-  const [, setShowStats] = useShowStats();
+  const [showStats, setShowStats] = useShowStats();
 
   const cardsWithIndexes: CardWithIndex[] = hand.map((c, i) => ({ ...c, index: i }));
   const cardsInHand: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'hand');
   const cardsInField: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'field');
+
+  if (showStats) return null;
 
   return (
     <>
@@ -88,10 +90,10 @@ function CardSet({
                 });
               }}
             />
-            <button className="danger !py-0 w-1/2" onClick={() => onRemove(card)}>
-              X
-            </button>
           </div>
+          <button className="danger !py-0 w-1/2" onClick={() => onRemove(card)}>
+            X
+          </button>
         </li>
       ))}
     </ul>
