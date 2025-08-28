@@ -1,7 +1,7 @@
-import { Dispatch, type ReactNode, SetStateAction } from 'react';
+import { Dispatch, type ReactNode, SetStateAction, useState } from 'react';
 
 import { Background } from './Background';
-import { Card } from './Card';
+import { AnimatedCard, Card } from './Card';
 
 // {"2":1,"9":41,"23":11,"24":7,"32":17,"40":2,"44":18,"46":11,"97":16,"107":14,"118":9,"133":1,"157":8,"174":17,"187":11,"188":14,"233":1,"240":15,"247":11,"265":11,"267":16,"268":17,"387":18,"394":11,"395":17,"399":35,"410":10,"420":17,"421":9,"458":2,"460":1,"461":21,"486":21,"488":13,"504":12,"538":10,"544":15,"558":11,"573":20,"598":9,"611":11,"644":8}
 
@@ -18,6 +18,8 @@ export function RecentCards({
   close?: ReactNode;
   stats: Record<string, FusionStats>;
 }) {
+  const [bouncingCards, setBouncingCards] = useState<{ id: number; uuid: number; start: DOMRect }[]>([]);
+
   return (
     <>
       <div className="grid gap-6 content-start h-full max-w-5xl">
@@ -48,7 +50,11 @@ export function RecentCards({
                   key={id}
                   id={parseInt(id)}
                   size="x-small"
-                  onClick={() => addToHand(parseInt(id))}
+                  onClick={(e) => {
+                    addToHand(parseInt(id));
+                    const rect = (e.target as HTMLElement).getBoundingClientRect();
+                    setBouncingCards((prev) => [...prev, { id: parseInt(id), uuid: Date.now(), start: rect }]);
+                  }}
                   onRightClick={() => {
                     const newCards = { ...recentCards };
                     newCards[id] = -1;
@@ -58,6 +64,17 @@ export function RecentCards({
                 />
               );
             })}
+
+          {bouncingCards.map((c) => (
+            <AnimatedCard
+              key={c.id}
+              id={c.id}
+              startRect={c.start}
+              onAnimationEnd={() => {
+                setBouncingCards((prev) => prev.filter((b) => b.id !== c.id));
+              }}
+            />
+          ))}
         </div>
       </div>
     </>
@@ -67,6 +84,7 @@ export function RecentCards({
 export function RecentModal({
   open,
   setOpen,
+  hand,
   addToHand,
   recentCards,
   setRecentCards,
@@ -74,6 +92,7 @@ export function RecentModal({
 }: {
   open: boolean;
   setOpen: (open: boolean) => void;
+  hand: SimpleCard[];
   addToHand: (id: number) => void;
   recentCards: Record<string, number>;
   setRecentCards: (cards: Record<string, number>) => void;
@@ -87,21 +106,28 @@ export function RecentModal({
       }}
       className="text-white z-1 p-4 inset-0 m-auto fixed w-full h-full overflow-hidden"
     >
-      <Background type="fixed" />
-      <RecentCards
-        addToHand={(id) => {
-          addToHand(id);
-          setOpen(false);
-        }}
-        recentCards={recentCards}
-        setRecentCards={setRecentCards}
-        close={
-          <button className="danger absolute right-4 top-4 !py-0" onClick={() => setOpen(false)}>
-            X
-          </button>
-        }
-        stats={stats}
-      />
+      {open && (
+        <>
+          <Background type="fixed" />
+          <RecentCards
+            addToHand={(id) => {
+              addToHand(id);
+
+              if (Object.values(hand).filter((c) => c.location === 'hand').length >= 4) {
+                setOpen(false);
+              }
+            }}
+            recentCards={recentCards}
+            setRecentCards={setRecentCards}
+            close={
+              <button className="danger absolute right-4 top-4 !py-0" onClick={() => setOpen(false)}>
+                X
+              </button>
+            }
+            stats={stats}
+          />
+        </>
+      )}
     </dialog>
   );
 }

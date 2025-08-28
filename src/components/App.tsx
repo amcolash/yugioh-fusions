@@ -62,6 +62,7 @@ export function App() {
               <RecentModal
                 open={dialogOpen}
                 setOpen={setDialogOpen}
+                hand={hand}
                 addToHand={(id) => addToHand({ id, location: 'hand' })}
                 recentCards={recentCards}
                 setRecentCards={setRecentCards}

@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { friendlyName, stats } from 'utils/util';
 
@@ -9,12 +10,14 @@ export function Card({
   onRightClick,
   size = 'normal',
   fuse,
+  showStats = true,
 }: {
   id: number;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   onRightClick?: () => void;
   size?: '2x-small' | 'x-small' | 'small' | 'normal';
   fuse?: number | string;
+  showStats?: boolean;
 }) {
   const cardStats = stats[id];
 
@@ -29,7 +32,7 @@ export function Card({
     <div className={`grid content-baseline justify-items-center gap-2 relative ${showText ? 'w-36' : ''}`}>
       <div
         className="relative h-fit"
-        data-tooltip-id="stats-tooltip"
+        data-tooltip-id={showStats ? 'stats-tooltip' : undefined}
         data-tooltip-html={renderToStaticMarkup(<StatsOverlay card={id} />)}
         data-tooltip-delay-show={1000}
       >
@@ -80,4 +83,34 @@ export function Card({
       </button>
     );
   return inner;
+}
+
+export function AnimatedCard({
+  id,
+  startRect,
+  onAnimationEnd,
+}: {
+  id: number;
+  startRect: DOMRect;
+  onAnimationEnd: () => void;
+}) {
+  const handleAnimationEnd = () => {
+    onAnimationEnd(); // Tell the parent to remove this card from state.
+  };
+
+  return (
+    <div
+      className="animate-bounce-and-drop"
+      style={{
+        position: 'fixed',
+        left: `${startRect.left}px`,
+        top: `${startRect.top}px`,
+        width: `${startRect.width}px`,
+        height: `${startRect.height}px`,
+      }}
+      onAnimationEnd={handleAnimationEnd}
+    >
+      <Card id={id} size="x-small" showStats={false} />
+    </div>
+  );
 }

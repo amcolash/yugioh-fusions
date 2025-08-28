@@ -37,3 +37,20 @@ hr {
 #stats-tooltip {
   @apply text-gray-300 p-3 z-10 rounded-md max-w-sm bg-[#161625];
 }
+
+@theme {
+  --animate-bounce-and-drop: bounce-and-drop 0.6s ease-in-out forwards;
+  @keyframes bounce-and-drop {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    20% {
+      transform: translateY(-40px) scale(1.25);
+    }
+    100% {
+      transform: translateY(130vh) scale(0.7);
+      opacity: 0;
+    }
+  }
+}
