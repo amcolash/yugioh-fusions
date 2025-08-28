@@ -14,8 +14,6 @@ export function Hand() {
   const cardsInHand: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'hand');
   const cardsInField: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'field');
 
-  if (showStats) return null;
-
   return (
     <>
       {hand.length === 0 && (
@@ -46,17 +44,21 @@ export function Hand() {
             Clear Cards
           </button>
 
-          <CardSet
-            cards={cardsInField}
-            onRemove={(card) => setHand([...cardsInField.filter((c) => c.index !== card.index), ...cardsInHand])}
-            setHand={setHand}
-          />
+          {!showStats && (
+            <>
+              <CardSet
+                cards={cardsInField}
+                onRemove={(card) => setHand([...cardsInField.filter((c) => c.index !== card.index), ...cardsInHand])}
+                setHand={setHand}
+              />
 
-          <CardSet
-            cards={cardsInHand}
-            onRemove={(card) => setHand([...cardsInHand.filter((c) => c.index !== card.index), ...cardsInField])}
-            setHand={setHand}
-          />
+              <CardSet
+                cards={cardsInHand}
+                onRemove={(card) => setHand([...cardsInHand.filter((c) => c.index !== card.index), ...cardsInField])}
+                setHand={setHand}
+              />
+            </>
+          )}
         </>
       )}
     </>

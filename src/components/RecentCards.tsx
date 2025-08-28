@@ -59,13 +59,6 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                     id={parseInt(id)}
                     size="x-small"
                     onClick={(e) => {
-                      addToHand({ id: parseInt(id), location: 'hand' });
-                      onAddToHand?.();
-
-                      const rect = (e.target as HTMLElement).getBoundingClientRect();
-                      setBouncingCards((prev) => [...prev, { id: parseInt(id), uuid: Date.now(), start: rect }]);
-                    }}
-                    onRightClick={() => {
                       if (showStats) {
                         if (selectedCard === parseInt(id)) {
                           setSelectedCard(undefined);
@@ -73,10 +66,17 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                           setSelectedCard(parseInt(id));
                         }
                       } else {
-                        const newCards = { ...recentCards };
-                        newCards[id] = -1;
-                        setRecentCards(newCards);
+                        addToHand({ id: parseInt(id), location: 'hand' });
+                        onAddToHand?.();
+
+                        const rect = (e.target as HTMLElement).getBoundingClientRect();
+                        setBouncingCards((prev) => [...prev, { id: parseInt(id), uuid: Date.now(), start: rect }]);
                       }
+                    }}
+                    onRightClick={() => {
+                      const newCards = { ...recentCards };
+                      newCards[id] = -1;
+                      setRecentCards(newCards);
                     }}
                     fuse={stats ? `${count}\n${avgAttack}\n${avgDefense}` : undefined}
                   />
