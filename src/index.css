@@ -10,7 +10,8 @@ html {
   @apply px-6 py-8 flex justify-center;
 }
 
-input {
+input,
+select {
   @apply border border-gray-300 rounded py-1 px-3 text-center;
 
   &::placeholder {

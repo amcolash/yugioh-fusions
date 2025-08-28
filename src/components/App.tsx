@@ -25,7 +25,7 @@ export function App() {
       <div
         className={`flex gap-12 w-full justify-center transition-opacity duration-1000 delay-700 ${loading ? 'opacity-0' : 'opacity-100'}`}
       >
-        <div className="grid gap-8 content-start w-screen max-w-md">
+        <div className="grid gap-8 content-start w-screen max-w-md sm:min-w-sm">
           {(hand.length === 0 || !mobile) && <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>}
           <Search />
 
