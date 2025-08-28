@@ -32,8 +32,11 @@ export function Hand() {
 
       {hand.length > 0 && (
         <>
+          <button className="success" onClick={() => setShowStats((prev) => !prev)}>
+            Stats: {showStats ? 'On' : 'Off'}
+          </button>
           <button
-            className="self-center danger"
+            className="danger"
             onClick={() => {
               if (confirm('Are you sure you want to clear your cards?')) {
                 setHand([]);
@@ -92,10 +95,10 @@ function CardSet({
                 });
               }}
             />
+            <button className="danger !py-0 w-1/2" onClick={() => onRemove(card)}>
+              X
+            </button>
           </div>
-          <button className="danger !py-0 w-1/2" onClick={() => onRemove(card)}>
-            X
-          </button>
         </li>
       ))}
     </ul>

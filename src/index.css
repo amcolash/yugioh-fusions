@@ -12,15 +12,19 @@ html {
 
 input,
 select {
-  @apply border border-gray-300 rounded py-1 px-3 text-center;
+  @apply border border-gray-300 rounded py-1 px-3 text-center h-9;
 
   &::placeholder {
     @apply text-center;
   }
 }
 
+select {
+  @apply text-gray-400;
+}
+
 button {
-  @apply bg-sky-600 rounded p-2 hover:bg-sky-900;
+  @apply text-shadow-lg p-2 bg-sky-600 rounded hover:bg-sky-700 active:bg-sky-800;
 }
 
 button.transparent {
@@ -28,7 +32,11 @@ button.transparent {
 }
 
 button.danger {
-  @apply bg-rose-500 hover:bg-rose-600;
+  @apply bg-rose-500 hover:bg-rose-600 active:bg-rose-700;
+}
+
+button.success {
+  @apply bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700;
 }
 
 hr {

@@ -9,13 +9,14 @@ import {
   useShowStats,
 } from 'utils/state';
 import { useIsMobile } from 'utils/useIsMobile';
-import { getStats } from 'utils/util';
+import { getStats, stats } from 'utils/util';
 
 import { Background } from './Background';
 import { AnimatedCard, Card } from './Card';
 
-const sorts = ['average_attack', 'average_defense', 'total_attack', 'total_defense', 'count'] as const;
-type StatsSort = (typeof sorts)[number];
+const statsSort = ['average_attack', 'average_defense', 'total_attack', 'total_defense', 'count'] as const;
+const basicSort = ['attack', 'defense', 'id', 'level', 'name', 'usage'] as const;
+type SortTypes = (typeof statsSort | typeof basicSort)[number];
 
 export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; close?: ReactNode }) {
   const [recentCards, setRecentCards] = useRecentCards();
@@ -24,69 +25,85 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
   const addToHand = useAddToHand();
   const [selectedCard, setSelectedCard] = useSelectedCard();
 
-  const [statsSort, setStatsSort] = useState<StatsSort>('average_attack');
+  const [sort, setSort] = useState<SortTypes>('usage');
   const [bouncingCards, setBouncingCards] = useState<{ id: number; uuid: number; start: DOMRect }[]>([]);
 
-  const stats = showStats ? getStats(fusions) : undefined;
+  const fusionStats = showStats ? getStats(fusions) : undefined;
+
+  useEffect(() => {
+    if (showStats) setSort('average_attack');
+    else setSort('usage');
+  }, [showStats]);
 
   return (
     <>
-      <div className="grid gap-6 content-start h-full max-w-5xl">
+      <div className="grid gap-8 content-start h-full max-w-5xl">
         <h2 className="text-center">Recent Cards</h2>
         {close}
 
-        {showStats && (
-          <select onChange={(e) => setStatsSort(e.target.value as StatsSort)} value={statsSort}>
-            {sorts.map((sort) => (
-              <option key={sort} value={sort}>
-                {sort.replace('_', ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
-              </option>
-            ))}
-          </select>
-        )}
+        <select onChange={(e) => setSort(e.target.value as SortTypes)} value={sort}>
+          {(showStats ? statsSort : basicSort).map((sort) => (
+            <option key={sort} value={sort}>
+              {sort.replace('_', ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
+            </option>
+          ))}
+        </select>
 
         <div className="flex flex-wrap justify-center gap-3 overflow-auto h-full">
           {Object.entries(recentCards)
             .sort((a, b) => {
-              const statsA = stats?.[a[0]];
-              const statsB = stats?.[b[0]];
+              if (sort === 'id') {
+                return parseInt(a[0]) - parseInt(b[0]);
+              } else if (sort === 'name') {
+                return stats[a[0]].name.localeCompare(stats[b[0]].name);
+              } else if (sort === 'level') {
+                return stats[b[0]].level - stats[a[0]].level;
+              } else if (sort === 'attack') {
+                return stats[b[0]].attack - stats[a[0]].attack;
+              } else if (sort === 'defense') {
+                return stats[b[0]].defense - stats[a[0]].defense;
+              } else if (sort === 'usage') {
+                return b[1] - a[1];
+              }
 
-              const avgAttackA = statsA ? statsA.totalAttack / statsA.count : 0;
-              const avgAttackB = statsB ? statsB.totalAttack / statsB.count : 0;
+              if (fusionStats) {
+                const statsA = fusionStats?.[a[0]];
+                const statsB = fusionStats?.[b[0]];
 
-              const avgDefenseA = statsA ? statsA.totalDefense / statsA.count : 0;
-              const avgDefenseB = statsB ? statsB.totalDefense / statsB.count : 0;
+                const avgAttackA = statsA ? statsA.totalAttack / statsA.count : 0;
+                const avgAttackB = statsB ? statsB.totalAttack / statsB.count : 0;
 
-              if (stats) {
+                const avgDefenseA = statsA ? statsA.totalDefense / statsA.count : 0;
+                const avgDefenseB = statsB ? statsB.totalDefense / statsB.count : 0;
+
                 if (!statsA) return 1;
                 if (!statsB) return -1;
 
-                if (statsSort === 'average_attack') {
+                if (sort === 'average_attack') {
                   return avgAttackB - avgAttackA;
-                } else if (statsSort === 'average_defense') {
+                } else if (sort === 'average_defense') {
                   return avgDefenseB - avgDefenseA;
-                } else if (statsSort === 'total_attack') {
+                } else if (sort === 'total_attack') {
                   return statsB.totalAttack - statsA.totalAttack;
-                } else if (statsSort === 'total_defense') {
+                } else if (sort === 'total_defense') {
                   return statsB.totalDefense - statsA.totalDefense;
-                } else if (statsSort === 'count') {
+                } else if (sort === 'count') {
                   return statsB.count - statsA.count;
                 }
               }
-              return b[1] - a[1];
             })
             .map(([id]) => {
-              const { count, totalAttack, totalDefense } = stats?.[id] || { totalAttack: 0, count: 0 };
+              const { count, totalAttack, totalDefense } = fusionStats?.[id] || { totalAttack: 0, count: 0 };
               const avgAttack = count > 0 ? Math.floor(totalAttack / count) : 0;
               const avgDefense = count > 0 ? Math.floor(totalDefense / count) : 0;
-              const showTotal = statsSort === 'total_attack' || statsSort === 'total_defense';
+              const showTotal = sort === 'total_attack' || sort === 'total_defense';
 
               return (
                 <div
                   className={showStats && selectedCard === parseInt(id) ? 'ring-4 ring-blue-400 rounded' : undefined}
+                  key={id}
                 >
                   <Card
-                    key={id}
                     id={parseInt(id)}
                     size="x-small"
                     onClick={(e) => {
@@ -110,7 +127,7 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                       setRecentCards(newCards);
                     }}
                     fuse={
-                      stats
+                      fusionStats
                         ? `${count}\n${showTotal ? totalAttack : avgAttack}\n${showTotal ? totalDefense : avgDefense}`
                         : undefined
                     }
