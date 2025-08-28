@@ -1,20 +1,15 @@
 import { Dispatch, SetStateAction } from 'react';
+import { useHand, useRecentCards, useShowStats } from 'utils/state';
 
 import { Card } from './Card';
 
 type CardWithIndex = SimpleCard & { index: number };
 
-export function Hand({
-  hand,
-  setHand,
-  recentCards,
-  setShowStats,
-}: {
-  hand: SimpleCard[];
-  setHand: Dispatch<SetStateAction<SimpleCard[]>>;
-  recentCards: Record<string, number>;
-  setShowStats: Dispatch<SetStateAction<boolean>>;
-}) {
+export function Hand() {
+  const [hand, setHand] = useHand();
+  const [recentCards] = useRecentCards();
+  const [, setShowStats] = useShowStats();
+
   const cardsWithIndexes: CardWithIndex[] = hand.map((c, i) => ({ ...c, index: i }));
   const cardsInHand: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'hand');
   const cardsInField: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'field');

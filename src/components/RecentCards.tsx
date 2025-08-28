@@ -1,22 +1,19 @@
-import { Dispatch, type ReactNode, SetStateAction, useState } from 'react';
+import { Dispatch, type ReactNode, SetStateAction, useEffect, useState } from 'react';
+import { useDialogOpen, useFusions, useHand, useRecentCards, useShowStats } from 'utils/state';
+import { useIsMobile } from 'utils/useIsMobile';
+import { getStats } from 'utils/util';
 
 import { Background } from './Background';
 import { AnimatedCard, Card } from './Card';
 
-export function RecentCards({
-  addToHand,
-  recentCards,
-  setRecentCards,
-  close,
-  stats,
-}: {
-  addToHand: (id: number) => void;
-  recentCards: Record<string, number>;
-  setRecentCards: Dispatch<SetStateAction<Record<string, number>>>;
-  close?: ReactNode;
-  stats: Record<string, FusionStats>;
-}) {
+export function RecentCards({ addToHand, close }: { addToHand: (id: number) => void; close?: ReactNode }) {
+  const [recentCards, setRecentCards] = useRecentCards();
+  const [showStats] = useShowStats();
+  const fusions = useFusions();
+
   const [bouncingCards, setBouncingCards] = useState<{ id: number; uuid: number; start: DOMRect }[]>([]);
+
+  const stats = showStats ? getStats(fusions) : undefined;
 
   return (
     <>
@@ -79,53 +76,45 @@ export function RecentCards({
   );
 }
 
-export function RecentModal({
-  open,
-  setOpen,
-  hand,
-  addToHand,
-  recentCards,
-  setRecentCards,
-  stats,
-}: {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  hand: SimpleCard[];
-  addToHand: (id: number) => void;
-  recentCards: Record<string, number>;
-  setRecentCards: (cards: Record<string, number>) => void;
-  stats: Record<string, FusionStats>;
-}) {
-  return (
-    <dialog
-      open={open}
-      onKeyDown={(e) => {
-        if (e.key === 'Escape') setOpen(false);
-      }}
-      className="text-white z-1 p-4 inset-0 m-auto fixed w-full h-full overflow-hidden"
-    >
-      {open && (
-        <>
-          <Background type="fixed" />
-          <RecentCards
-            addToHand={(id) => {
-              addToHand(id);
+export function RecentModal({ addToHand }: { addToHand: (id: number) => void }) {
+  const [hand] = useHand();
+  const [open, setOpen] = useDialogOpen();
+  const mobile = useIsMobile();
 
-              if (Object.values(hand).filter((c) => c.location === 'hand').length >= 4) {
-                setTimeout(() => setOpen(false), 700);
+  useEffect(() => {
+    setOpen(false);
+  }, [mobile]);
+
+  return (
+    <>
+      <button onClick={() => setOpen(true)}>Recent Cards</button>
+      <dialog
+        open={open}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') setOpen(false);
+        }}
+        className="text-white z-1 p-4 inset-0 m-auto fixed w-full h-full overflow-hidden"
+      >
+        {open && (
+          <>
+            <Background type="fixed" />
+            <RecentCards
+              addToHand={(id) => {
+                addToHand(id);
+
+                if (Object.values(hand).filter((c) => c.location === 'hand').length >= 4) {
+                  setTimeout(() => setOpen(false), 700);
+                }
+              }}
+              close={
+                <button className="danger absolute right-4 top-4 !py-0" onClick={() => setOpen(false)}>
+                  X
+                </button>
               }
-            }}
-            recentCards={recentCards}
-            setRecentCards={setRecentCards}
-            close={
-              <button className="danger absolute right-4 top-4 !py-0" onClick={() => setOpen(false)}>
-                X
-              </button>
-            }
-            stats={stats}
-          />
-        </>
-      )}
-    </dialog>
+            />
+          </>
+        )}
+      </dialog>
+    </>
   );
 }

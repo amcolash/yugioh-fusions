@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "fast-fuzzy": "^1.12.0",
+    "jotai": "^2.13.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-tooltip": "^5.29.1"

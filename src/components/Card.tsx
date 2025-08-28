@@ -63,9 +63,6 @@ export function Card({
         )}
       </div>
       {showText && <span className="text-center wrap-anywhere">{friendlyName(id)}</span>}
-
-      {/* TODO: Improve the stats tooltip layout */}
-      {/* {showStats && window.innerWidth > 875 && cardStats.cardType === 'Monster' && <StatsOverlay card={id} />} */}
     </div>
   );
 

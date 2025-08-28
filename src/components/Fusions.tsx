@@ -1,17 +1,13 @@
-import { Dispatch, Fragment, SetStateAction } from 'react';
+import { Fragment } from 'react';
+import { useFusions, useHand } from 'utils/state';
 import { stats } from 'utils/util';
 
 import { Card } from './Card';
 
-export function Fusions({
-  hand,
-  setHand,
-  fusions,
-}: {
-  hand: SimpleCard[];
-  setHand: Dispatch<SetStateAction<SimpleCard[]>>;
-  fusions: FusionRecord[];
-}) {
+export function Fusions() {
+  const [hand, setHand] = useHand();
+  const fusions = useFusions();
+
   if (hand.length < 2) return null;
   if (fusions.length === 0) return <p className="text-center text-gray-400">No fusions found.</p>;
 

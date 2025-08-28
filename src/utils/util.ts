@@ -88,6 +88,14 @@ export function filterSecondaryImpossibilities(fusions: FusionRecord[], cards: S
   });
 }
 
+export function filterRecentCards(data: Record<string, number>): Record<string, number> {
+  const filtered: Record<string, number> = {};
+  for (const [key, value] of Object.entries(data)) {
+    if (value !== -1) filtered[key] = value;
+  }
+  return filtered;
+}
+
 export function satisfiesInput(card: number, input: GeneralFusionInput): boolean {
   const cardStats = stats[card];
   if (!cardStats) {

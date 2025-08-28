@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
+import { useHand, useRecentCards } from 'utils/state';
 import { useIsMobile } from 'utils/useIsMobile';
-import { generateSecondaryFusions, getStats } from 'utils/util';
 
 import { usePantry } from '../utils/pantry';
 import { Background } from './Background';
@@ -11,38 +10,17 @@ import { Loader } from './Loader';
 import { RecentCards, RecentModal } from './RecentCards';
 import { Search } from './Search';
 
-const defaultHand: SimpleCard[] = [];
-// const defaultHand: SimpleCard[] = [9, 399, 44, 461, 97].map((id) => ({ id, location: 'hand' }));
-
 export function App() {
   const mobile = useIsMobile();
-  const { loading, recentCards, setRecentCards } = usePantry();
+  const { loading } = usePantry();
 
-  const [hand, setHand] = useState<SimpleCard[]>(defaultHand);
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [showStats, setShowStats] = useState(false);
-
-  useEffect(() => {
-    setDialogOpen(false);
-  }, [mobile]);
+  const [hand, setHand] = useHand();
+  const [recentCards, setRecentCards] = useRecentCards();
 
   const addToHand = (card: SimpleCard) => {
     setHand((prev) => [...prev, card]);
-
-    // Update recent cards
-    const newCards: Record<string, number> = { ...recentCards, [card.id]: (recentCards[card.id] || 0) + 1 };
-    const entries = Object.entries(newCards).sort((a, b) => a[1] - b[1]);
-
-    // Keep the most used 50 cards (slightly more than a deck)
-    while (entries.length > 50) {
-      delete newCards[entries.shift()![0]];
-    }
-
-    setRecentCards(newCards);
+    setRecentCards((prev) => ({ ...prev, [card.id]: (prev[card.id] || 0) + 1 }));
   };
-
-  const fusions = generateSecondaryFusions(hand);
-  const stats: Record<string, FusionStats> = showStats ? getStats(fusions) : {};
 
   return (
     <>
@@ -54,37 +32,18 @@ export function App() {
       >
         <div className="grid gap-8 content-start w-screen max-w-md">
           {(hand.length === 0 || !mobile) && <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>}
-
           <Search addToHand={(id) => addToHand({ id, location: 'hand' })} />
 
-          {mobile && (
-            <>
-              <RecentModal
-                open={dialogOpen}
-                setOpen={setDialogOpen}
-                hand={hand}
-                addToHand={(id) => addToHand({ id, location: 'hand' })}
-                recentCards={recentCards}
-                setRecentCards={setRecentCards}
-                stats={showStats ? stats : undefined}
-              />
-              <button onClick={() => setDialogOpen(true)}>Recent Cards</button>
-            </>
-          )}
+          {mobile && <RecentModal addToHand={(id) => addToHand({ id, location: 'hand' })} />}
 
-          <Hand hand={hand} setHand={setHand} recentCards={recentCards} setShowStats={setShowStats} />
-          <Fusions hand={hand} setHand={setHand} fusions={fusions} />
+          <Hand />
+          <Fusions />
         </div>
 
         {!mobile && (
           <>
             <div className={hand.length > 0 || Object.keys(recentCards).length > 0 ? 'border-l border-sky-800' : ''} />
-            <RecentCards
-              addToHand={(id) => addToHand({ id, location: 'hand' })}
-              recentCards={recentCards}
-              setRecentCards={setRecentCards}
-              stats={showStats ? stats : undefined}
-            />
+            <RecentCards addToHand={(id) => addToHand({ id, location: 'hand' })} />
             <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.95} />
           </>
         )}
