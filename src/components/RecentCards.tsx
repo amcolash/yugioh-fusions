@@ -1,15 +1,16 @@
 import { Dispatch, type ReactNode, SetStateAction, useEffect, useState } from 'react';
-import { useDialogOpen, useFusions, useHand, useRecentCards, useShowStats } from 'utils/state';
+import { useAddToHand, useDialogOpen, useFusions, useHand, useRecentCards, useShowStats } from 'utils/state';
 import { useIsMobile } from 'utils/useIsMobile';
 import { getStats } from 'utils/util';
 
 import { Background } from './Background';
 import { AnimatedCard, Card } from './Card';
 
-export function RecentCards({ addToHand, close }: { addToHand: (id: number) => void; close?: ReactNode }) {
+export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; close?: ReactNode }) {
   const [recentCards, setRecentCards] = useRecentCards();
   const [showStats] = useShowStats();
   const fusions = useFusions();
+  const addToHand = useAddToHand();
 
   const [bouncingCards, setBouncingCards] = useState<{ id: number; uuid: number; start: DOMRect }[]>([]);
 
@@ -46,7 +47,9 @@ export function RecentCards({ addToHand, close }: { addToHand: (id: number) => v
                   id={parseInt(id)}
                   size="x-small"
                   onClick={(e) => {
-                    addToHand(parseInt(id));
+                    addToHand({ id: parseInt(id), location: 'hand' });
+                    onAddToHand?.();
+
                     const rect = (e.target as HTMLElement).getBoundingClientRect();
                     setBouncingCards((prev) => [...prev, { id: parseInt(id), uuid: Date.now(), start: rect }]);
                   }}
@@ -76,7 +79,7 @@ export function RecentCards({ addToHand, close }: { addToHand: (id: number) => v
   );
 }
 
-export function RecentModal({ addToHand }: { addToHand: (id: number) => void }) {
+export function RecentModal() {
   const [hand] = useHand();
   const [open, setOpen] = useDialogOpen();
   const mobile = useIsMobile();
@@ -99,9 +102,7 @@ export function RecentModal({ addToHand }: { addToHand: (id: number) => void }) 
           <>
             <Background type="fixed" />
             <RecentCards
-              addToHand={(id) => {
-                addToHand(id);
-
+              onAddToHand={() => {
                 if (Object.values(hand).filter((c) => c.location === 'hand').length >= 4) {
                   setTimeout(() => setOpen(false), 700);
                 }

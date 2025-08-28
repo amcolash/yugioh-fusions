@@ -1,6 +1,7 @@
 // import createFuzzySearch from '@nozbe/microfuzz';
 import { search as fuzzy } from 'fast-fuzzy';
 import { useState } from 'react';
+import { useAddToHand } from 'utils/state';
 
 import { friendlyName, stats, statsByName } from '../utils/util';
 import { Card } from './Card';
@@ -9,7 +10,8 @@ const searchList = Object.values(stats)
   .filter((s) => s.cardType === 'Monster')
   .map((s) => friendlyName(s.id));
 
-export function Search({ addToHand }: { addToHand: (id: number) => void }) {
+export function Search() {
+  const addToHand = useAddToHand();
   const [search, setSearch] = useState('');
 
   let results: Stats[] = fuzzy(search, searchList).map((name) => statsByName(name));
@@ -25,7 +27,7 @@ export function Search({ addToHand }: { addToHand: (id: number) => void }) {
         onKeyDown={(e) => {
           // On enter, add first result to hand
           if (e.key === 'Enter' && results.length > 0) {
-            addToHand(results[0].id);
+            addToHand({ id: results[0].id, location: 'hand' });
             setSearch('');
           }
         }}
@@ -39,7 +41,7 @@ export function Search({ addToHand }: { addToHand: (id: number) => void }) {
               <Card
                 id={item.id}
                 onClick={() => {
-                  addToHand(item.id);
+                  addToHand({ id: item.id, location: 'hand' });
                   setSearch('');
                 }}
               />

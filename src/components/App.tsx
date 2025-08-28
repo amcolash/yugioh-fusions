@@ -14,13 +14,8 @@ export function App() {
   const mobile = useIsMobile();
   const { loading } = usePantry();
 
-  const [hand, setHand] = useHand();
-  const [recentCards, setRecentCards] = useRecentCards();
-
-  const addToHand = (card: SimpleCard) => {
-    setHand((prev) => [...prev, card]);
-    setRecentCards((prev) => ({ ...prev, [card.id]: (prev[card.id] || 0) + 1 }));
-  };
+  const [hand] = useHand();
+  const [recentCards] = useRecentCards();
 
   return (
     <>
@@ -32,9 +27,9 @@ export function App() {
       >
         <div className="grid gap-8 content-start w-screen max-w-md">
           {(hand.length === 0 || !mobile) && <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>}
-          <Search addToHand={(id) => addToHand({ id, location: 'hand' })} />
+          <Search />
 
-          {mobile && <RecentModal addToHand={(id) => addToHand({ id, location: 'hand' })} />}
+          {mobile && <RecentModal />}
 
           <Hand />
           <Fusions />
@@ -43,7 +38,7 @@ export function App() {
         {!mobile && (
           <>
             <div className={hand.length > 0 || Object.keys(recentCards).length > 0 ? 'border-l border-sky-800' : ''} />
-            <RecentCards addToHand={(id) => addToHand({ id, location: 'hand' })} />
+            <RecentCards />
             <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.95} />
           </>
         )}
