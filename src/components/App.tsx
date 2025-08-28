@@ -67,7 +67,7 @@ export function App() {
             </>
           )}
 
-          <Hand hand={hand} setHand={setHand} />
+          <Hand hand={hand} setHand={setHand} recentCards={recentCards} />
           <Fusions hand={hand} setHand={setHand} />
         </div>
 

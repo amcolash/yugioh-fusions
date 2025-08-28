@@ -14,7 +14,7 @@ export function RecentCards({
 }) {
   return (
     <>
-      <div className="grid gap-6 content-start h-full max-w-3xl">
+      <div className="grid gap-6 content-start h-full max-w-5xl">
         <h2 className="text-center">Recent Cards</h2>
         {close}
 
