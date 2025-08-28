@@ -74,7 +74,7 @@ export function App() {
 
         {!mobile && (
           <>
-            <div className={hand.length > 0 && Object.keys(recentCards).length > 0 ? 'border-l border-sky-800' : ''} />
+            <div className={hand.length > 0 || Object.keys(recentCards).length > 0 ? 'border-l border-sky-800' : ''} />
             <RecentCards addToHand={(id) => addToHand({ id, location: 'hand' })} recentCards={recentCards} />
             <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.95} />
           </>
