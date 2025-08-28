@@ -169,6 +169,37 @@ export function getCustomFusions(hand: number[]): FusionRecord[] {
   return results;
 }
 
+export function getStats(fusions: FusionRecord[]): Record<string, FusionStats> {
+  const fusionStats: Record<string, FusionStats> = {};
+
+  for (const fusion of fusions) {
+    const result = fusion.secondary?.id || fusion.id;
+    const cardStats = stats[result];
+
+    for (const card of fusion.cards) {
+      fusionStats[card] = fusionStats[card] || { count: 0, totalAttack: 0, totalDefense: 0 };
+
+      fusionStats[card].count += 1;
+      fusionStats[card].totalAttack += cardStats.attack;
+      fusionStats[card].totalDefense += cardStats.defense;
+    }
+
+    if (fusion.secondary) {
+      for (const card of fusion.secondary.cards) {
+        if (card !== fusion.id) {
+          fusionStats[card] = fusionStats[card] || { count: 0, totalAttack: 0, totalDefense: 0 };
+
+          fusionStats[card].count += 1;
+          fusionStats[card].totalAttack += cardStats.attack;
+          fusionStats[card].totalDefense += cardStats.defense;
+        }
+      }
+    }
+  }
+
+  return fusionStats;
+}
+
 export function friendlyName(id: number): string {
   return stats[id].original_name || stats[id].name;
 }
