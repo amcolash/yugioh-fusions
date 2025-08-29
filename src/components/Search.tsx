@@ -3,12 +3,12 @@ import { search as fuzzy } from 'fast-fuzzy';
 import { useState } from 'react';
 import { useAddToHand } from 'utils/state';
 
-import { friendlyName, stats, statsByName } from '../utils/util';
+import { stats, statsByName } from '../utils/util';
 import { Card } from './Card';
 
 const searchList = Object.values(stats)
   .filter((s) => s.cardType === 'Monster')
-  .map((s) => friendlyName(s.id));
+  .map((s) => s.name);
 
 export function Search() {
   const addToHand = useAddToHand();

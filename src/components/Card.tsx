@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { friendlyName, stats } from 'utils/util';
+import { stats } from 'utils/util';
 
 import { StatsOverlay } from './StatsOverlay';
 
@@ -62,7 +62,7 @@ export function Card({
           </span>
         )}
       </div>
-      {showText && <span className="text-center wrap-anywhere">{friendlyName(id)}</span>}
+      {showText && <span className="text-center wrap-anywhere">{cardStats.name}</span>}
     </div>
   );
 
