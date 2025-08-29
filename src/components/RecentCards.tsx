@@ -25,20 +25,23 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
   const addToHand = useAddToHand();
   const [selectedCard, setSelectedCard] = useSelectedCard();
 
-  const [sort, setSort] = useState<SortTypes>('usage');
+  const [sort, setSort] = useState<SortTypes>('name');
   const [bouncingCards, setBouncingCards] = useState<{ id: number; uuid: number; start: DOMRect }[]>([]);
 
   const fusionStats = showStats ? getStats(fusions) : undefined;
 
   useEffect(() => {
     if (showStats) setSort('average_attack');
-    else setSort('usage');
+    else {
+      setSort('name');
+      setSelectedCard(undefined);
+    }
   }, [showStats]);
 
   return (
     <>
       <div className="grid gap-8 content-start h-full max-w-5xl">
-        <h2 className="text-center">Recent Cards</h2>
+        <h2 className="text-center">Recent Cards ({Object.values(recentCards).length})</h2>
         {close}
 
         <select onChange={(e) => setSort(e.target.value as SortTypes)} value={sort}>

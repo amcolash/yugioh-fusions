@@ -37,9 +37,13 @@ export function generateSecondaryFusions(baseHand: SimpleCard[]) {
   const combined = [...baseFusions, ...filtered2];
 
   combined.sort((a, b) => {
-    const aAtk = stats[a.secondary?.id]?.attack || stats[a.id]?.attack || 0;
-    const bAtk = stats[b.secondary?.id]?.attack || stats[b.id]?.attack || 0;
-    return bAtk - aAtk;
+    const statsA = stats[a.secondary?.id || a.id];
+    const statsB = stats[b.secondary?.id || b.id];
+
+    const attackDiff = statsB?.attack - statsA?.attack;
+
+    if (attackDiff !== 0) return attackDiff;
+    return statsB?.defense - statsA?.defense;
   });
 
   // console.log('All fusions:', combined);

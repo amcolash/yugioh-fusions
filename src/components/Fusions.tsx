@@ -22,7 +22,11 @@ export function Fusions() {
       <hr />
       <ul className="grid gap-6">
         {filteredFusions.map(({ id, cards, secondary }) => {
-          cards.sort((a, b) => stats[a].attack - stats[b].attack);
+          cards.sort((a, b) => {
+            const attackDiff = stats[a].attack - stats[b].attack;
+            if (attackDiff !== 0) return attackDiff;
+            return stats[a].defense - stats[b].defense;
+          });
 
           return (
             <Fragment key={id + cards.join(',') + (secondary ? ` + ${secondary.id}` : '')}>
