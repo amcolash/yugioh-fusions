@@ -32,7 +32,7 @@ export function Hand() {
 
       {hand.length > 0 && (
         <>
-          {hand.length > 5 && (
+          {cardsInHand.length > 5 && (
             <button className="success" onClick={() => setShowStats((prev) => !prev)}>
               Stats: {showStats ? 'On' : 'Off'}
             </button>
