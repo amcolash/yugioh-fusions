@@ -30,10 +30,7 @@ export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
     const secondaryFusions = getFusions(newHand);
     // console.log(hand, newHand, secondaryFusions);
 
-    const uniqueFromBase = secondaryFusions.filter((fusion) => baseFusions.every((base) => base.id !== fusion.id));
-
-    for (const fusion of uniqueFromBase) {
-      // console.log(`Found secondary fusion: ${stats[option.id]?.name} -> ${stats[fusion.id]?.name}`);
+    for (const fusion of secondaryFusions) {
       newFusions.push({ ...option, secondary: fusion });
     }
   }
@@ -88,7 +85,7 @@ export function filterDuplicateFusions(fusions: FusionRecord[]): FusionRecord[] 
   const uniqueFusions: FusionRecord[] = [];
 
   for (const record of fusions) {
-    const sortedCards = [...record.cards].sort((a, b) => a - b);
+    const sortedCards = [...record.cards, ...(record.secondary?.cards || [])].sort((a, b) => a - b);
     const key = sortedCards.join(',');
 
     if (!seenFusions.has(key)) {
