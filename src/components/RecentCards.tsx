@@ -82,30 +82,38 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                 const fusionStatsA = fusionStats?.[a[0]];
                 const fusionStatsB = fusionStats?.[b[0]];
 
-                const avgAttackA = fusionStatsA ? fusionStatsA.totalAttack / fusionStatsA.count : 0;
-                const avgAttackB = fusionStatsB ? fusionStatsB.totalAttack / fusionStatsB.count : 0;
-
-                const avgDefenseA = fusionStatsA ? fusionStatsA.totalDefense / fusionStatsA.count : 0;
-                const avgDefenseB = fusionStatsB ? fusionStatsB.totalDefense / fusionStatsB.count : 0;
-
                 if (!fusionStatsA) return 1;
                 if (!fusionStatsB) return -1;
+
+                const { totalAttack: totalAttackA, totalDefense: totalDefenseA, count: countA } = fusionStatsA;
+                const { totalAttack: totalAttackB, totalDefense: totalDefenseB, count: countB } = fusionStatsB;
+
+                const avgAttackA = totalAttackA / countA;
+                const avgAttackB = totalAttackB / countB;
+
+                const avgDefenseA = totalDefenseA / countA;
+                const avgDefenseB = totalDefenseB / countB;
 
                 if (sort === 'average_attack') {
                   return avgAttackB - avgAttackA;
                 } else if (sort === 'average_defense') {
                   return avgDefenseB - avgDefenseA;
                 } else if (sort === 'total_attack') {
-                  return fusionStatsB.totalAttack - fusionStatsA.totalAttack;
+                  return totalAttackB - totalAttackA;
                 } else if (sort === 'total_defense') {
-                  return fusionStatsB.totalDefense - fusionStatsA.totalDefense;
+                  return totalDefenseB - totalDefenseA;
                 } else if (sort === 'count') {
-                  return fusionStatsB.count - fusionStatsA.count;
+                  return countB - countA;
                 }
               }
             })
             .map(([id]) => {
-              const { count, totalAttack, totalDefense } = fusionStats?.[id] || { totalAttack: 0, count: 0 };
+              const { count, totalAttack, totalDefense } = fusionStats?.[id] || {
+                totalAttack: 0,
+                totalDefense: 0,
+                count: 0,
+              };
+
               const avgAttack = count > 0 ? Math.floor(totalAttack / count) : 0;
               const avgDefense = count > 0 ? Math.floor(totalDefense / count) : 0;
               const showTotal = sort === 'total_attack' || sort === 'total_defense';
