@@ -5,6 +5,7 @@ type Fusion = number[];
 type FusionRecord = { id: number; cards: Fusion; secondary?: FusionRecord };
 
 type SimpleCard = { id: number; location: 'hand' | 'field' };
+type CardWithIndex = SimpleCard & { index: number };
 
 type Type =
   | 'Aqua'

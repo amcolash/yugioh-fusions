@@ -3,8 +3,6 @@ import { useField, useHand, useRecentCards, useShowStats } from 'utils/state';
 
 import { Card } from './Card';
 
-type CardWithIndex = SimpleCard & { index: number };
-
 export function Hand() {
   const [hand, setHand] = useHand();
   const [recentCards] = useRecentCards();

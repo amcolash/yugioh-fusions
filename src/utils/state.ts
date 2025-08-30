@@ -4,6 +4,12 @@ import { Field, filterRecentCards, generateSecondaryFusions } from './util';
 
 const defaultHand: SimpleCard[] = [];
 // const defaultHand: SimpleCard[] = [9, 399, 44, 461, 97].map((id) => ({ id, location: 'hand' }));
+// const defaultHand: (SimpleCard | CardWithIndex)[] = [
+//   { id: 4, location: 'hand', index: 0 },
+//   { id: 421, location: 'hand', index: 1 },
+//   { id: 461, location: 'hand', index: 2 },
+//   { id: 97, location: 'hand', index: 4 },
+// ];
 
 const hand = atom<SimpleCard[]>(defaultHand);
 const dialogOpen = atom<boolean>(false);

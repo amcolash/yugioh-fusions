@@ -33,13 +33,21 @@ export function Fusions() {
           });
 
           return (
-            <Fragment key={id + cards.join(',') + (secondary ? ` + ${secondary.id}` : '')}>
+            <Fragment key={id + cards.join(',') + (secondary ? secondary.cards.join(',') + secondary.id : '')}>
               <div className="grid gap-4">
                 <li className="overflow-auto max-w-screen grid gap-2">
                   <div className="flex gap-1 justify-center">
                     <Card id={cards[0]} size="x-small" fuse={1} />
                     <Card id={cards[1]} size="x-small" fuse={2} />
-                    {secondary && <Card id={secondary.cards.find((v) => v !== id)} size="x-small" fuse={3} />}
+                    {/* {secondary && <Card id={secondary.cards.find((v) => v !== id)} size="x-small" fuse={3} />} */}
+
+                    {secondary && (
+                      <>
+                        <Card id={id} size="x-small" fuse={'*'} />
+                        <Card id={secondary.cards[0]} size="x-small" fuse={3} />
+                        <Card id={secondary.cards[1]} size="x-small" fuse={4} />
+                      </>
+                    )}
 
                     <span className="text-3xl my-auto">→</span>
                     <Card id={secondary?.id || id} size="x-small" />

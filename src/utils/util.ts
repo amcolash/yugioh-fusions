@@ -27,7 +27,7 @@ export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
 
     newHand = [...newHand, option.id];
 
-    const secondaryFusions = getFusions(newHand);
+    const secondaryFusions = getFusions(newHand, option.id);
     // console.log(hand, newHand, secondaryFusions);
 
     for (const fusion of secondaryFusions) {
@@ -51,10 +51,12 @@ export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
 
   // console.log('All fusions:', combined);
 
+  console.log('Total fusions:', combined.length);
+
   return combined;
 }
 
-export function getFusions(hand: number[]): FusionRecord[] {
+export function getFusions(hand: number[], requiredCard?: number): FusionRecord[] {
   const results: FusionRecord[] = [];
 
   const f = Object.entries(fusions);
@@ -63,6 +65,10 @@ export function getFusions(hand: number[]): FusionRecord[] {
     for (let j = 0; j < combinations.length; j++) {
       const [card1, card2] = combinations[j];
 
+      // Required card for secondary fusion must be used
+      if (requiredCard && card1 !== requiredCard && card2 !== requiredCard) continue;
+
+      // Can't fuse a card with itself if it's not in hand twice
       const duplicateCards = card1 === card2;
       const hasDuplicates = hand.filter((card) => card === card1).length > 1;
 
