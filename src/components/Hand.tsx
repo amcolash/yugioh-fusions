@@ -39,18 +39,29 @@ export function Hand() {
               Stats: {showStats ? 'On' : 'Off'}
             </button>
           )}
-          <button
-            className="danger"
-            onClick={() => {
-              if (confirm('Are you sure you want to clear your cards?')) {
-                setHand([]);
-                setShowStats(false);
-                setField('normal');
-              }
-            }}
-          >
-            Clear Cards
-          </button>
+
+          <div className="flex gap-2">
+            <button
+              className="danger w-full"
+              onClick={() => {
+                if (confirm('Are you sure you want to clear your cards?')) {
+                  setHand([]);
+                  setShowStats(false);
+                  setField('normal');
+                }
+              }}
+            >
+              Clear Cards
+            </button>
+            {!import.meta.env.PROD && (
+              <button
+                className="transparent border border-gray-500"
+                onClick={() => navigator.clipboard.writeText(JSON.stringify(hand))}
+              >
+                📋
+              </button>
+            )}
+          </div>
 
           {!showStats && (
             <>
