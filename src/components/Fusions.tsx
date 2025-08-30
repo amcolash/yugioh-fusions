@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import { useFusions, useHand, useSelectedCard } from 'utils/state';
-import { stats } from 'utils/util';
+import { useField, useFusions, useHand, useSelectedCard } from 'utils/state';
+import { getStats } from 'utils/util';
 
 import { Card } from './Card';
 
@@ -8,6 +8,7 @@ export function Fusions() {
   const [hand, setHand] = useHand();
   const fusions = useFusions();
   const [selectedCard] = useSelectedCard();
+  const [field] = useField();
 
   if (hand.length < 2) return null;
   if (fusions.length === 0) return <p className="text-center text-gray-400">No fusions found.</p>;
@@ -23,9 +24,12 @@ export function Fusions() {
       <ul className="grid gap-6">
         {filteredFusions.map(({ id, cards, secondary }) => {
           cards.sort((a, b) => {
-            const attackDiff = stats[a].attack - stats[b].attack;
+            const statsA = getStats(a, field);
+            const statsB = getStats(b, field);
+            const attackDiff = statsA.attack - statsB.attack;
+
             if (attackDiff !== 0) return attackDiff;
-            return stats[a].defense - stats[b].defense;
+            return statsA.defense - statsB.defense;
           });
 
           return (

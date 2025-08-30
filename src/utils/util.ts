@@ -1,9 +1,16 @@
 import data from './data.json';
 
-export const stats: Record<string, Stats> = data.stats as unknown as Record<string, Stats>;
-export const fusions: Record<string, number[][]> = data.fusions as Record<string, number[][]>;
+const stats: Record<string, Stats> = data.stats as unknown as Record<string, Stats>;
+const fusions: Record<string, number[][]> = data.fusions as Record<string, number[][]>;
 
-export function generateSecondaryFusions(baseHand: SimpleCard[]) {
+export const monsterList = Object.values(stats)
+  .filter((s) => s.cardType === 'Monster')
+  .map((s) => s.name);
+
+export const fieldTypes = ['normal', 'yami', 'mountain', 'sogen', 'forest', 'wasteland', 'umi'] as const;
+export type Field = (typeof fieldTypes)[number];
+
+export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
   const hand = baseHand.map((c) => c.id);
 
   const baseFusions = getFusions(hand);
@@ -36,8 +43,8 @@ export function generateSecondaryFusions(baseHand: SimpleCard[]) {
   const combined = [...baseFusions, ...filtered2];
 
   combined.sort((a, b) => {
-    const statsA = stats[a.secondary?.id || a.id];
-    const statsB = stats[b.secondary?.id || b.id];
+    const statsA = getStats(a.secondary?.id || a.id, field);
+    const statsB = getStats(b.secondary?.id || b.id, field);
 
     const attackDiff = statsB?.attack - statsA?.attack;
 
@@ -116,12 +123,12 @@ export function filterRecentCards(data: Record<string, number>): Record<string, 
   return filtered;
 }
 
-export function getStats(fusions: FusionRecord[]): Record<string, FusionStats> {
+export function getFusionStats(fusions: FusionRecord[], field: Field): Record<string, FusionStats> {
   const fusionStats: Record<string, FusionStats> = {};
 
   for (const fusion of fusions) {
     const result = fusion.secondary?.id || fusion.id;
-    const cardStats = stats[result];
+    const cardStats = getStats(result, field);
 
     for (const card of fusion.cards) {
       fusionStats[card] = fusionStats[card] || { count: 0, totalAttack: 0, totalDefense: 0 };
@@ -149,4 +156,65 @@ export function getStats(fusions: FusionRecord[]): Record<string, FusionStats> {
 
 export function statsByName(name: string): Stats | undefined {
   return Object.values(stats).find((stat) => stat.name.toLowerCase() === name.toLowerCase()) as Stats;
+}
+
+export function getFieldIcon(field: Field): string {
+  switch (field) {
+    case 'normal':
+      return '🌞';
+    case 'yami':
+      return '🌑';
+    case 'mountain':
+      return '⛰️';
+    case 'sogen':
+      return '🏞️';
+    case 'forest':
+      return '🌲';
+    case 'wasteland':
+      return '🏜️';
+    case 'umi':
+      return '🌊';
+    default:
+      return '❓';
+  }
+}
+
+export function getStats(id: number, field: Field): Stats {
+  const bonus = getFieldBonus(id, field);
+  return {
+    ...stats[id],
+    attack: Math.max(0, stats[id].attack + bonus),
+    defense: Math.max(0, stats[id].defense + bonus),
+  };
+}
+
+export function getFieldBonus(id: number, field: Field): number {
+  const { type } = stats[id];
+
+  switch (field) {
+    case 'yami':
+      if (type === 'Spellcaster' || type === 'Fiend') return 500;
+      if (type === 'Fairy') return -500;
+      break;
+    case 'mountain':
+      if (type === 'Dragon' || type === 'WingedBeast' || type === 'Thunder') return 500;
+      break;
+    case 'sogen':
+      if (type === 'Warrior' || type === 'Beast-Warrior') return 500;
+      break;
+    case 'forest':
+      if (type === 'Beast-Warrior' || type === 'Insect' || type === 'Plant' || type === 'Beast') return 500;
+      break;
+    case 'wasteland':
+      if (type === 'Zombie' || type === 'Dinosaur' || type === 'Rock') return 500;
+      break;
+    case 'umi':
+      if (type === 'Aqua' || type === 'Thunder') return 500;
+      if (type === 'Machine' || type === 'Pyro') return -500;
+      break;
+    case 'normal':
+      return 0;
+  }
+
+  return 0;
 }

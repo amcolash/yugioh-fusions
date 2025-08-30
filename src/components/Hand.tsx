@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { useHand, useRecentCards, useShowStats } from 'utils/state';
+import { useField, useHand, useRecentCards, useShowStats } from 'utils/state';
 
 import { Card } from './Card';
 
@@ -9,6 +9,7 @@ export function Hand() {
   const [hand, setHand] = useHand();
   const [recentCards] = useRecentCards();
   const [showStats, setShowStats] = useShowStats();
+  const [, setField] = useField();
 
   const cardsWithIndexes: CardWithIndex[] = hand.map((c, i) => ({ ...c, index: i }));
   const cardsInHand: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'hand');
@@ -23,6 +24,7 @@ export function Hand() {
             onClick={() => {
               setHand(Object.keys(recentCards).map((id) => ({ id: parseInt(id), location: 'hand' })));
               setShowStats(true);
+              setField('normal');
             }}
           >
             Best Combinations
@@ -43,6 +45,7 @@ export function Hand() {
               if (confirm('Are you sure you want to clear your cards?')) {
                 setHand([]);
                 setShowStats(false);
+                setField('normal');
               }
             }}
           >

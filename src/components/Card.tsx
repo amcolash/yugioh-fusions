@@ -1,6 +1,7 @@
 import { MouseEventHandler } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { stats } from 'utils/util';
+import { useField } from 'utils/state';
+import { getStats } from 'utils/util';
 
 import { StatsOverlay } from './StatsOverlay';
 
@@ -19,7 +20,8 @@ export function Card({
   fuse?: number | string;
   showStats?: boolean;
 }) {
-  const cardStats = stats[id];
+  const [field] = useField();
+  const cardStats = getStats(id, field);
 
   let width = 'min-w-32';
   if (size === 'small') width = 'min-w-28';

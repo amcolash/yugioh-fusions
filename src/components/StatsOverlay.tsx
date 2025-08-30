@@ -1,4 +1,5 @@
-import { stats } from 'utils/util';
+import { useField } from 'utils/state';
+import { getStats } from 'utils/util';
 
 function StatLabel({ name, value }: { name: string; value: string | number | (string | number)[] }) {
   return (
@@ -9,7 +10,8 @@ function StatLabel({ name, value }: { name: string; value: string | number | (st
 }
 
 export function StatsOverlay({ card }: { card: number }) {
-  const cardStats = stats[card];
+  const [field] = useField();
+  const cardStats = getStats(card, field);
 
   return (
     <>

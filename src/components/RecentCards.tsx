@@ -2,6 +2,7 @@ import { type ReactNode, use, useEffect, useState } from 'react';
 import {
   useAddToHand,
   useDialogOpen,
+  useField,
   useFusions,
   useHand,
   useRecentCards,
@@ -9,7 +10,7 @@ import {
   useShowStats,
 } from 'utils/state';
 import { useIsMobile } from 'utils/useIsMobile';
-import { getStats, stats } from 'utils/util';
+import { getFusionStats, getStats } from 'utils/util';
 
 import { Background } from './Background';
 import { AnimatedCard, Card } from './Card';
@@ -24,11 +25,12 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
   const fusions = useFusions();
   const addToHand = useAddToHand();
   const [selectedCard, setSelectedCard] = useSelectedCard();
+  const [field] = useField();
 
   const [sort, setSort] = useState<SortTypes>('name');
   const [bouncingCards, setBouncingCards] = useState<{ id: number; uuid: number; start: DOMRect }[]>([]);
 
-  const fusionStats = showStats ? getStats(fusions) : undefined;
+  const fusionStats = showStats ? getFusionStats(fusions, field) : undefined;
 
   useEffect(() => {
     if (showStats) setSort('average_attack');
@@ -55,43 +57,46 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
         <div className="flex flex-wrap justify-center gap-3 overflow-auto h-full">
           {Object.entries(recentCards)
             .sort((a, b) => {
+              const baseStatsA = getStats(parseInt(a[0]), field);
+              const baseStatsB = getStats(parseInt(b[0]), field);
+
               if (sort === 'id') {
                 return parseInt(a[0]) - parseInt(b[0]);
               } else if (sort === 'name') {
-                return stats[a[0]].name.localeCompare(stats[b[0]].name);
+                return baseStatsA.name.localeCompare(baseStatsB.name);
               } else if (sort === 'level') {
-                return stats[b[0]].level - stats[a[0]].level;
+                return baseStatsB.level - baseStatsA.level;
               } else if (sort === 'attack') {
-                return stats[b[0]].attack - stats[a[0]].attack;
+                return baseStatsB.attack - baseStatsA.attack;
               } else if (sort === 'defense') {
-                return stats[b[0]].defense - stats[a[0]].defense;
+                return baseStatsB.defense - baseStatsA.defense;
               } else if (sort === 'usage') {
                 return b[1] - a[1];
               }
 
               if (fusionStats) {
-                const statsA = fusionStats?.[a[0]];
-                const statsB = fusionStats?.[b[0]];
+                const fusionStatsA = fusionStats?.[a[0]];
+                const fusionStatsB = fusionStats?.[b[0]];
 
-                const avgAttackA = statsA ? statsA.totalAttack / statsA.count : 0;
-                const avgAttackB = statsB ? statsB.totalAttack / statsB.count : 0;
+                const avgAttackA = fusionStatsA ? fusionStatsA.totalAttack / fusionStatsA.count : 0;
+                const avgAttackB = fusionStatsB ? fusionStatsB.totalAttack / fusionStatsB.count : 0;
 
-                const avgDefenseA = statsA ? statsA.totalDefense / statsA.count : 0;
-                const avgDefenseB = statsB ? statsB.totalDefense / statsB.count : 0;
+                const avgDefenseA = fusionStatsA ? fusionStatsA.totalDefense / fusionStatsA.count : 0;
+                const avgDefenseB = fusionStatsB ? fusionStatsB.totalDefense / fusionStatsB.count : 0;
 
-                if (!statsA) return 1;
-                if (!statsB) return -1;
+                if (!fusionStatsA) return 1;
+                if (!fusionStatsB) return -1;
 
                 if (sort === 'average_attack') {
                   return avgAttackB - avgAttackA;
                 } else if (sort === 'average_defense') {
                   return avgDefenseB - avgDefenseA;
                 } else if (sort === 'total_attack') {
-                  return statsB.totalAttack - statsA.totalAttack;
+                  return fusionStatsB.totalAttack - fusionStatsA.totalAttack;
                 } else if (sort === 'total_defense') {
-                  return statsB.totalDefense - statsA.totalDefense;
+                  return fusionStatsB.totalDefense - fusionStatsA.totalDefense;
                 } else if (sort === 'count') {
-                  return statsB.count - statsA.count;
+                  return fusionStatsB.count - fusionStatsA.count;
                 }
               }
             })

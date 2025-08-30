@@ -15,6 +15,7 @@ type Type =
   | 'Fairy'
   | 'Fish'
   | 'Fiend'
+  | 'Insect'
   | 'Machine'
   | 'Plant'
   | 'Pyro'
