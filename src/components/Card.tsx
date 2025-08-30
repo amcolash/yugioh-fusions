@@ -1,7 +1,7 @@
 import { MouseEventHandler } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { useField } from 'utils/state';
-import { getStats } from 'utils/util';
+import { getFieldBonus, getStats } from 'utils/util';
 
 import { StatsOverlay } from './StatsOverlay';
 
@@ -22,6 +22,8 @@ export function Card({
 }) {
   const [field] = useField();
   const cardStats = getStats(id, field);
+  const bonus = getFieldBonus(id, field);
+  const bonusClass = bonus > 0 ? 'text-green-400' : bonus < 0 ? 'text-red-500' : 'text-white';
 
   let width = 'min-w-32';
   if (size === 'small') width = 'min-w-28';
@@ -50,7 +52,9 @@ export function Card({
           </span>
         )}
 
-        <span className="absolute bottom-0 right-0 rounded-tl-sm text-sm text-right rounded-br-sm bg-gray-900 opacity-60 px-1">
+        <span
+          className={`absolute bottom-0 right-0 rounded-tl-sm text-sm text-right rounded-br-sm bg-gray-900 opacity-60 px-1 ${bonusClass}`}
+        >
           {cardStats.attack}
           <br />
           {cardStats.defense}
