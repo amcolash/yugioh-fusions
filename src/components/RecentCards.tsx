@@ -122,8 +122,11 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                           setSelectedCard(parseInt(id));
                         }
                       } else {
-                        addToHand({ id: parseInt(id), location: 'hand' });
-                        onAddToHand?.();
+                        // Add timeout to instantly animate card and prevent stutter for re-calc fusions
+                        setTimeout(() => {
+                          addToHand({ id: parseInt(id), location: 'hand' });
+                          onAddToHand?.();
+                        }, 50);
 
                         const rect = (e.target as HTMLElement).getBoundingClientRect();
                         setBouncingCards((prev) => [...prev, { id: parseInt(id), uuid: Date.now(), start: rect }]);

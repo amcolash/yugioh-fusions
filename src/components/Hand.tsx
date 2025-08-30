@@ -63,17 +63,21 @@ export function Hand() {
 
           {!showStats && (
             <>
-              <CardSet
-                cards={cardsInField}
-                onRemove={(card) => setHand([...cardsInField.filter((c) => c.index !== card.index), ...cardsInHand])}
-                setHand={setHand}
-              />
+              {cardsInField.length > 0 && (
+                <CardSet
+                  cards={cardsInField}
+                  onRemove={(card) => setHand([...cardsInField.filter((c) => c.index !== card.index), ...cardsInHand])}
+                  setHand={setHand}
+                />
+              )}
 
-              <CardSet
-                cards={cardsInHand}
-                onRemove={(card) => setHand([...cardsInHand.filter((c) => c.index !== card.index), ...cardsInField])}
-                setHand={setHand}
-              />
+              {cardsInHand.length > 0 && (
+                <CardSet
+                  cards={cardsInHand}
+                  onRemove={(card) => setHand([...cardsInHand.filter((c) => c.index !== card.index), ...cardsInField])}
+                  setHand={setHand}
+                />
+              )}
             </>
           )}
         </>
