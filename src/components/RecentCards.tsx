@@ -1,7 +1,9 @@
 import { type ReactNode, useEffect, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 import {
   useAddToHand,
   useDialogOpen,
+  useExcludedCards,
   useField,
   useFusions,
   useHand,
@@ -25,6 +27,7 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
   const fusions = useFusions();
   const addToHand = useAddToHand();
   const [selectedCard, setSelectedCard] = useSelectedCard();
+  const [excludedCards, setExcludedCards] = useExcludedCards();
   const [field] = useField();
 
   const [sort, setSort] = useState<SortTypes>('name');
@@ -37,6 +40,7 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
     else {
       setSort('name');
       setSelectedCard(undefined);
+      setExcludedCards([]);
     }
   }, [showStats]);
 
@@ -108,7 +112,10 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
 
               return (
                 <div
-                  className={showStats && selectedCard === parseInt(id) ? 'ring-4 ring-blue-400 rounded' : undefined}
+                  className={twMerge(
+                    showStats && selectedCard === parseInt(id) && 'ring-4 ring-blue-400 rounded',
+                    showStats && excludedCards.includes(parseInt(id)) && 'ring-4 ring-red-400'
+                  )}
                   key={id}
                 >
                   <Card
@@ -116,6 +123,11 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                     size="x-small"
                     onClick={(e) => {
                       if (showStats) {
+                        if (excludedCards.includes(parseInt(id))) {
+                          const newExcluded = excludedCards.filter((card) => card !== parseInt(id));
+                          setExcludedCards(newExcluded);
+                        }
+
                         if (selectedCard === parseInt(id)) {
                           setSelectedCard(undefined);
                         } else {
@@ -133,9 +145,21 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                       }
                     }}
                     onRightClick={() => {
-                      const newCards = { ...recentCards };
-                      newCards[id] = -1;
-                      setRecentCards(newCards);
+                      if (showStats) {
+                        if (selectedCard === parseInt(id)) setSelectedCard(undefined);
+
+                        if (excludedCards.includes(parseInt(id))) {
+                          const newExcluded = excludedCards.filter((card) => card !== parseInt(id));
+                          setExcludedCards(newExcluded);
+                        } else {
+                          const newExcluded = [...excludedCards, parseInt(id)];
+                          setExcludedCards(newExcluded);
+                        }
+                      } else {
+                        const newCards = { ...recentCards };
+                        newCards[id] = -1;
+                        setRecentCards(newCards);
+                      }
                     }}
                     fuse={
                       fusionStats

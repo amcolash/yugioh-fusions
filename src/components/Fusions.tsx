@@ -1,5 +1,5 @@
 import { List, RowComponentProps } from 'react-window';
-import { useField, useFusions, useHand, useSelectedCard } from 'utils/state';
+import { useExcludedCards, useField, useFusions, useHand, useSelectedCard } from 'utils/state';
 import { useIsMobile } from 'utils/useIsMobile';
 import { getStats } from 'utils/util';
 
@@ -24,7 +24,6 @@ export function Fusions() {
   return (
     <>
       <hr />
-
       <List
         className="sm:pr-2"
         rowComponent={FusionRow}

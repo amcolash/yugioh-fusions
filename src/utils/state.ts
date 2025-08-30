@@ -14,9 +14,18 @@ const defaultHand: SimpleCard[] = [];
 const hand = atom<SimpleCard[]>(defaultHand);
 const dialogOpen = atom<boolean>(false);
 const showStats = atom<boolean>(false);
-const fusions = atom<FusionRecord[]>((get) => generateSecondaryFusions(get(hand), get(field)));
 const selectedCard = atom<number | undefined>();
+const excludedCards = atom<number[]>([]);
 const field = atom<Field>('normal');
+
+const fusions = atom<FusionRecord[]>((get) => {
+  const fusions = generateSecondaryFusions(get(hand), get(field));
+  const excluded = get(excludedCards);
+
+  return fusions.filter(({ cards, secondary }) => {
+    return !cards.some((c) => excluded.includes(c)) && !secondary?.cards.some((c) => excluded.includes(c));
+  });
+});
 
 const recentCards = atom<Record<string, number>>({});
 const recentCardsFiltered = atom(
@@ -32,9 +41,11 @@ const addToHandAtom = atom(null, (_get, set, card: SimpleCard) => {
 export const useHand = () => useAtom(hand);
 export const useDialogOpen = () => useAtom(dialogOpen);
 export const useShowStats = () => useAtom(showStats);
-export const useFusions = () => useAtomValue(fusions);
 export const useSelectedCard = () => useAtom(selectedCard);
+export const useExcludedCards = () => useAtom(excludedCards);
 export const useField = () => useAtom(field);
+
+export const useFusions = () => useAtomValue(fusions);
 
 export const useRecentCardsRaw = () => useAtom(recentCards);
 export const useRecentCards = () => useAtom(recentCardsFiltered);
