@@ -34,9 +34,9 @@ export function Select<T>({
       >
         {options.map((f) => (
           <ListboxOption key={f.label} value={f.value}>
-            <div className="flex items-center text-left text-gray-300 px-2 py-1.5 my-2 hover:bg-sky-900 select-none">
-              <div className="w-6">{value === f.value && '✓'}</div>
-              {f.icon && <img src={f.icon} className="size-6 mr-2" />}
+            <div className="flex gap-3 items-center text-left text-gray-300 px-2 py-1.5 my-2 hover:bg-sky-900 select-none">
+              <div className="w-4">{value === f.value && '✓'}</div>
+              {f.icon && <img src={f.icon} className="size-6" />}
               <span className="capitalize">{f.label}</span>
             </div>
           </ListboxOption>
