@@ -54,16 +54,40 @@ export function Hand() {
               Clear Cards
             </button>
             {!import.meta.env.PROD && (
-              <button
-                className="transparent border border-gray-500 duration-250"
-                onClick={(e) => {
-                  navigator.clipboard.writeText(JSON.stringify(hand));
-                  e.target.classList.add('success');
-                  setTimeout(() => e.target.classList.remove('success'), 250);
-                }}
-              >
-                📋
-              </button>
+              <>
+                <button
+                  className="transparent border border-gray-500 duration-250"
+                  onClick={(e) => {
+                    try {
+                      navigator.clipboard.writeText(JSON.stringify(hand));
+                      e.target.classList.add('success');
+                      setTimeout(() => e.target.classList.remove('success'), 250);
+                    } catch (error) {
+                      console.error('Failed to copy to clipboard:', error);
+                      e.target.classList.add('danger');
+                      setTimeout(() => e.target.classList.remove('danger'), 250);
+                    }
+                  }}
+                >
+                  📃
+                </button>
+                <button
+                  className="transparent border border-gray-500 duration-250"
+                  onClick={async (e) => {
+                    try {
+                      setHand(JSON.parse(await navigator.clipboard.readText()));
+                      e.target.classList.add('success');
+                      setTimeout(() => e.target.classList.remove('success'), 250);
+                    } catch (error) {
+                      console.error('Failed to read clipboard contents:', error);
+                      e.target.classList.add('danger');
+                      setTimeout(() => e.target.classList.remove('danger'), 250);
+                    }
+                  }}
+                >
+                  📋
+                </button>
+              </>
             )}
           </div>
 
