@@ -1,5 +1,3 @@
-import { faSun } from '@fortawesome/free-solid-svg-icons/faSun';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ReactNode } from 'react';
 
 import data from './data.json';
@@ -209,31 +207,13 @@ export function getFieldIcon(field: Field): string {
   }
 }
 
-export function getGuardianStarSymbol(star: GuardianStar): ReactNode {
-  switch (star) {
-    case 'Sun':
-      return '☉';
-    case 'Mercury':
-      return '☿';
-    case 'Venus':
-      return '♀';
-    case 'Moon':
-      return '☾';
-    case 'Mars':
-      return '♂';
-    case 'Jupiter':
-      return '♃';
-    case 'Saturn':
-      return '♄';
-    case 'Uranus':
-      return '⛢';
-    case 'Neptune':
-      return '♆';
-    case 'Pluto':
-      return '♇';
-    default:
-      return '❓';
-  }
+export function getGuardianStarSymbol(star: GuardianStar, bonus?: 'positive' | 'negative'): ReactNode {
+  return (
+    <img
+      src={`${import.meta.env.BASE_URL}/stars/${star.toLowerCase()}.png`}
+      className={`inline-block size-6 star ${bonus === 'positive' ? 'star-green' : bonus === 'negative' ? 'star-red' : ''}`}
+    />
+  );
 }
 
 export function getGuardianStarBonus(star: GuardianStar): GuardianStar {

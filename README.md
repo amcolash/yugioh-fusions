@@ -2,10 +2,11 @@
 
 Data/Images came from a few sources:
 
-- https://yugioh.fandom.com/wiki/List_of_Yu-Gi-Oh!_Forbidden_Memories_cards
 - https://gamefaqs.gamespot.com/ps/561010-yu-gi-oh-forbidden-memories/faqs/16613
+- https://yugipedia.com/wiki/List_of_Yu-Gi-Oh!_Forbidden_Memories_cards
 - https://yugipedia.com/wiki/Gallery_of_Yu-Gi-Oh!_Forbidden_Memories_cards_(North_American_English)
 - https://yugipedia.com/wiki/List_of_Yu-Gi-Oh!_Forbidden_Memories_Fusions_(001%E2%80%93200)
+- https://yugioh.fandom.com/wiki/Guardian_Star
 
 ---
 

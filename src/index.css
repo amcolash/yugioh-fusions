@@ -64,3 +64,11 @@ hr {
     }
   }
 }
+
+.star-green {
+  filter: brightness(50%) sepia(100%) saturate(10000%) hue-rotate(150deg);
+}
+
+.star-red {
+  filter: brightness(50%) sepia(100%) saturate(10000%);
+}

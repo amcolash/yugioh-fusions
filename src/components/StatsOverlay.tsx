@@ -36,27 +36,28 @@ export function StatsOverlay({ card }: { card: number }) {
       <StatLabel name="Name" value={cardStats.name} />
       <StatLabel name="ID" value={'#' + cardStats.id} />
       <StatLabel
-        name="Guardian Stars"
-        value={cardStats.guardianStars.map(getGuardianStarSymbol).join(' ')}
-        className="text-xl font-bold leading-none"
+        name="Star 1"
+        value={
+          <>
+            {getGuardianStarSymbol(cardStats.guardianStars[0])}
+            {' | '}
+            {getGuardianStarSymbol(getGuardianStarBonus(cardStats.guardianStars[0]), 'positive')}
+            {' | '}
+            {getGuardianStarSymbol(getGuardianStarWeakness(cardStats.guardianStars[0]), 'negative')}
+          </>
+        }
       />
       <StatLabel
-        name="Star Bonus"
+        name="Star 2"
         value={
-          getGuardianStarSymbol(getGuardianStarBonus(cardStats.guardianStars[0])) +
-          ' ' +
-          getGuardianStarSymbol(getGuardianStarBonus(cardStats.guardianStars[1]))
+          <>
+            {getGuardianStarSymbol(cardStats.guardianStars[1])}
+            {' | '}
+            {getGuardianStarSymbol(getGuardianStarBonus(cardStats.guardianStars[1]), 'positive')}
+            {' | '}
+            {getGuardianStarSymbol(getGuardianStarWeakness(cardStats.guardianStars[1]), 'negative')}
+          </>
         }
-        className="text-xl font-bold text-green-400 leading-none"
-      />
-      <StatLabel
-        name="Star Weakness"
-        value={
-          getGuardianStarSymbol(getGuardianStarWeakness(cardStats.guardianStars[0])) +
-          ' ' +
-          getGuardianStarSymbol(getGuardianStarWeakness(cardStats.guardianStars[1]))
-        }
-        className="text-xl font-bold text-red-400 leading-none"
       />
 
       {Object.entries(cardStats)
