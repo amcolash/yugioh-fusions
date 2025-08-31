@@ -11,17 +11,12 @@ html {
   @apply px-5 py-8 flex justify-center sm:max-h-screen;
 }
 
-input,
-select {
+input {
   @apply border border-gray-500 rounded py-1 px-3 text-center h-9;
 
   &::placeholder {
     @apply text-center;
   }
-}
-
-select {
-  @apply text-gray-400;
 }
 
 button {

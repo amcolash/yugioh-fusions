@@ -93,7 +93,7 @@ export function usePantry() {
         setTimeout(() => setLoading(false), Math.max(0, 250 - (Date.now() - start)));
       })
       .catch(() => {
-        setTimeout(() => window.location.reload(), 2000);
+        setTimeout(() => window.location.reload(), 3000);
       });
   }, []);
 

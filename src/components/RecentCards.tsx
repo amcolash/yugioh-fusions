@@ -16,6 +16,7 @@ import { getFusionStats, getStats } from 'utils/util';
 
 import { Background } from './Background';
 import { AnimatedCard, Card } from './Card';
+import { Select } from './Select';
 
 const statsSort = ['average_attack', 'average_defense', 'total_attack', 'total_defense', 'count'] as const;
 const basicSort = ['attack', 'defense', 'id', 'level', 'name', 'usage'] as const;
@@ -50,13 +51,15 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
         <h2 className="text-center">Recent Cards ({Object.values(recentCards).length})</h2>
         {close}
 
-        <select onChange={(e) => setSort(e.target.value as SortTypes)} value={sort}>
-          {(showStats ? statsSort : basicSort).map((sort) => (
-            <option key={sort} value={sort}>
-              {sort.replace('_', ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
-            </option>
-          ))}
-        </select>
+        <Select
+          value={sort}
+          setValue={setSort}
+          options={(showStats ? statsSort : basicSort).map((sort) => ({
+            label: sort.replace('_', ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+            value: sort,
+          }))}
+          fullWidth
+        />
 
         <div className="flex flex-wrap justify-center gap-3 overflow-auto h-full">
           {Object.entries(recentCards)

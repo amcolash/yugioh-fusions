@@ -1,10 +1,10 @@
-// import createFuzzySearch from '@nozbe/microfuzz';
 import { search as fuzzy } from 'fast-fuzzy';
 import { useState } from 'react';
 import { useAddToHand, useField } from 'utils/state';
 
-import { Field, fieldTypes, getFieldIcon, getStats, monsterList, statsByName } from '../utils/util';
+import { fieldTypes, getStats, monsterList, statsByName } from '../utils/util';
 import { Card } from './Card';
+import { Select } from './Select';
 
 export function Search() {
   const addToHand = useAddToHand();
@@ -32,13 +32,16 @@ export function Search() {
           }}
           placeholder="Search by name or id"
         />
-        <select value={field} onChange={(e) => setField(e.target.value as Field)}>
-          {fieldTypes.map((f) => (
-            <option key={f} value={f}>
-              {getFieldIcon(f)}
-            </option>
-          ))}
-        </select>
+
+        <Select
+          value={field}
+          setValue={setField}
+          options={fieldTypes.map((f) => ({
+            label: f,
+            value: f,
+            icon: `${import.meta.env.BASE_URL}/field/${f}.png`,
+          }))}
+        />
       </div>
 
       {(results.length === 1 || (search.length > 2 && results.length > 1)) && (

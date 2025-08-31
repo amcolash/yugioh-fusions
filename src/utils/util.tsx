@@ -57,8 +57,6 @@ export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
 
   // console.log('All fusions:', combined);
 
-  console.log('Total fusions:', combined.length);
-
   return combined;
 }
 
