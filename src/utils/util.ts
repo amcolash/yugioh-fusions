@@ -37,7 +37,8 @@ export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
 
   const filtered1 = filterDuplicateFusions(newFusions);
   const filtered2 = filterSecondaryImpossibilities(filtered1, baseHand);
-  const combined = [...baseFusions, ...filtered2];
+  const filtered3 = filterSecondaryExtras(filtered2, baseFusions);
+  const combined = [...baseFusions, ...filtered3];
 
   combined.sort((a, b) => {
     const statsA = getStats(a.secondary?.id || a.id, field);
@@ -102,6 +103,25 @@ export function filterDuplicateFusions(fusions: FusionRecord[]): FusionRecord[] 
 
   return uniqueFusions;
 }
+
+export function filterSecondaryExtras(fusions: FusionRecord[], baseFusions: FusionRecord[]): FusionRecord[] {
+  return fusions.filter((fusion) => {
+    const primaryCards = fusion.cards;
+    const secondaryCards = fusion.secondary.cards.filter((c) => c !== fusion.id);
+    const cards = [...primaryCards, ...secondaryCards];
+
+    for (const f of baseFusions) {
+      // Remove all fusions that have an extra card for the same outcome
+      if (fusion.secondary.id === f.id && cards.includes(f.cards[0]) && cards.includes(f.cards[1])) {
+        return false;
+      }
+    }
+
+    return true; // No extra cards found
+  });
+}
+
+// This logic is wrong. If one of the cards is on the field, it needs to be primary and additional (non-field) is secondary
 
 // We can only fuse a secondary if both base cards are in hand. The third card can be either in hand or field
 export function filterSecondaryImpossibilities(fusions: FusionRecord[], cards: SimpleCard[]): FusionRecord[] {
