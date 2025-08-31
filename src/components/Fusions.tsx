@@ -1,5 +1,5 @@
 import { List, RowComponentProps } from 'react-window';
-import { useExcludedCards, useField, useFusions, useHand, useSelectedCard } from 'utils/state';
+import { useField, useFusions, useHand, useSelectedCard } from 'utils/state';
 import { useIsMobile } from 'utils/useIsMobile';
 import { getStats } from 'utils/util';
 

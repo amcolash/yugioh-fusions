@@ -1,3 +1,7 @@
+import { faSun } from '@fortawesome/free-solid-svg-icons/faSun';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ReactNode } from 'react';
+
 import data from './data.json';
 
 const stats: Record<string, Stats> = data.stats as unknown as Record<string, Stats>;
@@ -9,6 +13,9 @@ export const monsterList = Object.values(stats)
 
 export const fieldTypes = ['normal', 'yami', 'mountain', 'sogen', 'forest', 'wasteland', 'umi'] as const;
 export type Field = (typeof fieldTypes)[number];
+
+export const starGroup1: GuardianStar[] = ['Sun', 'Moon', 'Venus', 'Mercury'];
+export const starGroup2: GuardianStar[] = ['Mars', 'Jupiter', 'Saturn', 'Uranus', 'Pluto', 'Neptune'];
 
 export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
   const hand = baseHand.map((c) => c.id);
@@ -202,7 +209,7 @@ export function getFieldIcon(field: Field): string {
   }
 }
 
-export function getGuardianStarSymbol(star: GuardianStar): string {
+export function getGuardianStarSymbol(star: GuardianStar): ReactNode {
   switch (star) {
     case 'Sun':
       return '☉';
@@ -227,6 +234,18 @@ export function getGuardianStarSymbol(star: GuardianStar): string {
     default:
       return '❓';
   }
+}
+
+export function getGuardianStarBonus(star: GuardianStar): GuardianStar {
+  if (starGroup1.includes(star)) return starGroup1[(starGroup1.indexOf(star) + 1) % starGroup1.length];
+  if (starGroup2.includes(star)) return starGroup2[(starGroup2.indexOf(star) + 1) % starGroup2.length];
+}
+
+export function getGuardianStarWeakness(star: GuardianStar): GuardianStar {
+  if (starGroup1.includes(star))
+    return starGroup1[(starGroup1.indexOf(star) - 1 + starGroup1.length) % starGroup1.length];
+  if (starGroup2.includes(star))
+    return starGroup2[(starGroup2.indexOf(star) - 1 + starGroup2.length) % starGroup2.length];
 }
 
 export function getStats(id: number, field: Field): Stats {

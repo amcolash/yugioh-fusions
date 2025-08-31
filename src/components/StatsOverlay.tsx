@@ -1,19 +1,26 @@
+import { ComponentProps, ReactNode } from 'react';
 import { useField } from 'utils/state';
-import { getFieldBonus, getStats } from 'utils/util';
+import {
+  getFieldBonus,
+  getGuardianStarBonus,
+  getGuardianStarSymbol,
+  getGuardianStarWeakness,
+  getStats,
+} from 'utils/util';
 
 function StatLabel({
   name,
   value,
-  bonusClass,
+  className,
 }: {
   name: string;
-  value: string | number | (string | number)[];
-  bonusClass?: string;
+  value: string | number | (string | number)[] | ReactNode;
+  className?: ComponentProps<'div'>['className'];
 }) {
   return (
     <div>
       <strong className="capitalize text-sky-500">{name}</strong>:{' '}
-      <span className={bonusClass}>{Array.isArray(value) ? value.join(', ') : value}</span>
+      <span className={className}>{Array.isArray(value) ? value.join(', ') : value}</span>
     </div>
   );
 }
@@ -28,6 +35,29 @@ export function StatsOverlay({ card }: { card: number }) {
     <>
       <StatLabel name="Name" value={cardStats.name} />
       <StatLabel name="ID" value={'#' + cardStats.id} />
+      <StatLabel
+        name="Guardian Stars"
+        value={cardStats.guardianStars.map(getGuardianStarSymbol).join(' ')}
+        className="text-xl font-bold leading-none"
+      />
+      <StatLabel
+        name="Star Bonus"
+        value={
+          getGuardianStarSymbol(getGuardianStarBonus(cardStats.guardianStars[0])) +
+          ' ' +
+          getGuardianStarSymbol(getGuardianStarBonus(cardStats.guardianStars[1]))
+        }
+        className="text-xl font-bold text-green-400 leading-none"
+      />
+      <StatLabel
+        name="Star Weakness"
+        value={
+          getGuardianStarSymbol(getGuardianStarWeakness(cardStats.guardianStars[0])) +
+          ' ' +
+          getGuardianStarSymbol(getGuardianStarWeakness(cardStats.guardianStars[1]))
+        }
+        className="text-xl font-bold text-red-400 leading-none"
+      />
 
       {Object.entries(cardStats)
         .sort((a, b) => a[0].localeCompare(b[0]))
@@ -37,7 +67,7 @@ export function StatsOverlay({ card }: { card: number }) {
             key={key}
             name={key}
             value={value}
-            bonusClass={key === 'attack' || key === 'defense' ? bonusClass : undefined}
+            className={key === 'attack' || key === 'defense' ? bonusClass : undefined}
           />
         ))}
     </>
