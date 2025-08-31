@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { useField, useHand, useRecentCards, useShowStats } from 'utils/state';
+import { useExcludedCards, useField, useHand, useRecentCards, useShowStats } from 'utils/state';
 
 import { Card } from './Card';
 
@@ -7,6 +7,7 @@ export function Hand() {
   const [hand, setHand] = useHand();
   const [recentCards] = useRecentCards();
   const [showStats, setShowStats] = useShowStats();
+  const [, setExcluded] = useExcludedCards();
   const [, setField] = useField();
 
   const cardsWithIndexes: CardWithIndex[] = hand.map((c, i) => ({ ...c, index: i }));
@@ -44,6 +45,7 @@ export function Hand() {
               onClick={() => {
                 if (confirm('Are you sure you want to clear your cards?')) {
                   setHand([]);
+                  setExcluded([]);
                   setShowStats(false);
                   setField('normal');
                 }
@@ -53,8 +55,12 @@ export function Hand() {
             </button>
             {!import.meta.env.PROD && (
               <button
-                className="transparent border border-gray-500"
-                onClick={() => navigator.clipboard.writeText(JSON.stringify(hand))}
+                className="transparent border border-gray-500 duration-250"
+                onClick={(e) => {
+                  navigator.clipboard.writeText(JSON.stringify(hand));
+                  e.target.classList.add('success');
+                  setTimeout(() => e.target.classList.remove('success'), 250);
+                }}
               >
                 📋
               </button>
@@ -95,24 +101,34 @@ function CardSet({
   onRemove: (card: CardWithIndex) => void;
   setHand: Dispatch<SetStateAction<SimpleCard[]>>;
 }) {
+  const [excluded, setExcluded] = useExcludedCards();
+
   return (
     <ul className="flex gap-2 flex-wrap max-w-screen justify-center">
       {cards.map((card, index) => (
         <li key={index}>
           <div className="grid gap-2 h-full content-between justify-items-center">
-            <Card
-              id={card.id}
-              size="2x-small"
-              onClick={() => {
-                setHand((prev) => {
-                  const newCards = [...prev];
-                  const found = newCards.find((c) => c.id == card.id);
-                  found.location = found.location === 'field' ? 'hand' : 'field';
+            <div className={excluded.includes(card.id) ? 'ring-4 ring-red-400' : ''}>
+              <Card
+                id={card.id}
+                size="2x-small"
+                onClick={() => {
+                  setHand((prev) => {
+                    const newCards = [...prev];
+                    const found = newCards.find((c) => c.id == card.id);
+                    found.location = found.location === 'field' ? 'hand' : 'field';
 
-                  return newCards;
-                });
-              }}
-            />
+                    return newCards;
+                  });
+                }}
+                onRightClick={() => {
+                  setExcluded((prev) => {
+                    if (prev.includes(card.id)) return prev.filter((id) => id !== card.id);
+                    return [...prev, card.id];
+                  });
+                }}
+              />
+            </div>
             <button className="danger !py-0 w-1/2" onClick={() => onRemove(card)}>
               X
             </button>
