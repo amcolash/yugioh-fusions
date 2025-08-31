@@ -1,6 +1,18 @@
 /// <reference types="vite/client" />
 
 type CardType = 'Equip' | 'Field' | 'Magic' | 'Monster' | 'Ritual' | 'Trap';
+type GuardianStar =
+  | 'Sun'
+  | 'Mercury'
+  | 'Venus'
+  | 'Moon'
+  | 'Mars'
+  | 'Jupiter'
+  | 'Saturn'
+  | 'Uranus'
+  | 'Neptune'
+  | 'Pluto';
+
 type Fusion = number[];
 type FusionRecord = { id: number; cards: Fusion; secondary?: FusionRecord };
 
@@ -49,6 +61,7 @@ type Stats = {
   level: number;
   attack: number;
   defense: number;
+  guardianStars: GuardianStar[];
   password: number;
   starchips: number;
   image: string;

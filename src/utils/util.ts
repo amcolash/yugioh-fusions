@@ -202,6 +202,33 @@ export function getFieldIcon(field: Field): string {
   }
 }
 
+export function getGuardianStarSymbol(star: GuardianStar): string {
+  switch (star) {
+    case 'Sun':
+      return '☉';
+    case 'Mercury':
+      return '☿';
+    case 'Venus':
+      return '♀';
+    case 'Moon':
+      return '☾';
+    case 'Mars':
+      return '♂';
+    case 'Jupiter':
+      return '♃';
+    case 'Saturn':
+      return '♄';
+    case 'Uranus':
+      return '⛢';
+    case 'Neptune':
+      return '♆';
+    case 'Pluto':
+      return '♇';
+    default:
+      return '❓';
+  }
+}
+
 export function getStats(id: number, field: Field): Stats {
   const bonus = getFieldBonus(id, field);
   return {

@@ -22,9 +22,10 @@ for (let i = 1; i < statsData.length; i++) {
     level: parseInt(row[4]),
     attack: parseInt(row[5]),
     defense: parseInt(row[6]),
-    password: parseInt(row[7]),
-    starchips: parseInt(row[8]),
-    image: row[9],
+    guardianStars: row[7].split(', ') as GuardianStar[],
+    password: parseInt(row[8]),
+    starchips: parseInt(row[9]),
+    image: row[10],
   };
 
   for (const key in stat) {
