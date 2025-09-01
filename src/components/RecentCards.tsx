@@ -1,5 +1,8 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+
+import { Breakpoint, useBreakpoint } from '../hooks/useBreakpoint';
+import { useIsMobile } from '../hooks/useIsMobile';
 import {
   useAddToHand,
   useDialogOpen,
@@ -11,11 +14,8 @@ import {
   useRecentCards,
   useSelectedCard,
   useShowStats,
-} from 'utils/state';
-import { Breakpoint, useBreakpoint } from 'utils/useBreakpoint';
-import { useIsMobile } from 'utils/useIsMobile';
-import { approximateRatio, getDeckStats, getFusionStats, getStats } from 'utils/util';
-
+} from '../utils/state';
+import { approximateRatio, getDeckStats, getFusionStats, getStats } from '../utils/util';
 import { Background } from './Background';
 import { AnimatedCard, Card } from './Card';
 import { Select } from './Select';

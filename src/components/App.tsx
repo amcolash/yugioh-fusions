@@ -1,8 +1,8 @@
 import { Tooltip } from 'react-tooltip';
-import { useHand, useRecentCards } from 'utils/state';
-import { useIsMobile } from 'utils/useIsMobile';
 
-import { usePantry } from '../utils/pantry';
+import { useIsMobile } from '../hooks/useIsMobile';
+import { usePantry } from '../hooks/usePantry';
+import { useHand, useRecentCards } from '../utils/state';
 import { Background } from './Background';
 import { Fusions } from './Fusions';
 import { Hand } from './Hand';
@@ -13,6 +13,7 @@ import { Search } from './Search';
 export function App() {
   const mobile = useIsMobile();
   const { loading } = usePantry();
+  // const { loading } = useLocalStorage();
 
   const [hand] = useHand();
   const [recentCards] = useRecentCards();
