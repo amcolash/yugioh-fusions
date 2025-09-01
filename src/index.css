@@ -12,7 +12,7 @@ html {
 }
 
 input {
-  @apply border border-gray-500 rounded py-1 px-3 text-center h-[42px];
+  @apply border border-gray-500 rounded py-1 px-3 text-center h-[42px] min-w-[42px];
 
   &::placeholder {
     @apply text-center;

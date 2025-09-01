@@ -50,6 +50,13 @@ export function Hand() {
                   setField('normal');
                 }
               }}
+              onContextMenu={(e) => {
+                e.preventDefault();
+                setHand([]);
+                setExcluded([]);
+                setShowStats(false);
+                setField('normal');
+              }}
             >
               Clear Cards
             </button>
@@ -69,7 +76,7 @@ export function Hand() {
                     }
                   }}
                 >
-                  📃
+                  📄
                 </button>
                 <button
                   className="transparent border border-gray-500 duration-250"

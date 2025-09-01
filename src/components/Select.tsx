@@ -34,7 +34,7 @@ export function Select<T>({
       </ListboxButton>
 
       <ListboxOptions
-        className="bg-[#161625] border border-gray-500 rounded mt-2"
+        className="bg-[#161625] border border-gray-500 rounded mt-2 z-10"
         style={{ width: fullWidth ? 'var(--button-width)' : undefined }}
         anchor="bottom end"
       >

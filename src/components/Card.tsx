@@ -75,7 +75,10 @@ export function Card({
   if (onClick)
     return (
       <button
-        onClick={onClick}
+        onClick={(e) => {
+          onClick(e);
+          navigator.vibrate?.(200);
+        }}
         onContextMenu={(e) => {
           onRightClick();
           e.preventDefault();
