@@ -1,12 +1,13 @@
 import { ComponentProps, ReactNode } from 'react';
-import { useField } from 'utils/state';
+
+import { useField } from '../utils/state';
 import {
   getFieldBonus,
   getGuardianStarBonus,
   getGuardianStarSymbol,
   getGuardianStarWeakness,
   getStats,
-} from 'utils/util';
+} from '../utils/util';
 
 function StatLabel({
   name,

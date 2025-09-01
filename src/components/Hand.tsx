@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
-import { useExcludedCards, useField, useHand, useRecentCards, useShowStats } from 'utils/state';
 
 import clipboard from '../icons/clipboard.svg';
 import copy from '../icons/copy.svg';
+import { useExcludedCards, useField, useHand, useRecentCards, useShowStats } from '../utils/state';
 import { Card } from './Card';
 
 export function Hand() {
@@ -67,14 +67,15 @@ export function Hand() {
                 <button
                   className="transparent border border-gray-500 duration-250"
                   onClick={(e) => {
+                    const target = e.target as HTMLButtonElement;
                     try {
                       navigator.clipboard.writeText(JSON.stringify(hand));
-                      e.target.classList.add('success');
-                      setTimeout(() => e.target.classList.remove('success'), 250);
+                      target.classList.add('success');
+                      setTimeout(() => target.classList.remove('success'), 250);
                     } catch (error) {
                       console.error('Failed to copy to clipboard:', error);
-                      e.target.classList.add('danger');
-                      setTimeout(() => e.target.classList.remove('danger'), 250);
+                      target.classList.add('danger');
+                      setTimeout(() => target.classList.remove('danger'), 250);
                     }
                   }}
                 >
@@ -83,14 +84,15 @@ export function Hand() {
                 <button
                   className="transparent border border-gray-500 duration-250"
                   onClick={async (e) => {
+                    const target = e.target as HTMLButtonElement;
                     try {
                       setHand(JSON.parse(await navigator.clipboard.readText()));
-                      e.target.classList.add('success');
-                      setTimeout(() => e.target.classList.remove('success'), 250);
+                      target.classList.add('success');
+                      setTimeout(() => target.classList.remove('success'), 250);
                     } catch (error) {
                       console.error('Failed to read clipboard contents:', error);
-                      e.target.classList.add('danger');
-                      setTimeout(() => e.target.classList.remove('danger'), 250);
+                      target.classList.add('danger');
+                      setTimeout(() => target.classList.remove('danger'), 250);
                     }
                   }}
                 >

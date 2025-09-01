@@ -1,8 +1,8 @@
 import { MouseEventHandler } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { useField } from 'utils/state';
-import { getFieldBonus, getStats } from 'utils/util';
 
+import { useField } from '../utils/state';
+import { getFieldBonus, getStats } from '../utils/util';
 import { StatsOverlay } from './StatsOverlay';
 
 export function Card({

@@ -1,7 +1,7 @@
 import { search as fuzzy } from 'fast-fuzzy';
 import { useState } from 'react';
-import { useAddToHand, useField } from 'utils/state';
 
+import { useAddToHand, useField } from '../utils/state';
 import { fieldTypes, getStats, monsterList, statsByName } from '../utils/util';
 import { Card } from './Card';
 import { Select } from './Select';
