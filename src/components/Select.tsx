@@ -1,5 +1,4 @@
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
-import { getRandomValues } from 'crypto';
 import { twMerge } from 'tailwind-merge';
 
 export function Select<T>({
@@ -19,17 +18,17 @@ export function Select<T>({
     <Listbox value={value} onChange={setValue}>
       <ListboxButton
         className={twMerge(
-          'border border-gray-500 rounded text-center h-[42px] transparent relative',
+          'border border-gray-500 rounded text-center h-[42px] transparent',
           selected?.icon && 'w-[42px]'
         )}
       >
         {selected?.icon ? (
           <img src={selected.icon} className="aspect-square" />
         ) : (
-          <>
-            {selected?.label}
-            <span className="absolute right-2 top-1.5">▼</span>
-          </>
+          <div className="flex items-center">
+            <div className="w-full">{selected?.label}</div>
+            <span className="">▼</span>
+          </div>
         )}
       </ListboxButton>
 
