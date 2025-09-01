@@ -16,13 +16,19 @@ const showStats = atom<boolean>(false);
 const selectedCard = atom<number | undefined>();
 const excludedCards = atom<number[]>([]);
 const field = atom<Field>('normal');
+const fusionFilter = atom<FusionFilter>('all');
 
 const fusions = atom<FusionRecord[]>((get) => {
   const fusions = generateSecondaryFusions(get(hand), get(field));
   const excluded = get(excludedCards);
+  const fusionType = get(fusionFilter);
 
   return fusions.filter(({ cards, secondary }) => {
-    return !cards.some((c) => excluded.includes(c)) && !secondary?.cards.some((c) => excluded.includes(c));
+    if (fusionType === 'all' || (fusionType === 'primary' && !secondary) || (fusionType === 'secondary' && secondary)) {
+      return !cards.some((c) => excluded.includes(c)) && !secondary?.cards.some((c) => excluded.includes(c));
+    }
+
+    return false;
   });
 });
 
@@ -43,6 +49,7 @@ export const useShowStats = () => useAtom(showStats);
 export const useSelectedCard = () => useAtom(selectedCard);
 export const useExcludedCards = () => useAtom(excludedCards);
 export const useField = () => useAtom(field);
+export const useFusionFilter = () => useAtom(fusionFilter);
 
 export const useFusions = () => useAtomValue(fusions);
 

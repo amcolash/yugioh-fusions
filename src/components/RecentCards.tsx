@@ -5,6 +5,7 @@ import {
   useDialogOpen,
   useExcludedCards,
   useField,
+  useFusionFilter,
   useFusions,
   useHand,
   useRecentCards,
@@ -30,9 +31,9 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
   const [selectedCard, setSelectedCard] = useSelectedCard();
   const [excludedCards, setExcludedCards] = useExcludedCards();
   const [field] = useField();
+  const [fusionFilter, setFusionFilter] = useFusionFilter();
 
   const [sort, setSort] = useState<SortTypes>('name');
-  const [fusionFilter, setFusionFilter] = useState<FusionFilter>('all');
   const [bouncingCards, setBouncingCards] = useState<{ id: number; uuid: number; start: DOMRect }[]>([]);
 
   const fusionStats = showStats ? getFusionStats(fusions, field, fusionFilter) : undefined;
