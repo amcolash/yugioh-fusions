@@ -1,4 +1,5 @@
 {
+  "plugins": ["eslint", "import", "oxc", "promise", "react", "typescript", "unicorn"],
   "rules": {
     "no-confusing-void-expression": "off"
   },

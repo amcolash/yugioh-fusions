@@ -41,7 +41,7 @@ export function usePantry() {
       .catch(() => {
         setTimeout(() => window.location.reload(), 3000);
       });
-  }, []);
+  }, [setData]);
 
   useEffect(() => {
     if (Object.values(data).length === 0) return;

@@ -18,7 +18,7 @@ export function useLocalStorage() {
 
   useEffect(() => {
     setData(getRecentCards());
-  }, []);
+  }, [setData]);
 
   useEffect(() => {
     if (Object.values(data).length === 0) return;

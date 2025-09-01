@@ -48,7 +48,7 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
       setSelectedCard(undefined);
       setExcludedCards([]);
     }
-  }, [showStats]);
+  }, [showStats, setSelectedCard, setExcludedCards]);
 
   const header = showStats
     ? `Fusion Stats (Attack ${deckStats.attack}, Defense ${deckStats.defense})`
@@ -257,7 +257,7 @@ export function RecentModal() {
 
   useEffect(() => {
     setOpen(false);
-  }, [mobile]);
+  }, [mobile, setOpen]);
 
   return (
     <>
