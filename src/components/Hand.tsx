@@ -66,10 +66,10 @@ export function Hand() {
               <>
                 <button
                   className="transparent border border-gray-500 duration-250"
-                  onClick={(e) => {
+                  onClick={async (e) => {
                     const target = e.target as HTMLButtonElement;
                     try {
-                      navigator.clipboard.writeText(JSON.stringify(hand));
+                      await navigator.clipboard.writeText(JSON.stringify(hand));
                       target.classList.add('success');
                       setTimeout(() => target.classList.remove('success'), 250);
                     } catch (error) {

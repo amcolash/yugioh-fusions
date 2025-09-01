@@ -45,7 +45,7 @@ export function usePantry() {
 
   useEffect(() => {
     if (Object.values(data).length === 0) return;
-    updateRecentCards(data);
+    updateRecentCards(data).catch((err) => console.error(err));
   }, [data]);
 
   return {

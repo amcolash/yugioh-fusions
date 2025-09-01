@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "no-confusing-void-expression": "off"
+  },
+  "ignorePatterns": ["parser/**/*"]
+}

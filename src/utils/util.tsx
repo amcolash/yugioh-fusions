@@ -150,8 +150,6 @@ export function filterRecentCards(data: Record<string, number>): Record<string, 
 }
 
 export function getDeckStats(fusions: FusionRecord[], field: Field): { attack: number; defense: number } {
-  const fusionStats = getFusionStats(fusions, field);
-
   let deckAttack = 0;
   let deckDefense = 0;
 
