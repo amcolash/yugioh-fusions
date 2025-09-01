@@ -25,6 +25,18 @@ function StatLabel({
   );
 }
 
+function StarLabel({ star }: { star: GuardianStar }) {
+  return (
+    <>
+      {getGuardianStarSymbol(star)}
+      <span className="mx-2">|</span>
+      {getGuardianStarSymbol(getGuardianStarBonus(star), 'positive')}
+      <span className="mx-2">|</span>
+      {getGuardianStarSymbol(getGuardianStarWeakness(star), 'negative')}
+    </>
+  );
+}
+
 export function StatsOverlay({ card }: { card: number }) {
   const [field] = useField();
   const cardStats = getStats(card, field);
@@ -32,33 +44,11 @@ export function StatsOverlay({ card }: { card: number }) {
   const bonusClass = bonus > 0 ? 'text-green-400' : bonus < 0 ? 'text-red-400' : 'text-white';
 
   return (
-    <>
+    <div className="grid gap-1">
       <StatLabel name="Name" value={cardStats.name} />
       <StatLabel name="ID" value={'#' + cardStats.id} />
-      <StatLabel
-        name="Star 1"
-        value={
-          <>
-            {getGuardianStarSymbol(cardStats.guardianStars[0])}
-            {' | '}
-            {getGuardianStarSymbol(getGuardianStarBonus(cardStats.guardianStars[0]), 'positive')}
-            {' | '}
-            {getGuardianStarSymbol(getGuardianStarWeakness(cardStats.guardianStars[0]), 'negative')}
-          </>
-        }
-      />
-      <StatLabel
-        name="Star 2"
-        value={
-          <>
-            {getGuardianStarSymbol(cardStats.guardianStars[1])}
-            {' | '}
-            {getGuardianStarSymbol(getGuardianStarBonus(cardStats.guardianStars[1]), 'positive')}
-            {' | '}
-            {getGuardianStarSymbol(getGuardianStarWeakness(cardStats.guardianStars[1]), 'negative')}
-          </>
-        }
-      />
+      <StatLabel name="Star 1" value={<StarLabel star={cardStats.guardianStars[0]} />} />
+      <StatLabel name="Star 2" value={<StarLabel star={cardStats.guardianStars[1]} />} />
 
       {Object.entries(cardStats)
         .sort((a, b) => a[0].localeCompare(b[0]))
@@ -71,6 +61,6 @@ export function StatsOverlay({ card }: { card: number }) {
             className={key === 'attack' || key === 'defense' ? bonusClass : undefined}
           />
         ))}
-    </>
+    </div>
   );
 }
