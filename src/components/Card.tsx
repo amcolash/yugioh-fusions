@@ -77,7 +77,7 @@ export function Card({
       <button
         onClick={(e) => {
           onClick(e);
-          navigator.vibrate?.(200);
+          navigator.vibrate?.(50);
         }}
         onContextMenu={(e) => {
           onRightClick();
