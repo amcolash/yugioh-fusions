@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
 import { useExcludedCards, useField, useHand, useRecentCards, useShowStats } from 'utils/state';
 
+import clipboard from '../icons/clipboard.svg';
+import copy from '../icons/copy.svg';
 import { Card } from './Card';
 
 export function Hand() {
@@ -76,7 +78,7 @@ export function Hand() {
                     }
                   }}
                 >
-                  📄
+                  <img src={copy} className="invert pointer-events-none" />
                 </button>
                 <button
                   className="transparent border border-gray-500 duration-250"
@@ -92,7 +94,7 @@ export function Hand() {
                     }
                   }}
                 >
-                  📋
+                  <img src={clipboard} className="invert pointer-events-none" />
                 </button>
               </>
             )}

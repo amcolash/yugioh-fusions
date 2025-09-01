@@ -12,8 +12,9 @@ import {
   useSelectedCard,
   useShowStats,
 } from 'utils/state';
+import { Breakpoint, useBreakpoint } from 'utils/useBreakpoint';
 import { useIsMobile } from 'utils/useIsMobile';
-import { approximateRatio, getFusionStats, getStats } from 'utils/util';
+import { approximateRatio, getDeckStats, getFusionStats, getStats } from 'utils/util';
 
 import { Background } from './Background';
 import { AnimatedCard, Card } from './Card';
@@ -32,11 +33,13 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
   const [excludedCards, setExcludedCards] = useExcludedCards();
   const [field] = useField();
   const [fusionFilter, setFusionFilter] = useFusionFilter();
+  const breakpoint = useBreakpoint();
 
   const [sort, setSort] = useState<SortTypes>('name');
   const [bouncingCards, setBouncingCards] = useState<{ id: number; uuid: number; start: DOMRect }[]>([]);
 
-  const fusionStats = showStats ? getFusionStats(fusions, field, fusionFilter) : undefined;
+  const fusionStats = getFusionStats(fusions, field);
+  const deckStats = getDeckStats(fusions, field);
 
   useEffect(() => {
     if (showStats) setSort('average_attack');
@@ -47,14 +50,18 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
     }
   }, [showStats]);
 
+  const header = showStats
+    ? `Fusion Stats (Attack ${deckStats.attack}, Defense ${deckStats.defense})`
+    : `Recent Cards (${Object.values(recentCards).length})`;
+
   return (
     <>
       <div className="grid gap-8 content-start h-full max-w-5xl">
-        {!showStats && <h2 className="text-center">Recent Cards ({Object.values(recentCards).length})</h2>}
-        {showStats && <h2 className="text-center">Fusion Stats</h2>}
+        <h2 className="text-center px-8">{header}</h2>
+
         {close}
 
-        <div className="flex gap-8">
+        <div className="flex flex-wrap xl:flex-nowrap gap-x-8 gap-y-4">
           <Select
             label="Sort By"
             value={sort}
@@ -76,6 +83,7 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                 { label: 'Three Card', value: 'secondary' },
                 { label: 'All', value: 'all' },
               ]}
+              fullWidth={breakpoint < Breakpoint.xl}
             />
           )}
         </div>
@@ -100,9 +108,9 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                 return b[1] - a[1];
               }
 
-              if (fusionStats) {
-                const fusionStatsA = fusionStats?.[a[0]];
-                const fusionStatsB = fusionStats?.[b[0]];
+              if (showStats) {
+                const fusionStatsA = fusionStats[a[0]];
+                const fusionStatsB = fusionStats[b[0]];
 
                 if (!fusionStatsA) return 1;
                 if (!fusionStatsB) return -1;
@@ -143,7 +151,7 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
               }
             })
             .map(([id]) => {
-              const { primary, secondary, totalAttack, totalDefense } = fusionStats?.[id] || {
+              const { primary, secondary, totalAttack, totalDefense } = fusionStats[id] || {
                 totalAttack: 0,
                 totalDefense: 0,
                 primary: 0,
@@ -157,7 +165,7 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
               const showTotal = sort === 'total_attack' || sort === 'total_defense';
 
               const stats = [];
-              if (fusionStats) {
+              if (showStats) {
                 if (fusionFilter === 'all') {
                   stats.push(approximateRatio(primary, secondary));
                   stats.push(`${primary}/${secondary}`);

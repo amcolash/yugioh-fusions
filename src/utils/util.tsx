@@ -149,43 +149,53 @@ export function filterRecentCards(data: Record<string, number>): Record<string, 
   return filtered;
 }
 
-export function getFusionStats(
-  fusions: FusionRecord[],
-  field: Field,
-  fusionFilter: FusionFilter
-): Record<string, FusionStats> {
+export function getDeckStats(fusions: FusionRecord[], field: Field): { attack: number; defense: number } {
+  const fusionStats = getFusionStats(fusions, field);
+
+  let deckAttack = 0;
+  let deckDefense = 0;
+
+  for (const fusion of fusions) {
+    const result = fusion.secondary?.id || fusion.id;
+    const cardStats = getStats(result, field);
+
+    deckAttack += cardStats.attack;
+    deckDefense += cardStats.defense;
+  }
+
+  return {
+    attack: parseInt((deckAttack / fusions.length).toFixed(0)),
+    defense: parseInt((deckDefense / fusions.length).toFixed(0)),
+  };
+}
+
+export function getFusionStats(fusions: FusionRecord[], field: Field): Record<string, FusionStats> {
   const fusionStats: Record<string, FusionStats> = {};
 
   for (const fusion of fusions) {
     const result = fusion.secondary?.id || fusion.id;
     const cardStats = getStats(result, field);
 
-    if (
-      fusionFilter === 'all' ||
-      (fusionFilter === 'primary' && !fusion.secondary) ||
-      (fusionFilter === 'secondary' && fusion.secondary)
-    ) {
-      for (const card of fusion.cards) {
-        fusionStats[card] = fusionStats[card] || { primary: 0, secondary: 0, totalAttack: 0, totalDefense: 0 };
+    for (const card of fusion.cards) {
+      fusionStats[card] = fusionStats[card] || { primary: 0, secondary: 0, totalAttack: 0, totalDefense: 0 };
 
-        if (fusion.secondary) fusionStats[card].secondary += 1;
-        else fusionStats[card].primary += 1;
+      if (fusion.secondary) fusionStats[card].secondary += 1;
+      else fusionStats[card].primary += 1;
 
-        fusionStats[card].totalAttack += cardStats.attack;
-        fusionStats[card].totalDefense += cardStats.defense;
-      }
+      fusionStats[card].totalAttack += cardStats.attack;
+      fusionStats[card].totalDefense += cardStats.defense;
+    }
 
-      if (fusion.secondary) {
-        for (const card of fusion.secondary.cards) {
-          if (card !== fusion.id) {
-            fusionStats[card] = fusionStats[card] || { primary: 0, secondary: 0, totalAttack: 0, totalDefense: 0 };
+    if (fusion.secondary) {
+      for (const card of fusion.secondary.cards) {
+        if (card !== fusion.id) {
+          fusionStats[card] = fusionStats[card] || { primary: 0, secondary: 0, totalAttack: 0, totalDefense: 0 };
 
-            if (fusion.secondary) fusionStats[card].secondary += 1;
-            else fusionStats[card].primary += 1;
+          if (fusion.secondary) fusionStats[card].secondary += 1;
+          else fusionStats[card].primary += 1;
 
-            fusionStats[card].totalAttack += cardStats.attack;
-            fusionStats[card].totalDefense += cardStats.defense;
-          }
+          fusionStats[card].totalAttack += cardStats.attack;
+          fusionStats[card].totalDefense += cardStats.defense;
         }
       }
     }
