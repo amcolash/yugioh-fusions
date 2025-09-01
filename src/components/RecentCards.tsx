@@ -12,7 +12,7 @@ import {
   useShowStats,
 } from 'utils/state';
 import { useIsMobile } from 'utils/useIsMobile';
-import { getFusionStats, getStats } from 'utils/util';
+import { approximateRatio, getFusionStats, getStats } from 'utils/util';
 
 import { Background } from './Background';
 import { AnimatedCard, Card } from './Card';
@@ -32,9 +32,10 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
   const [field] = useField();
 
   const [sort, setSort] = useState<SortTypes>('name');
+  const [fusionFilter, setFusionFilter] = useState<FusionFilter>('all');
   const [bouncingCards, setBouncingCards] = useState<{ id: number; uuid: number; start: DOMRect }[]>([]);
 
-  const fusionStats = showStats ? getFusionStats(fusions, field) : undefined;
+  const fusionStats = showStats ? getFusionStats(fusions, field, fusionFilter) : undefined;
 
   useEffect(() => {
     if (showStats) setSort('average_attack');
@@ -48,18 +49,35 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
   return (
     <>
       <div className="grid gap-8 content-start h-full max-w-5xl">
-        <h2 className="text-center">Recent Cards ({Object.values(recentCards).length})</h2>
+        {!showStats && <h2 className="text-center">Recent Cards ({Object.values(recentCards).length})</h2>}
+        {showStats && <h2 className="text-center">Fusion Stats</h2>}
         {close}
 
-        <Select
-          value={sort}
-          setValue={setSort}
-          options={(showStats ? statsSort : basicSort).map((sort) => ({
-            label: sort.replace('_', ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
-            value: sort,
-          }))}
-          fullWidth
-        />
+        <div className="flex gap-8">
+          <Select
+            label="Sort By"
+            value={sort}
+            setValue={setSort}
+            options={(showStats ? statsSort : basicSort).map((sort) => ({
+              label: sort.replace('_', ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+              value: sort,
+            }))}
+            fullWidth
+          />
+
+          {showStats && (
+            <Select
+              label="Fusion Type"
+              value={fusionFilter}
+              setValue={setFusionFilter}
+              options={[
+                { label: 'Two Card', value: 'primary' },
+                { label: 'Three Card', value: 'secondary' },
+                { label: 'All', value: 'all' },
+              ]}
+            />
+          )}
+        </div>
 
         <div className="flex flex-wrap justify-center gap-3 overflow-auto h-full">
           {Object.entries(recentCards)
@@ -88,8 +106,21 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                 if (!fusionStatsA) return 1;
                 if (!fusionStatsB) return -1;
 
-                const { totalAttack: totalAttackA, totalDefense: totalDefenseA, count: countA } = fusionStatsA;
-                const { totalAttack: totalAttackB, totalDefense: totalDefenseB, count: countB } = fusionStatsB;
+                const {
+                  totalAttack: totalAttackA,
+                  totalDefense: totalDefenseA,
+                  primary: primaryA,
+                  secondary: secondaryA,
+                } = fusionStatsA;
+                const {
+                  totalAttack: totalAttackB,
+                  totalDefense: totalDefenseB,
+                  primary: primaryB,
+                  secondary: secondaryB,
+                } = fusionStatsB;
+
+                const countA = primaryA + secondaryA;
+                const countB = primaryB + secondaryB;
 
                 const avgAttackA = totalAttackA / countA;
                 const avgAttackB = totalAttackB / countB;
@@ -111,15 +142,31 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
               }
             })
             .map(([id]) => {
-              const { count, totalAttack, totalDefense } = fusionStats?.[id] || {
+              const { primary, secondary, totalAttack, totalDefense } = fusionStats?.[id] || {
                 totalAttack: 0,
                 totalDefense: 0,
-                count: 0,
+                primary: 0,
+                secondary: 0,
               };
+
+              const count = primary + secondary;
 
               const avgAttack = count > 0 ? Math.floor(totalAttack / count) : 0;
               const avgDefense = count > 0 ? Math.floor(totalDefense / count) : 0;
               const showTotal = sort === 'total_attack' || sort === 'total_defense';
+
+              const stats = [];
+              if (fusionStats) {
+                if (fusionFilter === 'all') {
+                  stats.push(approximateRatio(primary, secondary));
+                  stats.push(`${primary}/${secondary}`);
+                }
+                if (fusionFilter === 'primary') stats.push(`${primary}`);
+                if (fusionFilter === 'secondary') stats.push(`${secondary}`);
+
+                stats.push(`${showTotal ? totalAttack : avgAttack}`);
+                stats.push(`${showTotal ? totalDefense : avgDefense}`);
+              }
 
               return (
                 <div
@@ -172,11 +219,7 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                         setRecentCards(newCards);
                       }
                     }}
-                    fuse={
-                      fusionStats
-                        ? `${count}\n${showTotal ? totalAttack : avgAttack}\n${showTotal ? totalDefense : avgDefense}`
-                        : undefined
-                    }
+                    fuse={showStats ? stats.join('\n') : undefined}
                   />
                 </div>
               );

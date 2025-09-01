@@ -62,7 +62,7 @@ export function Card({
 
         {fuse !== undefined && (
           <span
-            className={`absolute ${typeof fuse === 'string' ? 'bottom-0' : 'top-0'} right-0 rounded-tr-sm text-sm text-right whitespace-pre rounded-bl-sm bg-sky-950 text-blue-400 border-2 border-gray-300 opacity-90 px-1.5`}
+            className={`absolute ${typeof fuse === 'string' ? 'bottom-0' : 'top-0'} right-0 rounded-tr-sm text-xs text-right whitespace-pre rounded-bl-sm bg-sky-950 text-blue-400 border-2 border-gray-300 opacity-90 px-1.5`}
           >
             {fuse}
           </span>

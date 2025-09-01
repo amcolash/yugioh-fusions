@@ -67,8 +67,10 @@ type Stats = {
   image: string;
 };
 
+type FusionFilter = 'primary' | 'secondary' | 'all';
 type FusionStats = {
-  count: number;
+  primary: number;
+  secondary: number;
   totalAttack: number;
   totalDefense: number;
 };

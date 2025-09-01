@@ -149,29 +149,43 @@ export function filterRecentCards(data: Record<string, number>): Record<string, 
   return filtered;
 }
 
-export function getFusionStats(fusions: FusionRecord[], field: Field): Record<string, FusionStats> {
+export function getFusionStats(
+  fusions: FusionRecord[],
+  field: Field,
+  fusionFilter: FusionFilter
+): Record<string, FusionStats> {
   const fusionStats: Record<string, FusionStats> = {};
 
   for (const fusion of fusions) {
     const result = fusion.secondary?.id || fusion.id;
     const cardStats = getStats(result, field);
 
-    for (const card of fusion.cards) {
-      fusionStats[card] = fusionStats[card] || { count: 0, totalAttack: 0, totalDefense: 0 };
+    if (
+      fusionFilter === 'all' ||
+      (fusionFilter === 'primary' && !fusion.secondary) ||
+      (fusionFilter === 'secondary' && fusion.secondary)
+    ) {
+      for (const card of fusion.cards) {
+        fusionStats[card] = fusionStats[card] || { primary: 0, secondary: 0, totalAttack: 0, totalDefense: 0 };
 
-      fusionStats[card].count += 1;
-      fusionStats[card].totalAttack += cardStats.attack;
-      fusionStats[card].totalDefense += cardStats.defense;
-    }
+        if (fusion.secondary) fusionStats[card].secondary += 1;
+        else fusionStats[card].primary += 1;
 
-    if (fusion.secondary) {
-      for (const card of fusion.secondary.cards) {
-        if (card !== fusion.id) {
-          fusionStats[card] = fusionStats[card] || { count: 0, totalAttack: 0, totalDefense: 0 };
+        fusionStats[card].totalAttack += cardStats.attack;
+        fusionStats[card].totalDefense += cardStats.defense;
+      }
 
-          fusionStats[card].count += 1;
-          fusionStats[card].totalAttack += cardStats.attack;
-          fusionStats[card].totalDefense += cardStats.defense;
+      if (fusion.secondary) {
+        for (const card of fusion.secondary.cards) {
+          if (card !== fusion.id) {
+            fusionStats[card] = fusionStats[card] || { primary: 0, secondary: 0, totalAttack: 0, totalDefense: 0 };
+
+            if (fusion.secondary) fusionStats[card].secondary += 1;
+            else fusionStats[card].primary += 1;
+
+            fusionStats[card].totalAttack += cardStats.attack;
+            fusionStats[card].totalDefense += cardStats.defense;
+          }
         }
       }
     }
@@ -264,4 +278,51 @@ export function getFieldBonus(id: number, field: Field): number {
   }
 
   return 0;
+}
+
+// Calculate approximate ratio using continued fractions, generated w/ gemini
+export function approximateRatio(primary: number, secondary: number, maxDenominator: number = 10) {
+  // Handle edge cases
+  if (typeof primary !== 'number' || typeof secondary !== 'number') {
+    return 'Invalid input';
+  }
+
+  if (primary === 0) return '0:' + secondary;
+  if (secondary === 0) return primary + ':0';
+
+  const value = primary / secondary;
+
+  // Seed the sequence with the representations of 0/1 and 1/0
+  let last_num = 0,
+    last_den = 1;
+  let curr_num = 1,
+    curr_den = 0;
+
+  let b = value;
+
+  while (true) {
+    const a = Math.floor(b);
+    const next_num = a * curr_num + last_num;
+    const next_den = a * curr_den + last_den;
+
+    // If the next denominator exceeds our limit, the current one is the best we can do.
+    if (next_den > maxDenominator) {
+      break;
+    }
+
+    // Update for the next iteration
+    [last_num, curr_num] = [curr_num, next_num];
+    [last_den, curr_den] = [curr_den, next_den];
+
+    // If the value is a whole number (or we've reached the limit of precision), we are done.
+    const remainder = b - a;
+    if (remainder < Number.EPSILON) {
+      break;
+    }
+
+    b = 1 / remainder;
+  }
+
+  // The last calculated ratio (curr_num:curr_den) is the best one within the limit.
+  return `${curr_num}:${curr_den}`;
 }
