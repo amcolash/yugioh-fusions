@@ -8,6 +8,8 @@ Data/Images came from a few sources:
 - https://yugipedia.com/wiki/List_of_Yu-Gi-Oh!_Forbidden_Memories_Fusions_(001%E2%80%93200)
 - https://yugioh.fandom.com/wiki/Guardian_Star
 
+Images from feather icons: https://feathericons.com/
+
 ---
 
 The default template project for [nano-react-app](https://github.com/nano-react-app/nano-react-app).

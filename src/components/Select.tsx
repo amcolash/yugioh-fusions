@@ -1,6 +1,8 @@
 import { Field, Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 import { twMerge } from 'tailwind-merge';
 
+import { Background } from './Background';
+
 export function Select<T>({
   value,
   setValue,
@@ -39,13 +41,14 @@ export function Select<T>({
         </ListboxButton>
 
         <ListboxOptions
-          className="bg-[#161625] border border-gray-500 rounded mt-2 z-10"
+          className="border border-gray-500 rounded mt-2 z-10"
           style={{ width: fullWidth ? 'var(--button-width)' : undefined }}
           anchor="bottom end"
         >
+          <Background type="absolute" />
           {options.map((f) => (
             <ListboxOption key={f.label} value={f.value}>
-              <div className="flex gap-3 items-center text-left text-gray-300 px-2 py-1.5 my-2 hover:bg-sky-900 select-none">
+              <div className="flex gap-3 items-center text-left text-gray-300 px-2 py-1.5 my-2 hover:bg-sky-900/35 select-none">
                 <div className="w-4">{value === f.value && '✓'}</div>
                 {f.icon && <img src={f.icon} className="size-6" />}
                 <span className="capitalize">{f.label}</span>

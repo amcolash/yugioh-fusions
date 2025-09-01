@@ -12,7 +12,7 @@ html {
 }
 
 input {
-  @apply border border-gray-500 rounded py-1 px-3 text-center h-[42px] min-w-[42px];
+  @apply border border-gray-500 rounded py-1 px-3 text-center h-[42px] min-w-[42px] hover:brightness-75 transition duration-200;
 
   &::placeholder {
     @apply text-center;
@@ -20,7 +20,7 @@ input {
 }
 
 button {
-  @apply text-shadow-lg p-2 bg-sky-600 rounded hover:bg-sky-700 active:bg-sky-800 transition;
+  @apply text-shadow-lg p-2 bg-sky-600 rounded hover:bg-sky-700 active:bg-sky-800 transition duration-200;
 }
 
 button.transparent {
