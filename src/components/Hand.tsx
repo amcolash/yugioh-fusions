@@ -62,44 +62,45 @@ export function Hand() {
             >
               Clear Cards
             </button>
-            {!import.meta.env.PROD && (
-              <>
-                <button
-                  className="transparent border border-gray-500 duration-250"
-                  onClick={async (e) => {
-                    const target = e.target as HTMLButtonElement;
-                    try {
-                      await navigator.clipboard.writeText(JSON.stringify(hand));
-                      target.classList.add('success');
-                      setTimeout(() => target.classList.remove('success'), 250);
-                    } catch (error) {
-                      console.error('Failed to copy to clipboard:', error);
-                      target.classList.add('danger');
-                      setTimeout(() => target.classList.remove('danger'), 250);
-                    }
-                  }}
-                >
-                  <img src={copy} className="invert pointer-events-none" />
-                </button>
-                <button
-                  className="transparent border border-gray-500 duration-250"
-                  onClick={async (e) => {
-                    const target = e.target as HTMLButtonElement;
-                    try {
-                      setHand(JSON.parse(await navigator.clipboard.readText()));
-                      target.classList.add('success');
-                      setTimeout(() => target.classList.remove('success'), 250);
-                    } catch (error) {
-                      console.error('Failed to read clipboard contents:', error);
-                      target.classList.add('danger');
-                      setTimeout(() => target.classList.remove('danger'), 250);
-                    }
-                  }}
-                >
-                  <img src={clipboard} className="invert pointer-events-none" />
-                </button>
-              </>
-            )}
+
+            {/* {!import.meta.env.PROD && ( */}
+            {/* <> */}
+            <button
+              className="transparent border border-gray-500 duration-250"
+              onClick={async (e) => {
+                const target = e.target as HTMLButtonElement;
+                try {
+                  await navigator.clipboard.writeText(JSON.stringify(hand));
+                  target.classList.add('success');
+                  setTimeout(() => target.classList.remove('success'), 250);
+                } catch (error) {
+                  console.error('Failed to copy to clipboard:', error);
+                  target.classList.add('danger');
+                  setTimeout(() => target.classList.remove('danger'), 250);
+                }
+              }}
+            >
+              <img src={copy} className="invert pointer-events-none" />
+            </button>
+            <button
+              className="transparent border border-gray-500 duration-250"
+              onClick={async (e) => {
+                const target = e.target as HTMLButtonElement;
+                try {
+                  setHand(JSON.parse(await navigator.clipboard.readText()));
+                  target.classList.add('success');
+                  setTimeout(() => target.classList.remove('success'), 250);
+                } catch (error) {
+                  console.error('Failed to read clipboard contents:', error);
+                  target.classList.add('danger');
+                  setTimeout(() => target.classList.remove('danger'), 250);
+                }
+              }}
+            >
+              <img src={clipboard} className="invert pointer-events-none" />
+            </button>
+            {/* </> */}
+            {/* )} */}
           </div>
 
           {!showStats && (
