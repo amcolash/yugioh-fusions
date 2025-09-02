@@ -5,9 +5,9 @@ import { Field, filterRecentCards, generateSecondaryFusions } from './util';
 const defaultHand: SimpleCard[] = [];
 // const defaultHand: SimpleCard[] = [9, 399, 44, 461, 97].map((id) => ({ id, location: 'hand' }));
 // const defaultHand: (SimpleCard | CardWithIndex)[] = [
-//   { id: 461, location: 'hand', index: 0 },
-//   { id: 187, location: 'hand', index: 1 },
-//   { id: 44, location: 'hand' },
+//   { id: 200, location: 'hand', index: 1 },
+//   { id: 9, location: 'hand', index: 2 },
+//   { id: 461, location: 'hand' },
 // ];
 
 const hand = atom<SimpleCard[]>(defaultHand);

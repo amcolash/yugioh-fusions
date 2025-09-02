@@ -41,9 +41,8 @@ export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
   }
 
   const filtered1 = filterDuplicateFusions(newFusions);
-  const filtered2 = filterSecondaryImpossibilities(filtered1, baseHand);
-  const filtered3 = filterSecondaryExtras(filtered2, baseFusions);
-  const combined = [...baseFusions, ...filtered3];
+  const filtered2 = filterSecondaryExtras(filtered1, baseFusions);
+  const combined = [...baseFusions, ...filtered2];
 
   combined.sort((a, b) => {
     const statsA = getStats(a.secondary?.id || a.id, field);
@@ -55,9 +54,11 @@ export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
     return statsB?.defense - statsA?.defense;
   });
 
+  const finalFusions = filterImpossibilities(combined, baseHand);
+
   // console.log('All fusions:', combined);
 
-  return combined;
+  return finalFusions;
 }
 
 export function getFusions(hand: number[], requiredCard?: number): FusionRecord[] {
@@ -124,20 +125,30 @@ export function filterSecondaryExtras(fusions: FusionRecord[], baseFusions: Fusi
   });
 }
 
-// This logic is wrong. If one of the cards is on the field, it needs to be primary and additional (non-field) is secondary
-
-// We can only fuse a secondary if both base cards are in hand. The third card can be either in hand or field
-export function filterSecondaryImpossibilities(fusions: FusionRecord[], cards: SimpleCard[]): FusionRecord[] {
+export function filterImpossibilities(fusions: FusionRecord[], cards: SimpleCard[]): FusionRecord[] {
   return fusions.filter((fusion) => {
-    if (!fusion.secondary) return true;
-
     const card1 = fusion.cards[0];
     const card2 = fusion.cards[1];
+    const card3 = fusion.secondary?.cards.find((c) => c !== fusion.id);
 
     const hand = cards.filter((c) => c.location === 'hand').map((c) => c.id);
-    if (hand.includes(card1) && hand.includes(card2)) return true;
+    const card1InHand = hand.includes(card1);
+    const card2InHand = hand.includes(card2);
+    const card3InHand = hand.includes(card3);
 
-    return false;
+    // primary fusions
+    if (!card3) {
+      // at least one card must be in hand (cannot fuse field cards)
+      if (!card1InHand && !card2InHand) return false;
+    }
+
+    // secondary fusions
+    if (card3) {
+      // Secondary fusion need to have one card in hand, one card on field, third in hand
+      if (card1InHand && card2InHand && !card3InHand) return false;
+    }
+
+    return true;
   });
 }
 
