@@ -20,6 +20,14 @@ export function App() {
 
   return (
     <>
+      <div
+        className={`fixed inset-0 z-20 pointer-events-none`}
+        style={{
+          backgroundImage: 'linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.15) 51%)',
+          backgroundSize: '4px 4px',
+        }}
+      ></div>
+
       <Background type="fixed" />
       <Loader loading={loading} />
 
@@ -40,7 +48,7 @@ export function App() {
           <>
             <div className={hand.length > 0 || Object.keys(recentCards).length > 0 ? 'border-l border-sky-800' : ''} />
             <RecentCards />
-            <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.95} />
+            <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.9} />
           </>
         )}
       </div>

@@ -8,6 +8,7 @@ import {
   getGuardianStarWeakness,
   getStats,
 } from '../utils/util';
+import { Background } from './Background';
 
 function StatLabel({
   name,
@@ -38,14 +39,22 @@ function StarLabel({ star }: { star: GuardianStar }) {
   );
 }
 
-export function StatsOverlay({ card }: { card: number }) {
+export function StatsOverlay({ card, stats }: { card: number; stats?: string[] }) {
   const [field] = useField();
   const cardStats = getStats(card, field);
   const bonus = getFieldBonus(card, field);
   const bonusClass = bonus > 0 ? 'text-green-400' : bonus < 0 ? 'text-red-400' : 'text-white';
 
   return (
-    <div className="grid gap-1">
+    <div className="grid gap-1 overflow-hidden relative p-4 rounded-md">
+      <Background type="absolute" brightness={2.5} />
+
+      <img
+        className={`w-48 rounded border-2 border-amber-950 mb-4 justify-self-center`}
+        src={`${import.meta.env.BASE_URL}/cropped/${card}.png`}
+        alt=""
+      />
+
       <StatLabel name="Name" value={cardStats.name} />
       <StatLabel name="ID" value={'#' + cardStats.id} />
       <StatLabel name="Star 1" value={<StarLabel star={cardStats.guardianStars[0]} />} />
@@ -62,6 +71,16 @@ export function StatsOverlay({ card }: { card: number }) {
             className={key === 'attack' || key === 'defense' ? bonusClass : undefined}
           />
         ))}
+
+      {stats?.length > 0 && (
+        <>
+          <hr className="my-4" />
+          {stats.map((s) => {
+            const [name, value] = s.split(': ');
+            return <StatLabel key={name} name={name} value={value} />;
+          })}
+        </>
+      )}
     </div>
   );
 }

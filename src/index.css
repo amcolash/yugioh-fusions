@@ -12,7 +12,7 @@ html {
 }
 
 input {
-  @apply border border-gray-500 rounded py-1 px-3 text-center h-[42px] min-w-[42px] hover:brightness-75 transition duration-200;
+  @apply border border-sky-800 rounded py-1 px-3 text-center h-[42px] min-w-[42px] hover:brightness-75 transition duration-200;
 
   &::placeholder {
     @apply text-center;
@@ -40,7 +40,7 @@ hr {
 }
 
 #stats-tooltip {
-  @apply text-gray-300 p-3 z-10 rounded-md max-w-sm bg-[#161625];
+  @apply text-gray-300 p-0 z-10 rounded-md max-w-sm;
 }
 
 @theme {

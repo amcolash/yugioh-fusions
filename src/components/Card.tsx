@@ -11,14 +11,16 @@ export function Card({
   onRightClick,
   size = 'normal',
   fuse,
-  showStats = true,
+  showTooltip = true,
+  stats = [],
 }: {
   id: number;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   onRightClick?: () => void;
   size?: '2x-small' | 'x-small' | 'small' | 'normal';
   fuse?: number | string;
-  showStats?: boolean;
+  showTooltip?: boolean;
+  stats?: string[];
 }) {
   const [field] = useField();
   const cardStats = getStats(id, field);
@@ -31,13 +33,14 @@ export function Card({
   if (size === '2x-small') width = 'w-16 sm:w-20';
 
   const showText = size === 'small' || size === 'normal';
+  const fuseText = stats.length > 0 ? stats.map((s) => s.split(': ')[1]).join('\n') : fuse;
 
   const inner = (
     <div className={`grid content-baseline justify-items-center gap-2 relative ${showText ? 'w-36' : ''}`}>
       <div
         className="relative h-fit"
-        data-tooltip-id={showStats ? 'stats-tooltip' : undefined}
-        data-tooltip-html={renderToStaticMarkup(<StatsOverlay card={id} />)}
+        data-tooltip-id={showTooltip ? 'stats-tooltip' : undefined}
+        data-tooltip-html={renderToStaticMarkup(<StatsOverlay card={id} stats={stats} />)}
         data-tooltip-delay-show={1000}
       >
         <img
@@ -60,11 +63,11 @@ export function Card({
           {cardStats.defense}
         </span>
 
-        {fuse !== undefined && (
+        {fuseText !== undefined && (
           <span
-            className={`absolute ${typeof fuse === 'string' ? 'bottom-0' : 'top-0'} right-0 rounded-tr-sm text-xs text-right whitespace-pre rounded-bl-sm bg-sky-950 text-blue-400 border-2 border-gray-300 opacity-90 px-1.5`}
+            className={`absolute ${typeof fuseText === 'string' ? 'bottom-0' : 'top-0'} right-0 rounded-tr-sm text-xs text-right whitespace-pre rounded-bl-sm bg-sky-950 text-blue-400 border-2 border-gray-300 opacity-90 px-1.5`}
           >
-            {fuse}
+            {fuseText}
           </span>
         )}
       </div>
@@ -80,7 +83,7 @@ export function Card({
           navigator.vibrate?.(50);
         }}
         onContextMenu={(e) => {
-          onRightClick();
+          onRightClick?.();
           e.preventDefault();
         }}
         className={`${width} transparent flex !p-0`}
@@ -116,7 +119,7 @@ export function AnimatedCard({
       }}
       onAnimationEnd={handleAnimationEnd}
     >
-      <Card id={id} size="x-small" showStats={false} />
+      <Card id={id} size="x-small" showTooltip={false} />
     </div>
   );
 }

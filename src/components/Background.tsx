@@ -1,4 +1,4 @@
-export function Background({ type }: { type: 'fixed' | 'absolute' }) {
+export function Background({ type, brightness = 1.5 }: { type: 'fixed' | 'absolute'; brightness?: number }) {
   return (
     <>
       <svg width="0" height="0" className={type}>
@@ -9,7 +9,7 @@ export function Background({ type }: { type: 'fixed' | 'absolute' }) {
       <div className={`${type} inset-0 -z-1`} style={{ filter: 'url(#noiseFilter)' }}></div>
       <div
         className={`${type} inset-0 -z-1 mix-blend-hard-light`}
-        style={{ backgroundImage: 'radial-gradient(circle, #161625, #0b0d15)', filter: 'brightness(1.5)' }}
+        style={{ backgroundImage: 'radial-gradient(circle, #161625, #0b0d15)', filter: `brightness(${brightness})` }}
       ></div>
       <div
         className={`${type} inset-0 -z-1`}

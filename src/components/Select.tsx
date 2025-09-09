@@ -25,7 +25,7 @@ export function Select<T>({
       <Listbox value={value} onChange={setValue}>
         <ListboxButton
           className={twMerge(
-            'border border-gray-500 rounded text-center h-[42px] transparent',
+            'border border-sky-800 rounded text-center h-[42px] transparent',
             selected?.icon && 'w-[42px]',
             fullWidth && 'w-full'
           )}
@@ -41,15 +41,19 @@ export function Select<T>({
         </ListboxButton>
 
         <ListboxOptions
-          className="border border-gray-500 rounded mt-2 z-10"
+          className="border border-sky-800 rounded mt-2 z-10 focus:outline-none"
           style={{ width: fullWidth ? 'var(--button-width)' : undefined }}
           anchor="bottom end"
         >
-          <Background type="absolute" />
+          <Background type="absolute" brightness={1.25} />
           {options.map((f) => (
-            <ListboxOption key={f.label} value={f.value}>
-              <div className="flex gap-3 items-center text-left text-gray-300 px-2 py-1.5 my-2 hover:bg-sky-900/35 select-none">
-                <div className="w-4">{value === f.value && '✓'}</div>
+            <ListboxOption
+              key={f.label}
+              value={f.value}
+              className="group data-focus:bg-sky-900/35 data-selected:bg-sky-800/50 transition-colors"
+            >
+              <div className="flex gap-3 items-center text-left text-gray-300 px-2 py-1.5 my-2 select-none">
+                <div className="w-4 invisible group-data-selected:visible">✓</div>
                 {f.icon && <img src={f.icon} className="size-6" />}
                 <span className="capitalize">{f.label}</span>
               </div>

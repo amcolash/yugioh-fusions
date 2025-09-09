@@ -167,14 +167,19 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
               const stats = [];
               if (showStats) {
                 if (fusionFilter === 'all') {
-                  stats.push(approximateRatio(primary, secondary));
-                  stats.push(`${primary}/${secondary}`);
+                  stats.push(`Fusion Ratio: ${approximateRatio(primary, secondary)}`);
+                  stats.push(`Secondary / Tertiary Fusions: ${primary}/${secondary}`);
                 }
-                if (fusionFilter === 'primary') stats.push(`${primary}`);
-                if (fusionFilter === 'secondary') stats.push(`${secondary}`);
+                if (fusionFilter === 'primary') stats.push(`Primary Fusions: ${primary}`);
+                if (fusionFilter === 'secondary') stats.push(`Secondary Fusions: ${secondary}`);
 
-                stats.push(`${showTotal ? totalAttack : avgAttack}`);
-                stats.push(`${showTotal ? totalDefense : avgDefense}`);
+                if (showTotal) {
+                  stats.push(`Avg Attack: ${avgAttack}`);
+                  stats.push(`Avg Defense: ${avgDefense}`);
+                } else {
+                  stats.push(`Total Attack: ${totalAttack}`);
+                  stats.push(`Total Defense: ${totalDefense}`);
+                }
               }
 
               return (
@@ -228,7 +233,7 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
                         setRecentCards(newCards);
                       }
                     }}
-                    fuse={showStats ? stats.join('\n') : undefined}
+                    stats={stats}
                   />
                 </div>
               );
