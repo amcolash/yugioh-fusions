@@ -7,7 +7,7 @@ import { Background } from './Background';
 import { Fusions } from './Fusions';
 import { Hand } from './Hand';
 import { Loader } from './Loader';
-import { RecentCards, RecentModal } from './RecentCards';
+import { RecentCards, RecentCardsMobile } from './RecentCards';
 import { Search } from './Search';
 
 export function App() {
@@ -38,7 +38,7 @@ export function App() {
           {(hand.length === 0 || !mobile) && <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>}
           <Search />
 
-          {mobile && <RecentModal />}
+          {mobile && <RecentCardsMobile />}
 
           <Hand />
           <Fusions />

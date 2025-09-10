@@ -2,10 +2,8 @@ import { type ReactNode, useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { Breakpoint, useBreakpoint } from '../hooks/useBreakpoint';
-import { useIsMobile } from '../hooks/useIsMobile';
 import {
   useAddToHand,
-  useDialogOpen,
   useExcludedCards,
   useField,
   useFusionFilter,
@@ -16,15 +14,15 @@ import {
   useShowStats,
 } from '../utils/state';
 import { approximateRatio, getDeckStats, getFusionStats, getStats } from '../utils/util';
-import { Background } from './Background';
 import { AnimatedCard, Card } from './Card';
+import { Modal } from './Modal';
 import { Select } from './Select';
 
 const statsSort = ['average_attack', 'average_defense', 'total_attack', 'total_defense', 'count'] as const;
 const basicSort = ['attack', 'defense', 'id', 'level', 'name', 'usage'] as const;
 type SortTypes = (typeof statsSort | typeof basicSort)[number];
 
-export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; close?: ReactNode }) {
+export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?: ReactNode }) {
   const [recentCards, setRecentCards] = useRecentCards();
   const [showStats] = useShowStats();
   const fusions = useFusions();
@@ -58,9 +56,6 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
     <>
       <div className="grid gap-8 content-start h-full max-w-5xl">
         <h2 className="text-center px-8">{header}</h2>
-
-        {close}
-
         <div className="flex flex-wrap xl:flex-nowrap gap-x-8 gap-y-4">
           <Select
             label="Sort By"
@@ -255,43 +250,22 @@ export function RecentCards({ close, onAddToHand }: { onAddToHand?: () => void; 
   );
 }
 
-export function RecentModal() {
+export function RecentCardsMobile() {
   const [hand] = useHand();
-  const [open, setOpen] = useDialogOpen();
-  const mobile = useIsMobile();
-
-  useEffect(() => {
-    setOpen(false);
-  }, [mobile, setOpen]);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
       <button onClick={() => setOpen(true)}>Recent Cards</button>
-      <dialog
-        open={open}
-        onKeyDown={(e) => {
-          if (e.key === 'Escape') setOpen(false);
-        }}
-        className="text-white z-1 p-4 inset-0 m-auto fixed w-full h-full overflow-hidden"
-      >
-        {open && (
-          <>
-            <Background type="fixed" />
-            <RecentCards
-              onAddToHand={() => {
-                if (Object.values(hand).filter((c) => c.location === 'hand').length >= 4) {
-                  setTimeout(() => setOpen(false), 700);
-                }
-              }}
-              close={
-                <button className="danger absolute right-4 top-4 !py-0" onClick={() => setOpen(false)}>
-                  X
-                </button>
-              }
-            />
-          </>
-        )}
-      </dialog>
+      <Modal open={open} setOpen={setOpen}>
+        <RecentCards
+          onAddToHand={() => {
+            if (Object.values(hand).filter((c) => c.location === 'hand').length >= 4) {
+              setTimeout(() => setOpen(false), 400);
+            }
+          }}
+        />
+      </Modal>
     </>
   );
 }

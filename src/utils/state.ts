@@ -11,7 +11,6 @@ const defaultHand: SimpleCard[] = [];
 // ];
 
 const hand = atom<SimpleCard[]>(defaultHand);
-const dialogOpen = atom<boolean>(false);
 const showStats = atom<boolean>(false);
 const selectedCard = atom<number | undefined>();
 const excludedCards = atom<number[]>([]);
@@ -44,7 +43,6 @@ const addToHandAtom = atom(null, (_get, set, card: SimpleCard) => {
 });
 
 export const useHand = () => useAtom(hand);
-export const useDialogOpen = () => useAtom(dialogOpen);
 export const useShowStats = () => useAtom(showStats);
 export const useSelectedCard = () => useAtom(selectedCard);
 export const useExcludedCards = () => useAtom(excludedCards);
