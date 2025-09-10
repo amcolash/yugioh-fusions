@@ -257,7 +257,7 @@ export function RecentCardsMobile() {
   return (
     <>
       <button onClick={() => setOpen(true)}>Recent Cards</button>
-      <Modal open={open} setOpen={setOpen}>
+      <Modal open={open} close={() => setOpen(false)}>
         <RecentCards
           onAddToHand={() => {
             if (Object.values(hand).filter((c) => c.location === 'hand').length >= 4) {
