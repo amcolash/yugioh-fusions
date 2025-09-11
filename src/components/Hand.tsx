@@ -157,11 +157,14 @@ function CardSet({
                     return newCards;
                   });
                 }}
-                onRightClick={() => {
-                  setExcluded((prev) => {
-                    if (prev.includes(card.id)) return prev.filter((id) => id !== card.id);
-                    return [...prev, card.id];
-                  });
+                rightClick={{
+                  name: excluded.includes(card.id) ? 'Include' : 'Exclude',
+                  handler: () => {
+                    setExcluded((prev) => {
+                      if (prev.includes(card.id)) return prev.filter((id) => id !== card.id);
+                      return [...prev, card.id];
+                    });
+                  },
                 }}
               />
             </div>

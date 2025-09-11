@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { List, RowComponentProps } from 'react-window';
 
 import { useIsMobile } from '../hooks/useIsMobile';
@@ -13,13 +14,17 @@ export function Fusions() {
   const [selectedCard] = useSelectedCard();
   const isMobile = useIsMobile();
 
+  const filteredFusions = useMemo(
+    () =>
+      fusions.filter(({ cards, secondary }) => {
+        if (!selectedCard) return true;
+        return cards.includes(selectedCard) || secondary?.cards.includes(selectedCard);
+      }),
+    [fusions, selectedCard]
+  );
+
   if (hand.length < 2) return null;
   if (fusions.length === 0) return <p className="text-center text-gray-400">No fusions found.</p>;
-
-  const filteredFusions = fusions.filter(({ cards, secondary }) => {
-    if (!selectedCard) return true;
-    return cards.includes(selectedCard) || secondary?.cards.includes(selectedCard);
-  });
 
   return (
     <>

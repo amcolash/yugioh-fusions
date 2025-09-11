@@ -1,14 +1,15 @@
+import { useIsMobile } from 'hooks/useIsMobile';
 import { MouseEventHandler } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-import { useField } from '../utils/state';
+import { useField, useModalData } from '../utils/state';
 import { getFieldBonus, getStats } from '../utils/util';
 import { StatsOverlay } from './StatsOverlay';
 
 export function Card({
   id,
   onClick,
-  onRightClick,
+  rightClick,
   size = 'normal',
   fuse,
   showTooltip = true,
@@ -16,13 +17,16 @@ export function Card({
 }: {
   id: number;
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  onRightClick?: () => void;
+  rightClick?: { handler: () => void; name: string };
   size?: '2x-small' | 'x-small' | 'small' | 'normal';
   fuse?: number | string;
   showTooltip?: boolean;
   stats?: string[];
 }) {
+  const mobile = useIsMobile();
   const [field] = useField();
+  const [, setModalData] = useModalData();
+
   const cardStats = getStats(id, field);
   const bonus = getFieldBonus(id, field);
   const bonusClass = bonus > 0 ? 'text-green-400' : bonus < 0 ? 'text-red-500' : 'text-white';
@@ -40,7 +44,7 @@ export function Card({
       <div
         className="relative h-fit"
         data-tooltip-id={showTooltip ? 'stats-tooltip' : undefined}
-        data-tooltip-html={renderToStaticMarkup(<StatsOverlay card={id} stats={stats} />)}
+        data-tooltip-html={renderToStaticMarkup(<StatsOverlay card={id} stats={stats} background />)}
         data-tooltip-delay-show={1000}
       >
         <img
@@ -75,23 +79,36 @@ export function Card({
     </div>
   );
 
-  if (onClick)
-    return (
-      <button
-        onClick={(e) => {
+  return (
+    <button
+      onClick={(e) => {
+        if (onClick) {
           onClick(e);
           navigator.vibrate?.(50);
-        }}
-        onContextMenu={(e) => {
-          onRightClick?.();
+        }
+      }}
+      onContextMenu={(e) => {
+        if (mobile) {
           e.preventDefault();
-        }}
-        className={`${width} transparent flex !p-0`}
-      >
-        {inner}
-      </button>
-    );
-  return inner;
+
+          setModalData({
+            card: id,
+            actions: [rightClick],
+            stats,
+          });
+          return;
+        }
+
+        if (rightClick) {
+          e.preventDefault();
+          rightClick?.handler();
+        }
+      }}
+      className={`${width} transparent flex !p-0`}
+    >
+      {inner}
+    </button>
+  );
 }
 
 export function AnimatedCard({

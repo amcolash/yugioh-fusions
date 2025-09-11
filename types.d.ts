@@ -74,3 +74,9 @@ type FusionStats = {
   totalAttack: number;
   totalDefense: number;
 };
+
+type ModalData = {
+  card: number;
+  stats?: string[];
+  actions?: { name: string; handler: () => void }[];
+};

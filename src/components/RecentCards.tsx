@@ -211,23 +211,31 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
                         setBouncingCards((prev) => [...prev, { id: parseInt(id), uuid: Date.now(), start: rect }]);
                       }
                     }}
-                    onRightClick={() => {
-                      if (showStats) {
-                        if (selectedCard === parseInt(id)) setSelectedCard(undefined);
+                    rightClick={
+                      showStats
+                        ? {
+                            handler: () => {
+                              if (selectedCard === parseInt(id)) setSelectedCard(undefined);
 
-                        if (excludedCards.includes(parseInt(id))) {
-                          const newExcluded = excludedCards.filter((card) => card !== parseInt(id));
-                          setExcludedCards(newExcluded);
-                        } else {
-                          const newExcluded = [...excludedCards, parseInt(id)];
-                          setExcludedCards(newExcluded);
-                        }
-                      } else {
-                        const newCards = { ...recentCards };
-                        newCards[id] = -1;
-                        setRecentCards(newCards);
-                      }
-                    }}
+                              if (excludedCards.includes(parseInt(id))) {
+                                const newExcluded = excludedCards.filter((card) => card !== parseInt(id));
+                                setExcludedCards(newExcluded);
+                              } else {
+                                const newExcluded = [...excludedCards, parseInt(id)];
+                                setExcludedCards(newExcluded);
+                              }
+                            },
+                            name: excludedCards.includes(parseInt(id)) ? 'Include' : 'Exclude',
+                          }
+                        : {
+                            handler: () => {
+                              const newCards = { ...recentCards };
+                              newCards[id] = -1;
+                              setRecentCards(newCards);
+                            },
+                            name: 'Remove from Recent',
+                          }
+                    }
                     stats={stats}
                   />
                 </div>

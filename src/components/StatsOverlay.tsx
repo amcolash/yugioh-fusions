@@ -1,4 +1,5 @@
 import { ComponentProps, ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import { useField } from '../utils/state';
 import {
@@ -39,15 +40,15 @@ function StarLabel({ star }: { star: GuardianStar }) {
   );
 }
 
-export function StatsOverlay({ card, stats }: { card: number; stats?: string[] }) {
+export function StatsOverlay({ card, stats, background }: { card: number; stats?: string[]; background?: boolean }) {
   const [field] = useField();
   const cardStats = getStats(card, field);
   const bonus = getFieldBonus(card, field);
   const bonusClass = bonus > 0 ? 'text-green-400' : bonus < 0 ? 'text-red-400' : 'text-white';
 
   return (
-    <div className="grid gap-1 overflow-hidden relative p-4 rounded-md">
-      <Background type="absolute" brightness={2.5} />
+    <div className={twMerge('grid gap-1 overflow-hidden relative rounded-md', background ? 'p-4' : 'py-2')}>
+      {background && <Background type="absolute" brightness={2.5} />}
 
       <img
         className={`w-48 rounded border-2 border-amber-950 mb-4 justify-self-center`}

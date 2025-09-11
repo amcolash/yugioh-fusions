@@ -5,9 +5,10 @@ import { Field, filterRecentCards, generateSecondaryFusions } from './util';
 const defaultHand: SimpleCard[] = [];
 // const defaultHand: SimpleCard[] = [9, 399, 44, 461, 97].map((id) => ({ id, location: 'hand' }));
 // const defaultHand: (SimpleCard | CardWithIndex)[] = [
-//   { id: 200, location: 'hand', index: 1 },
-//   { id: 9, location: 'hand', index: 2 },
+//   { id: 190, location: 'hand' },
+//   { id: 4, location: 'hand' },
 //   { id: 461, location: 'hand' },
+//   { id: 10, location: 'hand' },
 // ];
 
 const hand = atom<SimpleCard[]>(defaultHand);
@@ -16,6 +17,7 @@ const selectedCard = atom<number | undefined>();
 const excludedCards = atom<number[]>([]);
 const field = atom<Field>('normal');
 const fusionFilter = atom<FusionFilter>('all');
+const modalData = atom<ModalData | undefined>();
 
 const fusions = atom<FusionRecord[]>((get) => {
   const fusions = generateSecondaryFusions(get(hand), get(field));
@@ -48,6 +50,7 @@ export const useSelectedCard = () => useAtom(selectedCard);
 export const useExcludedCards = () => useAtom(excludedCards);
 export const useField = () => useAtom(field);
 export const useFusionFilter = () => useAtom(fusionFilter);
+export const useModalData = () => useAtom(modalData);
 
 export const useFusions = () => useAtomValue(fusions);
 

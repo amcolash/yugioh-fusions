@@ -2,19 +2,23 @@ import { Tooltip } from 'react-tooltip';
 
 import { useIsMobile } from '../hooks/useIsMobile';
 import { usePantry } from '../hooks/usePantry';
-import { useHand, useRecentCards } from '../utils/state';
+import { useHand, useModalData, useRecentCards } from '../utils/state';
 import { Background } from './Background';
 import { Fusions } from './Fusions';
 import { Hand } from './Hand';
 import { Loader } from './Loader';
+import { MobileContextMenu } from './MobileContextMenu';
+import { Modal } from './Modal';
 import { RecentCards, RecentCardsMobile } from './RecentCards';
 import { Search } from './Search';
+import { StatsOverlay } from './StatsOverlay';
 
 export function App() {
   const mobile = useIsMobile();
   const { loading } = usePantry();
   // const { loading } = useLocalStorage();
 
+  const [modalData, setModalData] = useModalData();
   const [hand] = useHand();
   const [recentCards] = useRecentCards();
 
@@ -39,6 +43,7 @@ export function App() {
           <Search />
 
           {mobile && <RecentCardsMobile />}
+          <MobileContextMenu />
 
           <Hand />
           <Fusions />
