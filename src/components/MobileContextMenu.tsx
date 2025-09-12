@@ -13,27 +13,29 @@ export function MobileContextMenu() {
   return (
     mobile && (
       <Modal open={!!modalData} close={() => setModalData(undefined)}>
-        <StatsOverlay card={modalData?.card} stats={modalData?.stats} />
+        <div className="max-h-full overflow-y-auto">
+          <StatsOverlay card={modalData?.card} stats={modalData?.stats} />
 
-        {actions.length > 0 && (
-          <>
-            <hr className="my-8" />
-            <div className="grid gap-2">
-              {actions.map(({ name, handler }) => (
-                <button
-                  key={name}
-                  className="primary w-full"
-                  onClick={() => {
-                    handler();
-                    setModalData(undefined);
-                  }}
-                >
-                  {name}
-                </button>
-              ))}
-            </div>
-          </>
-        )}
+          {actions.length > 0 && (
+            <>
+              <hr className="my-8" />
+              <div className="grid gap-2">
+                {actions.map(({ name, handler }) => (
+                  <button
+                    key={name}
+                    className="primary w-full"
+                    onClick={() => {
+                      handler();
+                      setModalData(undefined);
+                    }}
+                  >
+                    {name}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
       </Modal>
     )
   );

@@ -6,9 +6,9 @@ import { Background } from './Background';
 export function Modal({ children, open, close }: { children: React.ReactNode; open: boolean; close: () => void }) {
   const mobile = useIsMobile();
 
-  // useEffect(() => {
-  //   document.body.style.overflow = open ? 'hidden' : 'auto';
-  // }, [open]);
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : 'auto';
+  }, [open]);
 
   // Handle back button and close the modal
   // useEffect(() => {
@@ -44,7 +44,7 @@ export function Modal({ children, open, close }: { children: React.ReactNode; op
           <>
             <Background type="fixed" />
 
-            <button className="danger absolute right-6 top-6 !py-0 z-1" onClick={() => close()}>
+            <button className="danger fixed right-6 top-6 !py-0 z-1" onClick={() => close()}>
               X
             </button>
 
