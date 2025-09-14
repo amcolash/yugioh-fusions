@@ -116,7 +116,7 @@ export function Hand() {
             >
               Clear Cards
             </button>
-            {copyPaste}
+            {!showStats && copyPaste}
           </div>
 
           {!showStats && (

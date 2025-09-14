@@ -48,6 +48,13 @@ export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
     const statsA = getStats(a.secondary?.id || a.id, field);
     const statsB = getStats(b.secondary?.id || b.id, field);
 
+    const stats1A = getStats(a.cards[0], field);
+    const stats2A = getStats(a.cards[1], field);
+    const stats3A = a.secondary ? getStats(a.secondary.cards[0], field) : undefined;
+    const stats1B = getStats(b.cards[0], field);
+    const stats2B = getStats(b.cards[1], field);
+    const stats3B = b.secondary ? getStats(b.secondary.cards[0], field) : undefined;
+
     const attackDiff = statsB?.attack - statsA?.attack;
     const defenseDiff = statsB?.defense - statsA?.defense;
 
@@ -68,21 +75,15 @@ export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
     if (aInHand && !bInHand) return 1;
     if (!aInHand && bInHand) return -1;
 
-    const aAttack =
-      stats[a.cards[0]].attack + stats[a.cards[1]].attack + (a.secondary ? stats[a.secondary.cards[0]].attack : 0);
-    const bAttack =
-      stats[b.cards[0]].attack + stats[b.cards[1]].attack + (b.secondary ? stats[b.secondary.cards[0]].attack : 0);
+    const aAttack = stats1A.attack + stats2A.attack + (stats3A ? stats3A.attack : 0);
+    const bAttack = stats1B.attack + stats2B.attack + (stats3B ? stats3B.attack : 0);
 
-    const aDefense =
-      stats[a.cards[0]].defense + stats[a.cards[1]].defense + (a.secondary ? stats[a.secondary.cards[0]].defense : 0);
-    const bDefense =
-      stats[b.cards[0]].defense + stats[b.cards[1]].defense + (b.secondary ? stats[b.secondary.cards[0]].defense : 0);
+    const aDefense = stats1A.defense + stats2A.defense + (stats3A ? stats3A.defense : 0);
+    const bDefense = stats1B.defense + stats2B.defense + (stats3B ? stats3B.defense : 0);
 
     // Finally, sort by total combined attack/defense of all cards used (less is better)
     if (aAttack !== bAttack) return aAttack - bAttack;
     if (aDefense !== bDefense) return aDefense - bDefense;
-
-    return 0;
   });
 
   const finalFusions = filterImpossibilities(combined, baseHand);
