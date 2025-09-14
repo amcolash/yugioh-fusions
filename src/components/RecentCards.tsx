@@ -27,6 +27,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
   const [showStats] = useShowStats();
   const fusions = useFusions();
   const addToHand = useAddToHand();
+  const [hand] = useHand();
   const [selectedCard, setSelectedCard] = useSelectedCard();
   const [excludedCards, setExcludedCards] = useExcludedCards();
   const [field] = useField();
@@ -186,6 +187,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
                   key={id}
                 >
                   <Card
+                    disabled={Object.values(hand).filter((c) => c.location === 'hand').length >= 5}
                     id={parseInt(id)}
                     size="x-small"
                     onClick={(e) => {

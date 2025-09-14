@@ -110,6 +110,7 @@ export function Hand() {
                   cards={cardsInField}
                   onRemove={(card) => setHand([...cardsInField.filter((c) => c.index !== card.index), ...cardsInHand])}
                   setHand={setHand}
+                  canMove={cardsInHand.length < 5}
                 />
               )}
 
@@ -118,6 +119,7 @@ export function Hand() {
                   cards={cardsInHand}
                   onRemove={(card) => setHand([...cardsInHand.filter((c) => c.index !== card.index), ...cardsInField])}
                   setHand={setHand}
+                  canMove={cardsInField.length < 5}
                 />
               )}
             </>
@@ -132,10 +134,12 @@ function CardSet({
   cards,
   onRemove,
   setHand,
+  canMove,
 }: {
   cards: CardWithIndex[];
   onRemove: (card: CardWithIndex) => void;
   setHand: Dispatch<SetStateAction<SimpleCard[]>>;
+  canMove: boolean;
 }) {
   const [excluded, setExcluded] = useExcludedCards();
 
@@ -148,15 +152,19 @@ function CardSet({
               <Card
                 id={card.id}
                 size="2x-small"
-                onClick={() => {
-                  setHand((prev) => {
-                    const newCards = [...prev];
-                    const found = newCards.find((c) => c.id == card.id);
-                    found.location = found.location === 'field' ? 'hand' : 'field';
+                onClick={
+                  canMove
+                    ? () => {
+                        setHand((prev) => {
+                          const newCards = [...prev];
+                          const found = newCards.find((c) => c.id == card.id);
+                          found.location = found.location === 'field' ? 'hand' : 'field';
 
-                    return newCards;
-                  });
-                }}
+                          return newCards;
+                        });
+                      }
+                    : undefined
+                }
                 rightClick={{
                   name: excluded.includes(card.id) ? 'Include' : 'Exclude',
                   handler: () => {

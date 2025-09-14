@@ -1,6 +1,7 @@
 import { useIsMobile } from 'hooks/useIsMobile';
 import { MouseEventHandler } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { twMerge } from 'tailwind-merge';
 
 import { useField, useModalData } from '../utils/state';
 import { getFieldBonus, getStats } from '../utils/util';
@@ -14,6 +15,7 @@ export function Card({
   fuse,
   showTooltip = true,
   stats = [],
+  disabled,
 }: {
   id: number;
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -22,6 +24,7 @@ export function Card({
   fuse?: number | string;
   showTooltip?: boolean;
   stats?: string[];
+  disabled?: boolean;
 }) {
   const mobile = useIsMobile();
   const [field] = useField();
@@ -40,7 +43,7 @@ export function Card({
   const fuseText = stats.length > 0 ? stats.map((s) => s.split(': ')[1]).join('\n') : fuse;
 
   const inner = (
-    <div className={`grid content-baseline justify-items-center gap-2 relative ${showText ? 'w-36' : ''}`}>
+    <div className={twMerge('grid content-baseline justify-items-center gap-2 relative', showText && 'w-36')}>
       <div
         className="relative h-fit"
         data-tooltip-id={showTooltip ? 'stats-tooltip' : undefined}
@@ -81,6 +84,7 @@ export function Card({
 
   return (
     <button
+      disabled={disabled}
       onClick={(e) => {
         if (onClick) {
           onClick(e);
@@ -104,7 +108,11 @@ export function Card({
           rightClick?.handler();
         }
       }}
-      className={`${width} transparent flex !p-0`}
+      className={twMerge(
+        `${width} transparent flex !p-0`,
+        !onClick && 'hover:!brightness-100',
+        disabled && 'brightness-50 hover:!brightness-50 cursor-not-allowed'
+      )}
     >
       {inner}
     </button>

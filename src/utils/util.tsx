@@ -132,6 +132,8 @@ export function filterImpossibilities(fusions: FusionRecord[], cards: SimpleCard
     const card3 = fusion.secondary?.cards.find((c) => c !== fusion.id);
 
     const hand = cards.filter((c) => c.location === 'hand').map((c) => c.id);
+    const field = cards.filter((c) => c.location === 'field').map((c) => c.id);
+
     const card1InHand = hand.includes(card1);
     const card2InHand = hand.includes(card2);
     const card3InHand = hand.includes(card3);
@@ -147,6 +149,8 @@ export function filterImpossibilities(fusions: FusionRecord[], cards: SimpleCard
       // Secondary fusion need to have one card in hand, one card on field, third in hand
       if (card1InHand && card2InHand && !card3InHand) return false;
     }
+
+    if (card1InHand && card2InHand && field.length >= 5) return false; // cannot fuse if field is full and both cards are in hand
 
     return true;
   });
