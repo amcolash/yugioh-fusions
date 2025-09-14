@@ -108,6 +108,7 @@ export function Hand() {
               {cardsInField.length > 0 && (
                 <CardSet
                   cards={cardsInField}
+                  location="field"
                   onRemove={(card) => setHand([...cardsInField.filter((c) => c.index !== card.index), ...cardsInHand])}
                   setHand={setHand}
                   canMove={cardsInHand.length < 5}
@@ -117,6 +118,7 @@ export function Hand() {
               {cardsInHand.length > 0 && (
                 <CardSet
                   cards={cardsInHand}
+                  location="hand"
                   onRemove={(card) => setHand([...cardsInHand.filter((c) => c.index !== card.index), ...cardsInField])}
                   setHand={setHand}
                   canMove={cardsInField.length < 5}
@@ -132,11 +134,13 @@ export function Hand() {
 
 function CardSet({
   cards,
+  location,
   onRemove,
   setHand,
   canMove,
 }: {
   cards: CardWithIndex[];
+  location: 'hand' | 'field';
   onRemove: (card: CardWithIndex) => void;
   setHand: Dispatch<SetStateAction<SimpleCard[]>>;
   canMove: boolean;
@@ -157,7 +161,7 @@ function CardSet({
                     ? () => {
                         setHand((prev) => {
                           const newCards = [...prev];
-                          const found = newCards.find((c) => c.id == card.id);
+                          const found = newCards.find((c) => c.id == card.id && c.location === location);
                           found.location = found.location === 'field' ? 'hand' : 'field';
 
                           return newCards;
