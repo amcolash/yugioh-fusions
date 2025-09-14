@@ -60,7 +60,7 @@ export function Search() {
         </ul>
       )}
 
-      {search.length > 2 && results.length === 0 && <p className="text-center text-gray-400 pt-6">No results found.</p>}
+      {search.length > 2 && results.length === 0 && <p className="pt-6 text-center text-gray-400">No results found.</p>}
     </>
   );
 }

@@ -55,9 +55,9 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
 
   return (
     <>
-      <div className="grid gap-8 content-start h-full max-w-5xl">
-        <h2 className="text-center px-8">{header}</h2>
-        <div className="flex flex-wrap xl:flex-nowrap gap-x-8 gap-y-4">
+      <div className="grid h-full max-w-5xl content-start gap-8">
+        <h2 className="px-8 text-center">{header}</h2>
+        <div className="flex flex-wrap gap-x-8 gap-y-4 xl:flex-nowrap">
           <Select
             label="Sort By"
             value={sort}
@@ -84,7 +84,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
           )}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 overflow-auto h-full py-4">
+        <div className="flex h-full flex-wrap justify-center gap-3 overflow-auto py-4">
           {Object.entries(recentCards)
             .sort((a, b) => {
               const baseStatsA = getStats(parseInt(a[0]), field);
@@ -181,7 +181,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
               return (
                 <div
                   className={twMerge(
-                    showStats && selectedCard === parseInt(id) && 'ring-4 ring-blue-400 rounded',
+                    showStats && selectedCard === parseInt(id) && 'rounded ring-4 ring-blue-400',
                     showStats && excludedCards.includes(parseInt(id)) && 'ring-4 ring-red-400'
                   )}
                   key={id}

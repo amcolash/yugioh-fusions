@@ -43,7 +43,7 @@ export function Card({
   const fuseText = stats.length > 0 ? stats.map((s) => s.split(': ')[1]).join('\n') : fuse;
 
   const inner = (
-    <div className={twMerge('grid content-baseline justify-items-center gap-2 relative', showText && 'w-36')}>
+    <div className={twMerge('relative grid content-baseline justify-items-center gap-2', showText && 'w-36')}>
       <div
         className="relative h-fit"
         data-tooltip-id={showTooltip ? 'stats-tooltip' : undefined}
@@ -58,13 +58,13 @@ export function Card({
         />
 
         {showText && (
-          <span className="absolute bottom-0 left-0 rounded-tr-sm text-sm rounded-bl-sm bg-gray-900 opacity-60 px-1">
+          <span className="absolute bottom-0 left-0 rounded-tr-sm rounded-bl-sm bg-gray-900 px-1 text-sm opacity-60">
             #{id}
           </span>
         )}
 
         <span
-          className={`absolute bottom-0 right-0 rounded-tl-sm text-sm text-right rounded-br-sm bg-gray-900 opacity-60 px-1 ${bonusClass}`}
+          className={`absolute right-0 bottom-0 rounded-tl-sm rounded-br-sm bg-gray-900 px-1 text-right text-sm opacity-60 ${bonusClass}`}
         >
           {cardStats.attack}
           <br />
@@ -73,7 +73,7 @@ export function Card({
 
         {fuseText !== undefined && (
           <span
-            className={`absolute ${typeof fuseText === 'string' ? 'bottom-0.5' : 'top-0.5'} right-0.5 rounded-br-sm text-xs text-right whitespace-pre rounded-tl-sm bg-sky-950 text-blue-400 border-2 border-gray-300 opacity-90 px-1.5`}
+            className={`absolute ${typeof fuseText === 'string' ? 'bottom-0.5' : 'top-0.5'} right-0.5 rounded-tl-sm rounded-br-sm border-2 border-gray-300 bg-sky-950 px-1.5 text-right text-xs whitespace-pre text-blue-400 opacity-90`}
           >
             {fuseText}
           </span>
@@ -112,7 +112,7 @@ export function Card({
       className={twMerge(
         `${width} transparent flex !p-0`,
         !onClick && 'hover:!brightness-100',
-        disabled && 'brightness-50 hover:!brightness-50 cursor-not-allowed'
+        disabled && 'cursor-not-allowed brightness-50 hover:!brightness-50'
       )}
     >
       {inner}

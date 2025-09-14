@@ -22,7 +22,7 @@ function StatLabel({
 }) {
   return (
     <div>
-      <strong className="capitalize text-sky-500">{name}</strong>:{' '}
+      <strong className="text-sky-500 capitalize">{name}</strong>:{' '}
       <span className={className}>{Array.isArray(value) ? value.join(', ') : value}</span>
     </div>
   );
@@ -47,11 +47,11 @@ export function StatsOverlay({ card, stats, background }: { card: number; stats?
   const bonusClass = bonus > 0 ? 'text-green-400' : bonus < 0 ? 'text-red-400' : 'text-white';
 
   return (
-    <div className={twMerge('grid gap-1 overflow-hidden relative rounded-md', background ? 'p-4' : 'py-2')}>
+    <div className={twMerge('relative grid gap-1 overflow-hidden rounded-md', background ? 'p-4' : 'py-2')}>
       {background && <Background type="absolute" brightness={2.5} />}
 
       <img
-        className={`w-48 rounded border-2 border-amber-950 mb-4 justify-self-center`}
+        className={`mb-4 w-48 justify-self-center rounded border-2 border-amber-950`}
         src={`${import.meta.env.BASE_URL}/cropped/${card}.png`}
         alt=""
       />

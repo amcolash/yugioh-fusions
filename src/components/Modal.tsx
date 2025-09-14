@@ -29,7 +29,7 @@ export function Modal({ children, open, close }: { children: React.ReactNode; op
 
   useEffect(() => {
     close();
-  }, [mobile]);
+  }, [close, mobile]);
 
   return (
     <>
@@ -38,13 +38,13 @@ export function Modal({ children, open, close }: { children: React.ReactNode; op
         onKeyDown={(e) => {
           if (e.key === 'Escape') close();
         }}
-        className="text-white z-1 p-6 inset-0 m-auto fixed w-full h-full overflow-hidden"
+        className="fixed inset-0 z-1 m-auto h-full w-full overflow-hidden p-6 text-white"
       >
         {open && (
           <>
             <Background type="fixed" />
 
-            <button className="danger fixed right-6 top-6 !py-0 z-1" onClick={() => close()}>
+            <button className="danger fixed top-6 right-6 z-1 !py-0" onClick={() => close()}>
               X
             </button>
 

@@ -62,7 +62,7 @@ function FusionRow({
   });
 
   return (
-    <div className="grid gap-4 content-start" style={style}>
+    <div className="grid content-start gap-4" style={style}>
       {/* Extra level of wrapper to ensure everything visually works */}
       <div className="flex justify-center overflow-hidden">
         <div className="flex gap-1 overflow-x-auto">
@@ -70,7 +70,7 @@ function FusionRow({
           <Card id={cards[1]} size="x-small" fuse={2} />
           {secondary && <Card id={secondary.cards.find((v) => v !== id)} size="x-small" fuse={3} />}
 
-          <span className="text-3xl my-auto">→</span>
+          <span className="my-auto text-3xl">→</span>
           <Card id={secondary?.id || id} size="x-small" />
         </div>
       </div>

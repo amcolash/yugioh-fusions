@@ -2,30 +2,27 @@ import { Tooltip } from 'react-tooltip';
 
 import { useIsMobile } from '../hooks/useIsMobile';
 import { usePantry } from '../hooks/usePantry';
-import { useHand, useModalData, useRecentCards } from '../utils/state';
+import { useHand, useRecentCards } from '../utils/state';
 import { Background } from './Background';
 import { Fusions } from './Fusions';
 import { Hand } from './Hand';
 import { Loader } from './Loader';
 import { MobileContextMenu } from './MobileContextMenu';
-import { Modal } from './Modal';
 import { RecentCards, RecentCardsMobile } from './RecentCards';
 import { Search } from './Search';
-import { StatsOverlay } from './StatsOverlay';
 
 export function App() {
   const mobile = useIsMobile();
   const { loading } = usePantry();
   // const { loading } = useLocalStorage();
 
-  const [modalData, setModalData] = useModalData();
   const [hand] = useHand();
   const [recentCards] = useRecentCards();
 
   return (
     <>
       <div
-        className={`fixed inset-0 z-20 pointer-events-none`}
+        className={`pointer-events-none fixed inset-0 z-20`}
         style={{
           backgroundImage: 'linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.15) 51%)',
           backgroundSize: '4px 4px',
@@ -36,9 +33,9 @@ export function App() {
       <Loader loading={loading} />
 
       <div
-        className={`flex gap-12 w-full justify-center transition-opacity duration-1000 delay-700 ${loading ? 'opacity-0' : 'opacity-100'}`}
+        className={`flex w-full justify-center gap-12 transition-opacity delay-700 duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}
       >
-        <div className="grid gap-8 content-start sm:min-w-md sm:max-w-md">
+        <div className="grid content-start gap-8 sm:max-w-md sm:min-w-md">
           {(hand.length === 0 || !mobile) && <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>}
           <Search />
 

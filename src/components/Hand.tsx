@@ -80,7 +80,7 @@ export function Hand() {
                 }
               }}
             >
-              <img src={copy} className="invert pointer-events-none" />
+              <img src={copy} className="pointer-events-none invert" />
             </button>
             <button
               className="transparent border border-gray-500 duration-250"
@@ -97,7 +97,7 @@ export function Hand() {
                 }
               }}
             >
-              <img src={clipboard} className="invert pointer-events-none" />
+              <img src={clipboard} className="pointer-events-none invert" />
             </button>
             {/* </> */}
             {/* )} */}
@@ -144,10 +144,10 @@ function CardSet({
   const [excluded, setExcluded] = useExcludedCards();
 
   return (
-    <ul className="flex gap-2 flex-wrap max-w-screen justify-center">
+    <ul className="flex max-w-screen flex-wrap justify-center gap-2">
       {cards.map((card, index) => (
         <li key={index}>
-          <div className="grid gap-2 h-full content-between justify-items-center">
+          <div className="grid h-full content-between justify-items-center gap-2">
             <div className={excluded.includes(card.id) ? 'ring-4 ring-red-400' : ''}>
               <Card
                 id={card.id}
@@ -176,7 +176,7 @@ function CardSet({
                 }}
               />
             </div>
-            <button className="danger !py-0 w-1/2" onClick={() => onRemove(card)}>
+            <button className="danger w-1/2 !py-0" onClick={() => onRemove(card)}>
               X
             </button>
           </div>

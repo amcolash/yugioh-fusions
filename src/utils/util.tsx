@@ -246,7 +246,7 @@ export function getGuardianStarSymbol(star: GuardianStar, bonus?: 'positive' | '
   return (
     <img
       src={`${import.meta.env.BASE_URL}/stars/${star.toLowerCase()}.png`}
-      className={`inline-block size-6 star ${bonus === 'positive' ? 'star-green' : bonus === 'negative' ? 'star-red' : ''}`}
+      className={`star inline-block size-6 ${bonus === 'positive' ? 'star-green' : bonus === 'negative' ? 'star-red' : ''}`}
     />
   );
 }

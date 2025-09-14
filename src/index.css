@@ -8,11 +8,11 @@ html {
 }
 
 #root {
-  @apply px-5 py-8 flex justify-center sm:max-h-screen;
+  @apply flex justify-center px-5 py-8 sm:max-h-screen;
 }
 
 input {
-  @apply border border-sky-800 rounded py-1 px-3 text-center h-[42px] min-w-[42px] hover:brightness-75 transition duration-200;
+  @apply h-[42px] min-w-[42px] rounded border border-sky-800 px-3 py-1 text-center transition duration-200 hover:brightness-75;
 
   &::placeholder {
     @apply text-center;
@@ -20,7 +20,7 @@ input {
 }
 
 button {
-  @apply text-shadow-lg p-2 bg-sky-600 rounded hover:bg-sky-700 active:bg-sky-800 transition duration-200;
+  @apply rounded bg-sky-600 p-2 transition duration-200 text-shadow-lg hover:bg-sky-700 active:bg-sky-800;
 }
 
 button.transparent {
@@ -40,7 +40,7 @@ hr {
 }
 
 #stats-tooltip {
-  @apply text-gray-300 p-0 z-10 rounded-md max-w-sm;
+  @apply z-10 max-w-sm rounded-md p-0 text-gray-300;
 }
 
 @theme {
