@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useCallback, useEffect } from 'react';
 
 import clipboard from '../icons/clipboard.svg';
 import copy from '../icons/copy.svg';
@@ -16,20 +16,81 @@ export function Hand() {
   const cardsInHand: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'hand');
   const cardsInField: CardWithIndex[] = cardsWithIndexes.filter((c) => c.location === 'field');
 
+  const clearCards = useCallback(() => {
+    if (hand.length > 0 && confirm('Are you sure you want to clear your cards?')) {
+      setHand([]);
+      setExcluded([]);
+      setShowStats(false);
+      setField('normal');
+    }
+  }, [hand, setHand, setExcluded, setShowStats, setField]);
+
+  useEffect(() => {
+    const clear = (e) => {
+      if (e.key === 'c') clearCards();
+    };
+
+    document.addEventListener('keydown', clear);
+    return () => document.removeEventListener('keydown', clear);
+  }, [clearCards]);
+
+  const copyPaste = (
+    <>
+      <button
+        className="transparent border border-gray-500 duration-250"
+        onClick={async (e) => {
+          const target = e.target as HTMLButtonElement;
+          try {
+            await navigator.clipboard.writeText(JSON.stringify(hand));
+            target.classList.add('success');
+            setTimeout(() => target.classList.remove('success'), 250);
+          } catch (error) {
+            console.error('Failed to copy to clipboard:', error);
+            target.classList.add('danger');
+            setTimeout(() => target.classList.remove('danger'), 250);
+          }
+        }}
+      >
+        <img src={copy} className="pointer-events-none invert" />
+      </button>
+      <button
+        className="transparent border border-gray-500 duration-250"
+        onClick={async (e) => {
+          const target = e.target as HTMLButtonElement;
+          try {
+            setHand(JSON.parse(await navigator.clipboard.readText()));
+            target.classList.add('success');
+            setTimeout(() => target.classList.remove('success'), 250);
+          } catch (error) {
+            console.error('Failed to read clipboard contents:', error);
+            target.classList.add('danger');
+            setTimeout(() => target.classList.remove('danger'), 250);
+          }
+        }}
+      >
+        <img src={clipboard} className="pointer-events-none invert" />
+      </button>
+    </>
+  );
+
   return (
     <>
       {hand.length === 0 && (
         <>
           <p className="text-center text-gray-400">Your hand is empty. Add some cards to see their fusions.</p>
-          <button
-            onClick={() => {
-              setHand(Object.keys(recentCards).map((id) => ({ id: parseInt(id), location: 'hand' })));
-              setShowStats(true);
-              setField('normal');
-            }}
-          >
-            Best Combinations
-          </button>
+          <div className="flex gap-4">
+            <button
+              className="w-full"
+              onClick={() => {
+                setHand(Object.keys(recentCards).map((id) => ({ id: parseInt(id), location: 'hand' })));
+                setShowStats(true);
+                setField('normal');
+              }}
+            >
+              Best Combinations
+            </button>
+            {copyPaste}
+          </div>
         </>
       )}
 
@@ -44,14 +105,7 @@ export function Hand() {
           <div className="flex gap-4">
             <button
               className="danger w-full"
-              onClick={() => {
-                if (confirm('Are you sure you want to clear your cards?')) {
-                  setHand([]);
-                  setExcluded([]);
-                  setShowStats(false);
-                  setField('normal');
-                }
-              }}
+              onClick={() => clearCards()}
               onContextMenu={(e) => {
                 e.preventDefault();
                 setHand([]);
@@ -62,45 +116,7 @@ export function Hand() {
             >
               Clear Cards
             </button>
-
-            {/* {!import.meta.env.PROD && ( */}
-            {/* <> */}
-            <button
-              className="transparent border border-gray-500 duration-250"
-              onClick={async (e) => {
-                const target = e.target as HTMLButtonElement;
-                try {
-                  await navigator.clipboard.writeText(JSON.stringify(hand));
-                  target.classList.add('success');
-                  setTimeout(() => target.classList.remove('success'), 250);
-                } catch (error) {
-                  console.error('Failed to copy to clipboard:', error);
-                  target.classList.add('danger');
-                  setTimeout(() => target.classList.remove('danger'), 250);
-                }
-              }}
-            >
-              <img src={copy} className="pointer-events-none invert" />
-            </button>
-            <button
-              className="transparent border border-gray-500 duration-250"
-              onClick={async (e) => {
-                const target = e.target as HTMLButtonElement;
-                try {
-                  setHand(JSON.parse(await navigator.clipboard.readText()));
-                  target.classList.add('success');
-                  setTimeout(() => target.classList.remove('success'), 250);
-                } catch (error) {
-                  console.error('Failed to read clipboard contents:', error);
-                  target.classList.add('danger');
-                  setTimeout(() => target.classList.remove('danger'), 250);
-                }
-              }}
-            >
-              <img src={clipboard} className="pointer-events-none invert" />
-            </button>
-            {/* </> */}
-            {/* )} */}
+            {copyPaste}
           </div>
 
           {!showStats && (

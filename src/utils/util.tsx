@@ -49,9 +49,40 @@ export function generateSecondaryFusions(baseHand: SimpleCard[], field: Field) {
     const statsB = getStats(b.secondary?.id || b.id, field);
 
     const attackDiff = statsB?.attack - statsA?.attack;
+    const defenseDiff = statsB?.defense - statsA?.defense;
 
+    // First, sort by final fused card attack/defense
     if (attackDiff !== 0) return attackDiff;
-    return statsB?.defense - statsA?.defense;
+    if (defenseDiff !== 0) return defenseDiff;
+
+    const aInHand =
+      hand.includes(a.cards[0]) &&
+      hand.includes(a.cards[1]) &&
+      (a.secondary ? hand.includes(a.secondary.cards[0]) : true);
+    const bInHand =
+      hand.includes(b.cards[0]) &&
+      hand.includes(b.cards[1]) &&
+      (b.secondary ? hand.includes(b.secondary.cards[0]) : true);
+
+    // Then, sort by how many cards are in hand (more is better)
+    if (aInHand && !bInHand) return 1;
+    if (!aInHand && bInHand) return -1;
+
+    const aAttack =
+      stats[a.cards[0]].attack + stats[a.cards[1]].attack + (a.secondary ? stats[a.secondary.cards[0]].attack : 0);
+    const bAttack =
+      stats[b.cards[0]].attack + stats[b.cards[1]].attack + (b.secondary ? stats[b.secondary.cards[0]].attack : 0);
+
+    const aDefense =
+      stats[a.cards[0]].defense + stats[a.cards[1]].defense + (a.secondary ? stats[a.secondary.cards[0]].defense : 0);
+    const bDefense =
+      stats[b.cards[0]].defense + stats[b.cards[1]].defense + (b.secondary ? stats[b.secondary.cards[0]].defense : 0);
+
+    // Finally, sort by total combined attack/defense of all cards used (less is better)
+    if (aAttack !== bAttack) return aAttack - bAttack;
+    if (aDefense !== bDefense) return aDefense - bDefense;
+
+    return 0;
   });
 
   const finalFusions = filterImpossibilities(combined, baseHand);
