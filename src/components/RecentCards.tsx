@@ -170,11 +170,11 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
                 if (fusionFilter === 'secondary') stats.push(`Secondary Fusions: ${secondary}`);
 
                 if (showTotal) {
-                  stats.push(`Avg Attack: ${avgAttack}`);
-                  stats.push(`Avg Defense: ${avgDefense}`);
-                } else {
                   stats.push(`Total Attack: ${totalAttack}`);
                   stats.push(`Total Defense: ${totalDefense}`);
+                } else {
+                  stats.push(`Avg Attack: ${avgAttack}`);
+                  stats.push(`Avg Defense: ${avgDefense}`);
                 }
               }
 
@@ -187,7 +187,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
                   key={id}
                 >
                   <Card
-                    disabled={Object.values(hand).filter((c) => c.location === 'hand').length >= 5}
+                    disabled={Object.values(hand).filter((c) => c.location === 'hand').length >= 5 && !showStats}
                     id={parseInt(id)}
                     size="x-small"
                     onClick={(e) => {
