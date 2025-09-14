@@ -84,7 +84,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
           )}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 overflow-auto h-full">
+        <div className="flex flex-wrap justify-center gap-3 overflow-auto h-full py-4">
           {Object.entries(recentCards)
             .sort((a, b) => {
               const baseStatsA = getStats(parseInt(a[0]), field);
