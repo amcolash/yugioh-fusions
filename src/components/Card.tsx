@@ -54,6 +54,7 @@ export function Card({
           className={`${width} rounded border-2 border-amber-950`}
           src={`${import.meta.env.BASE_URL}/cropped/${id}.png`}
           alt=""
+          loading="lazy"
         />
 
         {showText && (
