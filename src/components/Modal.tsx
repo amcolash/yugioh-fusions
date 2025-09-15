@@ -10,25 +10,8 @@ export function Modal({ children, open, close }: { children: React.ReactNode; op
     document.body.style.overflow = open ? 'hidden' : 'auto';
   }, [open]);
 
-  // Handle back button and close the modal
-  // useEffect(() => {
-  //   if (!open) return;
-  //   if (window.location.hash !== '#modal') window.location.hash = 'modal';
-
-  //   const handleHashChange = () => {
-  //     if (window.location.hash === '') close();
-  //   };
-
-  //   window.addEventListener('hashchange', handleHashChange);
-
-  //   return () => {
-  //     window.removeEventListener('hashchange', handleHashChange);
-  //     if (window.location.hash === '#modal') history.back();
-  //   };
-  // }, [open, close]);
-
   useEffect(() => {
-    close();
+    if (!mobile) close();
   }, [close, mobile]);
 
   return (

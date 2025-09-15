@@ -36,7 +36,7 @@ export function App() {
         className={`flex w-full justify-center gap-12 transition-opacity delay-700 duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}
       >
         <div className="grid content-start gap-8 sm:max-w-md sm:min-w-md">
-          {(hand.length === 0 || !mobile) && <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>}
+          {hand.length === 0 && <h1 className="text-center">Yugi-Oh! Fusion Combinations</h1>}
           <Search />
 
           {mobile && <RecentCardsMobile />}

@@ -87,7 +87,7 @@ export function Hand() {
                 setField('normal');
               }}
             >
-              Best Combinations
+              Deck Stats
             </button>
             {copyPaste}
           </div>
