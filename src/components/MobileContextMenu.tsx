@@ -1,4 +1,5 @@
 import { useIsMobile } from 'hooks/useIsMobile';
+import { useStackedModalHistory } from 'hooks/useStackedModalHistory';
 import { useModalData } from 'utils/state';
 
 import { Modal } from './Modal';
@@ -8,11 +9,20 @@ export function MobileContextMenu() {
   const mobile = useIsMobile();
   const [modalData, setModalData] = useModalData();
 
+  // Special close function that syncs with browser history (for back button)
+  const close = useStackedModalHistory();
+
   const actions = (modalData?.actions || []).filter((a) => !!a);
 
   return (
     mobile && (
-      <Modal open={!!modalData} close={() => setModalData(undefined)}>
+      <Modal
+        open={!!modalData}
+        close={() => {
+          close();
+          setModalData(undefined);
+        }}
+      >
         <div className="max-h-full overflow-y-auto">
           <StatsOverlay card={modalData?.card} stats={modalData?.stats} />
 
@@ -26,7 +36,7 @@ export function MobileContextMenu() {
                     className="primary w-full"
                     onClick={() => {
                       handler();
-                      setModalData(undefined);
+                      close();
                     }}
                   >
                     {name}

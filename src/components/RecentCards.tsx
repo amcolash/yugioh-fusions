@@ -1,3 +1,4 @@
+import { useStackedModalHistory } from 'hooks/useStackedModalHistory';
 import { type ReactNode, useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -10,6 +11,7 @@ import {
   useFusions,
   useHand,
   useRecentCards,
+  useRecentModal,
   useSelectedCard,
   useShowStats,
 } from '../utils/state';
@@ -262,16 +264,19 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
 
 export function RecentCardsMobile() {
   const [hand] = useHand();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useRecentModal();
+
+  // Special close function that syncs with browser history (for back button)
+  const close = useStackedModalHistory();
 
   return (
     <>
       <button onClick={() => setOpen(true)}>Recent Cards</button>
-      <Modal open={open} close={() => setOpen(false)}>
+      <Modal open={open} close={() => close()}>
         <RecentCards
           onAddToHand={() => {
             if (Object.values(hand).filter((c) => c.location === 'hand').length >= 4) {
-              setTimeout(() => setOpen(false), 400);
+              setTimeout(() => close(), 400);
             }
           }}
         />

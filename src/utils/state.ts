@@ -17,6 +17,7 @@ const selectedCard = atom<number | undefined>();
 const excludedCards = atom<number[]>([]);
 const field = atom<Field>('normal');
 const fusionFilter = atom<FusionFilter>('all');
+const recentModal = atom<boolean>(false);
 const modalData = atom<ModalData | undefined>();
 
 const fusions = atom<FusionRecord[]>((get) => {
@@ -50,6 +51,7 @@ export const useSelectedCard = () => useAtom(selectedCard);
 export const useExcludedCards = () => useAtom(excludedCards);
 export const useField = () => useAtom(field);
 export const useFusionFilter = () => useAtom(fusionFilter);
+export const useRecentModal = () => useAtom(recentModal);
 export const useModalData = () => useAtom(modalData);
 
 export const useFusions = () => useAtomValue(fusions);

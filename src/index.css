@@ -5,6 +5,7 @@ html {
   @apply text-white;
   font-family: 'Sixtyfour', sans-serif;
   scrollbar-color: var(--color-gray-500) transparent;
+  touch-action: none;
 }
 
 #root {
