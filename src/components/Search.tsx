@@ -1,17 +1,27 @@
 import { search as fuzzy } from 'fast-fuzzy';
-import { useState } from 'react';
+import { useDebounce } from 'hooks/useDebounce';
+import { RowComponentProps } from 'react-window';
 
-import { useAddToHand, useField } from '../utils/state';
-import { fieldTypes, getStats, monsterList, statsByName } from '../utils/util';
+import { useAddToHand, useField, useSearch } from '../utils/state';
+import { cardList, fieldTypes, getStats, statsByName } from '../utils/util';
 import { Card } from './Card';
 import { Select } from './Select';
 
 export function Search() {
   const addToHand = useAddToHand();
   const [field, setField] = useField();
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useSearch();
+  const { value: debouncedSearch, waiting } = useDebounce(search);
 
-  let results: Stats[] = fuzzy(search, monsterList).map((name) => statsByName(name));
+  // Show all cards, but show monsters first
+  let results: Stats[] = fuzzy(debouncedSearch, cardList)
+    .map((name, index) => ({ ...statsByName(name), index }))
+    .sort((a, b) => {
+      if (a.cardType === 'Monster' && b.cardType !== 'Monster') return -1;
+      if (a.cardType !== 'Monster' && b.cardType === 'Monster') return 1;
+
+      return a.index - b.index;
+    });
 
   if (search.match(/^\d+$/g)) results = [getStats(parseInt(search.trim()), field)];
 
@@ -25,7 +35,7 @@ export function Search() {
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => {
             // On enter, add first result to hand
-            if (e.key === 'Enter' && results.length > 0) {
+            if (e.key === 'Enter' && results.length > 0 && results[0].cardType === 'Monster') {
               addToHand({ id: results[0].id, location: 'hand' });
               setSearch('');
             }
@@ -43,24 +53,61 @@ export function Search() {
           }))}
         />
       </div>
+      {!waiting && (
+        <>
+          {(results.length === 1 || (search.length > 2 && results.length > 1)) && (
+            <ul className="flex flex-wrap justify-center gap-4 overflow-y-auto">
+              {results.map((item) => (
+                <li key={item.id}>
+                  <Card
+                    id={item.id}
+                    disabled={item.cardType !== 'Monster'}
+                    onClick={
+                      item.cardType === 'Monster'
+                        ? () => {
+                            addToHand({ id: item.id, location: 'hand' });
+                            setSearch('');
+                          }
+                        : undefined
+                    }
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
 
-      {(results.length === 1 || (search.length > 2 && results.length > 1)) && (
-        <ul className="flex flex-wrap justify-center gap-4">
-          {results.map((item) => (
-            <li key={item.id}>
-              <Card
-                id={item.id}
-                onClick={() => {
-                  addToHand({ id: item.id, location: 'hand' });
-                  setSearch('');
-                }}
-              />
-            </li>
-          ))}
-        </ul>
+          {search.length > 2 && results.length === 0 && (
+            <p className="pt-6 text-center text-gray-400">No results found.</p>
+          )}
+        </>
       )}
-
-      {search.length > 2 && results.length === 0 && <p className="pt-6 text-center text-gray-400">No results found.</p>}
     </>
+  );
+}
+
+// TODO: virtualize this as things slow down with large results
+function SearchResult({
+  result,
+  style,
+}: RowComponentProps<{
+  result: Stats;
+}>) {
+  const addToHand = useAddToHand();
+  const [, setSearch] = useSearch();
+
+  return (
+    <Card
+      id={result.id}
+      disabled={result.cardType !== 'Monster'}
+      onClick={
+        result.cardType === 'Monster'
+          ? () => {
+              addToHand({ id: result.id, location: 'hand' });
+              setSearch('');
+            }
+          : undefined
+      }
+      style={style}
+    />
   );
 }

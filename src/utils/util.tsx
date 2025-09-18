@@ -5,6 +5,7 @@ import data from './data.json';
 const stats: Record<string, Stats> = data.stats as unknown as Record<string, Stats>;
 const fusions: Record<string, number[][]> = data.fusions as Record<string, number[][]>;
 
+export const cardList = Object.values(stats).map((s) => s.name);
 export const monsterList = Object.values(stats)
   .filter((s) => s.cardType === 'Monster')
   .map((s) => s.name);
@@ -277,7 +278,7 @@ export function getFieldIcon(field: Field): string {
 export function getGuardianStarSymbol(star: GuardianStar, bonus?: 'positive' | 'negative'): ReactNode {
   return (
     <img
-      src={`${import.meta.env.BASE_URL}/stars/${star.toLowerCase()}.png`}
+      src={`${import.meta.env.BASE_URL}/stars/${star?.toLowerCase()}.png`}
       className={`star inline-block size-6 ${bonus === 'positive' ? 'star-green' : bonus === 'negative' ? 'star-red' : ''}`}
     />
   );

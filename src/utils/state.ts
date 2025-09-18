@@ -11,6 +11,7 @@ const defaultHand: SimpleCard[] = [];
 //   { id: 10, location: 'hand' },
 // ];
 
+const search = atom<string>('');
 const hand = atom<SimpleCard[]>(defaultHand);
 const showStats = atom<boolean>(false);
 const selectedCard = atom<number | undefined>();
@@ -44,6 +45,7 @@ const addToHandAtom = atom(null, (_get, set, card: SimpleCard) => {
   set(recentCards, (prev) => ({ ...prev, [card.id]: (prev[card.id] || 0) + 1 }));
 });
 
+export const useSearch = () => useAtom(search);
 export const useHand = () => useAtom(hand);
 export const useShowStats = () => useAtom(showStats);
 export const useSelectedCard = () => useAtom(selectedCard);

@@ -2,10 +2,11 @@ import { Dispatch, SetStateAction, useCallback, useEffect } from 'react';
 
 import clipboard from '../icons/clipboard.svg';
 import copy from '../icons/copy.svg';
-import { useExcludedCards, useField, useHand, useRecentCards, useShowStats } from '../utils/state';
+import { useExcludedCards, useField, useHand, useRecentCards, useSearch, useShowStats } from '../utils/state';
 import { Card } from './Card';
 
 export function Hand() {
+  const [search] = useSearch();
   const [hand, setHand] = useHand();
   const [recentCards] = useRecentCards();
   const [showStats, setShowStats] = useShowStats();
@@ -75,7 +76,7 @@ export function Hand() {
 
   return (
     <>
-      {hand.length === 0 && (
+      {hand.length === 0 && search.length === 0 && (
         <>
           <p className="text-center text-gray-400">Your hand is empty. Add some cards to see their fusions.</p>
           <div className="flex gap-4">

@@ -16,6 +16,7 @@ export function Card({
   showTooltip = true,
   stats = [],
   disabled,
+  style,
 }: {
   id: number;
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -25,6 +26,7 @@ export function Card({
   showTooltip?: boolean;
   stats?: string[];
   disabled?: boolean;
+  style?: React.CSSProperties;
 }) {
   const mobile = useIsMobile();
   const [field] = useField();
@@ -63,13 +65,15 @@ export function Card({
           </span>
         )}
 
-        <span
-          className={`absolute right-0 bottom-0 rounded-tl-sm rounded-br-sm bg-gray-900 px-1 text-right text-sm opacity-60 ${bonusClass}`}
-        >
-          {cardStats.attack}
-          <br />
-          {cardStats.defense}
-        </span>
+        {cardStats.cardType === 'Monster' && (
+          <span
+            className={`absolute right-0 bottom-0 rounded-tl-sm rounded-br-sm bg-gray-900 px-1 text-right text-sm opacity-60 ${bonusClass}`}
+          >
+            {cardStats.attack}
+            <br />
+            {cardStats.defense}
+          </span>
+        )}
 
         {fuseText !== undefined && (
           <span
@@ -114,6 +118,7 @@ export function Card({
         !onClick && 'hover:!brightness-100',
         disabled && 'cursor-not-allowed brightness-50 hover:!brightness-50'
       )}
+      style={style}
     >
       {inner}
     </button>

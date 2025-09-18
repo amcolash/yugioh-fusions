@@ -58,20 +58,24 @@ export function StatsOverlay({ card, stats, background }: { card: number; stats?
 
       <StatLabel name="Name" value={cardStats.name} />
       <StatLabel name="ID" value={'#' + cardStats.id} />
-      <StatLabel name="Star 1" value={<StarLabel star={cardStats.guardianStars[0]} />} />
-      <StatLabel name="Star 2" value={<StarLabel star={cardStats.guardianStars[1]} />} />
+      {cardStats.cardType === 'Monster' && (
+        <>
+          <StatLabel name="Star 1" value={<StarLabel star={cardStats.guardianStars[0]} />} />
+          <StatLabel name="Star 2" value={<StarLabel star={cardStats.guardianStars[1]} />} />
 
-      {Object.entries(cardStats)
-        .sort((a, b) => a[0].localeCompare(b[0]))
-        .filter((s) => s[0] === 'subtype' || s[0] === 'type' || s[0] === 'attack' || s[0] === 'defense')
-        .map(([key, value]) => (
-          <StatLabel
-            key={key}
-            name={key}
-            value={value}
-            className={key === 'attack' || key === 'defense' ? bonusClass : undefined}
-          />
-        ))}
+          {Object.entries(cardStats)
+            .sort((a, b) => a[0].localeCompare(b[0]))
+            .filter((s) => s[0] === 'subtype' || s[0] === 'type' || s[0] === 'attack' || s[0] === 'defense')
+            .map(([key, value]) => (
+              <StatLabel
+                key={key}
+                name={key}
+                value={value}
+                className={key === 'attack' || key === 'defense' ? bonusClass : undefined}
+              />
+            ))}
+        </>
+      )}
 
       {stats?.length > 0 && (
         <>
