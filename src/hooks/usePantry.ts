@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { useRecentCardsRaw } from '../utils/state';
+import { getRecentCards as getRecentCardsLS, updateRecentCards as updateRecentCardsLS } from './useLocalStorage';
 
 // Not a big deal that this is exposed - not actually storing anything of any value, api is free, no CC
 const pantryID = 'd3fde413-0898-4607-8b43-404392c50d61';
@@ -33,19 +34,26 @@ export function usePantry() {
 
   useEffect(() => {
     const start = Date.now();
+
     getRecentCards()
       .then((data) => {
         setData(data);
-        setTimeout(() => setLoading(false), Math.max(0, 250 - (Date.now() - start)));
       })
       .catch(() => {
-        setTimeout(() => window.location.reload(), 3000);
+        setData(getRecentCardsLS());
+
+        // retry loading if online
+        if (navigator.onLine) setTimeout(() => window.location.reload(), 5000);
+      })
+      .finally(() => {
+        setTimeout(() => setLoading(false), Math.max(0, 150 - (Date.now() - start)));
       });
   }, [setData]);
 
   useEffect(() => {
     if (Object.values(data).length === 0) return;
     updateRecentCards(data).catch((err) => console.error(err));
+    updateRecentCardsLS(data);
   }, [data]);
 
   return {
