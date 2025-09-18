@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/yugioh-fusions/sw.js', { scope: '/yugioh-fusions/' })})}
