@@ -18,7 +18,6 @@ export default defineConfig({
     tailwindcss(),
     ViteImageOptimizer({ png: { quality: 50 } }),
     VitePWA({
-      registerType: 'autoUpdate',
       workbox: { globPatterns: ['**/*.{js,css,html,ico,png,svg,map}'] },
 
       manifest: {
