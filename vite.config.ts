@@ -6,13 +6,20 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   base: '/yugioh-fusions/',
+  build: {
+    sourcemap: true,
+  },
+  server: {
+    host: '0.0.0.0',
+  },
+
   plugins: [
     tsconfigPaths(),
     tailwindcss(),
     ViteImageOptimizer({ png: { quality: 50 } }),
     VitePWA({
       registerType: 'autoUpdate',
-      workbox: { globPatterns: ['**/*.{js,css,html,ico,png,svg}'] },
+      workbox: { globPatterns: ['**/*.{js,css,html,ico,png,svg,map}'] },
 
       manifest: {
         name: 'Yugi-Oh! Fusions',
@@ -34,7 +41,4 @@ export default defineConfig({
       },
     }),
   ],
-  server: {
-    host: '0.0.0.0',
-  },
 });
