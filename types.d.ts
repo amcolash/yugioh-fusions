@@ -75,7 +75,7 @@ type FusionStats = {
   totalDefense: number;
 };
 
-type ModalData = {
+type ContextMenuData = {
   card: number;
   stats?: string[];
   actions?: { name: string; handler: () => void }[];

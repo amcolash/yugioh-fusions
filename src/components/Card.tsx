@@ -1,9 +1,8 @@
-import { useIsMobile } from 'hooks/useIsMobile';
 import { MouseEventHandler } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { twMerge } from 'tailwind-merge';
 
-import { useField, useModalData } from '../utils/state';
+import { useContextMenuData, useField } from '../utils/state';
 import { getFieldBonus, getStats } from '../utils/util';
 import { StatsOverlay } from './StatsOverlay';
 
@@ -28,9 +27,8 @@ export function Card({
   disabled?: boolean;
   style?: React.CSSProperties;
 }) {
-  const mobile = useIsMobile();
   const [field] = useField();
-  const [, setModalData] = useModalData();
+  const [, setContextMenuData] = useContextMenuData();
 
   const cardStats = getStats(id, field);
   const bonus = getFieldBonus(id, field);
@@ -99,7 +97,7 @@ export function Card({
       onContextMenu={(e) => {
         e.preventDefault();
 
-        setModalData({
+        setContextMenuData({
           card: id,
           actions: [rightClick],
           stats,

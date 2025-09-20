@@ -4,10 +4,10 @@ import { useIsMobile } from '../hooks/useIsMobile';
 import { usePantry } from '../hooks/usePantry';
 import { useHand, useRecentCards } from '../utils/state';
 import { Background } from './Background';
+import { ContextMenu } from './ContextMenu';
 import { Fusions } from './Fusions';
 import { Hand } from './Hand';
 import { Loader } from './Loader';
-import { MobileContextMenu } from './MobileContextMenu';
 import { RecentCards, RecentCardsMobile } from './RecentCards';
 import { Search } from './Search';
 
@@ -36,12 +36,13 @@ export function App() {
       <div
         className={`flex w-full justify-center gap-12 transition-opacity delay-700 duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}
       >
+        <ContextMenu />
+
         <div className="grid content-start gap-8 sm:max-w-md sm:min-w-md">
           {hand.length === 0 && <h1 className="text-center">Forbidden Memories Fusions</h1>}
           <Search />
 
           {mobile && <RecentCardsMobile />}
-          <MobileContextMenu />
 
           <Hand />
           <Fusions />

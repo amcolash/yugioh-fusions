@@ -1,17 +1,17 @@
-import { useModalData } from 'utils/state';
+import { useContextMenuData } from 'utils/state';
 
 import { Modal } from './Modal';
 import { StatsOverlay } from './StatsOverlay';
 
-export function MobileContextMenu() {
-  const [modalData, setModalData] = useModalData();
+export function ContextMenu() {
+  const [contextMenuData, setContextMenuData] = useContextMenuData();
 
-  const actions = (modalData?.actions || []).filter((a) => !!a);
+  const actions = (contextMenuData?.actions || []).filter((a) => !!a);
 
   return (
-    <Modal open={!!modalData} close={() => setModalData(undefined)}>
+    <Modal open={!!contextMenuData} close={() => setContextMenuData(undefined)}>
       <div className="max-h-full overflow-y-auto">
-        <StatsOverlay card={modalData?.card} stats={modalData?.stats} />
+        <StatsOverlay card={contextMenuData?.card} stats={contextMenuData?.stats} />
 
         {actions.length > 0 && (
           <>
@@ -23,7 +23,7 @@ export function MobileContextMenu() {
                   className="primary w-full max-w-2xl justify-self-center"
                   onClick={() => {
                     handler();
-                    setModalData(undefined);
+                    setContextMenuData(undefined);
                   }}
                 >
                   {name}

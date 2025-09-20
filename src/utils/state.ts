@@ -18,7 +18,7 @@ const selectedCard = atom<number | undefined>();
 const excludedCards = atom<number[]>([]);
 const field = atom<Field>('normal');
 const fusionFilter = atom<FusionFilter>('all');
-const modalData = atom<ModalData | undefined>();
+const contextMenuData = atom<ContextMenuData | undefined>();
 
 const fusions = atom<FusionRecord[]>((get) => {
   const fusions = generateSecondaryFusions(get(hand), get(field));
@@ -52,7 +52,7 @@ export const useSelectedCard = () => useAtom(selectedCard);
 export const useExcludedCards = () => useAtom(excludedCards);
 export const useField = () => useAtom(field);
 export const useFusionFilter = () => useAtom(fusionFilter);
-export const useModalData = () => useAtom(modalData);
+export const useContextMenuData = () => useAtom(contextMenuData);
 
 export const useFusions = () => useAtomValue(fusions);
 
