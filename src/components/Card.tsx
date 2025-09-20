@@ -97,21 +97,13 @@ export function Card({
         }
       }}
       onContextMenu={(e) => {
-        if (mobile) {
-          e.preventDefault();
+        e.preventDefault();
 
-          setModalData({
-            card: id,
-            actions: [rightClick],
-            stats,
-          });
-          return;
-        }
-
-        if (rightClick) {
-          e.preventDefault();
-          rightClick?.handler();
-        }
+        setModalData({
+          card: id,
+          actions: [rightClick],
+          stats,
+        });
       }}
       className={twMerge(
         `${width} transparent flex !p-0`,

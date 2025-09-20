@@ -1,18 +1,11 @@
-import { useIsMobile } from 'hooks/useIsMobile';
 import { useEffect } from 'react';
 
 import { Background } from './Background';
 
 export function Modal({ children, open, close }: { children: React.ReactNode; open: boolean; close: () => void }) {
-  const mobile = useIsMobile();
-
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : 'auto';
   }, [open]);
-
-  useEffect(() => {
-    if (!mobile) close();
-  }, [close, mobile]);
 
   return (
     <>

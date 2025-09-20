@@ -47,7 +47,12 @@ export function StatsOverlay({ card, stats, background }: { card: number; stats?
   const bonusClass = bonus > 0 ? 'text-green-400' : bonus < 0 ? 'text-red-400' : 'text-white';
 
   return (
-    <div className={twMerge('relative grid gap-1 overflow-hidden rounded-md', background ? 'p-4' : 'py-2')}>
+    <div
+      className={twMerge(
+        'relative grid max-w-md gap-1 justify-self-center overflow-hidden rounded-md',
+        background ? 'p-4' : 'py-2'
+      )}
+    >
       {background && <Background type="absolute" brightness={2.5} />}
 
       <img
