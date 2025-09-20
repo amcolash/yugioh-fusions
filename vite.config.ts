@@ -18,7 +18,10 @@ export default defineConfig({
     tailwindcss(),
     ViteImageOptimizer({ png: { quality: 50 } }),
     VitePWA({
-      workbox: { globPatterns: ['**/*.{js,css,html,ico,png,svg,map,woff2}'] },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,map,woff2}'],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+      },
 
       manifest: {
         name: 'Yugi-Oh! Fusions',
