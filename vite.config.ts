@@ -31,7 +31,7 @@ export default defineConfig({
         background_color: '#161625',
         icons: [
           {
-            purpose: 'any',
+            purpose: 'any maskable',
             sizes: '256x256',
             src: 'icon.png',
             type: 'image/png',
