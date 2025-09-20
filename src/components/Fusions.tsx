@@ -16,9 +16,9 @@ export function Fusions() {
 
   const filteredFusions = useMemo(
     () =>
-      fusions.filter(({ cards, secondary }) => {
+      fusions.filter(({ id, cards, secondary }) => {
         if (!selectedCard) return true;
-        return cards.includes(selectedCard) || secondary?.cards.includes(selectedCard);
+        return (cards.includes(selectedCard) || secondary?.cards.includes(selectedCard)) && id !== selectedCard;
       }),
     [fusions, selectedCard]
   );
@@ -62,7 +62,7 @@ function FusionRow({
   });
 
   return (
-    <div className="grid content-start gap-4" style={style}>
+    <div className="grid content-start gap-4" style={style} key={[...cards, secondary?.cards].join('|')}>
       {/* Extra level of wrapper to ensure everything visually works */}
       <div className="flex justify-center overflow-hidden">
         <div className="flex gap-1 overflow-x-auto">

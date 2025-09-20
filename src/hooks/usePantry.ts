@@ -8,24 +8,18 @@ const pantryID = 'd3fde413-0898-4607-8b43-404392c50d61';
 const url = `https://getpantry.cloud/apiv1/pantry/${pantryID}/basket/recentCards`;
 
 export function updateRecentCards(cards: Record<string, number>): Promise<string | void> {
-  return (
-    fetch(url, {
-      method: 'PUT',
-      redirect: 'follow',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ cards }),
-    })
-      .then((response) => response.text())
-      // .then((res) => console.log(res))
-      .catch((error) => console.error('error updating recent cards', error))
-  );
+  return fetch(url, {
+    method: 'PUT',
+    redirect: 'follow',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ cards }),
+  }).then((response) => response.text());
 }
 
 export function getRecentCards(): Promise<Record<string, number>> {
   return fetch(url, { redirect: 'follow', headers: { 'Content-Type': 'application/json' } })
     .then((response) => response.json())
-    .then((res) => res.cards)
-    .catch((error) => console.error('error getting recent cards', error));
+    .then((res) => res.cards);
 }
 
 export function usePantry() {
@@ -35,24 +29,29 @@ export function usePantry() {
   useEffect(() => {
     const start = Date.now();
 
-    getRecentCards()
-      .then((data) => {
-        setData(data);
-      })
-      .catch(() => {
-        setData(getRecentCardsLS());
+    if (navigator.onLine) {
+      getRecentCards()
+        .then((data) => {
+          setData(data);
+        })
+        .catch((err) => {
+          console.error('error getting recent cards', err);
 
-        // retry loading if online
-        if (navigator.onLine) setTimeout(() => window.location.reload(), 5000);
-      })
-      .finally(() => {
-        setTimeout(() => setLoading(false), Math.max(0, 150 - (Date.now() - start)));
-      });
+          // retry loading if online
+          if (navigator.onLine) setTimeout(() => window.location.reload(), 5000);
+        })
+        .finally(() => {
+          setTimeout(() => setLoading(false), Math.max(0, 150 - (Date.now() - start)));
+        });
+    } else {
+      setData(getRecentCardsLS());
+      setTimeout(() => setLoading(false), Math.max(0, 150 - (Date.now() - start)));
+    }
   }, [setData]);
 
   useEffect(() => {
     if (Object.values(data).length === 0) return;
-    updateRecentCards(data).catch((err) => console.error(err));
+    if (navigator.onLine) updateRecentCards(data).catch((error) => console.error('error updating recent cards', error));
     updateRecentCardsLS(data);
   }, [data]);
 
