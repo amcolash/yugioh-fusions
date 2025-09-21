@@ -1,5 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
 @import 'tailwindcss';
+
+@font-face {
+  font-family: 'Sixtyfour';
+  src: url('/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf');
+}
 
 html {
   @apply text-white;

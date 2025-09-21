@@ -34,7 +34,7 @@ export function Select<T>({
             <img src={selected.icon} className="aspect-square" />
           ) : (
             <div className="flex items-center">
-              <div className="w-full text-nowrap">{selected?.label}</div>
+              <div className="w-full min-w-28 text-nowrap">{selected?.label}</div>
               <span className="">▼</span>
             </div>
           )}
