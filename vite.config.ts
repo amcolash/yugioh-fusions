@@ -23,11 +23,9 @@ export default defineConfig({
       // },
 
       registerType: 'autoUpdate',
-      // Exclude manifest icons as they are already precached from precache glob pattern
-      includeManifestIcons: false,
 
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,map,ttf}'],
+        globPatterns: ['!screenshots/**', '!icons/**', '**/*.{js,css,html,ico,png,svg,map,ttf}'],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
       },
 
@@ -42,14 +40,44 @@ export default defineConfig({
           {
             purpose: 'any',
             sizes: '256x256',
-            src: 'icon.png',
+            src: 'icons/icon.png',
             type: 'image/png',
           },
           {
             purpose: 'maskable',
             sizes: '192x192',
-            src: 'icon-maskable.png',
+            src: 'icons/icon-maskable.png',
             type: 'image/png',
+          },
+        ],
+        screenshots: [
+          {
+            src: 'screenshots/desktop-1.jpg',
+            form_factor: 'wide',
+            sizes: '3240x1880',
+            type: 'image/jpeg',
+            label: 'Fusion List',
+          },
+          {
+            src: 'screenshots/desktop-2.jpg',
+            form_factor: 'wide',
+            sizes: '3240x1880',
+            type: 'image/jpeg',
+            label: 'Card Stats',
+          },
+          {
+            src: 'screenshots/phone-1.jpg',
+            form_factor: 'narrow',
+            sizes: '1082x2402',
+            type: 'image/jpeg',
+            label: 'Card List',
+          },
+          {
+            src: 'screenshots/phone-2.jpg',
+            form_factor: 'narrow',
+            sizes: '1082x2402',
+            type: 'image/jpeg',
+            label: 'Fusion List',
           },
         ],
         orientation: 'portrait',
