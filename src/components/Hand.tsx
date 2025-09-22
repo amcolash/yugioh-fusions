@@ -63,6 +63,7 @@ export function Hand() {
             setTimeout(() => target.classList.remove('danger'), 250);
           }
         }}
+        disabled={hand.length === 0}
       >
         <img src={copy} className="pointer-events-none invert" />
       </button>

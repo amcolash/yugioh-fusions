@@ -21,22 +21,47 @@ input {
   &::placeholder {
     @apply text-center;
   }
+
+  &::-webkit-search-cancel-button {
+    @apply -mr-1 h-9 w-7 appearance-none;
+    background: url('/x-circle.svg') no-repeat center;
+  }
 }
 
 button {
-  @apply rounded bg-sky-600 p-2 transition duration-200 text-shadow-lg hover:bg-sky-700 active:bg-sky-800;
+  @apply rounded bg-sky-600 p-2 transition duration-200 text-shadow-lg;
+
+  &:not(:disabled) {
+    @apply hover:bg-sky-700 active:bg-sky-800;
+  }
+
+  &:disabled {
+    @apply opacity-25;
+  }
 }
 
 button.transparent {
-  @apply bg-transparent hover:bg-transparent hover:brightness-75;
+  @apply bg-transparent;
+
+  &:not(:disabled) {
+    @apply hover:bg-transparent hover:brightness-75;
+  }
 }
 
 button.danger {
-  @apply bg-rose-500 hover:bg-rose-700 active:bg-rose-800;
+  @apply bg-rose-500;
+
+  &:not(:disabled) {
+    @apply hover:bg-rose-700 active:bg-rose-800;
+  }
 }
 
 button.success {
-  @apply bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700;
+  @apply bg-emerald-500;
+
+  &:not(:disabled) {
+    @apply hover:bg-emerald-600 active:bg-emerald-700;
+  }
 }
 
 hr {

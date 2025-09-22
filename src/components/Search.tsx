@@ -56,7 +56,7 @@ export function Search() {
       {!waiting && (
         <>
           {(results.length === 1 || (search.length > 2 && results.length > 1)) && (
-            <ul className="flex flex-wrap justify-center gap-4 overflow-y-auto">
+            <ul className="flex flex-wrap justify-center gap-4 overflow-y-auto pt-1">
               {results.map((item) => (
                 <li key={item.id}>
                   <Card
