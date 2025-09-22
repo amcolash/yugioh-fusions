@@ -63,6 +63,7 @@ export function StatsOverlay({ card, stats, background }: { card: number; stats?
 
       <StatLabel name="Name" value={cardStats.name} />
       <StatLabel name="ID" value={'#' + cardStats.id} />
+
       {cardStats.cardType === 'Monster' && (
         <>
           <StatLabel name="Star 1" value={<StarLabel star={cardStats.guardianStars[0]} />} />
@@ -81,6 +82,9 @@ export function StatsOverlay({ card, stats, background }: { card: number; stats?
             ))}
         </>
       )}
+
+      <hr className="my-4" />
+      <StatLabel name="Description" value={cardStats.description} />
 
       {stats?.length > 0 && (
         <>

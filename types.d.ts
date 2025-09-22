@@ -65,6 +65,7 @@ type Stats = {
   password: number;
   starchips: number;
   image: string;
+  description: string;
 };
 
 type FusionFilter = 'primary' | 'secondary' | 'all';
