@@ -49,7 +49,7 @@ export function Search() {
           options={fieldTypes.map((f) => ({
             label: f,
             value: f,
-            icon: `${import.meta.env.BASE_URL}/field/${f}.png`,
+            icon: `${import.meta.env.BASE_URL}field/${f}.png`,
           }))}
         />
       </div>
