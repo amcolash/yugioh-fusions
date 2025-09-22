@@ -18,6 +18,9 @@ export default defineConfig({
     tailwindcss(),
     ViteImageOptimizer({ png: { quality: 50 } }),
     VitePWA({
+      // devOptions: {
+      //   enabled: true,
+      // },
 
       // Exclude manifest icons as they are already precached from precache glob pattern
       includeManifestIcons: false,
