@@ -1,14 +1,26 @@
+import { useIsMobile } from 'hooks/useIsMobile';
 import { Dispatch, SetStateAction, useCallback, useEffect } from 'react';
 
 import clipboard from '../icons/clipboard.svg';
 import copy from '../icons/copy.svg';
-import { useExcludedCards, useField, useHand, useRecentCards, useSearch, useShowStats } from '../utils/state';
+import {
+  useExcludedCards,
+  useField,
+  useHand,
+  useRecentCards,
+  useRecentCardsOpen,
+  useSearch,
+  useShowStats,
+} from '../utils/state';
 import { Card } from './Card';
 
 export function Hand() {
+  const mobile = useIsMobile();
+
   const [search] = useSearch();
   const [hand, setHand] = useHand();
   const [recentCards] = useRecentCards();
+  const [, setRecentCardsOpen] = useRecentCardsOpen();
   const [showStats, setShowStats] = useShowStats();
   const [, setExcluded] = useExcludedCards();
   const [, setField] = useField();
@@ -86,6 +98,7 @@ export function Hand() {
                 setHand(Object.keys(recentCards).map((id) => ({ id: parseInt(id), location: 'hand' })));
                 setShowStats(true);
                 setField('normal');
+                if (mobile) setRecentCardsOpen(true);
               }}
             >
               Deck Stats

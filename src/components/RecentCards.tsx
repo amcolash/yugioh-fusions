@@ -10,6 +10,7 @@ import {
   useFusions,
   useHand,
   useRecentCards,
+  useRecentCardsOpen,
   useSelectedCard,
   useShowStats,
 } from '../utils/state';
@@ -57,7 +58,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
     <>
       <div className="grid h-full max-w-5xl content-start gap-8">
         <h2 className="px-8 text-center">{header}</h2>
-        <div className="flex flex-wrap gap-x-8 gap-y-4 xl:flex-nowrap">
+        <div className="flex max-w-full flex-wrap gap-x-8 gap-y-4 overflow-hidden xl:flex-nowrap">
           <Select
             label="Sort By"
             value={sort}
@@ -262,16 +263,16 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
 
 export function RecentCardsMobile() {
   const [hand] = useHand();
-  const [open, setOpen] = useState(false);
+  const [recentCardsOpen, setRecentCardsOpen] = useRecentCardsOpen();
 
   return (
     <>
-      <button onClick={() => setOpen(true)}>Recent Cards</button>
-      <Modal open={open} close={() => setOpen(false)}>
+      <button onClick={() => setRecentCardsOpen(true)}>Recent Cards</button>
+      <Modal open={recentCardsOpen} close={() => setRecentCardsOpen(false)}>
         <RecentCards
           onAddToHand={() => {
             if (Object.values(hand).filter((c) => c.location === 'hand').length >= 4) {
-              setTimeout(() => setOpen(false), 400);
+              setTimeout(() => setRecentCardsOpen(false), 400);
             }
           }}
         />

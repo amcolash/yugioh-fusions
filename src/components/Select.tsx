@@ -25,7 +25,7 @@ export function Select<T>({
       <Listbox value={value} onChange={setValue}>
         <ListboxButton
           className={twMerge(
-            'transparent h-[42px] rounded border border-sky-800 text-center',
+            'transparent h-[42px] overflow-hidden rounded border border-sky-800 text-center',
             selected?.icon && 'w-[42px]',
             fullWidth && 'w-full'
           )}
@@ -34,7 +34,7 @@ export function Select<T>({
             <img src={selected.icon} className="aspect-square" />
           ) : (
             <div className="flex items-center">
-              <div className="w-full min-w-28 text-nowrap">{selected?.label}</div>
+              <div className="w-full overflow-hidden text-nowrap text-ellipsis sm:min-w-28">{selected?.label}</div>
               <span className="">▼</span>
             </div>
           )}
