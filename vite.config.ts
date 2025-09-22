@@ -18,6 +18,10 @@ export default defineConfig({
     tailwindcss(),
     ViteImageOptimizer({ png: { quality: 50 } }),
     VitePWA({
+
+      // Exclude manifest icons as they are already precached from precache glob pattern
+      includeManifestIcons: false,
+
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,map,ttf}'],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
