@@ -23,9 +23,11 @@ export default defineConfig({
       // },
 
       registerType: 'autoUpdate',
+      // Exclude manifest icons as they are already pre-cached from precache glob pattern
+      includeManifestIcons: false,
 
       workbox: {
-        globPatterns: ['!screenshots/**', '!icons/**', '**/*.{js,css,html,ico,png,svg,map,ttf}'],
+        globPatterns: ['!screenshots/**', '**/*.{js,css,html,ico,png,svg,map,ttf}'],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
       },
 
