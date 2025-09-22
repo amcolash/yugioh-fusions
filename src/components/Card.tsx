@@ -52,7 +52,7 @@ export function Card({
       >
         <img
           className={`${width} rounded border-2 border-amber-950`}
-          src={`${import.meta.env.BASE_URL}/cropped/${id}.png`}
+          src={`${import.meta.env.BASE_URL}cropped/${id}.png`}
           alt=""
           loading="lazy"
         />

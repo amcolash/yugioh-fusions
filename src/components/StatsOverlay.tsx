@@ -57,7 +57,7 @@ export function StatsOverlay({ card, stats, background }: { card: number; stats?
 
       <img
         className={`mb-4 w-48 justify-self-center rounded border-2 border-amber-950`}
-        src={`${import.meta.env.BASE_URL}/cropped/${card}.png`}
+        src={`${import.meta.env.BASE_URL}cropped/${card}.png`}
         alt=""
       />
 

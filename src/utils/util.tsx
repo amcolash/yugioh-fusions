@@ -278,7 +278,7 @@ export function getFieldIcon(field: Field): string {
 export function getGuardianStarSymbol(star: GuardianStar, bonus?: 'positive' | 'negative'): ReactNode {
   return (
     <img
-      src={`${import.meta.env.BASE_URL}/stars/${star?.toLowerCase()}.png`}
+      src={`${import.meta.env.BASE_URL}stars/${star?.toLowerCase()}.png`}
       className={`star inline-block size-6 ${bonus === 'positive' ? 'star-green' : bonus === 'negative' ? 'star-red' : ''}`}
     />
   );
