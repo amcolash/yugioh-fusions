@@ -22,6 +22,7 @@ export default defineConfig({
       //   enabled: true,
       // },
 
+      registerType: 'autoUpdate',
       // Exclude manifest icons as they are already precached from precache glob pattern
       includeManifestIcons: false,
 
