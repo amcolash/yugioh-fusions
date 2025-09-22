@@ -2,7 +2,17 @@ import { useEffect } from 'react';
 
 import { Background } from './Background';
 
-export function Modal({ children, open, close }: { children: React.ReactNode; open: boolean; close: () => void }) {
+export function Modal({
+  children,
+  open,
+  close,
+  zIndex = 1,
+}: {
+  children: React.ReactNode;
+  open: boolean;
+  close: () => void;
+  zIndex?: number;
+}) {
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : 'auto';
   }, [open]);
@@ -14,7 +24,8 @@ export function Modal({ children, open, close }: { children: React.ReactNode; op
         onKeyDown={(e) => {
           if (e.key === 'Escape') close();
         }}
-        className="fixed inset-0 z-1 m-auto h-full w-full overflow-hidden p-6 text-white"
+        className="fixed inset-0 m-auto h-full w-full overflow-hidden p-6 text-white"
+        style={{ zIndex }}
       >
         {open && (
           <>

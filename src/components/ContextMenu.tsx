@@ -9,12 +9,12 @@ export function ContextMenu() {
   const actions = (contextMenuData?.actions || []).filter((a) => !!a);
 
   return (
-    <Modal open={!!contextMenuData} close={() => setContextMenuData(undefined)}>
+    <Modal open={!!contextMenuData} close={() => setContextMenuData(undefined)} zIndex={2}>
       <div className="max-h-full overflow-y-auto">
-        <StatsOverlay card={contextMenuData?.card} stats={contextMenuData?.stats} />
+        <StatsOverlay card={contextMenuData?.card} stats={contextMenuData?.stats} width="lg" />
 
         {actions.length > 0 && (
-          <>
+          <div className="w-full max-w-lg justify-self-center">
             <hr className="my-8" />
             <div className="grid gap-2">
               {actions.map(({ name, handler }) => (
@@ -30,7 +30,7 @@ export function ContextMenu() {
                 </button>
               ))}
             </div>
-          </>
+          </div>
         )}
       </div>
     </Modal>

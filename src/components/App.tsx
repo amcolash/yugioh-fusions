@@ -52,7 +52,7 @@ export function App() {
           <>
             <div className={hand.length > 0 || Object.keys(recentCards).length > 0 ? 'border-l border-sky-800' : ''} />
             <RecentCards />
-            <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.9} />
+            <Tooltip id="stats-tooltip" border="1px solid var(--color-gray-500)" opacity={0.93} />
           </>
         )}
       </div>

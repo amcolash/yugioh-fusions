@@ -40,7 +40,17 @@ function StarLabel({ star }: { star: GuardianStar }) {
   );
 }
 
-export function StatsOverlay({ card, stats, background }: { card: number; stats?: string[]; background?: boolean }) {
+export function StatsOverlay({
+  card,
+  stats,
+  background,
+  width = 'md',
+}: {
+  card: number;
+  stats?: string[];
+  background?: boolean;
+  width?: 'md' | 'lg';
+}) {
   const [field] = useField();
   const cardStats = getStats(card, field);
   const bonus = getFieldBonus(card, field);
@@ -49,8 +59,9 @@ export function StatsOverlay({ card, stats, background }: { card: number; stats?
   return (
     <div
       className={twMerge(
-        'relative grid max-w-md gap-1 justify-self-center overflow-hidden rounded-md',
-        background ? 'p-4' : 'py-2'
+        'relative grid gap-1 justify-self-center overflow-hidden rounded-md',
+        background ? 'p-4' : 'py-2',
+        width === 'md' ? 'max-w-md' : 'max-w-lg'
       )}
     >
       {background && <Background type="absolute" brightness={2.5} />}
