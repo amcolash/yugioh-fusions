@@ -2,3 +2,4 @@ node_modules
 dist
 dev-dist
 .cache
+parser/wiki2/cache
