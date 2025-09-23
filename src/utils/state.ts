@@ -20,6 +20,7 @@ const field = atom<Field>('normal');
 const fusionFilter = atom<FusionFilter>('all');
 const contextMenuData = atom<ContextMenuData | undefined>();
 const recentCardsOpen = atom<boolean>(false);
+const starOverlay = atom<boolean>(localStorage.getItem('starOverlay') === 'true');
 
 const fusions = atom<FusionRecord[]>((get) => {
   const fusions = generateSecondaryFusions(get(hand), get(field));
@@ -55,6 +56,7 @@ export const useField = () => useAtom(field);
 export const useFusionFilter = () => useAtom(fusionFilter);
 export const useContextMenuData = () => useAtom(contextMenuData);
 export const useRecentCardsOpen = () => useAtom(recentCardsOpen);
+export const useStarOverlay = () => useAtom(starOverlay);
 
 export const useFusions = () => useAtomValue(fusions);
 

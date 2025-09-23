@@ -275,11 +275,15 @@ export function getFieldIcon(field: Field): string {
   }
 }
 
-export function getGuardianStarSymbol(star: GuardianStar, bonus?: 'positive' | 'negative'): ReactNode {
+export function getGuardianStarSymbol(
+  star: GuardianStar,
+  bonus?: 'positive' | 'negative',
+  size: 'md' | 'sm' = 'md'
+): ReactNode {
   return (
     <img
       src={`${import.meta.env.BASE_URL}stars/${star?.toLowerCase()}.png`}
-      className={`star inline-block size-6 ${bonus === 'positive' ? 'star-green' : bonus === 'negative' ? 'star-red' : ''}`}
+      className={`star inline-block ${size === 'md' ? 'size-6' : 'size-5'} ${bonus === 'positive' ? 'star-green' : bonus === 'negative' ? 'star-red' : ''}`}
     />
   );
 }

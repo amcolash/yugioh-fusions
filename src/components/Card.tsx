@@ -2,8 +2,8 @@ import { MouseEventHandler } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { twMerge } from 'tailwind-merge';
 
-import { useContextMenuData, useField } from '../utils/state';
-import { getFieldBonus, getStats } from '../utils/util';
+import { useContextMenuData, useField, useStarOverlay } from '../utils/state';
+import { getFieldBonus, getGuardianStarBonus, getGuardianStarSymbol, getStats } from '../utils/util';
 import { StatsOverlay } from './StatsOverlay';
 
 export function Card({
@@ -29,6 +29,7 @@ export function Card({
 }) {
   const [field] = useField();
   const [, setContextMenuData] = useContextMenuData();
+  const [starOverlay] = useStarOverlay();
 
   const cardStats = getStats(id, field);
   const bonus = getFieldBonus(id, field);
@@ -51,31 +52,48 @@ export function Card({
         data-tooltip-delay-show={1000}
       >
         <img
-          className={`${width} rounded border-2 border-amber-950`}
+          className={`${width} rounded-md border-2 border-amber-950`}
           src={`${import.meta.env.BASE_URL}cropped/${id}.png`}
           alt=""
           loading="lazy"
         />
 
         {showText && (
-          <span className="absolute bottom-0 left-0 rounded-tr-sm rounded-bl-sm bg-gray-900 px-1 text-sm opacity-60">
+          <span className="absolute bottom-0 left-0 rounded-tl-sm rounded-br-sm bg-gray-900 px-1 text-sm opacity-60">
             #{id}
           </span>
         )}
 
         {cardStats.cardType === 'Monster' && (
-          <span
-            className={`absolute right-0 bottom-0 rounded-tl-sm rounded-br-sm bg-gray-900 px-1 text-right text-sm opacity-60 ${bonusClass}`}
-          >
-            {cardStats.attack}
-            <br />
-            {cardStats.defense}
-          </span>
+          <>
+            {starOverlay && (
+              <div
+                className={twMerge(
+                  'absolute top-0.5 left-0.5 rounded-tl-sm rounded-br-sm border-r-2 border-b-2 border-amber-950 bg-gray-900/70 px-1',
+                  bonusClass
+                )}
+              >
+                {getGuardianStarSymbol(getGuardianStarBonus(cardStats.guardianStars[0]), 'positive', 'sm')}
+                {getGuardianStarSymbol(getGuardianStarBonus(cardStats.guardianStars[1]), 'positive', 'sm')}
+              </div>
+            )}
+
+            <div
+              className={twMerge(
+                'absolute right-0.5 bottom-0.5 rounded-tl-sm rounded-br-sm border-t-2 border-l-2 border-amber-950 bg-gray-900/60 px-1 text-right text-sm',
+                bonusClass
+              )}
+            >
+              {cardStats.attack}
+              <br />
+              {cardStats.defense}
+            </div>
+          </>
         )}
 
         {fuseText !== undefined && (
           <span
-            className={`absolute ${typeof fuseText === 'string' ? 'bottom-0.5' : 'top-0.5'} right-0.5 rounded-tl-sm rounded-br-sm border-2 border-gray-300 bg-sky-950 px-1.5 text-right text-xs whitespace-pre text-blue-400 opacity-90`}
+            className={`absolute ${typeof fuseText === 'string' ? 'bottom-0.5 rounded-tl-sm rounded-br-sm' : 'top-0.5 rounded-tr-sm rounded-bl-sm'} right-0.5 border-2 border-gray-300 bg-sky-950 px-1.5 text-right text-xs whitespace-pre text-blue-400 opacity-90`}
           >
             {fuseText}
           </span>

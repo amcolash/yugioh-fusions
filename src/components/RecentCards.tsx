@@ -183,7 +183,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
                 <div
                   className={twMerge(
                     showStats && selectedCard === parseInt(id) && 'rounded ring-4 ring-blue-400',
-                    showStats && excludedCards.includes(parseInt(id)) && 'ring-4 ring-red-400'
+                    showStats && excludedCards.includes(parseInt(id)) && 'rounded ring-4 ring-red-400'
                   )}
                   key={id}
                 >
@@ -236,7 +236,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
                               newCards[id] = -1;
                               setRecentCards(newCards);
                             },
-                            name: 'Remove from Recent',
+                            name: 'Remove from Deck',
                           }
                     }
                     stats={stats}

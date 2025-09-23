@@ -1,12 +1,22 @@
-import { useContextMenuData } from 'utils/state';
+import { useContextMenuData, useStarOverlay } from 'utils/state';
 
 import { Modal } from './Modal';
 import { StatsOverlay } from './StatsOverlay';
 
 export function ContextMenu() {
   const [contextMenuData, setContextMenuData] = useContextMenuData();
+  const [starOverlay, setStarOverlay] = useStarOverlay();
 
   const actions = (contextMenuData?.actions || []).filter((a) => !!a);
+  actions.push({
+    name: `Star Overlay: ${starOverlay ? 'Enabled' : 'Disabled'}`,
+    handler: () => {
+      setStarOverlay(!starOverlay);
+      localStorage.setItem('starOverlay', !starOverlay ? 'true' : 'false');
+    },
+  });
+
+  if (!contextMenuData) return null;
 
   return (
     <Modal open={!!contextMenuData} close={() => setContextMenuData(undefined)} zIndex={2}>
