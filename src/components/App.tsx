@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Tooltip } from 'react-tooltip';
 
 import { useIsMobile } from '../hooks/useIsMobile';
@@ -18,6 +19,15 @@ export function App() {
 
   const [hand] = useHand();
   const [recentCards] = useRecentCards();
+
+  useEffect(() => {
+    const onBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (hand.length > 0) e.preventDefault();
+    };
+
+    window.addEventListener('beforeunload', onBeforeUnload);
+    return () => window.removeEventListener('beforeunload', onBeforeUnload);
+  }, [hand]);
 
   return (
     <>

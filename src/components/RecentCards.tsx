@@ -52,7 +52,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
 
   const header = showStats
     ? `Fusion Stats (Attack ${deckStats.attack}, Defense ${deckStats.defense})`
-    : `Recent Cards (${Object.values(recentCards).length})`;
+    : `Deck (${Object.values(recentCards).length})`;
 
   return (
     <>
@@ -267,7 +267,7 @@ export function RecentCardsMobile() {
 
   return (
     <>
-      <button onClick={() => setRecentCardsOpen(true)}>Recent Cards</button>
+      <button onClick={() => setRecentCardsOpen(true)}>Deck</button>
       <Modal open={recentCardsOpen} close={() => setRecentCardsOpen(false)}>
         <RecentCards
           onAddToHand={() => {
