@@ -49,7 +49,7 @@ export function App() {
       >
         <ContextMenu />
 
-        <div className="grid content-start gap-8 sm:max-w-md sm:min-w-md">
+        <div className="grid w-full content-start gap-8 sm:max-w-md sm:min-w-md">
           {hand.length === 0 && <h1 className="text-center">Forbidden Memories Fusions</h1>}
           <Search />
 

@@ -229,7 +229,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
                                 setExcludedCards(newExcluded);
                               }
                             },
-                            name: excludedCards.includes(parseInt(id)) ? 'Include' : 'Exclude',
+                            name: excludedCards.includes(parseInt(id)) ? 'Include in Stats' : 'Exclude in Stats',
                           }
                         : {
                             handler: () => {

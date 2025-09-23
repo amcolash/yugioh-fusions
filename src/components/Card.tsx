@@ -44,6 +44,7 @@ export function Card({
 
   const showText = size === 'small' || size === 'normal';
   const fuseText = stats.length > 0 ? stats.map((s) => s.split(': ')[1]).join('\n') : fuse;
+  const fuseStats = typeof fuseText === 'string';
 
   const inner = (
     <div className={twMerge('relative grid content-baseline justify-items-center gap-2', showText && 'w-36')}>
@@ -80,22 +81,28 @@ export function Card({
               </div>
             )}
 
-            <div
-              className={twMerge(
-                'absolute right-0.5 bottom-0.5 rounded-tl-sm rounded-br-sm border-t-2 border-l-2 border-amber-950 bg-gray-900/60 px-1 text-right text-sm',
-                bonusClass
-              )}
-            >
-              {cardStats.attack}
-              <br />
-              {cardStats.defense}
-            </div>
+            {!fuseStats && (
+              <div
+                className={twMerge(
+                  'absolute right-0.5 bottom-0.5 rounded-tl-sm rounded-br-sm border-t-2 border-l-2 border-amber-950 bg-gray-900/60 px-1 text-right text-sm',
+                  bonusClass
+                )}
+              >
+                {cardStats.attack}
+                <br />
+                {cardStats.defense}
+              </div>
+            )}
           </>
         )}
 
         {fuseText !== undefined && (
           <span
-            className={`absolute ${typeof fuseText === 'string' ? 'bottom-0.5 rounded-tl-sm rounded-br-sm' : 'top-0.5 rounded-tr-sm rounded-bl-sm'} right-0.5 border-2 border-gray-300 bg-sky-950 px-1.5 text-right text-xs whitespace-pre text-blue-400 opacity-90`}
+            className={twMerge(
+              'absolute right-0.5 border-2 border-gray-300 bg-sky-950 px-1.5 text-right text-xs whitespace-pre text-blue-400',
+              fuseStats && 'bottom-0.5 rounded-tl-sm rounded-b-sm opacity-80 sm:rounded-br-sm',
+              !fuseStats && 'top-0.5 rounded-tr-sm rounded-bl-sm opacity-90'
+            )}
           >
             {fuseText}
           </span>
@@ -126,7 +133,7 @@ export function Card({
       className={twMerge(
         `${width} transparent card flex !p-0`,
         !onClick && 'hover:!brightness-100',
-        disabled && 'cursor-not-allowed brightness-50 hover:!brightness-50'
+        disabled && 'cursor-not-allowed brightness-75 hover:!brightness-75'
       )}
       style={style}
     >

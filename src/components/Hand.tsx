@@ -111,12 +111,6 @@ export function Hand() {
 
       {hand.length > 0 && (
         <>
-          {cardsInHand.length > 5 && (
-            <button className="success" onClick={() => setShowStats((prev) => !prev)}>
-              Stats: {showStats ? 'On' : 'Off'}
-            </button>
-          )}
-
           <div className="flex gap-4">
             <button
               className="danger w-full"
@@ -129,7 +123,7 @@ export function Hand() {
                 setField('normal');
               }}
             >
-              Clear Cards
+              {showStats ? 'Clear Stats' : 'Clear Cards'}
             </button>
             {!showStats && copyPaste}
           </div>

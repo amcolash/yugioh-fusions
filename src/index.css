@@ -12,7 +12,7 @@ html {
 }
 
 #root {
-  @apply flex h-screen justify-center px-5 py-8 sm:max-h-screen;
+  @apply flex justify-center px-5 py-8 sm:h-screen sm:max-h-screen;
 }
 
 input {

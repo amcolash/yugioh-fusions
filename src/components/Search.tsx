@@ -2,7 +2,7 @@ import { search as fuzzy } from 'fast-fuzzy';
 import { useDebounce } from 'hooks/useDebounce';
 import { RowComponentProps } from 'react-window';
 
-import { useAddToHand, useField, useSearch } from '../utils/state';
+import { useAddToHand, useField, useSearch, useShowStats } from '../utils/state';
 import { cardList, fieldTypes, getStats, statsByName } from '../utils/util';
 import { Card } from './Card';
 import { Select } from './Select';
@@ -11,7 +11,10 @@ export function Search() {
   const addToHand = useAddToHand();
   const [field, setField] = useField();
   const [search, setSearch] = useSearch();
+  const [showStats] = useShowStats();
   const { value: debouncedSearch, waiting } = useDebounce(search);
+
+  if (showStats) return null;
 
   // Show all cards, but show monsters first
   let results: Stats[] = fuzzy(debouncedSearch, cardList)
@@ -48,9 +51,9 @@ export function Search() {
           }))}
         />
       </div>
-      {!waiting && (
+      {!waiting && search.length > 0 && (
         <>
-          {(results.length === 1 || (search.length > 2 && results.length > 1)) && (
+          {(results.length === 1 || (search.length > 2 && results.length > 0)) && (
             <ul className="flex flex-wrap justify-center gap-4 overflow-y-auto pt-1">
               {results.map((item) => (
                 <li key={item.id}>
@@ -71,7 +74,7 @@ export function Search() {
             </ul>
           )}
 
-          {(search.length < 3 || results.length === 0) && (
+          {(search.length <= 2 || results.length === 0) && (
             <p className="pt-6 text-center text-gray-400">No results found.</p>
           )}
         </>

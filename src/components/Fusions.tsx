@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { List, RowComponentProps } from 'react-window';
 
 import { useIsMobile } from '../hooks/useIsMobile';
-import { useField, useFusions, useHand, useSelectedCard } from '../utils/state';
+import { useField, useFusions, useHand, useSelectedCard, useShowStats } from '../utils/state';
 import { getStats } from '../utils/util';
 import { Card } from './Card';
 
@@ -12,6 +12,7 @@ export function Fusions() {
   const [hand] = useHand();
   const fusions = useFusions();
   const [selectedCard] = useSelectedCard();
+  const [showStats] = useShowStats();
   const isMobile = useIsMobile();
 
   const filteredFusions = useMemo(
@@ -26,6 +27,9 @@ export function Fusions() {
   if (hand.length < 2) return null;
   if (fusions.length === 0) return <p className="text-center text-gray-400">No fusions found.</p>;
 
+  let height = (isMobile ? 170 : 190) + gap;
+  if (showStats) height -= gap * 2;
+
   return (
     <>
       <hr />
@@ -33,7 +37,7 @@ export function Fusions() {
         className="sm:pr-2"
         rowComponent={FusionRow}
         rowCount={filteredFusions.length}
-        rowHeight={(isMobile ? 170 : 190) + gap}
+        rowHeight={height}
         rowProps={{ fusions: filteredFusions }}
       />
     </>
@@ -49,6 +53,7 @@ function FusionRow({
 }>) {
   const [hand, setHand] = useHand();
   const [field] = useField();
+  const [showStats] = useShowStats();
 
   const { cards, id, secondary } = fusions[index];
 
@@ -75,30 +80,32 @@ function FusionRow({
         </div>
       </div>
 
-      <button
-        onClick={() => {
-          // Favor fusing with cards on the field vs in hand. Might be excessive to do for now.
-          const sorted = hand.sort((a, b) => {
-            if (a.location === 'field' && b.location === 'hand') return -1;
-            if (a.location === 'hand' && b.location === 'field') return 1;
-            return 0;
-          });
+      {!showStats && (
+        <button
+          onClick={() => {
+            // Favor fusing with cards on the field vs in hand. Might be excessive to do for now.
+            const sorted = hand.sort((a, b) => {
+              if (a.location === 'field' && b.location === 'hand') return -1;
+              if (a.location === 'hand' && b.location === 'field') return 1;
+              return 0;
+            });
 
-          const card1Index = sorted.findIndex((c) => c.id === cards[0]);
-          const card2Index = sorted.findIndex((c) => c.id === cards[1]);
-          const card3Index = secondary
-            ? sorted.findIndex((c) => c.id === secondary.cards[0] || c.id === secondary.cards[1])
-            : -1;
+            const card1Index = sorted.findIndex((c) => c.id === cards[0]);
+            const card2Index = sorted.findIndex((c) => c.id === cards[1]);
+            const card3Index = secondary
+              ? sorted.findIndex((c) => c.id === secondary.cards[0] || c.id === secondary.cards[1])
+              : -1;
 
-          setHand(() => {
-            const newHand = sorted.filter((_, i) => i !== card1Index && i !== card2Index && i !== card3Index);
-            newHand.push({ id: secondary?.id || id, location: 'field' });
-            return newHand;
-          });
-        }}
-      >
-        Fuse
-      </button>
+            setHand(() => {
+              const newHand = sorted.filter((_, i) => i !== card1Index && i !== card2Index && i !== card3Index);
+              newHand.push({ id: secondary?.id || id, location: 'field' });
+              return newHand;
+            });
+          }}
+        >
+          Fuse
+        </button>
+      )}
     </div>
   );
 }
