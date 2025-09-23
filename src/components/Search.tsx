@@ -16,12 +16,7 @@ export function Search() {
   // Show all cards, but show monsters first
   let results: Stats[] = fuzzy(debouncedSearch, cardList)
     .map((name, index) => ({ ...statsByName(name), index }))
-    .sort((a, b) => {
-      if (a.cardType === 'Monster' && b.cardType !== 'Monster') return -1;
-      if (a.cardType !== 'Monster' && b.cardType === 'Monster') return 1;
-
-      return a.index - b.index;
-    });
+    .sort((a, b) => a.index - b.index);
 
   if (search.match(/^\d+$/g)) results = [getStats(parseInt(search.trim()), field)];
 
@@ -76,7 +71,7 @@ export function Search() {
             </ul>
           )}
 
-          {search.length > 2 && results.length === 0 && (
+          {(search.length < 3 || results.length === 0) && (
             <p className="pt-6 text-center text-gray-400">No results found.</p>
           )}
         </>

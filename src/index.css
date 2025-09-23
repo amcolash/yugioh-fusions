@@ -64,6 +64,10 @@ button.success {
   }
 }
 
+button.card:disabled {
+  @apply opacity-80;
+}
+
 hr {
   @apply border-sky-800;
 }

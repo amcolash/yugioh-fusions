@@ -191,6 +191,7 @@ export function RecentCards({ onAddToHand }: { onAddToHand?: () => void; close?:
                     disabled={Object.values(hand).filter((c) => c.location === 'hand').length >= 5 && !showStats}
                     id={parseInt(id)}
                     size="x-small"
+                    showStarOverlay={false}
                     onClick={(e) => {
                       if (showStats) {
                         if (excludedCards.includes(parseInt(id))) {

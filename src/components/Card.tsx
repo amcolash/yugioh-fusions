@@ -16,6 +16,7 @@ export function Card({
   stats = [],
   disabled,
   style,
+  showStarOverlay = true,
 }: {
   id: number;
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -26,6 +27,7 @@ export function Card({
   stats?: string[];
   disabled?: boolean;
   style?: React.CSSProperties;
+  showStarOverlay?: boolean;
 }) {
   const [field] = useField();
   const [, setContextMenuData] = useContextMenuData();
@@ -66,7 +68,7 @@ export function Card({
 
         {cardStats.cardType === 'Monster' && (
           <>
-            {starOverlay && (
+            {starOverlay && showStarOverlay && (
               <div
                 className={twMerge(
                   'absolute top-0.5 left-0.5 rounded-tl-sm rounded-br-sm border-r-2 border-b-2 border-amber-950 bg-gray-900/70 px-1',
@@ -122,7 +124,7 @@ export function Card({
         });
       }}
       className={twMerge(
-        `${width} transparent flex !p-0`,
+        `${width} transparent card flex !p-0`,
         !onClick && 'hover:!brightness-100',
         disabled && 'cursor-not-allowed brightness-50 hover:!brightness-50'
       )}
