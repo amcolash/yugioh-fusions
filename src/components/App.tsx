@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Tooltip } from 'react-tooltip';
 
+import { useCloudflare } from '../hooks/useCloudflare';
 import { useIsMobile } from '../hooks/useIsMobile';
-import { usePantry } from '../hooks/usePantry';
 import { useHand, useRecentCards, useSearch } from '../utils/state';
 import { Background } from './Background';
 import { ContextMenu } from './ContextMenu';
@@ -14,7 +14,7 @@ import { Search } from './Search';
 
 export function App() {
   const mobile = useIsMobile();
-  const { loading } = usePantry();
+  const { loading } = useCloudflare();
   // const { loading } = useLocalStorage();
 
   const [search] = useSearch();

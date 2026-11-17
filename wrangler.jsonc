@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "yugioh-fusions-storage",
+  "main": "worker/index.ts",
+  "compatibility_date": "2024-09-23",
+  "workers_dev": true,
+  "kv_namespaces": [
+    {
+      "binding": "STORAGE",
+      "id": "928ba1de9b0a47819ff16d8ed75c2dc8",
+      "preview_id": "bf20b24cea7c4d289bfd9d4be2e33189"
+    }
+  ]
+}
